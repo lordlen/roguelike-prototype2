@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=11 format=3 uid="uid://c2c0p28gnvbfh"]
+
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_0djxd"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="1_4jech"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_67pbj"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="2_a7gj7"]
+[ext_resource type="Resource" uid="uid://siwpm2by5u4s" path="res://cards/card_resources/strike.tres" id="2_x8o02"]
+[ext_resource type="Resource" uid="uid://bjisge33m8gki" path="res://cards/card_resources/defend.tres" id="3_vjd6e"]
+
+[sub_resource type="Resource" id="Resource_67pbj"]
+script = ExtResource("1_4jech")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="Resource" id="Resource_ejhup"]
+script = ExtResource("1_4jech")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jech"]
+atlas = ExtResource("2_a7gj7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_x8o02"]
+script = ExtResource("1_4jech")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[resource]
+script = ExtResource("1_0djxd")
+texture = SubResource("AtlasTexture_4jech")
+character_name = "Hero"
+user_controlled = true
+max_hp = 100
+sleeping = SubResource("Resource_ejhup")
+wandering = SubResource("Resource_x8o02")
+hunting = SubResource("Resource_67pbj")
+cards = Array[ExtResource("1_67pbj")]([ExtResource("2_x8o02"), ExtResource("2_x8o02"), ExtResource("2_x8o02"), ExtResource("2_x8o02"), ExtResource("3_vjd6e"), ExtResource("3_vjd6e"), ExtResource("3_vjd6e")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

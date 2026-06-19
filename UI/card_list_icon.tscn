@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpycyvsiqurf6"]
+
+[ext_resource type="Texture2D" uid="uid://ni4f1vnmov4a" path="res://resources/draw_discard.png" id="1_elhte"]
+[ext_resource type="PackedScene" uid="uid://bprf7wwje7pid" path="res://UI/card_list.tscn" id="2_f6krj"]
+[ext_resource type="Script" uid="uid://bbt3hn8v2ic75" path="res://UI/card_list_icon.gd" id="2_vg5k7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elhte"]
+atlas = ExtResource("1_elhte")
+region = Rect2(0, 16, 16, 16)
+
+[node name="TextureButton" type="TextureButton"]
+custom_minimum_size = Vector2(32, 32)
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_elhte")
+stretch_mode = 4
+script = ExtResource("2_vg5k7")
+
+[node name="NumCards" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -6.0
+offset_right = 20.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "10"
+horizontal_alignment = 1
+
+[node name="CardList" parent="." instance=ExtResource("2_f6krj")]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 218.0
+offset_bottom = 178.75
+grow_horizontal = 0
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

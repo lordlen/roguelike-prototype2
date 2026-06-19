@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d1olj4404ftxx"]
+
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="1_gcykp"]
+
+[resource]
+script = ExtResource("1_gcykp")
+value = 2
+description = "Lose {0} hp"
+metadata/_custom_type_script = "uid://8j480ywki30u"

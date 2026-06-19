@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bprf7wwje7pid"]
+
+[ext_resource type="PackedScene" uid="uid://dcxtws0dhq5pw" path="res://UI/card_icon.tscn" id="1_5q3mj"]
+[ext_resource type="Script" uid="uid://kbas8w1grdyj" path="res://UI/card_list.gd" id="1_aim77"]
+
+[node name="CardList" type="Panel"]
+top_level = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -566.0
+offset_top = -638.0
+offset_right = -355.0
+offset_bottom = -463.25
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_aim77")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="PrimaryIcon" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5q3mj")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+expand_mode = 1
+
+[node name="PrimaryIcon2" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5q3mj")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+expand_mode = 5
+
+[node name="PrimaryIcon3" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5q3mj")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+expand_mode = 5

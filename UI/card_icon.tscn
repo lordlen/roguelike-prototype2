@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcxtws0dhq5pw"]
+
+[ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="1_480le"]
+[ext_resource type="Script" uid="uid://bj15ubpgk68r5" path="res://UI/card_icon.gd" id="2_6esgx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_480le"]
+atlas = ExtResource("1_480le")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Theme" id="Theme_yy7b2"]
+
+[node name="Icon" type="TextureRect"]
+texture = SubResource("AtlasTexture_480le")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("2_6esgx")
+
+[node name="AttackValue" type="Label" parent="."]
+layout_mode = 0
+offset_top = -3.0
+offset_right = 25.0
+offset_bottom = 20.0
+text = "6"
+
+[node name="DefenseValue" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 27.0
+grow_vertical = 0
+text = "0"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+top_level = true
+layout_mode = 1
+offset_left = 266.0
+offset_top = 103.0
+offset_right = 705.0
+offset_bottom = 129.0
+
+[node name="Description" type="RichTextLabel" parent="PanelContainer"]
+z_index = 100
+layout_mode = 2
+theme = SubResource("Theme_yy7b2")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+bbcode_enabled = true
+text = "[b]Hello[/b][i]world[/i]"
+fit_content = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

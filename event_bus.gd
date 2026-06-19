@@ -1,0 +1,15 @@
+extends Node
+
+signal turn_ended
+signal user_input_requested
+signal new_actor_added
+signal character_died
+signal character_state_changed
+
+signal character_hp_updated
+signal character_deck_updated
+signal character_fov_updated
+
+signal floor_map_updated
+
+signal notable_occurance

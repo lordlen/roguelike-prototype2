@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PatternResource" load_steps=4 format=3 uid="uid://bxtdio0jocibu"]
+
+[ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="1_ljjo5"]
+[ext_resource type="Texture2D" uid="uid://dotd5xod4tytf" path="res://patterns/room_patterns/map_painter.png" id="1_qpr2l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nubp2"]
+atlas = ExtResource("1_qpr2l")
+region = Rect2(192, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_ljjo5")
+pattern = SubResource("AtlasTexture_nubp2")
+metadata/_custom_type_script = "uid://u281p1f1m7k"

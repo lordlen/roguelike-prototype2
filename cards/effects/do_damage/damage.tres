@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cvhjddgfmj3jm"]
+
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="1_5l8mr"]
+
+[resource]
+script = ExtResource("1_5l8mr")
+metadata/_custom_type_script = "uid://8j480ywki30u"

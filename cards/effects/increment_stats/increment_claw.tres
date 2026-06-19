@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dvs68g00tnqk3"]
+
+[ext_resource type="Script" uid="uid://7mgtdobuhunk" path="res://cards/effects/increment_stats/increment_stats.gd" id="1_xucln"]
+
+[resource]
+script = ExtResource("1_xucln")
+atk_value = 2
+card_name = "Claw"
+description = "Increase the number of hits each claw does for this floor."
+metadata/_custom_type_script = "uid://8j480ywki30u"
