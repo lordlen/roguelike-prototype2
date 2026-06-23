@@ -6,7 +6,9 @@ enum TileType {
 	WALL,
 	GRASS,
 	WATER,
-	PEDESTAL
+	PEDESTAL,
+	TRAMPLED_GRASS,
+	STAIRS
 }
 
 const TILE_TYPE_MAP := {
@@ -14,7 +16,8 @@ const TILE_TYPE_MAP := {
 	Color.WHITE: TileType.FLOOR,
 	Color.GREEN: TileType.GRASS,
 	Color.BLUE: TileType.WATER,
-	Color.YELLOW: TileType.PEDESTAL
+	Color.YELLOW: TileType.PEDESTAL,
+	Color.MAGENTA: TileType.STAIRS
 }
 
 const room_outline_resource := {
@@ -26,7 +29,8 @@ const room_outline_resource := {
 	lake = "res://patterns/lake.tres",
 	long_corridor = "res://patterns/long_corridor.tres",
 	pillar = "res://patterns/pillar.tres",
-	river = "res://patterns/river.tres"
+	river = "res://patterns/river.tres",
+	small_stairs = "res://patterns/stairs.tres"
 }
 
 const feature_resource := {

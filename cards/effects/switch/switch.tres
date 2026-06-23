@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://omr8rmi3v4fy"]
+
+[ext_resource type="Script" uid="uid://cair0novr58q7" path="res://cards/effects/switch/switch.gd" id="1_lhkjn"]
+
+[resource]
+script = ExtResource("1_lhkjn")
+description = "Switch the top of the discard and the offhand."
+metadata/_custom_type_script = "uid://8j480ywki30u"

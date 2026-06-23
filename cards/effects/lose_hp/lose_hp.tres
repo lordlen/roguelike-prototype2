@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_gcykp")
 value = 2
-description = "Lose {0} hp"
+description = "Lose %d hp"
 metadata/_custom_type_script = "uid://8j480ywki30u"

@@ -5,8 +5,11 @@
 # Godot-specific ignores
 .import/
 export.cfg
+export_presets.cfg
 export_credentials.cfg
 *.tmp
+build/
+build.zip
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -15,3 +18,5 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+.gitattributes

@@ -5,10 +5,27 @@ func _ready() -> void:
 	EventBus.character_fov_updated.connect(_update_fog)
 	EventBus.new_actor_added.connect(on_new_actor_added)
 	
-	$Terrain.initialize_floor()
+	Char.new(load(Char.stats_resources["hero"]), Vector2i(0,0))
+	on_stairs_entered()
+
+func build_floor():
+	var floor_builder := FloorBuilder.new()
+	floor_builder.build_floor(Globals.current_floor)
 	
-	ActorManager.spawn_hero()
-	ActorManager.spawn_enemies()
+	$Terrain.draw_tiles(Globals.floor_map.get_all_tiles())
+	Globals.current_floor += 1
+	
+	# reset hero vision
+	for char in Globals.user_controlled:
+		char.vision_set.clear()
+		char.explored_set.clear()
+		char.visible_actors.clear()
+		char.update_vision()
+	
+func on_stairs_entered():
+	$UILayer/CardRewardDialog.generate_card_rewards()
+	build_floor()
+	
 
 func on_new_actor_added(char: Char):
 	$ActorList.add_child(char)

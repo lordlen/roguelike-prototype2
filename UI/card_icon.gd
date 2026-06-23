@@ -1,5 +1,5 @@
 class_name CardIcon
-extends TextureRect
+extends TextureButton
 
 func _on_mouse_entered() -> void:
 	$PanelContainer.visible = true
@@ -9,7 +9,7 @@ func _on_mouse_exited() -> void:
 
 func set_card_data(card: CardInstance) -> void:
 	if card != null:
-		self.texture = card.texture
+		self.texture_normal = card.texture
 		self.modulate.a = 1
 		$AttackValue.text = card.get_attack()
 		$DefenseValue.text = card.get_defense()

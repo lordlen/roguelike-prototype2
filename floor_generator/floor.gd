@@ -23,7 +23,7 @@ func _init(width: int, height: int):
 
 func add_dijkstra_map(points: Array[Vector2i]):
 	var dm := DijkstraMap.new(self)
-	dm.set_cost_map(Pathfinder.get_cost_dict(Char.Traversal.GROUNDED))
+	dm.set_traversal(Char.Traversal.GROUNDED)
 	dm.set_targets(points)
 	dm.set_chars(Globals.actors)
 	random_dijkstra_maps.push_back(dm)
@@ -52,6 +52,10 @@ func set_tile(cell: Vector2i, type: RoomPattern.TileType):
 		astar.set_point_solid(cell, false)
 	else:
 		astar.set_point_solid(cell)
+
+func update_tile(cell: Vector2i, type: RoomPattern.TileType):
+	set_tile(cell, type)
+	EventBus.floor_tile_updated.emit(cell, type)
 
 func get_tile(v: Vector2i) -> RoomPattern.TileType:
 	if v in used_cells:

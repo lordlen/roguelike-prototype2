@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dpb4nmiytas2i"]
+
+[ext_resource type="Script" uid="uid://dmjsrjjubgf5c" path="res://cards/effects/discard/discard_offhand.gd" id="1_n1kuw"]
+
+[resource]
+script = ExtResource("1_n1kuw")
+description = "Discard target's offhand."
+metadata/_custom_type_script = "uid://8j480ywki30u"

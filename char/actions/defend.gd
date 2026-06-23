@@ -9,5 +9,7 @@ func execute() -> bool:
 	if actor.deck.primary == null:
 		return false
 	
-	actor.deck.primary.do_defend(self.actor)
-	return true
+	var is_swift = actor.deck.primary.is_swift
+	actor.deck.primary.do_defend(actor)
+	EventBus.character_deck_updated.emit(actor)
+	return !is_swift

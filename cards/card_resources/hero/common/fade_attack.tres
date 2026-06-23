@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://cay5qg3npsmjs"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_auwmo"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_0uaoy"]
+[ext_resource type="Resource" uid="uid://ct1vqietkvgt" path="res://cards/effects/add_effect_self/add_swift_offhand.tres" id="2_fl5d0"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_wekhq"]
+[ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="5_0uaoy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrki2"]
+atlas = ExtResource("5_0uaoy")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_wekhq")
+texture = SubResource("AtlasTexture_jrki2")
+name = "Fade Attack"
+attack = 8
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_auwmo")]([ExtResource("2_0uaoy"), ExtResource("2_fl5d0")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

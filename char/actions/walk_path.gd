@@ -18,4 +18,3 @@ func execute() -> bool:
 		var q_actions = path.slice(2).map(func(v: Vector2i): return Walk.new(actor, v))
 		actor.action_queue.append_array(q_actions)
 		return Walk.new(actor, path[1]).execute()
-	

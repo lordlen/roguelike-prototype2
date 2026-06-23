@@ -26,7 +26,8 @@ Globals="*res://globals.gd"
 folder_colors={
 "res://UI/": "blue",
 "res://cards/": "red",
-"res://char/": "orange"
+"res://char/": "orange",
+"res://floor_generator/": "green"
 }
 
 [input]
@@ -70,3 +71,5 @@ defend={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=true

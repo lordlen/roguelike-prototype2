@@ -1,6 +1,7 @@
 extends Node
 
 var floor_map: Floor
+var current_floor: int = 0
 
 var visible_actors: Array[Char] = []
 var actors: Array[Char] = []

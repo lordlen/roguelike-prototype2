@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dpnvrus13merh"]
+
+[ext_resource type="Script" uid="uid://c56tu66yr0yqq" path="res://cards/effects/discard/discard_self_primary.gd" id="1_nsoea"]
+
+[resource]
+script = ExtResource("1_nsoea")
+description = "Discard own primary"
+metadata/_custom_type_script = "uid://8j480ywki30u"

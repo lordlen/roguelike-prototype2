@@ -11,6 +11,8 @@ var floor : Floor
 var cost_map: Dictionary[RoomPattern.TileType, float]
 var char_dict: Dictionary[Vector2i, Char]
 var chars: Array[Char]
+var traversal: Char.Traversal
+
 func _init(floor: Floor) -> void:
 	self.floor = floor
 	width = floor.width
@@ -26,8 +28,8 @@ func get_ind(v: Vector2i) -> int:
 func set_targets(targets: Array[Vector2i]):
 	self.targets = targets
 
-func set_cost_map(cost_map: Dictionary[RoomPattern.TileType, float]):
-	self.cost_map = cost_map
+func set_traversal(t: Char.Traversal):
+	self.traversal = t
 
 func set_chars(chars: Array[Char]):
 	self.chars = chars
@@ -79,12 +81,11 @@ func instantiate(depth: int = max_int) -> void:
 			
 			# if out of bounds, impassable tile, or a character who hasn't moved
 			# is in the way, treat all as impassable
-			if !is_within_bounds(v) or !cost_map.has(tile) or\
+			var w := Tiles.get_pf_cost(traversal, tile)
+			if !is_within_bounds(v) or w == INF or\
 			(char_dict.has(v) and !char_dict[v].moved_last_turn):
 				continue
-			
-			var w := cost_map[tile]
-			
+
 			# cost of current location + the adjacent
 			var total_cost := map[get_ind(u)] + w
 			var curr_best_cost := map[get_ind(v)]

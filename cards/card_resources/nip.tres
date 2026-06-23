@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://v83m0k8g2ysm"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_yex00"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_7rc0k"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_a614w"]
+[ext_resource type="Resource" uid="uid://dpb4nmiytas2i" path="res://cards/effects/discard/discard_offhand.tres" id="3_lftqg"]
+[ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="4_lftqg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oupwo"]
+atlas = ExtResource("4_lftqg")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_7rc0k")
+texture = SubResource("AtlasTexture_oupwo")
+name = "Nip"
+attack = 4
+num_hits = 2
+range = 1
+attack_effects = Array[ExtResource("1_yex00")]([ExtResource("2_a614w"), ExtResource("3_lftqg")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -3,7 +3,16 @@ extends Node
 # prevents the _process from doing continuous loops
 var block_process := false
 
+var rng = RandomNumberGenerator.new()
+
+var spawn_turn_count := 0
+var num_turns_to_spawn: int
+var subsequent_spawns: SpawnDescription
 func _ready():
+	spawn_turn_count = 0
+	num_turns_to_spawn = -1
+	subsequent_spawns = null
+	rng.randomize()
 	EventBus.connect("new_actor_added", _add_actor)
 	EventBus.connect("character_died", _remove_actor)
 
@@ -41,12 +50,26 @@ func do_actor_turns():
 			await action.execute()
 		ch.pass_turn()
 	
+	spawn_turn_count += 1
+	
+	if spawn_turn_count == num_turns_to_spawn:
+		
+		spawn_turn_count = 0
+		var spawn_group := subsequent_spawns.get_random_spawn_group()
+		random_spawn_character(spawn_group, true)
+
 	block_process = false
 
-func random_spawn_character(char_id: String, is_awake := false, followers: Array[String] = []):
+func configure_spawning(spawn_desc: SpawnDescription, num_turns_to_spawn):
+	self.subsequent_spawns = spawn_desc
+	self.num_turns_to_spawn = num_turns_to_spawn
+	self.spawn_turn_count = 0
+
+func random_spawn_character(spawn_group: SpawnGroup, is_awake := false):
 	# find a random point on the map. If aquatic, only get water tiles
 	# if not aquatic, just pick a non-water tile
-	var ch_stats := load(Char.stats_resources[char_id]) as CharacterStats
+	var ch_stats := spawn_group.group[0]
+	var followers : Array[CharacterStats] = spawn_group.group.slice(1)
 	var spawn_tiles : Array[RoomPattern.TileType] = [RoomPattern.TileType.FLOOR, RoomPattern.TileType.GRASS]
 	if ch_stats.traversal == Char.Traversal.AQUATIC:
 		spawn_tiles = [RoomPattern.TileType.WATER]
@@ -74,32 +97,27 @@ func random_spawn_character(char_id: String, is_awake := false, followers: Array
 				if new_pos == pos:
 					continue
 				if new_pos in unoccupied_tiles:
-					var f_stats := load(Char.stats_resources[followers[f_ind]]) as CharacterStats
+					var f_stats := followers[f_ind]
 					var follower := Char.new(f_stats, new_pos)
 					follower.follow(leader)
 					f_ind += 1
 		if is_awake:
 			leader.wander()
 
-func get_actor_in_position(pos: Vector2i):
+func spawn_initial_characters(spawn_description: SpawnDescription, num_spawns: int):
+	for i in range(num_spawns):
+		# pick a random index from
+		var ind = rng.rand_weighted(spawn_description.weights)
+		var spawn_group := spawn_description.pool[ind]
+		random_spawn_character(spawn_group)
+
+func get_actor_in_position(pos: Vector2i) -> Char:
 	var actors := get_chars()
 	var ind := actors.find_custom(func(ch: Char): return ch.grid_position == pos)
 	if ind != -1:
 		return actors[ind]
 	else:
 		return null
-
-func spawn_hero():
-	ActorManager.random_spawn_character('hero')
-	pass
-
-func spawn_enemies():
-	# TODO: have a list of possible spawns and their weights
-	# ActorManager.random_spawn_character('jackal', true)
-	for i in range(5):
-		ActorManager.random_spawn_character('toad', true)
-	for i in range(5):
-		ActorManager.random_spawn_character('jackal', true, ['jackal'])
 
 func get_user_controlled_chars() -> Array[Char]:
 	return Globals.user_controlled

@@ -37,19 +37,23 @@ func build(floor: Floor) -> Floor:
 	var fail_limit := 200
 	var distance_threshold := 20
 	
-	# first room
-	# pick the mid point
-	var mid := Vector2i(width / 2, height / 2)
-	
-	# pick random pattern out of the list
-	var first_dir : Vector2i= [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT].pick_random()
-	var first_pattern : RoomPattern = patterns.pick_random()
-	floor.append_back(first_pattern.get_used_cells(first_dir, mid), first_pattern.get_cell_types())
-	successful_room_placement += 1
-	
 	while successful_room_placement < rooms and failed_attempts < fail_limit:
+		if floor.used_cells.is_empty():
+			# first room
+			# pick the mid point
+			var mid := Vector2i(width / 2, height / 2)
+			
+			# pick random pattern out of the list
+			var first_dir : Vector2i= [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT].pick_random()
+			var first_pattern : RoomPattern = patterns.pick_random()
+			floor.append_back(first_pattern.get_used_cells(first_dir, mid), first_pattern.get_cell_types())
+			successful_room_placement += 1
+			continue
+		
 		# from the floor, pick a random valid wall that 
 		var r_result = floor.get_random_wall()
+		
+		
 
 		var wall : Vector2i = r_result[0]
 		var dir : Vector2i = r_result[1]

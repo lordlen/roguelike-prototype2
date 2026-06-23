@@ -13,6 +13,7 @@ var is_dodge: bool
 var exhausts: bool
 var is_innate: bool
 var is_ethereal: bool
+var is_swift: bool
 
 var attack_effects: Array[CardEffect]
 var defense_effects: Array[CardEffect]
@@ -34,6 +35,7 @@ func _init(r: CardResource):
 	exhausts = r.exhausts
 	is_innate = r.is_innate
 	is_ethereal = r.is_ethereal
+	is_swift = r.is_swift
 	
 	attack_effects = r.attack_effects
 	defense_effects = r.defense_effects
@@ -42,21 +44,24 @@ func _init(r: CardResource):
 	tmp_defense_effects = []
 	tmp_on_hit_effects = []
 
-func do_attack(attacker: Char, defender: Char, path: Array[Vector2i]) -> void:
-	EventBus.notable_occurance.emit("%s attacks %s with %s" % [attacker.character_name, defender.character_name, card_name])
+func do_attack(actor: Char, defender: Char, path: Array[Vector2i]) -> void:
+	EventBus.notable_occurance.emit("%s attacks %s with %s" % [actor.character_name, defender.character_name, card_name])
 	for e in attack_effects + tmp_attack_effects:
-		e.do(attacker, defender, self, path)
-	attacker.deck.dispose_primary()
+		e.do(actor, defender, self, path)
+	actor.deck.dispose_primary()
 
-func do_defend(defender: Char) -> void:
-	defender.bonus_defense += defense
+func do_defend(actor: Char) -> void:
+	actor.bonus_defense += defense
 	for e in defense_effects + tmp_defense_effects:
-		e.do(null, defender, self, [])
-	defender.deck.dispose_primary()
+		e.do(actor, null, self, [])
+	actor.deck.dispose_primary()
+	if is_swift:
+		is_swift = false
+		actor.deck.draw_empty()
 
 func do_on_hit(attacker: Char, defender: Char) -> void:
-	for e in on_hit_effects:
-		e.do(attacker, defender, self, [])
+	for e in on_hit_effects + tmp_on_hit_effects:
+		e.do(defender, attacker, self, [])
 
 func get_description() -> String:
 	var desc := "[b]%s[/b]" % card_name
@@ -69,6 +74,12 @@ func get_description() -> String:
 	
 	if is_innate:
 		desc += "\nInnate."
+	
+	if is_swift:
+		desc += "\nSwift"
+	
+	if is_ethereal:
+		desc += "\nEthereal"
 	
 	for e in self.attack_effects:
 		if e.get_description() != "":
@@ -83,21 +94,21 @@ func get_description() -> String:
 	if len(defense_effects + tmp_defense_effects) > 0:
 		desc += "\nOn Defend: "
 		for e in defense_effects:
-			desc += e.get_description()
 			desc += '\n'
+			desc += e.get_description()
 		for e in tmp_defense_effects:
+			desc += '\n'
 			desc += '(' + e.get_description() + ')'
-			desc += '\n'
 
-	if len(on_hit_effects) > 0:
-		desc += "On Hit: "
+	if len(on_hit_effects + tmp_on_hit_effects) > 0:
+		desc += "\nOn Hit: "
 		for e in on_hit_effects:
-			desc += e.get_description()
 			desc += '\n'
+			desc += e.get_description()
 		
 		for e in tmp_on_hit_effects:
-			desc += '(' + e.get_description() + ')'
 			desc += '\n'
+			desc += '(' + e.get_description() + ')'
 	
 	desc = desc.strip_edges()
 	

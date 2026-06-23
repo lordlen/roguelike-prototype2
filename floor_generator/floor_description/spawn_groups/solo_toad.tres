@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpawnGroup" load_steps=4 format=3 uid="uid://b7drjwn27o2c3"]
+
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_sry34"]
+[ext_resource type="Resource" uid="uid://byc8ygvcam1tl" path="res://char/stats/toad.tres" id="2_eaotj"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="3_d8hth"]
+
+[resource]
+script = ExtResource("3_d8hth")
+group = Array[ExtResource("1_sry34")]([ExtResource("2_eaotj")])
+metadata/_custom_type_script = "uid://cgbukm4afxlvj"

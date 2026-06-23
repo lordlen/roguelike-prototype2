@@ -1,23 +1,5 @@
 class_name Pathfinder
 
-const grounded_costs : Dictionary[RoomPattern.TileType, float] = {
-	RoomPattern.TileType.FLOOR: 1.0,
-	RoomPattern.TileType.GRASS: 1.0,
-	RoomPattern.TileType.WATER: 4.0,
-	RoomPattern.TileType.PEDESTAL: 1.0
-}
-
-const aquatic_costs : Dictionary[RoomPattern.TileType, float] = {
-	RoomPattern.TileType.WATER: 4.0
-}
-
-const flying_costs : Dictionary[RoomPattern.TileType, float] = {
-	RoomPattern.TileType.FLOOR: 1.0,
-	RoomPattern.TileType.GRASS: 1.0,
-	RoomPattern.TileType.WATER: 1.0,
-	RoomPattern.TileType.PEDESTAL: 1.0
-}
-
 var astar := CustomAstar.new()
 func _init() -> void:
 	astar.region = Rect2i(0, 0, Globals.floor_map.width, Globals.floor_map.height)
@@ -26,27 +8,8 @@ func _init() -> void:
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ALWAYS
 	astar.update()
 
-static func get_cost_dict(traversability: Char.Traversal):
-	match traversability:
-		Char.Traversal.GROUNDED:
-			return grounded_costs
-		Char.Traversal.AQUATIC:
-			return aquatic_costs
-		Char.Traversal.FLYING:
-			return flying_costs
-		_:
-			return {}
-
 func find_path(traversability: Char.Traversal, from: Vector2i, to: Vector2i, char_is_impassable: bool = false) -> Array[Vector2i]:
-	match traversability:
-		Char.Traversal.GROUNDED:
-			astar.set_cost_dict(grounded_costs)
-		Char.Traversal.AQUATIC:
-			astar.set_cost_dict(aquatic_costs)
-		Char.Traversal.FLYING:
-			astar.set_cost_dict(flying_costs)
-		_:
-			astar.set_cost_dict({})
+	astar.set_traversal(traversability)
 	if char_is_impassable:
 		astar.set_char_cost(INF)
 	else:

@@ -88,6 +88,8 @@ func _init(stats: CharacterStats, position: Vector2i):
 	self.followers = []
 	
 	moved_last_turn = false
+	if alignment == Alignment.EVIL:
+		visible = false
 
 	EventBus.emit_signal("new_actor_added", self)
 
@@ -97,12 +99,23 @@ func move_to(new_grid_pos: Vector2i):
 	
 	self.grid_position = new_grid_pos
 	self.position = self.grid_position * Consts.TILE_SIZE
+	var tile := Globals.floor_map.get_tile(new_grid_pos)
+	if tile == RoomPattern.TileType.GRASS\
+	and traversal != Traversal.FLYING:
+		Globals.floor_map.update_tile(new_grid_pos, RoomPattern.TileType.TRAMPLED_GRASS)
+	
+	# stairs dialog
+	if user_controlled and tile == RoomPattern.TileType.STAIRS:
+		# activate the stairs dialog
+		EventBus.stairs_popup_signal.emit()
 
 func turn_start():
 	moved_last_turn = moved_this_turn
 	if moved_last_turn:
 		flow_map = null
 	moved_this_turn = false
+	
+	self.bonus_defense = 0
 	
 	self.deck.draw_empty()
 	EventBus.character_deck_updated.emit(self)
@@ -112,7 +125,7 @@ func get_flow_map(is_forced: bool = false) -> DijkstraMap:
 	if flow_map != null and !is_forced:
 		return flow_map
 	flow_map = DijkstraMap.new(Globals.floor_map)
-	flow_map.set_cost_map(Pathfinder.get_cost_dict(self.traversal))
+	flow_map.set_traversal(traversal)
 	flow_map.set_targets([grid_position])
 	flow_map.set_chars(Globals.actors)
 	# typical sight range is 8, so this depth should be enough, making it fast
@@ -148,30 +161,19 @@ func update_vision():
 			if self.is_user_controlled():
 				actor.visible = false
 	self.visible_actors = new_visible_actors
-	# TODO: if a new actor is seen, halt the player's buffered inputs
 	if new_actor_in_vision:
-		pass
+		self.action_queue.clear()
 	EventBus.emit_signal("character_fov_updated", self)
 
 func pass_turn():
 	self.deck.exhaust_ethereal()
 	self.deck.draw_empty()
-	self.bonus_defense = 0
 	EventBus.character_deck_updated.emit(self)
-
-func get_traversable_tiles() -> Array[RoomPattern.TileType]:
-	if traversal == Traversal.AQUATIC:
-		return [RoomPattern.TileType.WATER]
-	else:
-		return [RoomPattern.TileType.WATER, RoomPattern.TileType.GRASS, RoomPattern.TileType.FLOOR]
 
 func can_traverse(pos: Vector2i):
 	var tile := Globals.floor_map.get_tile(pos)
-	var traversable_tiles := get_traversable_tiles()
 	
-	var actors = ActorManager.get_chars()
-	
-	return tile in traversable_tiles
+	return Tiles.get_pf_cost(traversal, tile) != INF
 
 func is_user_controlled():
 	return user_controlled
@@ -241,7 +243,7 @@ func hunt(prey : Char):
 # set the dijkstra map of self and followers
 func wander_to(pos: Vector2i):
 	target_flow_map = DijkstraMap.new(Globals.floor_map)
-	target_flow_map.set_cost_map(Pathfinder.get_cost_dict(self.traversal))
+	target_flow_map.set_traversal(traversal)
 	target_flow_map.set_targets([pos])
 	target_flow_map.set_chars(Globals.actors)
 	target_flow_map.instantiate()

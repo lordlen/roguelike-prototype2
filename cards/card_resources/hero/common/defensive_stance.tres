@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://dghlden3lrrqk"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_qhncq"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_d6fp1"]
+[ext_resource type="Resource" uid="uid://6lnx0kxjb21w" path="res://cards/effects/discard/discard_self.tres" id="2_t4qro"]
+[ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="4_t4qro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl6uk"]
+atlas = ExtResource("4_t4qro")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_d6fp1")
+texture = SubResource("AtlasTexture_vl6uk")
+name = "Defensive Stance"
+defense = 7
+on_hit_effects = Array[ExtResource("1_qhncq")]([ExtResource("2_t4qro")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

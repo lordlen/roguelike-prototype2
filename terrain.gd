@@ -1,9 +1,25 @@
+class_name Terrain
 extends TileMapLayer
 
 const width := 70
 const height := 40
 
-# Called when the node enters the scene tree for the first time.
+static var TerrainIndexDictionary : Dictionary[RoomPattern.TileType, int] = {
+	RoomPattern.TileType.UNOCCUPIED: 1,
+	RoomPattern.TileType.FLOOR: 0,
+	RoomPattern.TileType.WALL: 1,
+	RoomPattern.TileType.GRASS: 2,
+	RoomPattern.TileType.WATER: 3,
+	RoomPattern.TileType.PEDESTAL: 4,
+	RoomPattern.TileType.TRAMPLED_GRASS: 5,
+	RoomPattern.TileType.STAIRS: 6
+}
+
+func _ready() -> void:
+	EventBus.connect("floor_tile_updated", on_tile_updated)
+
+func on_tile_updated(cell: Vector2i, tile_type: RoomPattern.TileType):
+	self.set_cells_terrain_connect([cell], 0, TerrainIndexDictionary[tile_type])
 
 func initialize_floor():
 	var room_patterns : Array[RoomPattern] = [
@@ -41,6 +57,9 @@ func initialize_floor():
 
 	Globals.floor_map = map
 	
+	draw_tiles(result)
+
+func draw_tiles(tiles: Dictionary[Vector2i, RoomPattern.TileType]):
 	# set all terrain to a wall
 	var walls : Array[Vector2i] = []
 	for x in range(width):
@@ -50,27 +69,13 @@ func initialize_floor():
 	self.set_cells_terrain_connect(walls, 0, 1)
 	
 	walls.clear()
-	var floors : Array[Vector2i] = []
-	var grasses : Array[Vector2i] = []
-	var waters : Array[Vector2i] = []
-	var pedestals: Array[Vector2i] = []
+	var tile_array = []
+	for tile_type_ind in range(7):
+		tile_array.push_back([])
 	
-	for c in result:
-		match result[c]:
-			RoomPattern.TileType.FLOOR:
-				floors.push_back(c)
-			RoomPattern.TileType.WALL:
-				walls.push_back(c)
-			RoomPattern.TileType.WATER:
-				waters.push_back(c)
-			RoomPattern.TileType.GRASS:
-				grasses.push_back(c)
-			RoomPattern.TileType.PEDESTAL:
-				pedestals.push_back(c)
-			_:
-				pass
-	self.set_cells_terrain_connect(floors, 0, 0)
-	self.set_cells_terrain_connect(walls, 0, 1)
-	self.set_cells_terrain_connect(grasses, 0, 2)
-	self.set_cells_terrain_connect(waters, 0, 3)
-	self.set_cells_terrain_connect(pedestals, 0, 4)
+	for c in tiles:
+		var ind = TerrainIndexDictionary[tiles[c]]
+		tile_array[ind].push_back(c)
+	
+	for terrain_ind in range(len(tile_array)):
+		self.set_cells_terrain_connect(tile_array[terrain_ind], 0, terrain_ind)

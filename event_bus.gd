@@ -11,5 +11,8 @@ signal character_deck_updated
 signal character_fov_updated
 
 signal floor_map_updated
+signal floor_tile_updated
+
+signal stairs_popup_signal
 
 signal notable_occurance

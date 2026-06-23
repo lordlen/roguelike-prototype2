@@ -24,6 +24,7 @@ const card_map := {
 @export var exhausts: bool
 @export var is_innate: bool
 @export var is_ethereal: bool
+@export var is_swift: bool
 
 @export var attack_effects: Array[CardEffect]
 @export var defense_effects: Array[CardEffect]

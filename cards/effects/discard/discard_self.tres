@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://6lnx0kxjb21w"]
+
+[ext_resource type="Script" uid="uid://w6n3wvsyybxr" path="res://cards/effects/discard/discard_self.gd" id="1_bdibb"]
+
+[resource]
+script = ExtResource("1_bdibb")
+description = "Discard own top draw pile."
+metadata/_custom_type_script = "uid://8j480ywki30u"

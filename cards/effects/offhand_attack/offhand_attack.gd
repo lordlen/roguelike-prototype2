@@ -1,10 +1,10 @@
 extends CardEffect
 
-func do(attacker: Char, defender: Char, card: CardInstance, path: Array[Vector2i]) -> void:
-	var offhand := attacker.deck.offhand
+func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i]) -> void:
+	var offhand := actor.deck.offhand
 	
 	if offhand == null:
 		return
 	
-	offhand.do_attack(attacker, defender, path)
-	attacker.deck.discard_offhand()
+	offhand.do_attack(actor, target_char, path)
+	actor.deck.discard_offhand()

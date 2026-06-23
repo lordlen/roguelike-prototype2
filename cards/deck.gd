@@ -24,6 +24,11 @@ func initialize():
 	
 	reshuffle()
 
+func add_to_deck_list(card_resource: CardResource):
+	deck_list.push_back(card_resource)
+	var instance := CardInstance.new(card_resource)
+	insert_to_draw_randomly(instance)
+
 # draw if primary or offhand is null. This should be used at the start of each
 # character's turn.
 func draw_empty():
@@ -63,7 +68,8 @@ func discard_offhand():
 
 func discard_top():
 	if draw_pile.size() != 0:
-		discard_pile.push_back(draw_pile.pop_back())
+		var discarded_card : CardInstance = draw_pile.pop_back()
+		discard_pile.push_back(discarded_card)
 
 func reshuffle():
 	# discard hand
@@ -93,6 +99,21 @@ func swap():
 
 func add_to_draw(card: CardInstance):
 	draw_pile.push_back(card)
+
+func dredge():
+	if discard_pile.is_empty():
+		return
+	# get the top of the discard pile
+	var card : CardInstance = discard_pile.pop_back()
+	
+	# insert in a random location
+	var rand_ind := randi() % (len(draw_pile) + 1)
+	draw_pile.insert(rand_ind, card)
+
+func insert_to_draw_randomly(card: CardInstance):
+	# insert in a random location
+	var rand_ind := randi() % (len(draw_pile) + 1)
+	draw_pile.insert(rand_ind, card)
 
 func add_to_discard(card: CardInstance):
 	discard_pile.push_back(card)
