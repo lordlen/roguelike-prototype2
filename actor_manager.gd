@@ -38,6 +38,8 @@ func do_actor_turns():
 	block_process = true
 	# get the user controlled actors
 	for ch: Char in get_user_controlled_chars():
+		if ch.is_moving:
+			await ch.char_finished_moving
 		ch.act_player.call_deferred()
 		await EventBus.turn_ended
 		ch.pass_turn()

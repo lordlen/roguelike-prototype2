@@ -81,8 +81,9 @@ func instantiate(depth: int = max_int) -> void:
 			
 			# if out of bounds, impassable tile, or a character who hasn't moved
 			# is in the way, treat all as impassable
+			var blocking_char := ActorManager.get_actor_in_position(v)
 			var w := Tiles.get_pf_cost(traversal, tile)\
-			+ (4.0 if (char_dict.has(v) and !char_dict[v].moved_last_turn) else 0.0)
+			+ (4.0 if (blocking_char != null and !blocking_char.moved_last_turn) else 0.0)
 			if !is_within_bounds(v) or w == INF:
 				continue
 

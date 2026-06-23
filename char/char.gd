@@ -1,6 +1,8 @@
 class_name Char
 extends Sprite2D 
 
+signal char_finished_moving
+
 const stats_resources := {
 	hero = "res://char/stats/hero.tres",
 	jackal = "res://char/stats/jackal.tres",
@@ -57,6 +59,18 @@ var target_flow_map: DijkstraMap
 var moved_last_turn: bool
 var moved_this_turn: bool
 
+var speed := 450
+var new_pos : Vector2
+var is_moving: bool
+
+func _physics_process(delta: float) -> void:
+	if is_moving:
+		if position.is_equal_approx(new_pos):
+			is_moving = false
+			char_finished_moving.emit()
+		else:
+			position = position.move_toward(new_pos, speed * delta)
+
 func _init(stats: CharacterStats, position: Vector2i):
 	self.char_id = _curr_char_id
 	_curr_char_id += 1
@@ -64,6 +78,7 @@ func _init(stats: CharacterStats, position: Vector2i):
 	self.grid_position = position
 	centered = false
 	self.position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
+	self.new_pos = self.position
 	self.character_name = stats.character_name
 	self.max_hp = stats.max_hp
 	self.curr_hp = stats.max_hp
@@ -93,12 +108,19 @@ func _init(stats: CharacterStats, position: Vector2i):
 
 	EventBus.emit_signal("new_actor_added", self)
 
-func move_to(new_grid_pos: Vector2i):
+func move_to(new_grid_pos: Vector2i, speed: float = INF):
 	if self.grid_position != new_grid_pos:
 		self.moved_this_turn = true
 	
 	self.grid_position = new_grid_pos
-	self.position = self.grid_position * Consts.TILE_SIZE
+	# move smoothly
+	self.speed = speed
+	self.new_pos = self.grid_position * Consts.TILE_SIZE
+	if speed == INF:
+		self.position = self.new_pos
+	else:
+		self.is_moving = true
+	# self.position = self.grid_position * Consts.TILE_SIZE
 	var tile := Globals.floor_map.get_tile(new_grid_pos)
 	if tile == RoomPattern.TileType.GRASS\
 	and traversal != Traversal.FLYING:
@@ -111,8 +133,7 @@ func move_to(new_grid_pos: Vector2i):
 
 func turn_start():
 	moved_last_turn = moved_this_turn
-	if moved_last_turn:
-		flow_map = null
+	flow_map = null
 	moved_this_turn = false
 	
 	self.bonus_defense = 0

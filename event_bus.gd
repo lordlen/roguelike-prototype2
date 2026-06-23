@@ -16,3 +16,5 @@ signal floor_tile_updated
 signal stairs_popup_signal
 
 signal notable_occurance
+
+signal char_stopped_moving

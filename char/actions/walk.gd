@@ -1,6 +1,8 @@
 class_name Walk
 extends Action
 
+const walk_speed := 400
+
 var actor: Char
 var dest: Vector2i
 func _init(actor: Char, dest: Vector2i):
@@ -20,5 +22,5 @@ func execute() -> bool:
 		else:
 			return false
 
-	actor.move_to(dest)
+	actor.move_to(dest, walk_speed)
 	return true
