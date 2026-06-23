@@ -22,7 +22,6 @@ func generate_card_rewards():
 
 func _on_card_reward_1_pressed() -> void:
 	self.visible = false
-	print('card reward 1')
 	var user_controlled := ActorManager.get_user_controlled_chars()
 	if len(user_controlled):
 		var char := ActorManager.get_user_controlled_chars()[0]
@@ -32,7 +31,6 @@ func _on_card_reward_1_pressed() -> void:
 
 func _on_card_reward_2_pressed() -> void:
 	self.visible = false
-	print('card reward 2')
 	var user_controlled := ActorManager.get_user_controlled_chars()
 	if len(user_controlled):
 		var char := ActorManager.get_user_controlled_chars()[0]
@@ -42,7 +40,6 @@ func _on_card_reward_2_pressed() -> void:
 
 func _on_card_reward_3_pressed() -> void:
 	self.visible = false
-	print('card reward 3')
 	var user_controlled := ActorManager.get_user_controlled_chars()
 	if len(user_controlled):
 		var char := ActorManager.get_user_controlled_chars()[0]

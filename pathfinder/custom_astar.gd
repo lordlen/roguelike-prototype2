@@ -16,12 +16,8 @@ func _compute_cost(from_id: Vector2i, to_id: Vector2i) -> float:
 	var tile := Globals.floor_map.get_tile(to_id)
 	
 	# check if there is an actor in the way
-	var actor_found := false
-	for a in ActorManager.get_chars():
-		if a.grid_position == to_id:
-			actor_found = true
-			break
+	var actor := ActorManager.get_actor_in_position(to_id)
 
-	var actor_cost := char_cost if actor_found else 0.0
+	var actor_cost := char_cost if actor != null else 0.0
 	
-	return Tiles.TileDictionary[tile].pf_cost(traversal)
+	return Tiles.TileDictionary[tile].pf_cost(traversal) + actor_cost

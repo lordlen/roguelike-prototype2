@@ -13,9 +13,10 @@ func execute() -> bool:
 	if attacker.deck.primary == null:
 		return false
 	var pf = Pathfinder.new()
-	var path = pf.find_path(attacker.traversal, attacker.grid_position, defender.grid_position, true)
 	# path includes attacker's location. a distance of 1 will have 2 elements in the path
-	if attacker.deck.primary != null and len(path) - 1 <= attacker.deck.primary.atk_range:
+	if attacker.deck.primary != null and\
+	Pathfinder.chebychev_dist(attacker.grid_position, defender.grid_position) <= attacker.deck.primary.atk_range\
+	and len(pf.find_path(attacker.traversal, attacker.grid_position, defender.grid_position, true)) <= attacker.deck.primary.atk_range:
 		attacker.deck.primary.do_attack(attacker, defender, path)
 		return true
 	else:

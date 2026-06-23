@@ -20,4 +20,7 @@ func execute() -> bool:
 		return true
 	else:
 		# if defender cannot be reached, just walk to the target.
-		return WalkTo.new(attacker, defender.grid_position).execute()
+		if len(path) < 2:
+			return false
+		else:
+			return Walk.new(attacker, path[1]).execute()

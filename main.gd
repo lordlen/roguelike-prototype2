@@ -6,7 +6,7 @@ func _ready() -> void:
 	EventBus.new_actor_added.connect(on_new_actor_added)
 	
 	Char.new(load(Char.stats_resources["hero"]), Vector2i(0,0))
-	on_stairs_entered()
+	build_floor()
 
 func build_floor():
 	var floor_builder := FloorBuilder.new()

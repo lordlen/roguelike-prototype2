@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_lgpri"]
 [ext_resource type="Resource" uid="uid://oadmhwxeateq" path="res://floor_generator/floor_description/spawn_groups/single_rat.tres" id="2_40ukj"]
 [ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="2_k24sq"]
+[ext_resource type="Resource" uid="uid://cov06ge30uvjx" path="res://floor_generator/floor_description/spawn_groups/double_jackal.tres" id="2_lgpri"]
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="2_nt0u0"]
 [ext_resource type="Resource" uid="uid://dprerqpsu1pdc" path="res://patterns/croissant.tres" id="3_0a2gx"]
-[ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="3_5mi2t"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="4_ev3rf"]
 [ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="4_sv7la"]
 [ext_resource type="Resource" uid="uid://ctmdd8rcov4kq" path="res://patterns/hut.tres" id="5_oxmwa"]
@@ -21,7 +21,7 @@
 
 [sub_resource type="Resource" id="Resource_k253u"]
 script = ExtResource("4_ev3rf")
-pool = Array[ExtResource("1_lgpri")]([ExtResource("2_40ukj"), ExtResource("3_5mi2t")])
+pool = Array[ExtResource("1_lgpri")]([ExtResource("2_lgpri"), ExtResource("2_lgpri")])
 weights = Array[float]([4.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
@@ -36,10 +36,6 @@ script = ExtResource("2_nt0u0")
 room_patterns = Array[ExtResource("1_jn767")]([ExtResource("2_k24sq"), ExtResource("3_0a2gx"), ExtResource("4_sv7la"), ExtResource("5_oxmwa"), ExtResource("6_p3h7x"), ExtResource("7_4b3bn"), ExtResource("8_lyok4"), ExtResource("9_lgpri"), ExtResource("10_40ukj")])
 treasure_patterns = Array[ExtResource("1_jn767")]([ExtResource("12_sv7la"), ExtResource("13_oxmwa")])
 stairs_patterns = Array[ExtResource("1_jn767")]([ExtResource("13_p3h7x")])
-num_rooms = 30
-num_treasure = 2
-num_initial_spawns = 8
-turns_per_spawn = 40
 initial_spawns = SubResource("Resource_k253u")
 subsequent_spawns = SubResource("Resource_dhm6t")
 metadata/_custom_type_script = "uid://cihmjv6v0inos"

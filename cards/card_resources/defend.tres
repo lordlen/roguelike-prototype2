@@ -12,5 +12,5 @@ region = Rect2(16, 0, 16, 16)
 script = ExtResource("2_usxx4")
 texture = SubResource("AtlasTexture_6uhvf")
 name = "Defend"
-defense = 3
+defense = 10000
 metadata/_custom_type_script = "uid://crie0xoknuknq"
