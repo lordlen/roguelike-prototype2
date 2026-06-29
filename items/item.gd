@@ -1,0 +1,15 @@
+class_name Item
+extends Resource
+
+@export var item_name: String
+@export var texture: Texture
+@export var item_actions: Array[ItemAction] = [ItemAction.new()]
+
+func get_description() -> String:
+	var ret := item_name
+	
+	for action in item_actions:
+		var desc := action.get_description()
+		if desc != "":
+			ret += "\n%s: %s" % [action.action_name, desc]
+	return ret

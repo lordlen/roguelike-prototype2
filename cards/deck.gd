@@ -1,14 +1,17 @@
 class_name Deck
 
 var deck_list: Array[CardResource] = []
+var innate_list: Array[CardResource] = []
 var draw_pile: Array[CardInstance] = []
 var discard_pile: Array[CardInstance] = []
 var primary: CardInstance = null
 var offhand: CardInstance = null
 
-func _init(deck_list: Array[CardResource]):
+func _init(deck_list: Array[CardResource], innate_list: Array[CardResource]):
 	for card in deck_list:
 		self.deck_list.push_back(card)
+	for card in innate_list:
+		self.innate_list.push_back(card)
 
 # initialize should be called every time the player goes to another floor, removing
 # statuses and any kind of card scaling
@@ -22,6 +25,11 @@ func initialize():
 		var instance := CardInstance.new(card_resource)
 		draw_pile.push_back(instance)
 	
+	for card_resource in innate_list:
+		var instance := CardInstance.new(card_resource)
+		instance.is_innate = true
+		draw_pile.push_back(instance)
+	
 	reshuffle()
 
 func add_to_deck_list(card_resource: CardResource):
@@ -33,11 +41,18 @@ func add_to_deck_list(card_resource: CardResource):
 # character's turn.
 func draw_empty():
 	if primary == null:
-		var card : CardInstance = draw_pile.pop_back()
+		var card : CardInstance = draw()
 		primary = card
 	if offhand == null:
-		var card : CardInstance = draw_pile.pop_back()
+		var card : CardInstance = draw()
 		offhand = card
+
+func draw() -> CardInstance:
+	if draw_pile.is_empty():
+		return null
+	var c : CardInstance = draw_pile.pop_back()
+	c.on_draw()
+	return c
 
 func discard_primary():
 	if primary != null:
@@ -66,15 +81,27 @@ func discard_offhand():
 		discard_pile.push_back(offhand)
 		offhand = null
 
+func dispose_offhand():
+	if offhand.exhausts:
+		exhaust_offhand()
+	else:
+		discard_offhand()
+
 func discard_top():
 	if draw_pile.size() != 0:
 		var discarded_card : CardInstance = draw_pile.pop_back()
 		discard_pile.push_back(discarded_card)
 
-func reshuffle():
-	# discard hand
+func discard_all():
 	discard_primary()
 	discard_offhand()
+	discard_pile.append_array(draw_pile)
+	draw_pile.clear()
+
+func reshuffle():
+	# discard hand
+	#discard_primary()
+	#discard_offhand()
 	# put all the cards in the discard pile onto the draw pile
 	draw_pile.append_array(discard_pile)
 	discard_pile.clear()
@@ -86,11 +113,31 @@ func reshuffle():
 			innate_cards.append(card)
 		else:
 			tmp.append(card)
+	# try to put innate cards on the primary
+	if !innate_cards.is_empty():
+		# if primary not nothing
+		if primary != null:
+			tmp.push_back(primary)
+		primary = innate_cards.pop_back()
+
+	if !innate_cards.is_empty():
+		# if primary not nothing
+		if offhand != null:
+			tmp.push_back(offhand)
+		offhand = innate_cards.pop_back()
+		
 	tmp.shuffle()
+	# add the rest of the innate cards at the top
 	tmp.append_array(innate_cards)
+	# tmp.append_array(innate_cards)
 	
 	draw_pile = tmp
 	draw_empty()
+	# reset decay
+	#if primary != null:
+		#primary.reset_defense_decay()
+	#if offhand != null:
+		#offhand.reset_defense_decay()
 
 func swap():
 	var temp := offhand

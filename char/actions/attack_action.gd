@@ -13,14 +13,13 @@ func execute() -> bool:
 	if attacker.deck.primary == null:
 		return false
 	var pf = Pathfinder.new()
-	var path = pf.find_path(attacker.traversal, attacker.grid_position, defender.grid_position, true)
+	var dist = Pathfinder.chebychev_dist(attacker.grid_position, defender.grid_position)
 	# path includes attacker's location. a distance of 1 will have 2 elements in the path
-	if attacker.deck.primary != null and len(path) - 1 <= attacker.deck.primary.atk_range:
-		var is_swift = attacker.deck.primary.is_swift
-		attacker.deck.primary.do_attack(attacker, defender, path)
-		# don't pass the turn if it's swift
-		EventBus.character_deck_updated.emit(attacker)
-		EventBus.character_deck_updated.emit(defender)
-		return !is_swift
-	else:
-		return false
+	if attacker.deck.primary != null and\
+	dist <= attacker.deck.primary.atk_range:
+		var path := pf.get_straight_path(attacker.grid_position, defender.grid_position, attacker.traversal)
+		
+		if len(path) - 1 >=  dist:
+			attacker.deck.primary.do_attack(attacker, defender, path)
+			return true
+	return false

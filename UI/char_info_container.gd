@@ -7,7 +7,7 @@ func _ready() -> void:
 	EventBus.character_fov_updated.connect(_update_visibility)
 
 func on_actor_added(ch: Char):
-	var actor_info : CharInfo = char_info.instantiate()
+	var actor_info :  = char_info.instantiate()
 	actor_info.set_character(ch)
 	actor_info.update(ch)
 	$ScrollContainer/CharInfoList.add_child(actor_info)

@@ -12,7 +12,7 @@ func set_card_data(card: CardInstance) -> void:
 		self.texture_normal = card.texture
 		self.modulate.a = 1
 		$AttackValue.text = card.get_attack()
-		$DefenseValue.text = card.get_defense()
+		$DefenseValue.text = card.get_defense_string()
 		$PanelContainer/Description.text = card.get_description()
 	else:
 		self.modulate.a = 0

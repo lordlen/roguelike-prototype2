@@ -23,6 +23,10 @@ var tmp_attack_effects: Array[CardEffect]
 var tmp_defense_effects: Array[CardEffect]
 var tmp_on_hit_effects: Array[CardEffect]
 
+var bonus_defense := 0
+var defense_decay := 0
+var is_changed := false
+
 func _init(r: CardResource):
 	texture = r.texture
 	card_name = r.name
@@ -37,9 +41,9 @@ func _init(r: CardResource):
 	is_ethereal = r.is_ethereal
 	is_swift = r.is_swift
 	
-	attack_effects = r.attack_effects
-	defense_effects = r.defense_effects
-	on_hit_effects = r.on_hit_effects
+	attack_effects = r.attack_effects.duplicate()
+	defense_effects = r.defense_effects.duplicate()
+	on_hit_effects = r.on_hit_effects.duplicate()
 	tmp_attack_effects = []
 	tmp_defense_effects = []
 	tmp_on_hit_effects = []
@@ -49,25 +53,46 @@ func do_attack(actor: Char, defender: Char, path: Array[Vector2i]) -> void:
 	for e in attack_effects + tmp_attack_effects:
 		e.do(actor, defender, self, path)
 	actor.deck.dispose_primary()
+	clear_tmp_effects()
+	EventBus.character_deck_updated.emit(actor)
 
 func do_defend(actor: Char) -> void:
-	actor.bonus_defense += defense
+	actor.is_defending = true
+	# Add (def + decay) / 2, which is decay + (def - decay) / 2.
+	# decay offsets the decay. (def - decay) / 2 rewards defending with less
+	# decay.
+	add_bonus_defense((defense_decay + defense) / 2)
 	for e in defense_effects + tmp_defense_effects:
 		e.do(actor, null, self, [])
-	actor.deck.dispose_primary()
+	# actor.deck.dispose_primary()
 	if is_swift:
 		is_swift = false
 		actor.deck.draw_empty()
+	clear_tmp_effects()
+	EventBus.character_deck_updated.emit(actor)
 
 func do_on_hit(attacker: Char, defender: Char) -> void:
+	if !defender.is_defending:
+		# limit the decay to the defense
+		defense_decay = min(defense_decay + 1, defense)
 	for e in on_hit_effects + tmp_on_hit_effects:
 		e.do(defender, attacker, self, [])
 
+func clear_tmp_effects():
+	tmp_attack_effects.clear()
+	tmp_defense_effects.clear()
+	tmp_on_hit_effects.clear()
+
+func effect_is_changed():
+	return is_changed or len(tmp_attack_effects + tmp_defense_effects + tmp_on_hit_effects) > 0
+
 func get_description() -> String:
 	var desc := "[b]%s[/b]" % card_name
-	
+	if effect_is_changed():
+		desc += "*"
+
 	if atk_range > 1:
-		desc += "\n+1 Range."
+		desc += "\n+%d Range." % atk_range
 	
 	if exhausts:
 		desc += "\nExhaust."
@@ -111,13 +136,26 @@ func get_description() -> String:
 			desc += '(' + e.get_description() + ')'
 	
 	desc = desc.strip_edges()
-	
-	if desc == "":
-		return "No effects"
 	return desc
 
 func get_attack() -> String:
 	return "%dx%d" % [attack, num_hits] if num_hits > 1 else str(attack)
 
-func get_defense() -> String:
-	return "∅" if is_dodge else str(defense)
+func get_defense_string() -> String:
+	return "∅" if is_dodge else str(get_defense())
+
+func get_defense() -> int:
+	return max(0, defense - defense_decay + bonus_defense)
+
+func on_draw():
+	reset_defense_decay()
+	reset_bonus_defense()
+
+func add_bonus_defense(val: int):
+	bonus_defense += val
+
+func reset_bonus_defense():
+	bonus_defense = 0
+
+func reset_defense_decay():
+	defense_decay = 0

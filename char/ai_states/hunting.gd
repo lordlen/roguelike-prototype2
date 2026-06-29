@@ -13,7 +13,9 @@ func act(actor: Char) -> Array[Action]:
 	var ret : Array[Action] = []
 	
 	# if reshuffle is necessary
-	if actor.deck.primary == null:
+	if actor.deck.primary == null or (actor.is_cautious and len(actor.deck.discard_pile) >= 1 and\
+	Pathfinder.chebychev_dist(actor.grid_position, actor.target_ch.grid_position) > 1) and\
+	Globals.floor_map.get_tile(actor.grid_position) != RoomPattern.TileType.WATER:
 		return [ReshuffleAction.new(actor)]
 	
 	# swap if necessary
@@ -29,11 +31,11 @@ func act(actor: Char) -> Array[Action]:
 	
 	if primary != null:
 		primary_atk = primary.attack
-		primary_def = primary.defense
+		primary_def = primary.get_defense()
 		primary_range = primary.atk_range
 	if offhand != null:
 		offhand_atk = offhand.attack
-		offhand_def = offhand.defense
+		offhand_def = offhand.get_defense()
 		offhand_range = offhand.atk_range
 
 	var is_close: bool = max(\
@@ -47,7 +49,9 @@ func act(actor: Char) -> Array[Action]:
 	if actor.target_ch in actor.visible_actors:
 		# request target flow map
 		actor.hunt_with_team(actor.target_ch)
-		ret.push_back(AttackAction2.new(actor, actor.target_ch))
+		
+		# if target is far and reshuffle is needed
+		ret.push_back(AttackAction.new(actor, actor.target_ch))
 	else:
 		if actor.target_flow_map.destination_reached(actor.grid_position):
 			# if actor is within scent range, request a new target location

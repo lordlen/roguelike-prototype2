@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce2mt80ywk4tb"]
+
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="1_vokiv"]
+[ext_resource type="Script" uid="uid://jpj1jcmmbm35" path="res://UI/potion_icon.gd" id="2_vokiv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5axw7"]
+atlas = ExtResource("1_vokiv")
+region = Rect2(0, 0, 16, 16)
+
+[node name="ItemIcon" type="TextureButton"]
+custom_minimum_size = Vector2(48, 48)
+texture_normal = SubResource("AtlasTexture_5axw7")
+stretch_mode = 4
+script = ExtResource("2_vokiv")
+
+[node name="DescriptionContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 40.0
+offset_top = 42.0
+offset_right = 788.0
+offset_bottom = 97.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Description" type="RichTextLabel" parent="DescriptionContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+oversampling_override = 1.0
+initial_position = 1
+item_count = 3
+item_0/text = "Throw"
+item_0/id = 0
+item_1/text = "Drink"
+item_1/id = 1
+item_2/text = "Discard"
+item_2/id = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="index_pressed" from="PopupMenu" to="." method="_on_popup_menu_index_pressed"]

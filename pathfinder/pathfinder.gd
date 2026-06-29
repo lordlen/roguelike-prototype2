@@ -17,5 +17,22 @@ func find_path(traversability: Char.Traversal, from: Vector2i, to: Vector2i, cha
 	var path := astar.get_id_path(from, to)
 	return path
 
+func get_straight_path(from: Vector2i, to: Vector2i, traversibility: Char.Traversal) -> Array[Vector2i]:
+	var char_dict := ActorManager.get_chars_dict()
+	var path := Geometry2D.bresenham_line(from, to)
+	
+	# loop, removing the start and end points
+	var size := 1
+	for pos in path.slice(1, len(path) - 1):
+		var tile := Globals.floor_map.get_tile(pos)
+		var is_traversible := Tiles.TileDictionary[tile].pf_cost(traversibility) != INF
+		if !is_traversible:
+			return path.slice(size)
+		size += 1
+		if char_dict.has(pos):
+			return path.slice(size)
+	return path
+	
+
 static func chebychev_dist(v1: Vector2i, v2: Vector2i) -> int:
 	return max(abs(v1.x - v2.x), abs(v1.y - v2.y))

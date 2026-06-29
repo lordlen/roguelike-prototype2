@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://csottp6xf70wh"]
+
+[ext_resource type="Script" uid="uid://c0kydti45bp0m" path="res://items/item_action.gd" id="1_ruvqq"]
+[ext_resource type="Script" uid="uid://b01i3fatinsl7" path="res://items/item_actions/exhaust/exhaust_hand.gd" id="2_oprga"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_qxmc7"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="3_qxmc7"]
+
+[sub_resource type="Resource" id="Resource_2g67t"]
+script = ExtResource("2_oprga")
+action_name = "Drink"
+metadata/_custom_type_script = "uid://b01i3fatinsl7"
+
+[sub_resource type="Resource" id="Resource_gumad"]
+script = ExtResource("1_ruvqq")
+metadata/_custom_type_script = "uid://c0kydti45bp0m"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprga"]
+atlas = ExtResource("3_qxmc7")
+region = Rect2(96, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_qxmc7")
+item_name = "Exhaust Potion"
+texture = SubResource("AtlasTexture_oprga")
+item_actions = Array[ExtResource("1_ruvqq")]([SubResource("Resource_2g67t"), SubResource("Resource_gumad")])
+metadata/_custom_type_script = "uid://ca2r30i5gni7m"

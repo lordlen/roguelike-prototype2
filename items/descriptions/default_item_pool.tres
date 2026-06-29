@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=12 format=3 uid="uid://phrla2nuhpao"]
+
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="1_g5qq8"]
+[ext_resource type="Resource" uid="uid://c8agp6gqqgpb7" path="res://items/potions/healing_potion.tres" id="2_dlf1f"]
+[ext_resource type="Script" uid="uid://dlmiqas8og0ae" path="res://items/item_pool_description.gd" id="2_qpe4u"]
+[ext_resource type="Resource" uid="uid://c1w5ivm41maa2" path="res://items/potions/explosive_potion.tres" id="3_i2i5h"]
+[ext_resource type="Resource" uid="uid://djm0goopfhqum" path="res://items/potions/strength_potion.tres" id="4_i2i5h"]
+[ext_resource type="Resource" uid="uid://d4cow5kuhisqa" path="res://items/potions/binding_potion.tres" id="5_8vklx"]
+[ext_resource type="Resource" uid="uid://bvpv62p75f0mx" path="res://items/potions/clairvoyance_potion.tres" id="6_gx0dk"]
+[ext_resource type="Resource" uid="uid://ckalve6ugggfg" path="res://items/potions/cleanse_potion.tres" id="7_nnnxw"]
+[ext_resource type="Resource" uid="uid://dfaptvjmd1aur" path="res://items/potions/defense_potion.tres" id="8_upqmr"]
+[ext_resource type="Resource" uid="uid://csottp6xf70wh" path="res://items/potions/exhaust_potion.tres" id="9_7pasi"]
+[ext_resource type="Resource" uid="uid://gqntyx7aho65" path="res://items/potions/teleport_potion.tres" id="10_a6lun"]
+
+[resource]
+script = ExtResource("2_qpe4u")
+item_pool = Array[ExtResource("1_g5qq8")]([ExtResource("2_dlf1f"), ExtResource("3_i2i5h"), ExtResource("4_i2i5h"), ExtResource("5_8vklx"), ExtResource("6_gx0dk"), ExtResource("7_nnnxw"), ExtResource("8_upqmr"), ExtResource("9_7pasi"), ExtResource("4_i2i5h"), ExtResource("10_a6lun")])
+weights = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+metadata/_custom_type_script = "uid://dlmiqas8og0ae"

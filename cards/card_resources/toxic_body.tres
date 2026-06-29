@@ -14,6 +14,5 @@ script = ExtResource("2_0soua")
 texture = SubResource("AtlasTexture_oeu4g")
 name = "Toxic Body"
 defense = 2
-is_ethereal = true
 on_hit_effects = Array[ExtResource("1_3npkw")]([ExtResource("2_oeu4g")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

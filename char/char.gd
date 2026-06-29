@@ -28,8 +28,6 @@ var character_name: String
 var max_hp: int
 var curr_hp: int
 
-var bonus_defense := 0
-
 var wandering_state: AiState
 var hunting_state: HuntingState
 var sleeping_state: AiState
@@ -40,6 +38,7 @@ var target_ch: Char = self
 var alignment: Alignment
 var traversal: Traversal
 var user_controlled: bool
+var is_cautious: bool
 
 var vision_set: Dictionary[Vector2i, bool] = {}
 var explored_set : Dictionary[Vector2i, bool] = {}
@@ -50,40 +49,37 @@ var scent_range: int
 var action_queue: Array[Action] = []
 
 var deck: Deck
+var is_defending: bool
+var is_hit: bool = false
 
 var leader: Char
 var followers: Array[Char]
+var is_elite := false
 
 var flow_map: DijkstraMap
 var target_flow_map: DijkstraMap
 var moved_last_turn: bool
 var moved_this_turn: bool
 
-var speed := 450
+var speed := 500
 var new_pos : Vector2
 var is_moving: bool
+var inventory: InventoryComponent
 
-func _physics_process(delta: float) -> void:
-	if is_moving:
-		if position.is_equal_approx(new_pos):
-			is_moving = false
-			char_finished_moving.emit()
-		else:
-			position = position.move_toward(new_pos, speed * delta)
-
-func _init(stats: CharacterStats, position: Vector2i):
+func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	self.char_id = _curr_char_id
 	_curr_char_id += 1
+	self.is_elite = is_elite
 	self.texture = stats.texture
 	self.grid_position = position
 	centered = false
 	self.position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
 	self.new_pos = self.position
 	self.character_name = stats.character_name
-	self.max_hp = stats.max_hp
-	self.curr_hp = stats.max_hp
-	
-	self.deck = Deck.new(stats.cards)
+	self.max_hp = randi_range(stats.min_hp, stats.max_hp)
+	self.curr_hp = self.max_hp
+
+	self.deck = Deck.new(stats.cards, stats.innate_cards)
 	self.deck.initialize()
 	
 	# AI
@@ -95,6 +91,7 @@ func _init(stats: CharacterStats, position: Vector2i):
 	self.alignment = stats.alignment
 	self.traversal = stats.traversal
 	self.user_controlled = stats.user_controlled
+	self.is_cautious = stats.is_cautious
 	
 	self.vision_range = stats.vision_range
 	self.scent_range = stats.scent_range
@@ -102,17 +99,37 @@ func _init(stats: CharacterStats, position: Vector2i):
 	self.leader = self
 	self.followers = []
 	
+	self.inventory = InventoryComponent.new(self, 3)
+	#TODO: remove temporary potions
+	if user_controlled:
+		var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
+		self.inventory.add_item(potion)
+		self.inventory.add_item(potion)
+		EventBus.inventory_updated.emit(self)
+	
 	moved_last_turn = false
 	if alignment == Alignment.EVIL:
 		visible = false
 
 	EventBus.emit_signal("new_actor_added", self)
 
+func set_elite():
+	self.is_elite = true
+
+func _physics_process(delta: float) -> void:
+	if is_moving:
+		if position.is_equal_approx(new_pos):
+			is_moving = false
+			char_finished_moving.emit()
+		else:
+			position = position.move_toward(new_pos, speed * delta)
+
 func move_to(new_grid_pos: Vector2i, speed: float = INF):
 	if self.grid_position != new_grid_pos:
 		self.moved_this_turn = true
-	
-	self.grid_position = new_grid_pos
+
+	ActorManager.move_actor(self, new_grid_pos)
+
 	# move smoothly
 	self.speed = speed
 	self.new_pos = self.grid_position * Consts.TILE_SIZE
@@ -120,25 +137,49 @@ func move_to(new_grid_pos: Vector2i, speed: float = INF):
 		self.position = self.new_pos
 	else:
 		self.is_moving = true
-	# self.position = self.grid_position * Consts.TILE_SIZE
+
 	var tile := Globals.floor_map.get_tile(new_grid_pos)
 	if tile == RoomPattern.TileType.GRASS\
 	and traversal != Traversal.FLYING:
 		Globals.floor_map.update_tile(new_grid_pos, RoomPattern.TileType.TRAMPLED_GRASS)
-	
+
 	# stairs dialog
-	if user_controlled and tile == RoomPattern.TileType.STAIRS:
-		# activate the stairs dialog
-		EventBus.stairs_popup_signal.emit()
+	if user_controlled:
+		if tile == RoomPattern.TileType.STAIRS:
+			# activate the stairs dialog
+			EventBus.stairs_popup_signal.emit()
+		while ItemManager.item_in_position(grid_position):
+			var item := ItemManager.get_top_item(grid_position).item_resource
+			if is_instance_of(item, Gold):
+				ItemManager.pop_item_from_overworld(grid_position)
+				inventory.add_gold((item as Gold).amount)
+			elif !inventory.is_full():
+				ItemManager.pop_item_from_overworld(grid_position)
+				var successfully_added = inventory.add_item(item)
+			else:
+				break
 
 func turn_start():
 	moved_last_turn = moved_this_turn
 	flow_map = null
 	moved_this_turn = false
 	
-	self.bonus_defense = 0
+	deck.draw_empty()
 	
-	self.deck.draw_empty()
+	if is_defending and is_hit:
+		deck.dispose_offhand()
+		deck.draw_empty()
+	
+	is_defending = false
+	is_hit = false
+	
+	if deck.offhand != null:
+		deck.offhand.reset_bonus_defense()
+	
+	# get the tile the char is standing on
+	var tile := Tiles.TileDictionary[Globals.floor_map.get_tile(grid_position)]
+	tile.on_walk(self)
+
 	EventBus.character_deck_updated.emit(self)
 	update_vision()
 
@@ -184,6 +225,10 @@ func update_vision():
 	self.visible_actors = new_visible_actors
 	if new_actor_in_vision:
 		self.action_queue.clear()
+	if user_controlled:
+		var items_in_vision := ItemManager.get_items_in_area(vision_set.keys())
+		for item in items_in_vision:
+			item.visible = true
 	EventBus.emit_signal("character_fov_updated", self)
 
 func pass_turn():
@@ -222,12 +267,13 @@ func take_hit(attacker: Char, damage: int):
 
 	var offhand_def := 0
 	if deck.offhand:
-		offhand_def = deck.offhand.defense
+		offhand_def = deck.offhand.get_defense()
 		deck.offhand.do_on_hit(attacker, self)
-	var defense := offhand_def + bonus_defense
+	var defense := offhand_def
 	var final_damage: int = max(0, damage - defense)
 	take_damage(final_damage)
-	
+	is_hit = true
+	EventBus.character_deck_updated.emit(self)
 
 func take_damage(damage: int) -> void:
 	self.curr_hp -= damage
@@ -244,7 +290,9 @@ func die():
 			follower.follow(new_leader)
 	if leader != self:
 		leader.followers.erase(self)
-	EventBus.emit_signal("character_died", self)
+	if is_elite:
+		EventBus.elite_died.emit()
+	EventBus.character_died.emit(self)
 
 func is_dead():
 	return curr_hp <= 0

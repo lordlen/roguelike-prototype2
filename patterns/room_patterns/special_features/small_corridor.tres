@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PatternResource" load_steps=4 format=3 uid="uid://p0rhw655kxjm"]
 
-[ext_resource type="Texture2D" uid="uid://cohr27ac8q2gm" path="res://patterns/room_patterns/special_features.png" id="1_mka2u"]
+[ext_resource type="Texture2D" uid="uid://ce80qgdy6cya7" path="res://patterns/room_patterns/special_features.png" id="1_mka2u"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="1_ucpg2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8k07r"]

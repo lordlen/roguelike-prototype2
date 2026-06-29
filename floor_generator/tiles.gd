@@ -72,8 +72,11 @@ class Grass extends Tile:
 
 class Water extends Tile:
 	static func on_walk(actor: Char) -> void:
-		# TODO: discard actor's cards
-		pass
+		if actor.deck.draw_pile.is_empty():
+			# drowning damage
+			actor.take_damage(1)
+		else:
+			actor.deck.discard_top()
 		
 	static func is_impassable() -> bool:
 		return false

@@ -33,7 +33,7 @@ func update_hp(ch: Char):
 
 func update(ch: Char):
 	if character == ch:
-		$NameLabel.text = ch.character_name
+		$NameLabel.text = ch.character_name + ("*" if ch.is_elite else "")
 		$TextureProgressBar.max_value = ch.max_hp
 		$TextureProgressBar.value = ch.curr_hp
 		$TextureProgressBar/Label.text = "%d / %d" % [ch.curr_hp, ch.max_hp]

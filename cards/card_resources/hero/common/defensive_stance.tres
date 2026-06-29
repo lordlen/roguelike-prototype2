@@ -13,6 +13,6 @@ region = Rect2(16, 0, 16, 16)
 script = ExtResource("2_d6fp1")
 texture = SubResource("AtlasTexture_vl6uk")
 name = "Defensive Stance"
-defense = 7
+defense = 8
 on_hit_effects = Array[ExtResource("1_qhncq")]([ExtResource("2_t4qro")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

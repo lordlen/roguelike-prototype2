@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsaau0xacdqwb"
-path="res://.godot/imported/map_painter_old.png-18e493177e9d07c79a1d47d4e271924e.ctex"
+uid="uid://bf0y0ixlruxjk"
+path="res://.godot/imported/stairs_structure.png-add5f7210e301e52f07769a26c91da23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://patterns/room_patterns/old/map_painter_old.png"
-dest_files=["res://.godot/imported/map_painter_old.png-18e493177e9d07c79a1d47d4e271924e.ctex"]
+source_file="res://patterns/room_patterns/stairs_structure.png"
+dest_files=["res://.godot/imported/stairs_structure.png-add5f7210e301e52f07769a26c91da23.ctex"]
 
 [params]
 

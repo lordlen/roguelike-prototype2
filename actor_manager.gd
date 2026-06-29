@@ -5,8 +5,10 @@ var block_process := false
 
 var rng = RandomNumberGenerator.new()
 
+var char_dict : Dictionary[Vector2i, Char] = {}
 var spawn_turn_count := 0
 var num_turns_to_spawn: int
+var num_elites_dead := 0
 var subsequent_spawns: SpawnDescription
 func _ready():
 	spawn_turn_count = 0
@@ -15,12 +17,18 @@ func _ready():
 	rng.randomize()
 	EventBus.connect("new_actor_added", _add_actor)
 	EventBus.connect("character_died", _remove_actor)
+	EventBus.elite_died.connect(_increment_elite_counter)
+
+func _increment_elite_counter():
+	num_elites_dead += 1
 
 func _add_actor(ch: Char):
 	if ch.user_controlled:
 		Globals.user_controlled.push_back(ch)
 	else:
 		Globals.ai_controlled.push_back(ch)
+	# TODO: handle 2 actors in the same spot
+	char_dict[ch.grid_position] = ch
 
 func _remove_actor(ch: Char):
 	if ch.user_controlled:
@@ -28,6 +36,13 @@ func _remove_actor(ch: Char):
 	else:
 		Globals.ai_controlled.erase(ch)
 	ch.queue_free()
+	char_dict.erase(ch.grid_position)
+
+func move_actor(ch: Char, target_position: Vector2i):
+	var old_position := ch.grid_position
+	char_dict.erase(old_position)
+	char_dict[target_position] = ch
+	ch.grid_position = target_position
 
 func _process(delta: float) -> void:
 	if block_process:
@@ -47,9 +62,9 @@ func do_actor_turns():
 	for ch: Char in get_ai_controlled_chars():
 		if ch.is_dead():
 			continue
-		var actions := await ch.act_ai()
+		var actions := ch.act_ai()
 		for action in actions:
-			await action.execute()
+			action.execute()
 		ch.pass_turn()
 	
 	spawn_turn_count += 1
@@ -62,12 +77,15 @@ func do_actor_turns():
 
 	block_process = false
 
+func reset_elite_counter():
+	num_elites_dead = 0
+
 func configure_spawning(spawn_desc: SpawnDescription, num_turns_to_spawn):
 	self.subsequent_spawns = spawn_desc
 	self.num_turns_to_spawn = num_turns_to_spawn
 	self.spawn_turn_count = 0
 
-func random_spawn_character(spawn_group: SpawnGroup, is_awake := false):
+func random_spawn_character(spawn_group: SpawnGroup, is_awake := false, is_elite := false):
 	# find a random point on the map. If aquatic, only get water tiles
 	# if not aquatic, just pick a non-water tile
 	var ch_stats := spawn_group.group[0]
@@ -89,7 +107,7 @@ func random_spawn_character(spawn_group: SpawnGroup, is_awake := false):
 		print('no valid spawn tiles')
 	else:
 		var pos : Vector2i = unoccupied_tiles.pick_random()
-		var leader := Char.new(ch_stats, pos)
+		var leader := Char.new(ch_stats, pos, is_elite)
 		var f_ind := 0
 		for x in range(pos.x - 1, pos.x + 2):
 			for y in range(pos.y - 1, pos.y + 2):
@@ -106,20 +124,26 @@ func random_spawn_character(spawn_group: SpawnGroup, is_awake := false):
 		if is_awake:
 			leader.wander()
 
-func spawn_initial_characters(spawn_description: SpawnDescription, num_spawns: int):
+func spawn_initial_characters(spawn_description: SpawnDescription, num_spawns: int, is_elite: bool = false):
 	for i in range(num_spawns):
 		# pick a random index from
 		var ind = rng.rand_weighted(spawn_description.weights)
 		var spawn_group := spawn_description.pool[ind]
-		random_spawn_character(spawn_group)
+		random_spawn_character(spawn_group, is_elite, is_elite)
 
 func get_actor_in_position(pos: Vector2i) -> Char:
-	var actors := get_chars()
-	var ind := actors.find_custom(func(ch: Char): return ch.grid_position == pos)
-	if ind != -1:
-		return actors[ind]
+	if char_dict.has(pos):
+		return char_dict[pos]
 	else:
 		return null
+
+func get_actors_in_positions(positions: Array[Vector2i]) -> Array[Char]:
+	var char_dict := get_chars_dict()
+	var ret : Array[Char] = []
+	for pos in positions:
+		if char_dict.has(pos):
+			ret.push_back(char_dict[pos])
+	return ret
 
 func get_user_controlled_chars() -> Array[Char]:
 	return Globals.user_controlled
@@ -129,3 +153,12 @@ func get_ai_controlled_chars() -> Array[Char]:
 
 func get_chars() -> Array[Char]:
 	return Globals.user_controlled + Globals.ai_controlled
+
+func get_chars_dict() -> Dictionary[Vector2i, Char]:
+	return char_dict
+
+func clear_ai_controlled():
+	var ai_controlled_chars := get_ai_controlled_chars().duplicate()
+	for ch in ai_controlled_chars:
+		ch.die()
+	reset_elite_counter()

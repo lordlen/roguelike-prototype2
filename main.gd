@@ -4,6 +4,7 @@ func _ready() -> void:
 	randomize()
 	EventBus.character_fov_updated.connect(_update_fog)
 	EventBus.new_actor_added.connect(on_new_actor_added)
+	EventBus.new_item_added.connect(on_new_item_added)
 	
 	Char.new(load(Char.stats_resources["hero"]), Vector2i(0,0))
 	build_floor()
@@ -21,14 +22,17 @@ func build_floor():
 		char.explored_set.clear()
 		char.visible_actors.clear()
 		char.update_vision()
+		char.deck.initialize()
 	
 func on_stairs_entered():
 	$UILayer/CardRewardDialog.generate_card_rewards()
 	build_floor()
-	
 
 func on_new_actor_added(char: Char):
 	$ActorList.add_child(char)
+
+func on_new_item_added(item: ItemOverworld):
+	$ItemList.add_child(item)
 
 func _update_fog(char: Char):
 	if char.is_user_controlled():

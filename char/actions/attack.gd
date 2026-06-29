@@ -10,17 +10,7 @@ func _init(attacker: Char, defender: Char):
 	self.path = path
 
 func execute() -> bool:
-	if attacker.deck.primary == null:
-		return false
-	var pf = Pathfinder.new()
-	var path = pf.find_path(attacker.traversal, attacker.grid_position, defender.grid_position, true)
-	# path includes attacker's location. a distance of 1 will have 2 elements in the path
-	if attacker.deck.primary != null and len(path) - 1 <= attacker.deck.primary.atk_range:
-		attacker.deck.primary.do_attack(attacker, defender, path)
+	if AttackOnlyAction.new(attacker, defender).execute():
 		return true
-	else:
-		# if defender cannot be reached, just walk to the target.
-		if len(path) < 2:
-			return false
-		else:
-			return Walk.new(attacker, path[1]).execute()
+	# if defender cannot be reached, just walk to the target.
+	return GoCloserAction.new(attacker).execute()

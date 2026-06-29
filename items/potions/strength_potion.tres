@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://djm0goopfhqum"]
+
+[ext_resource type="Script" uid="uid://c0kydti45bp0m" path="res://items/item_action.gd" id="1_ksdf2"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_4j6kh"]
+[ext_resource type="Script" uid="uid://tya6k6qlm0si" path="res://items/item_actions/increment_stats/increment_all_attack.gd" id="2_bp1ei"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="4_bp1ei"]
+
+[sub_resource type="Resource" id="Resource_cv7b2"]
+script = ExtResource("2_bp1ei")
+value = 2
+action_name = "Drink"
+metadata/_custom_type_script = "uid://tya6k6qlm0si"
+
+[sub_resource type="Resource" id="Resource_bp1ei"]
+script = ExtResource("1_ksdf2")
+action_name = "Drink"
+metadata/_custom_type_script = "uid://c0kydti45bp0m"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv7b2"]
+atlas = ExtResource("4_bp1ei")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_4j6kh")
+item_name = "Strength Potion"
+texture = SubResource("AtlasTexture_cv7b2")
+item_actions = Array[ExtResource("1_ksdf2")]([SubResource("Resource_cv7b2"), SubResource("Resource_bp1ei")])
+metadata/_custom_type_script = "uid://ca2r30i5gni7m"

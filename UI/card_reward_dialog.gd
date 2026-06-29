@@ -1,11 +1,13 @@
 extends AcceptDialog
 
+const base_reward_options := 1
+
 @export var card_reward_generator: CardRewardGenerator
 var cards: Array[CardResource] = []
 
 func generate_card_rewards():
 	visible = true
-	cards = card_reward_generator.generate_card_rewards(3)
+	cards = card_reward_generator.generate_card_rewards(base_reward_options + ActorManager.num_elites_dead)
 	
 	for ind in range(len(cards)):
 		var card_resource := cards[ind]

@@ -7,10 +7,15 @@ var _mouse_is_pressed: bool = false;
 var THRESHOLD: int = 8;
 
 var listening_user_input: bool = false
+var is_aiming := false
+var stored_item: Item
+var stored_action: ItemAction
+
 var actor: Char
 
 func _ready() -> void:
 	EventBus.user_input_requested.connect(on_user_input_requested)
+	EventBus.item_used.connect(on_item_used)
 
 func on_user_input_requested(actor: Char):
 	listening_user_input = true
@@ -40,7 +45,10 @@ func camera_handler(event: InputEvent):
 func character_controller(event: InputEvent):
 	var turn_passed := false
 
-	if event.is_action_pressed("wait"):
+	if event.is_action_pressed("see_all"):
+		for actor in ActorManager.get_chars():
+			actor.visible = true
+	elif event.is_action_pressed("wait"):
 		turn_passed = true
 	elif event.is_action_pressed("swap"):
 		self.actor.swap()
@@ -51,20 +59,42 @@ func character_controller(event: InputEvent):
 	elif !Globals.camera_move_state and event.is_action_released("primary_click"):
 		var grid_position : Vector2i= floor(get_global_mouse_position() / Consts.TILE_SIZE)
 		# restrict input if the target has not yet been explored
-		if self.actor.explored_set.has(grid_position):
-			# check if an evil character is in the location
-			var target_char_ind := self.actor.visible_actors.find_custom(func(ch: Char): return ch.grid_position == grid_position)
-			if target_char_ind != -1:
-				var target_char = self.actor.visible_actors[target_char_ind]
-				if target_char.alignment != self.actor.alignment:
-					turn_passed = AttackAction.new(self.actor, target_char).execute()
-			else:
-				turn_passed = WalkPath.new(self.actor, grid_position).execute()
+		if !is_aiming:
+			if self.actor.explored_set.has(grid_position):
+				# check if an evil character is in the location
+				var target_char_ind := self.actor.visible_actors.find_custom(func(ch: Char): return ch.grid_position == grid_position)
+				if target_char_ind != -1:
+					var target_char = self.actor.visible_actors[target_char_ind]
+					if target_char.alignment != self.actor.alignment:
+						turn_passed = AttackOnlyAction.new(self.actor, target_char).execute()
+				else:
+					turn_passed = WalkPath.new(self.actor, grid_position).execute()
+		else:
+			is_aiming = false
+			turn_passed = UseItemAction.new(actor, stored_item, stored_action, grid_position).execute()
+	elif !Globals.camera_move_state and event.is_action_pressed("teleport"):
+		self.actor.move_to(floor(get_global_mouse_position() / Consts.TILE_SIZE), INF)
+		self.actor.update_vision()
 	if turn_passed:
-		listening_user_input = false
-		EventBus.emit_signal("turn_ended")
+		end_turn()
+
+func end_turn():
+	listening_user_input = false
+	EventBus.emit_signal("turn_ended")
 
 func _unhandled_input(event: InputEvent):
 	if listening_user_input and !Globals.camera_move_state:
 		character_controller(event)
 	camera_handler(event)
+
+func on_item_used(item: Item, item_action: ItemAction):
+	if listening_user_input:
+		if item_action.target == ItemAction.Target.GROUND:
+			is_aiming = true
+			stored_action = item_action
+			stored_item = item
+		else:
+			# do the action
+			var turn_passed := UseItemAction.new(actor, item, item_action, actor.grid_position).execute()
+			if turn_passed:
+				end_turn()

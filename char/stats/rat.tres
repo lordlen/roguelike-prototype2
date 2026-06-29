@@ -29,6 +29,7 @@ script = ExtResource("2_egrc3")
 texture = SubResource("AtlasTexture_ameka")
 character_name = "Giant Rat"
 alignment = 1
+min_hp = 6
 max_hp = 8
 scent_range = 2
 sleeping = SubResource("Resource_utu3l")

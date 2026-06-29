@@ -5,6 +5,7 @@ class SimpleBuilderConstructor:
 	var size : Vector2i
 	var patterns: Array[RoomPattern]
 	var num_rooms: int
+	var do_connect: bool = true
 
 	func set_dimensions(v: Vector2i) -> SimpleBuilderConstructor:
 		size = v
@@ -17,25 +18,32 @@ class SimpleBuilderConstructor:
 	func set_num_rooms(num_rooms: int) -> SimpleBuilderConstructor:
 		self.num_rooms = num_rooms
 		return self
+	
+	func set_connect_close_rooms(do_connect: bool) -> SimpleBuilderConstructor:
+		self.do_connect = do_connect
+		return self
 
 	func construct() -> SimpleBuilder:
-		return SimpleBuilder.new(size.x, size.y, patterns, num_rooms)
+		return SimpleBuilder.new(size.x, size.y, patterns, num_rooms, do_connect)
 		
 var width: int
 var height: int
 var patterns: Array[RoomPattern]
 var rooms: int
-func _init(width: int, height: int, patterns: Array[RoomPattern], rooms: int) -> void:
+var connect_close_rooms: bool
+
+func _init(width: int, height: int, patterns: Array[RoomPattern], rooms: int, connect_close_rooms: bool) -> void:
 	self.width = width
 	self.height = height
 	self.patterns = patterns
 	self.rooms = rooms
+	self.connect_close_rooms = connect_close_rooms
 
 func build(floor: Floor) -> Floor:
 	var successful_room_placement := 0
 	var failed_attempts := 0
 	var fail_limit := 200
-	var distance_threshold := 20
+	var distance_threshold := 15
 	
 	while successful_room_placement < rooms and failed_attempts < fail_limit:
 		if floor.used_cells.is_empty():
@@ -75,30 +83,61 @@ func build(floor: Floor) -> Floor:
 	# for each side, compute the cost using A star. If it's too far, then remove the wall
 	
 	# loop through all tiles and find a wall with a
-	for x in range(width):
-		for y in range(height):
-			var v := Vector2i(x,y)
-			if floor.get_tile(v + Vector2i.LEFT) != RoomPattern.TileType.UNOCCUPIED\
-			and floor.get_tile(v + Vector2i.RIGHT) != RoomPattern.TileType.UNOCCUPIED:
-				var cost = len(floor.compute_path(v + Vector2i.LEFT, v + Vector2i.RIGHT))
-				if cost >= distance_threshold:
-					floor.set_tile(v, RoomPattern.TileType.FLOOR)
+	#if connect_close_rooms:
+		#for x in range(width):
+			#for y in range(height):
+				#var v := Vector2i(x,y)
+				#if floor.get_tile(v + Vector2i.LEFT) != RoomPattern.TileType.UNOCCUPIED\
+				#and floor.get_tile(v + Vector2i.RIGHT) != RoomPattern.TileType.UNOCCUPIED:
+					#var cost = len(floor.compute_path(v + Vector2i.LEFT, v + Vector2i.RIGHT))
+					#if cost >= distance_threshold:
+						#floor.set_tile(v, RoomPattern.TileType.FLOOR)
+				#
+				#if floor.get_tile(v + Vector2i.UP) != RoomPattern.TileType.UNOCCUPIED\
+				#and floor.get_tile(v + Vector2i.DOWN) != RoomPattern.TileType.UNOCCUPIED:
+					#var cost = len(floor.compute_path(v + Vector2i.UP, v + Vector2i.DOWN))
+					#if cost >= distance_threshold:
+						#floor.set_tile(v, RoomPattern.TileType.FLOOR)
+	
+	if connect_close_rooms:
+		var num_attempts = 0
+		var max_attempts = 1000
+		# pick 2 random floor tiles
+		var floor_positions := floor.get_type_positions([RoomPattern.TileType.FLOOR])
+		while num_attempts < max_attempts:
+			# get 2 random floor tiles
+			var cell1 : Vector2i = floor_positions.pick_random()
+			var cell2 : Vector2i = floor_positions.pick_random()
 			
-			if floor.get_tile(v + Vector2i.UP) != RoomPattern.TileType.UNOCCUPIED\
-			and floor.get_tile(v + Vector2i.DOWN) != RoomPattern.TileType.UNOCCUPIED:
-				var cost = len(floor.compute_path(v + Vector2i.UP, v + Vector2i.DOWN))
-				if cost >= distance_threshold:
-					floor.set_tile(v, RoomPattern.TileType.FLOOR)
+			var chev_dist := Pathfinder.chebychev_dist(cell1, cell2)
+			var true_dist := len(floor.compute_path(cell1, cell2))
+			
+			if chev_dist * 3 < true_dist:
+				# connect the two
+				# randomly select whether we want x or y first
+				var corridor_tiles : Array[Vector2i] = []
+				var tile_types: Array[RoomPattern.TileType] = []
+				var x_inc = 1 if cell1.x < cell2.x else -1
+				var y_inc = 1 if cell1.y < cell2.y else -1
+				for x in range(cell1.x, cell2.x + x_inc, x_inc):
+					corridor_tiles.push_back(Vector2i(x, cell1.y))
+					tile_types.push_back(RoomPattern.TileType.FLOOR)
+				for y in range(cell1.y + y_inc, cell2.y + y_inc, y_inc):
+					corridor_tiles.push_back(Vector2i(cell2.x, y))
+					tile_types.push_back(RoomPattern.TileType.FLOOR)
+				floor.append_back(corridor_tiles, tile_types)
+			else:
+				num_attempts += 1
 	
-	var ca_generator = CellularAutomataGenerator.new(width, height, 0.30, 5)
+	var ca_generator = CellularAutomataGenerator.new(width, height, 0.20, 7)
 	var grass := ca_generator.build()
-	
+
 	for x in range(width):
 		for y in range(height):
 			var v := Vector2i(x,y)
 			if floor.get_tile(v) == RoomPattern.TileType.FLOOR and v in grass:
 				floor.set_tile(v, RoomPattern.TileType.GRASS)
-	
+
 	## set water
 	#var water_generator := WaterGenerator.new(width, height)
 	#var water := water_generator.build()
