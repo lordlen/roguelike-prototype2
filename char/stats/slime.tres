@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=13 format=3 uid="uid://clwmjki86acoi"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_pr33n"]
+[ext_resource type="Resource" uid="uid://cmytrnrqi28ix" path="res://cards/card_resources/engulf.tres" id="2_p2nq8"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="2_tdb15"]
+[ext_resource type="Resource" uid="uid://hkhjdrc1svv7" path="res://cards/card_resources/split.tres" id="3_t75cn"]
+[ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="4_he0i6"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="6_mow42"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="7_ngj8o"]
+[ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="8_bpf0g"]
+
+[sub_resource type="Resource" id="Resource_4awkm"]
+script = ExtResource("4_he0i6")
+metadata/_custom_type_script = "uid://bytwv002xet0b"
+
+[sub_resource type="Resource" id="Resource_hsusu"]
+script = ExtResource("6_mow42")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdvhs"]
+atlas = ExtResource("7_ngj8o")
+region = Rect2(112, 224, 16, 16)
+
+[sub_resource type="Resource" id="Resource_rduy2"]
+script = ExtResource("8_bpf0g")
+metadata/_custom_type_script = "uid://cwayprpkdikls"
+
+[resource]
+script = ExtResource("2_tdb15")
+texture = SubResource("AtlasTexture_cdvhs")
+character_name = "Slime"
+alignment = 1
+min_hp = 13
+max_hp = 15
+sleeping = SubResource("Resource_hsusu")
+wandering = SubResource("Resource_rduy2")
+hunting = SubResource("Resource_4awkm")
+cards = Array[ExtResource("1_pr33n")]([ExtResource("2_p2nq8"), ExtResource("3_t75cn")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

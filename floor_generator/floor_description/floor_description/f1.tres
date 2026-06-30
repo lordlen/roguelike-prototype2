@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_lgpri"]
 [ext_resource type="Resource" uid="uid://oadmhwxeateq" path="res://floor_generator/floor_description/spawn_groups/single_rat.tres" id="2_40ukj"]
 [ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="2_k24sq"]
-[ext_resource type="Resource" uid="uid://cov06ge30uvjx" path="res://floor_generator/floor_description/spawn_groups/double_jackal.tres" id="2_k253u"]
+[ext_resource type="Resource" uid="uid://0oodccnnffm" path="res://floor_generator/floor_description/spawn_groups/double_rat.tres" id="2_k253u"]
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="2_nt0u0"]
 [ext_resource type="Resource" uid="uid://dprerqpsu1pdc" path="res://patterns/croissant.tres" id="3_0a2gx"]
 [ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="3_5mi2t"]

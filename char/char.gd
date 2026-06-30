@@ -6,7 +6,9 @@ signal char_finished_moving
 const stats_resources := {
 	hero = "res://char/stats/hero.tres",
 	jackal = "res://char/stats/jackal.tres",
-	toad = "res://char/stats/toad.tres"
+	toad = "res://char/stats/toad.tres",
+	rat = "res://char/stats/rat.tres",
+	slime = "res://char/stats/slime.tres"
 }
 
 enum Alignment {
@@ -101,11 +103,11 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	
 	self.inventory = InventoryComponent.new(self, 3)
 	#TODO: remove temporary potions
-	if user_controlled:
-		var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
-		self.inventory.add_item(potion)
-		self.inventory.add_item(potion)
-		EventBus.inventory_updated.emit(self)
+	#if user_controlled:
+		#var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
+		#self.inventory.add_item(potion)
+		#self.inventory.add_item(potion)
+		#EventBus.inventory_updated.emit(self)
 	
 	moved_last_turn = false
 	if alignment == Alignment.EVIL:
@@ -277,6 +279,12 @@ func take_hit(attacker: Char, damage: int):
 
 func take_damage(damage: int) -> void:
 	self.curr_hp -= damage
+	EventBus.character_hp_updated.emit(self)
+	if self.curr_hp <= 0:
+		die()
+
+func set_hp(hp: int) -> void:
+	self.curr_hp = hp
 	EventBus.character_hp_updated.emit(self)
 	if self.curr_hp <= 0:
 		die()

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=13 format=3 uid="uid://cshojnbtmbulc"]
+[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=12 format=3 uid="uid://cshojnbtmbulc"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_g7xp1"]
 [ext_resource type="Resource" uid="uid://bqbd7h3blkn1" path="res://cards/card_resources/hero/common/all_out_strike.tres" id="2_4kgsb"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://c6n7thm7lxisr" path="res://cards/card_resources/hero/common/bash.tres" id="3_7g44m"]
 [ext_resource type="Resource" uid="uid://dghlden3lrrqk" path="res://cards/card_resources/hero/common/defensive_stance.tres" id="4_bji5y"]
 [ext_resource type="Resource" uid="uid://ndido6grhne3" path="res://cards/card_resources/hero/common/double_attack.tres" id="5_gaomr"]
-[ext_resource type="Resource" uid="uid://cay5qg3npsmjs" path="res://cards/card_resources/hero/common/fade_attack.tres" id="6_7s58c"]
 [ext_resource type="Resource" uid="uid://co3e7ef0tqd6v" path="res://cards/card_resources/hero/common/hold_fast.tres" id="7_8goj0"]
 [ext_resource type="Resource" uid="uid://hc44gl880ye7" path="res://cards/card_resources/hero/common/parry.tres" id="8_k22cd"]
 [ext_resource type="Resource" uid="uid://bt7aa7nb1sdpc" path="res://cards/card_resources/hero/common/revitalize.tres" id="9_w8h1m"]
@@ -15,5 +14,5 @@
 
 [resource]
 script = ExtResource("2_khdtg")
-CommonPool = Array[ExtResource("1_g7xp1")]([ExtResource("2_4kgsb"), ExtResource("3_7g44m"), ExtResource("4_bji5y"), ExtResource("5_gaomr"), ExtResource("6_7s58c"), ExtResource("7_8goj0"), ExtResource("8_k22cd"), ExtResource("9_w8h1m"), ExtResource("10_2le0l"), ExtResource("11_ttwsv")])
+CommonPool = Array[ExtResource("1_g7xp1")]([ExtResource("2_4kgsb"), ExtResource("3_7g44m"), ExtResource("4_bji5y"), ExtResource("5_gaomr"), ExtResource("7_8goj0"), ExtResource("8_k22cd"), ExtResource("9_w8h1m"), ExtResource("10_2le0l"), ExtResource("11_ttwsv")])
 metadata/_custom_type_script = "uid://cmd7omwhxqjw8"

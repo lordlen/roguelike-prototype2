@@ -12,12 +12,6 @@ func act(actor: Char) -> Array[Action]:
 		return actor.curr_state.act(actor)
 	var ret : Array[Action] = []
 	
-	# if reshuffle is necessary
-	if actor.deck.primary == null or (actor.is_cautious and len(actor.deck.discard_pile) >= 1 and\
-	Pathfinder.chebychev_dist(actor.grid_position, actor.target_ch.grid_position) > 1) and\
-	Globals.floor_map.get_tile(actor.grid_position) != RoomPattern.TileType.WATER:
-		return [ReshuffleAction.new(actor)]
-	
 	# swap if necessary
 	var primary_atk := 0
 	var primary_def := 0
@@ -44,6 +38,12 @@ func act(actor: Char) -> Array[Action]:
 
 	if (primary_atk + offhand_def < offhand_atk + primary_def and is_close) or offhand_range > primary_range:
 		actor.deck.swap()
+	
+	# if reshuffle is necessary
+	if actor.deck.primary == null or (actor.is_cautious and len(actor.deck.discard_pile) >= 1 and\
+	Pathfinder.chebychev_dist(actor.grid_position, actor.target_ch.grid_position) > 1) and\
+	Globals.floor_map.get_tile(actor.grid_position) != RoomPattern.TileType.WATER:
+		return [ReshuffleAction.new(actor)]
 
 	# can see the target
 	if actor.target_ch in actor.visible_actors:

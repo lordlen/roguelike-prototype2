@@ -1,8 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ct1vqietkvgt"]
-
-[ext_resource type="Script" uid="uid://cytgrbi4ubhiw" path="res://cards/effects/add_effect_self/add_swift_offhand.gd" id="1_cw60c"]
-
-[resource]
-script = ExtResource("1_cw60c")
-description = "Add \"swift\" to the offhand"
-metadata/_custom_type_script = "uid://8j480ywki30u"

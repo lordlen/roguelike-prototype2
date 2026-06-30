@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawnGroup" load_steps=5 format=3 uid="uid://cbkxce3rq71gp"]
+
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_jcw06"]
+[ext_resource type="Resource" uid="uid://byc8ygvcam1tl" path="res://char/stats/toad.tres" id="2_47cjq"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="2_dq6r8"]
+[ext_resource type="Resource" uid="uid://clwmjki86acoi" path="res://char/stats/slime.tres" id="3_du8ta"]
+
+[resource]
+script = ExtResource("2_dq6r8")
+group = Array[ExtResource("1_jcw06")]([ExtResource("2_47cjq"), ExtResource("3_du8ta")])
+metadata/_custom_type_script = "uid://cgbukm4afxlvj"

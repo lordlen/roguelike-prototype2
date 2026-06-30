@@ -143,3 +143,11 @@ func get_type_positions(tile_types: Array[RoomPattern.TileType]) -> Array[Vector
 		if used_cells[position] in tile_types:
 			position_list.push_back(position)
 	return position_list
+
+func get_valid_adjacent(center: Vector2i) -> Array[Vector2i]:
+	var ret : Array[Vector2i] = []
+	for cell in DijkstraMap._get_adjacent_edges(center):
+		if ActorManager.get_actor_in_position(cell) == null and\
+		!Tiles.TileDictionary[Globals.floor_map.get_tile(cell)].is_impassable():
+			ret.push_back(cell)
+	return ret

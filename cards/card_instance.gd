@@ -13,7 +13,6 @@ var is_dodge: bool
 var exhausts: bool
 var is_innate: bool
 var is_ethereal: bool
-var is_swift: bool
 
 var attack_effects: Array[CardEffect]
 var defense_effects: Array[CardEffect]
@@ -39,7 +38,6 @@ func _init(r: CardResource):
 	exhausts = r.exhausts
 	is_innate = r.is_innate
 	is_ethereal = r.is_ethereal
-	is_swift = r.is_swift
 	
 	attack_effects = r.attack_effects.duplicate()
 	defense_effects = r.defense_effects.duplicate()
@@ -53,7 +51,6 @@ func do_attack(actor: Char, defender: Char, path: Array[Vector2i]) -> void:
 	for e in attack_effects + tmp_attack_effects:
 		e.do(actor, defender, self, path)
 	actor.deck.dispose_primary()
-	clear_tmp_effects()
 	EventBus.character_deck_updated.emit(actor)
 
 func do_defend(actor: Char) -> void:
@@ -64,11 +61,6 @@ func do_defend(actor: Char) -> void:
 	add_bonus_defense((defense_decay + defense) / 2)
 	for e in defense_effects + tmp_defense_effects:
 		e.do(actor, null, self, [])
-	# actor.deck.dispose_primary()
-	if is_swift:
-		is_swift = false
-		actor.deck.draw_empty()
-	clear_tmp_effects()
 	EventBus.character_deck_updated.emit(actor)
 
 func do_on_hit(attacker: Char, defender: Char) -> void:
@@ -99,9 +91,6 @@ func get_description() -> String:
 	
 	if is_innate:
 		desc += "\nInnate."
-	
-	if is_swift:
-		desc += "\nSwift"
 	
 	if is_ethereal:
 		desc += "\nEthereal"

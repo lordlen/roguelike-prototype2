@@ -56,6 +56,7 @@ func draw() -> CardInstance:
 
 func discard_primary():
 	if primary != null:
+		primary.clear_tmp_effects()
 		discard_pile.push_back(primary)
 		primary = null
 
@@ -77,11 +78,16 @@ func exhaust_offhand():
 		offhand = null
 
 func discard_offhand():
+	# remove temporary effects from the offhand
 	if offhand != null:
+		offhand.clear_tmp_effects()
 		discard_pile.push_back(offhand)
 		offhand = null
 
 func dispose_offhand():
+	if offhand == null:
+		return
+
 	if offhand.exhausts:
 		exhaust_offhand()
 	else:

@@ -27,6 +27,7 @@ func build_floor():
 func on_stairs_entered():
 	$UILayer/CardRewardDialog.generate_card_rewards()
 	build_floor()
+	$UILayer/TopPanel/FloorNumber.text = "F%d" % Globals.current_floor
 
 func on_new_actor_added(char: Char):
 	$ActorList.add_child(char)

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="FloorDescription" load_steps=27 format=3 uid="uid://dtnwiou8s4o2j"]
+
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_gk84h"]
+[ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="1_r4dtd"]
+[ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="2_0av75"]
+[ext_resource type="Resource" uid="uid://b2rl1nuinvv87" path="res://floor_generator/floor_description/spawn_groups/double_bird.tres" id="2_tt0vp"]
+[ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_oxi8r"]
+[ext_resource type="Resource" uid="uid://dm3ad3f34obhn" path="res://floor_generator/floor_description/spawn_groups/single_toad.tres" id="5_8cmue"]
+[ext_resource type="Resource" uid="uid://bfl70ibh5j5x8" path="res://floor_generator/floor_description/spawn_groups/single_slime.tres" id="6_sq36d"]
+[ext_resource type="Resource" uid="uid://cov06ge30uvjx" path="res://floor_generator/floor_description/spawn_groups/double_jackal.tres" id="6_tt0vp"]
+[ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="7_8wh87"]
+[ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="9_56r5f"]
+[ext_resource type="Resource" uid="uid://dprerqpsu1pdc" path="res://patterns/croissant.tres" id="10_ldrv3"]
+[ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="11_drmtx"]
+[ext_resource type="Resource" uid="uid://ctmdd8rcov4kq" path="res://patterns/hut.tres" id="12_0r1v6"]
+[ext_resource type="Resource" uid="uid://bbpq1mknhs4j5" path="res://patterns/L.tres" id="13_e7rgm"]
+[ext_resource type="Resource" uid="uid://cdw5yrf7nn8il" path="res://patterns/lake.tres" id="14_0ga57"]
+[ext_resource type="Resource" uid="uid://bxtdio0jocibu" path="res://patterns/long_corridor.tres" id="15_1ec8d"]
+[ext_resource type="Resource" uid="uid://btljq16rqurqj" path="res://patterns/pillar.tres" id="16_jt7hm"]
+[ext_resource type="Resource" uid="uid://brcq5wokjhj4b" path="res://patterns/river.tres" id="17_ax4hi"]
+[ext_resource type="Resource" uid="uid://cnpojlql4ld0d" path="res://patterns/room_patterns/special_features/grass.tres" id="19_kkrvn"]
+[ext_resource type="Resource" uid="uid://df0uqg57jqj12" path="res://patterns/room_patterns/special_features/river.tres" id="20_qjdgf"]
+[ext_resource type="Resource" uid="uid://p0rhw655kxjm" path="res://patterns/room_patterns/special_features/small_corridor.tres" id="21_vf71x"]
+[ext_resource type="Resource" uid="uid://bhjsa6gi2wnyp" path="res://patterns/room_patterns/special_features/windy.tres" id="22_nxr0j"]
+[ext_resource type="Resource" uid="uid://5lrc0bcqndhs" path="res://patterns/stairs.tres" id="23_c50ir"]
+
+[sub_resource type="Resource" id="Resource_47kvl"]
+script = ExtResource("3_oxi8r")
+pool = Array[ExtResource("1_gk84h")]([ExtResource("2_tt0vp")])
+weights = Array[float]([1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_qil1r"]
+script = ExtResource("3_oxi8r")
+pool = Array[ExtResource("1_gk84h")]([ExtResource("5_8cmue"), ExtResource("6_sq36d"), ExtResource("6_tt0vp")])
+weights = Array[float]([2.0, 2.0, 1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_arl57"]
+script = ExtResource("3_oxi8r")
+pool = Array[ExtResource("1_gk84h")]([ExtResource("5_8cmue"), ExtResource("6_sq36d")])
+weights = Array[float]([1.0, 1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[resource]
+script = ExtResource("2_0av75")
+room_patterns = Array[ExtResource("1_r4dtd")]([ExtResource("9_56r5f"), ExtResource("10_ldrv3"), ExtResource("11_drmtx"), ExtResource("12_0r1v6"), ExtResource("13_e7rgm"), ExtResource("14_0ga57"), ExtResource("15_1ec8d"), ExtResource("16_jt7hm"), ExtResource("17_ax4hi")])
+special_patterns = Array[ExtResource("1_r4dtd")]([ExtResource("19_kkrvn"), ExtResource("20_qjdgf"), ExtResource("21_vf71x"), ExtResource("22_nxr0j")])
+stairs_patterns = Array[ExtResource("1_r4dtd")]([ExtResource("23_c50ir")])
+item_pool = ExtResource("7_8wh87")
+initial_spawns = SubResource("Resource_qil1r")
+subsequent_spawns = SubResource("Resource_arl57")
+elite_spawns = SubResource("Resource_47kvl")
+metadata/_custom_type_script = "uid://cihmjv6v0inos"

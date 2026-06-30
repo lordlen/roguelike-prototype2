@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://d20njqkckukoi"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_u3eef"]
+[ext_resource type="Resource" uid="uid://cod3rlld7d247" path="res://cards/effects/relocate/relocate.tres" id="2_0onj1"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_cnn23"]
+[ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="3_cnn23"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="3_nb2vd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2sgo"]
+atlas = ExtResource("3_cnn23")
+region = Rect2(192, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_cnn23")
+texture = SubResource("AtlasTexture_s2sgo")
+name = "Swoop"
+attack = 11
+num_hits = 1
+range = 3
+is_innate = true
+attack_effects = Array[ExtResource("1_u3eef")]([ExtResource("2_0onj1"), ExtResource("3_nb2vd")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"
