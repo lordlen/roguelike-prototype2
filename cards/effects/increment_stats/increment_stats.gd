@@ -22,3 +22,5 @@ func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i
 	if actor.deck.offhand and actor.deck.offhand.card_name == card_name:
 		actor.deck.offhand.attack += atk_value
 		actor.deck.offhand.num_hits += num_hits
+	
+	card_effect_finished.emit()

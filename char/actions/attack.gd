@@ -10,7 +10,10 @@ func _init(attacker: Char, defender: Char):
 	self.path = path
 
 func execute() -> bool:
-	if AttackOnlyAction.new(attacker, defender).execute():
+	if await AttackOnlyAction.new(attacker, defender).execute():
+		action_finished.emit()
 		return true
 	# if defender cannot be reached, just walk to the target.
-	return GoCloserAction.new(attacker).execute()
+	var result := await GoCloserAction.new(attacker).execute()
+	action_finished.emit()
+	return result

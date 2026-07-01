@@ -26,4 +26,5 @@ func execute() -> bool:
 	if is_successful:
 		actor.inventory.remove_item(item)
 
+	action_finished.emit()
 	return item_action.uses_turn

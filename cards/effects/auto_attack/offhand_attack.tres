@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://bcrphw7hnlajk"]
 
-[ext_resource type="Script" uid="uid://ek81ynqyky26" path="res://cards/effects/offhand_attack/offhand_attack.gd" id="1_1xn74"]
+[ext_resource type="Script" uid="uid://ek81ynqyky26" path="res://cards/effects/auto_attack/offhand_attack.gd" id="1_1xn74"]
 
 [resource]
 script = ExtResource("1_1xn74")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c72hcseso765q"]
 
-[ext_resource type="Resource" uid="uid://bcrphw7hnlajk" path="res://cards/effects/offhand_attack/offhand_attack.tres" id="1_cnpv8"]
+[ext_resource type="Resource" uid="uid://pxt54buodbw7" path="res://cards/effects/auto_attack/primary_attack.tres" id="1_cnpv8"]
 [ext_resource type="Script" uid="uid://bf12sx7mmqhbr" path="res://cards/effects/add_effect_primary/add_tmp_effect_offhand.gd" id="2_cnpv8"]
 
 [resource]

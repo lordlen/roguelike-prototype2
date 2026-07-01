@@ -5,7 +5,6 @@ signal user_input_requested
 signal new_actor_added
 signal character_died
 signal character_state_changed
-signal elite_died
 
 signal character_hp_updated
 signal character_deck_updated

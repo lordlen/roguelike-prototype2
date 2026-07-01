@@ -13,3 +13,6 @@ func get_description() -> String:
 		if desc != "":
 			ret += "\n%s: %s" % [action.action_name, desc]
 	return ret
+
+func on_pick_up(inventory: InventoryComponent) -> bool:
+	return inventory.add_item(self)

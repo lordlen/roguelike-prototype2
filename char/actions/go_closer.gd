@@ -10,9 +10,12 @@ func execute() -> bool:
 	var destination := actor.target_flow_map.roll_down(actor.grid_position)
 
 	# attmempt to move to target
-	var is_successful := Walk.new(actor, destination).execute()
+	var is_successful := await Walk.new(actor, destination).execute()
 	if is_successful:
+		action_finished.emit()
 		return true
 	
 	destination = actor.target_flow_map.roll_down(actor.grid_position, true)
-	return Walk.new(actor, destination).execute()
+	var result := await Walk.new(actor, destination).execute()
+	action_finished.emit()
+	return result

@@ -11,6 +11,7 @@ func _init(attacker: Char, defender: Char):
 
 func execute() -> bool:
 	if attacker.deck.primary == null:
+		action_finished.emit()
 		return false
 	var pf = Pathfinder.new()
 	var dist = Pathfinder.chebychev_dist(attacker.grid_position, defender.grid_position)
@@ -20,6 +21,9 @@ func execute() -> bool:
 		var path := pf.get_straight_path(attacker.grid_position, defender.grid_position, attacker.traversal)
 		
 		if len(path) - 1 >=  dist:
-			attacker.deck.primary.do_attack(attacker, defender, path)
+			attacker.deck.primary.do_attack.call_deferred(attacker, defender, path)
+			await attacker.deck.primary.card_action_finished
+			action_finished.emit()
 			return true
+	action_finished.emit()
 	return false

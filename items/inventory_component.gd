@@ -5,6 +5,7 @@ var owner: Char
 var items: Array[Item]
 var item_limit: int
 var gold: int
+var card_rewards: int
 
 func _init(owner: Char, item_limit: int) -> void:
 	self.items = []
@@ -34,6 +35,14 @@ func remove_item(item: Item) -> void:
 	items.erase(item)
 	EventBus.inventory_updated.emit(owner)
 
-func add_gold(value: int):
+func add_gold(value: int) -> void:
 	gold += value
 	EventBus.update_gold.emit(owner)
+
+func add_card_reward() -> void:
+	card_rewards += 1
+
+func claim_card_rewards() -> int:
+	var val := card_rewards
+	card_rewards = 0
+	return val

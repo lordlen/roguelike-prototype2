@@ -2,6 +2,7 @@ class_name Char
 extends Sprite2D 
 
 signal char_finished_moving
+signal char_finished_attacking
 
 const stats_resources := {
 	hero = "res://char/stats/hero.tres",
@@ -66,6 +67,12 @@ var moved_this_turn: bool
 var speed := 500
 var new_pos : Vector2
 var is_moving: bool
+
+var attack_speed := 1000
+var is_attacking := false
+var is_returning := false
+var offset_target: Vector2
+
 var inventory: InventoryComponent
 
 func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
@@ -125,6 +132,26 @@ func _physics_process(delta: float) -> void:
 			char_finished_moving.emit()
 		else:
 			position = position.move_toward(new_pos, speed * delta)
+	if is_attacking:
+		# move offset to the target
+		if is_returning:
+			if offset.is_equal_approx(Vector2.ZERO):
+				is_attacking = false
+				char_finished_attacking.emit()
+			else:
+				offset = offset.move_toward(Vector2.ZERO, attack_speed * delta)
+		else:
+			if offset.is_equal_approx(offset_target):
+				is_returning = true
+			else:
+				offset = offset.move_toward(offset_target, attack_speed * delta)
+		
+
+func attack_animation(target_grid_pos: Vector2i):
+	is_attacking = true
+	is_returning = false
+	offset_target = Vector2(target_grid_pos - grid_position) * Consts.TILE_SIZE
+	
 
 func move_to(new_grid_pos: Vector2i, speed: float = INF):
 	if self.grid_position != new_grid_pos:
@@ -149,19 +176,17 @@ func move_to(new_grid_pos: Vector2i, speed: float = INF):
 	if user_controlled:
 		if tile == RoomPattern.TileType.STAIRS:
 			# activate the stairs dialog
+			self.action_queue.clear()
 			EventBus.stairs_popup_signal.emit()
-		while ItemManager.item_in_position(grid_position):
+		if ItemManager.item_in_position(grid_position):
 			var item := ItemManager.get_top_item(grid_position).item_resource
-			if is_instance_of(item, Gold):
+			var successful_pickup := item.on_pick_up(inventory)
+			if successful_pickup:
 				ItemManager.pop_item_from_overworld(grid_position)
-				inventory.add_gold((item as Gold).amount)
-			elif !inventory.is_full():
-				ItemManager.pop_item_from_overworld(grid_position)
-				var successfully_added = inventory.add_item(item)
-			else:
-				break
 
 func turn_start():
+	if(user_controlled):
+		print("turn_start")
 	moved_last_turn = moved_this_turn
 	flow_map = null
 	moved_this_turn = false
@@ -253,7 +278,7 @@ func act_player():
 		EventBus.emit_signal("user_input_requested", self)
 	else:
 		var action : Action = action_queue.pop_front()
-		var is_success = action.execute()
+		var is_success = await action.execute()
 		# if an action fails, remove the queue and request user input
 		if !is_success:
 			action_queue.clear()
@@ -299,7 +324,8 @@ func die():
 	if leader != self:
 		leader.followers.erase(self)
 	if is_elite:
-		EventBus.elite_died.emit()
+		var card_item: Item = load("res://items/card_item/card_item.tres")
+		ItemManager.add_item_to_overworld(card_item, grid_position)
 	EventBus.character_died.emit(self)
 
 func is_dead():

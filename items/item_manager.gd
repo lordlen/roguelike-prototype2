@@ -39,3 +39,9 @@ func get_items_in_area(positions: Array[Vector2i]) -> Array[ItemOverworld]:
 		if item_in_position(pos):
 			ret.append_array(item_dictionary[pos])
 	return ret
+
+func clear_items():
+	for key in item_dictionary:
+		var items := item_dictionary[key]
+		while !items.is_empty():
+			pop_item_from_overworld(key)

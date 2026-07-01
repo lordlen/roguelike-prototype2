@@ -53,9 +53,9 @@ func character_controller(event: InputEvent):
 	elif event.is_action_pressed("swap"):
 		self.actor.swap()
 	elif event.is_action_pressed("reshuffle"):
-		turn_passed = ReshuffleAction.new(self.actor).execute()
+		turn_passed = await ReshuffleAction.new(self.actor).execute()
 	elif event.is_action_pressed("defend"):
-		turn_passed = DefendAction.new(self.actor).execute()
+		turn_passed = await DefendAction.new(self.actor).execute()
 	elif !Globals.camera_move_state and event.is_action_released("primary_click"):
 		var grid_position : Vector2i= floor(get_global_mouse_position() / Consts.TILE_SIZE)
 		# restrict input if the target has not yet been explored
@@ -66,12 +66,12 @@ func character_controller(event: InputEvent):
 				if target_char_ind != -1:
 					var target_char = self.actor.visible_actors[target_char_ind]
 					if target_char.alignment != self.actor.alignment:
-						turn_passed = AttackOnlyAction.new(self.actor, target_char).execute()
+						turn_passed = await AttackOnlyAction.new(self.actor, target_char).execute()
 				else:
-					turn_passed = WalkPath.new(self.actor, grid_position).execute()
+					turn_passed = await WalkPath.new(self.actor, grid_position).execute()
 		else:
 			is_aiming = false
-			turn_passed = UseItemAction.new(actor, stored_item, stored_action, grid_position).execute()
+			turn_passed = await UseItemAction.new(actor, stored_item, stored_action, grid_position).execute()
 	elif !Globals.camera_move_state and event.is_action_pressed("teleport"):
 		self.actor.move_to(floor(get_global_mouse_position() / Consts.TILE_SIZE), INF)
 		self.actor.update_vision()
@@ -80,7 +80,7 @@ func character_controller(event: InputEvent):
 
 func end_turn():
 	listening_user_input = false
-	EventBus.emit_signal("turn_ended")
+	EventBus.turn_ended.emit()
 
 func _unhandled_input(event: InputEvent):
 	if listening_user_input and !Globals.camera_move_state:
@@ -95,6 +95,6 @@ func on_item_used(item: Item, item_action: ItemAction):
 			stored_item = item
 		else:
 			# do the action
-			var turn_passed := UseItemAction.new(actor, item, item_action, actor.grid_position).execute()
+			var turn_passed := await UseItemAction.new(actor, item, item_action, actor.grid_position).execute()
 			if turn_passed:
 				end_turn()

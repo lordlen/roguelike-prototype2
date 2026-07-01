@@ -12,3 +12,4 @@ func do(attacker: Char, defender: Char, card: CardInstance, path: Array[Vector2i
 			var attack_val := card.attack
 			for _i in num_hits:
 				char.take_hit(attacker, attack_val)
+	card_effect_finished.emit()

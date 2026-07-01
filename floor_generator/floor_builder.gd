@@ -9,6 +9,8 @@ const floor_descriptions := [
 ]
 
 func build_floor(floor_id: int):
+	ItemManager.clear_items()
+	ActorManager.clear_ai_controlled()
 	var floor_description := load(floor_descriptions[floor_id]) as FloorDescription
 	
 	var room_patterns : Array[RoomPattern] = []
@@ -72,6 +74,16 @@ func build_floor(floor_id: int):
 	
 	map = stairs_builder.build(map)
 	
+	# place 2 cards randomly
+	# get floor tiles
+	var ground_positions := map.get_type_positions([RoomPattern.TileType.FLOOR])
+	ground_positions.shuffle()
+	
+	var num_card_rewards := 2
+	var card_item := load("res://items/card_item/card_item.tres")
+	for cell in ground_positions.slice(0, num_card_rewards):
+		ItemManager.add_item_to_overworld(card_item, cell)
+
 	var result := map.get_all_tiles()
 
 	Globals.floor_map = map
@@ -81,9 +93,7 @@ func build_floor(floor_id: int):
 		RoomPattern.TileType.FLOOR,
 		RoomPattern.TileType.GRASS
 	])
-	
-	# clear all ai controlled characters
-	ActorManager.clear_ai_controlled()
+
 	# TODO: take into account multiple controlled characters possibly
 	for user in Globals.user_controlled:
 		user.move_to(random_spawn_position.pick_random())
@@ -91,7 +101,6 @@ func build_floor(floor_id: int):
 	# spawn the enemies
 	ActorManager.spawn_initial_characters(floor_description.initial_spawns, floor_description.num_initial_spawns)
 	ActorManager.spawn_initial_characters(floor_description.elite_spawns,floor_description.num_elite_spawns, true)
-	ActorManager.reset_elite_counter()
 	ActorManager.configure_spawning(floor_description.subsequent_spawns, floor_description.turns_per_spawn)
 
 func get_random_number(val: float) -> int:

@@ -1,6 +1,8 @@
 class_name CardInstance
 extends RefCounted
 
+signal card_action_finished
+
 var texture: Texture2D
 var card_name: String
 var description: String
@@ -49,21 +51,26 @@ func _init(r: CardResource):
 func do_attack(actor: Char, defender: Char, path: Array[Vector2i]) -> void:
 	EventBus.notable_occurance.emit("%s attacks %s with %s" % [actor.character_name, defender.character_name, card_name])
 	for e in attack_effects + tmp_attack_effects:
-		e.do(actor, defender, self, path)
+		await e.do(actor, defender, self, path)
 	actor.deck.dispose_primary()
 	EventBus.character_deck_updated.emit(actor)
+	card_action_finished.emit()
 
 func do_defend(actor: Char) -> void:
+	print("defend")
 	actor.is_defending = true
 	# Add (def + decay) / 2, which is decay + (def - decay) / 2.
 	# decay offsets the decay. (def - decay) / 2 rewards defending with less
 	# decay.
+	@warning_ignore("integer_division")
 	add_bonus_defense((defense_decay + defense) / 2)
 	for e in defense_effects + tmp_defense_effects:
 		e.do(actor, null, self, [])
 	EventBus.character_deck_updated.emit(actor)
+	card_action_finished.emit()
 
 func do_on_hit(attacker: Char, defender: Char) -> void:
+	print("hit")
 	if !defender.is_defending:
 		# limit the decay to the defense
 		defense_decay = min(defense_decay + 1, defense)

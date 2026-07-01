@@ -1,8 +1,6 @@
-class_name Gold
+class_name CardItem
 extends Item
 
-@export var amount: int
-
 func on_pick_up(inventory: InventoryComponent) -> bool:
-	inventory.add_gold(amount)
+	inventory.add_card_reward()
 	return true

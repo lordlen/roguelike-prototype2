@@ -8,7 +8,6 @@ var rng = RandomNumberGenerator.new()
 var char_dict : Dictionary[Vector2i, Char] = {}
 var spawn_turn_count := 0
 var num_turns_to_spawn: int
-var num_elites_dead := 0
 var subsequent_spawns: SpawnDescription
 func _ready():
 	spawn_turn_count = 0
@@ -17,10 +16,6 @@ func _ready():
 	rng.randomize()
 	EventBus.connect("new_actor_added", _add_actor)
 	EventBus.connect("character_died", _remove_actor)
-	EventBus.elite_died.connect(_increment_elite_counter)
-
-func _increment_elite_counter():
-	num_elites_dead += 1
 
 func _add_actor(ch: Char):
 	if ch.user_controlled:
@@ -64,7 +59,8 @@ func do_actor_turns():
 			continue
 		var actions := ch.act_ai()
 		for action in actions:
-			action.execute()
+			action.execute.call_deferred()
+			await action.action_finished
 		ch.pass_turn()
 	
 	spawn_turn_count += 1
@@ -76,9 +72,6 @@ func do_actor_turns():
 		random_spawn_character(spawn_group, true)
 
 	block_process = false
-
-func reset_elite_counter():
-	num_elites_dead = 0
 
 func configure_spawning(spawn_desc: SpawnDescription, num_turns_to_spawn):
 	self.subsequent_spawns = spawn_desc
@@ -161,4 +154,3 @@ func clear_ai_controlled():
 	var ai_controlled_chars := get_ai_controlled_chars().duplicate()
 	for ch in ai_controlled_chars:
 		ch.die()
-	reset_elite_counter()

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardItem" load_steps=4 format=3 uid="uid://bmrblu1gxtbsl"]
+
+[ext_resource type="Script" uid="uid://dpfkben5mfmtm" path="res://items/card_item/card_item.gd" id="1_vghgk"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_xqp31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctpkn"]
+atlas = ExtResource("2_xqp31")
+region = Rect2(48, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_vghgk")
+texture = SubResource("AtlasTexture_ctpkn")
+item_actions = null
+metadata/_custom_type_script = "uid://dpfkben5mfmtm"
