@@ -1,7 +1,7 @@
 class_name FloorBuilder
 
 const floor_descriptions := [
-	# "res://floor_generator/floor_description/floor_description/test_floor.tres",
+	"res://floor_generator/floor_description/floor_description/test_floor.tres",
 	"res://floor_generator/floor_description/floor_description/f1.tres",
 	"res://floor_generator/floor_description/floor_description/f2.tres",
 	"res://floor_generator/floor_description/floor_description/f3.tres",

@@ -51,13 +51,13 @@ func _init(r: CardResource):
 func do_attack(actor: Char, defender: Char, path: Array[Vector2i]) -> void:
 	EventBus.notable_occurance.emit("%s attacks %s with %s" % [actor.character_name, defender.character_name, card_name])
 	for e in attack_effects + tmp_attack_effects:
-		await e.do(actor, defender, self, path)
+		e.do.call_deferred(actor, defender, self, path)
+		await e.card_effect_finished
 	actor.deck.dispose_primary()
 	EventBus.character_deck_updated.emit(actor)
 	card_action_finished.emit()
 
 func do_defend(actor: Char) -> void:
-	print("defend")
 	actor.is_defending = true
 	# Add (def + decay) / 2, which is decay + (def - decay) / 2.
 	# decay offsets the decay. (def - decay) / 2 rewards defending with less
@@ -70,7 +70,6 @@ func do_defend(actor: Char) -> void:
 	card_action_finished.emit()
 
 func do_on_hit(attacker: Char, defender: Char) -> void:
-	print("hit")
 	if !defender.is_defending:
 		# limit the decay to the defense
 		defense_decay = min(defense_decay + 1, defense)

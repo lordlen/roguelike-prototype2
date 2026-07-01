@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="2_o3qu8"]
 [ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="4_4h30h"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="4_8f5s5"]
-[ext_resource type="Resource" uid="uid://d0i1mfl61ow2e" path="res://floor_generator/floor_description/spawn_groups/single_bird.tres" id="4_c01sh"]
+[ext_resource type="Resource" uid="uid://b7drjwn27o2c3" path="res://floor_generator/floor_description/spawn_groups/solo_toad.tres" id="4_c01sh"]
 [ext_resource type="Resource" uid="uid://oadmhwxeateq" path="res://floor_generator/floor_description/spawn_groups/single_rat.tres" id="5_xms8m"]
 [ext_resource type="Resource" uid="uid://cdw5yrf7nn8il" path="res://patterns/lake.tres" id="6_pgy4m"]
 [ext_resource type="Resource" uid="uid://cnpojlql4ld0d" path="res://patterns/room_patterns/special_features/grass.tres" id="8_h636e"]

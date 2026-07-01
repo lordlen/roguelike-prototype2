@@ -10,7 +10,5 @@ func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i
 	var backslide_path := pf.get_straight_path_actor(actor.grid_position, new_position, actor.traversal)
 	var dest := backslide_path[len(backslide_path) - 1]
 	
-	actor.move_to.call_deferred(dest)
-	await actor.char_finished_moving
-	
+	actor.move_to(dest)
 	card_effect_finished.emit()

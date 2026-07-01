@@ -24,6 +24,6 @@ func execute() -> bool:
 			action_finished.emit()
 			return false
 
-	actor.move_to.call_deferred(dest, walk_speed)
+	actor.move_to(dest, walk_speed)
 	action_finished.emit()
 	return true

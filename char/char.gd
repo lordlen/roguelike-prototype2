@@ -151,7 +151,6 @@ func attack_animation(target_grid_pos: Vector2i):
 	is_attacking = true
 	is_returning = false
 	offset_target = Vector2(target_grid_pos - grid_position) * Consts.TILE_SIZE
-	
 
 func move_to(new_grid_pos: Vector2i, speed: float = INF):
 	if self.grid_position != new_grid_pos:
@@ -185,8 +184,6 @@ func move_to(new_grid_pos: Vector2i, speed: float = INF):
 				ItemManager.pop_item_from_overworld(grid_position)
 
 func turn_start():
-	if(user_controlled):
-		print("turn_start")
 	moved_last_turn = moved_this_turn
 	flow_map = null
 	moved_this_turn = false
