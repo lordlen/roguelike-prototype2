@@ -41,8 +41,10 @@ func add_gold(value: int) -> void:
 
 func add_card_reward() -> void:
 	card_rewards += 1
+	EventBus.inventory_updated.emit(owner)
 
 func claim_card_rewards() -> int:
 	var val := card_rewards
 	card_rewards = 0
+	EventBus.inventory_updated.emit(owner)
 	return val

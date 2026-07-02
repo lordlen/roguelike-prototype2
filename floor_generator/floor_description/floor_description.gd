@@ -8,7 +8,7 @@ extends Resource
 @export var num_rooms: int = 12
 @export var num_initial_spawns: int = 8
 @export var num_elite_spawns: int = 1
-@export var turns_per_spawn: int = 80
+@export var turns_per_spawn: int = 100
 
 @export var item_pool: ItemPoolDescription
 # items
