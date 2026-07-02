@@ -4,7 +4,7 @@ extends CardEffect
 
 func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i]) -> void:
 	# calculate damage I would take
-	var final_hp := actor.curr_hp - target_char.deck.primary.attack
+	var final_hp := actor.curr_hp
 
 	# spawn a random enemy with some hp
 	var valid_adjacent := Globals.floor_map.get_valid_adjacent(actor.grid_position)

@@ -290,13 +290,15 @@ func take_hit(attacker: Char, damage: int):
 		return
 
 	var offhand_def := 0
-	if deck.offhand:
-		offhand_def = deck.offhand.get_defense()
-		deck.offhand.do_on_hit(attacker, self)
+	var offhand := deck.offhand
+	if offhand != null:
+		offhand_def = offhand.get_defense()
 	var defense := offhand_def
 	var final_damage: int = max(0, damage - defense)
 	take_damage(final_damage)
 	is_hit = true
+	if offhand != null:
+		offhand.do_on_hit(attacker, self)
 	EventBus.character_deck_updated.emit(self)
 
 func take_damage(damage: int) -> void:
