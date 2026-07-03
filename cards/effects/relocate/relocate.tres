@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_ksp7o")
+identifier = "relocate"
 description = "Relocate to target"
 metadata/_custom_type_script = "uid://8j480ywki30u"

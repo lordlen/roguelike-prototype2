@@ -1,3 +1,4 @@
+class_name LoseHp
 extends CardEffect
 
 @export var value: int
@@ -7,3 +8,10 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 
 func get_description() -> String:
 	return self.description % value
+
+func combine_effect(other_effect: CardEffect) -> CardEffect:
+	if !self.is_same_effect(other_effect):
+		return self
+	
+	value += (other_effect as LoseHp).value
+	return self

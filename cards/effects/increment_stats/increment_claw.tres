@@ -6,5 +6,6 @@
 script = ExtResource("1_xucln")
 atk_value = 2
 card_name = "Claw"
+identifier = "claw"
 description = "Increase the number of hits each claw does for this floor."
 metadata/_custom_type_script = "uid://8j480ywki30u"

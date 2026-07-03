@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_bdibb")
+identifier = "discard_self"
 description = "Discard own top draw pile."
 metadata/_custom_type_script = "uid://8j480ywki30u"

@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=5 format=3 uid="uid://lgw2kpy3kx2f"]
+[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=6 format=3 uid="uid://lgw2kpy3kx2f"]
 
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="1_jj1ic"]
 [ext_resource type="Script" uid="uid://dlmiqas8og0ae" path="res://items/item_pool_description.gd" id="2_80dka"]
 [ext_resource type="Resource" uid="uid://cliwh1ki312ok" path="res://items/shrines/bloody_shrine.tres" id="2_hohif"]
 [ext_resource type="Resource" uid="uid://bdcapm5d7w8bt" path="res://items/shrines/mirror_shrine.tres" id="3_hohif"]
+[ext_resource type="Resource" uid="uid://cq1mx04jdrd" path="res://items/shrines/amalgamator.tres" id="4_4d1sr"]
 
 [resource]
 script = ExtResource("2_80dka")
-item_pool = Array[ExtResource("1_jj1ic")]([ExtResource("2_hohif"), ExtResource("3_hohif")])
-weights = Array[float]([1.0, 10000.0])
+item_pool = Array[ExtResource("1_jj1ic")]([ExtResource("2_hohif"), ExtResource("3_hohif"), ExtResource("4_4d1sr")])
+weights = Array[float]([1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://dlmiqas8og0ae"

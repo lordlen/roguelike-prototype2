@@ -37,6 +37,10 @@ func add_to_deck_list(card_resource: CardResource):
 	var instance := CardInstance.new(card_resource)
 	insert_to_draw_randomly(instance)
 
+func remove_from_deck_list(card_resource: CardResource):
+	deck_list.erase(card_resource)
+	initialize()
+
 # draw if primary or offhand is null. This should be used at the start of each
 # character's turn.
 func draw_empty():

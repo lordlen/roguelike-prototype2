@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_cnpv8")
 card_effect = ExtResource("1_cnpv8")
+identifier = "add_reactive"
 description = "Add \"%s\" to the offhand."
 metadata/_custom_type_script = "uid://8j480ywki30u"

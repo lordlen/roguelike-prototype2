@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_n1kuw")
+identifier = "discard_offhand"
 description = "Discard target's offhand."
 metadata/_custom_type_script = "uid://8j480ywki30u"

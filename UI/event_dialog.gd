@@ -1,3 +1,4 @@
+class_name EventDialog
 extends Panel
 
 func _ready() -> void:

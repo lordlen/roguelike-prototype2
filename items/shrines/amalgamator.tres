@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=8 format=3 uid="uid://cq1mx04jdrd"]
+
+[ext_resource type="Script" uid="uid://pvp52vcunixo" path="res://items/shrines/shrine.gd" id="1_dnbjs"]
+[ext_resource type="Script" uid="uid://co0vggrdtm4qs" path="res://items/shrine_actions/amalgamator/amalgamator1.gd" id="1_h6wqt"]
+[ext_resource type="Script" uid="uid://vnxush2spy5o" path="res://items/shrine_actions/amalgamator/amalgamator2.gd" id="2_w7mi5"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="3_w7mi5"]
+
+[sub_resource type="Resource" id="Resource_idlof"]
+script = ExtResource("1_h6wqt")
+action_name = "Pray"
+metadata/_custom_type_script = "uid://co0vggrdtm4qs"
+
+[sub_resource type="Resource" id="Resource_ubw11"]
+script = ExtResource("2_w7mi5")
+action_name = "Accept"
+metadata/_custom_type_script = "uid://vnxush2spy5o"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubw11"]
+atlas = ExtResource("3_w7mi5")
+region = Rect2(160, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_dnbjs")
+item_name = "Amalgamator"
+texture = SubResource("AtlasTexture_ubw11")
+item_actions = Array[Object]([SubResource("Resource_idlof"), SubResource("Resource_ubw11")])
+metadata/_custom_type_script = "uid://pvp52vcunixo"

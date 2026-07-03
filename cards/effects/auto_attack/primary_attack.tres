@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_d5r02")
+identifier = "primary_attack"
 description = "Attack with the primary."
 metadata/_custom_type_script = "uid://8j480ywki30u"

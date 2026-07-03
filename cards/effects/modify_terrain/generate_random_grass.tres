@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_5vd6f")
+identifier = "generate_grass"
 description = "Create a grass tile in an adjacent tile."
 metadata/_custom_type_script = "uid://8j480ywki30u"

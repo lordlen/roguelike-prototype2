@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://cjrnq00tuwkk4"]
 
-[ext_resource type="Script" uid="uid://pphuvbtnejbi" path="res://cards/effects/summon/summon_dupe.gd" id="2_log4q"]
+[ext_resource type="Script" uid="uid://pphuvbtnejbi" path="res://cards/effects/summon/summon_dupe.gd" id="1_o2jm5"]
 
 [resource]
-script = ExtResource("2_log4q")
-char_id = "slime"
-description = "Summon slime based on current hp"
+script = ExtResource("1_o2jm5")
+identifier = "summon_dupe"
+description = "Summon a clone based on current hp"
 metadata/_custom_type_script = "uid://8j480ywki30u"

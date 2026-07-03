@@ -189,12 +189,11 @@ func turn_start():
 	flow_map = null
 	moved_this_turn = false
 	
-	deck.draw_empty()
-	
 	if is_defending and is_hit:
 		deck.dispose_offhand()
-		deck.draw_empty()
-	
+
+	deck.draw_empty()
+
 	is_defending = false
 	is_hit = false
 	

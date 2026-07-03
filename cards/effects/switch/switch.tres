@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_lhkjn")
+identifier = "switch"
 description = "Switch the top of the discard and the offhand."
 metadata/_custom_type_script = "uid://8j480ywki30u"

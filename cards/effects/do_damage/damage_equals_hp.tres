@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_wtm7g")
+identifier = "damage"
+description = "Deal damage equal to own hp."
 metadata/_custom_type_script = "uid://8j480ywki30u"

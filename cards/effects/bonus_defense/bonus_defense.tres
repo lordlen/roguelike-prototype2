@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_iu1fw")
+identifier = "bonus_defense"
 description = "Add this card's defense to bonus defense this turn."
 metadata/_custom_type_script = "uid://8j480ywki30u"
