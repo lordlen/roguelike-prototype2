@@ -23,3 +23,9 @@ signal inventory_updated
 signal item_used
 signal new_item_added
 signal update_gold
+
+signal card_selector_requested
+signal cards_selected
+
+signal event_requested
+signal event_concluded

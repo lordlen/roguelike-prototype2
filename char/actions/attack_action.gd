@@ -21,7 +21,7 @@ func execute() -> bool:
 		var path := pf.get_straight_path(attacker.grid_position, defender.grid_position, attacker.traversal)
 		
 		if len(path) - 1 >=  dist:
-			attacker.deck.primary.do_attack.call_deferred(attacker, defender, path)
+			attacker.deck.primary.do_attack.call_deferred(attacker, defender)
 			await attacker.deck.primary.card_action_finished
 			action_finished.emit()
 			return true

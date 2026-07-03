@@ -1,6 +1,6 @@
 extends CardEffect
 
-func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i]) -> void:
+func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# find a floor tile in an adjacent tile
 	var adj := DijkstraMap._get_adjacent_edges(actor.grid_position)
 	var valid_tiles: Array[Vector2i] = []

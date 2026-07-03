@@ -19,3 +19,9 @@ func set_card_data(card: CardInstance) -> void:
 		$AttackValue.text = ""
 		$DefenseValue.text = ""
 		$PanelContainer/Description.text = ""
+
+func _on_toggled(is_toggled: bool) -> void:
+	if is_toggled:
+		scale = Vector2(1.15, 1.15)
+	else:
+		scale = Vector2(1.0, 1.0)

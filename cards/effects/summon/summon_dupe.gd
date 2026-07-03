@@ -1,8 +1,6 @@
 extends CardEffect
 
-@export var char_id: String
-
-func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i]) -> void:
+func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# calculate damage I would take
 	var final_hp := actor.curr_hp
 
@@ -16,8 +14,7 @@ func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i
 
 	var rand_adjacent : Vector2i = valid_adjacent.pick_random()
 
-	var char_stats := load(Char.stats_resources[char_id]) as CharacterStats
-	var char := Char.new(char_stats, rand_adjacent)
+	var char := Char.new(actor.char_stats, rand_adjacent)
 	char.set_hp(final_hp)
 	# force discard all to prevent attacking on summon
 	char.deck.discard_all()

@@ -44,18 +44,17 @@ offset_right = 27.0
 grow_vertical = 0
 text = "0"
 
-[node name="PanelContainer" type="PopupPanel" parent="."]
-oversampling_override = 1.0
-position = Vector2i(250, 100)
-size = Vector2i(150, 100)
-always_on_top = true
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 65.0
+offset_right = 151.0
+offset_bottom = 165.0
 
 [node name="Description" type="RichTextLabel" parent="PanelContainer"]
 z_index = 100
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 146.0
-offset_bottom = 96.0
+layout_mode = 2
 theme = SubResource("Theme_yy7b2")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -65,3 +64,4 @@ fit_content = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

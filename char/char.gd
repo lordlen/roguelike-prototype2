@@ -74,8 +74,10 @@ var is_returning := false
 var offset_target: Vector2
 
 var inventory: InventoryComponent
+var char_stats: CharacterStats
 
 func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
+	char_stats = stats
 	self.char_id = _curr_char_id
 	_curr_char_id += 1
 	self.is_elite = is_elite
@@ -110,11 +112,10 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	
 	self.inventory = InventoryComponent.new(self, 3)
 	#TODO: remove temporary potions
-	#if user_controlled:
-		#var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
-		#self.inventory.add_item(potion)
-		#self.inventory.add_item(potion)
-		#EventBus.inventory_updated.emit(self)
+	if user_controlled:
+		var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
+		self.inventory.add_item(potion)
+		EventBus.inventory_updated.emit(self)
 	
 	moved_last_turn = false
 	if alignment == Alignment.EVIL:
@@ -179,7 +180,7 @@ func move_to(new_grid_pos: Vector2i, speed: float = INF):
 			EventBus.stairs_popup_signal.emit()
 		if ItemManager.item_in_position(grid_position):
 			var item := ItemManager.get_top_item(grid_position).item_resource
-			var successful_pickup := item.on_pick_up(inventory)
+			var successful_pickup := await item.on_pick_up(inventory)
 			if successful_pickup:
 				ItemManager.pop_item_from_overworld(grid_position)
 
@@ -268,6 +269,9 @@ func can_traverse(pos: Vector2i):
 func is_user_controlled():
 	return user_controlled
 
+func is_asleep():
+	return self.curr_state == self.sleeping_state
+
 # control the character using user input. 
 func act_player():
 	turn_start()
@@ -303,12 +307,13 @@ func take_hit(attacker: Char, damage: int):
 
 func take_damage(damage: int) -> void:
 	self.curr_hp -= damage
+	self.curr_hp = clamp(curr_hp, 0, max_hp)
 	EventBus.character_hp_updated.emit(self)
 	if self.curr_hp <= 0:
 		die()
 
 func set_hp(hp: int) -> void:
-	self.curr_hp = hp
+	self.curr_hp = clamp(hp, 0, max_hp)
 	EventBus.character_hp_updated.emit(self)
 	if self.curr_hp <= 0:
 		die()
@@ -367,5 +372,6 @@ func hunt_with_team(prey: Char):
 
 func follow(ch: Char):
 	leader = ch
+	target_flow_map = leader.target_flow_map
 	if ch != self:
 		ch.followers.push_back(self)

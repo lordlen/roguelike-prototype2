@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=34 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" uid="uid://djehyyein7u8h" path="res://UI/potion_container.gd" id="6_lg7om"]
 [ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="8_e44n4"]
 [ext_resource type="Script" uid="uid://dhb2jbo7iasf3" path="res://card_count.gd" id="9_e44n4"]
+[ext_resource type="PackedScene" uid="uid://w70rvwim7l6d" path="res://UI/card_selector.tscn" id="10_q6cs3"]
+[ext_resource type="Script" uid="uid://ba8qij3w3lqqm" path="res://UI/event_dialog.gd" id="11_pgrna"]
+[ext_resource type="PackedScene" uid="uid://dxf37wpyk66y4" path="res://UI/options_button.tscn" id="12_pgrna"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i68f"]
 atlas = ExtResource("8_e44n4")
@@ -2072,6 +2075,62 @@ stretch_mode = 4
 layout_mode = 2
 text = "0"
 script = ExtResource("9_e44n4")
+
+[node name="CardListSelector" parent="UILayer" instance=ExtResource("10_q6cs3")]
+visible = false
+offset_bottom = 205.0
+
+[node name="EventDialog" type="Panel" parent="UILayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -147.0
+offset_right = 300.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_pgrna")
+
+[node name="Title" type="RichTextLabel" parent="UILayer/EventDialog"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Title"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="UILayer/EventDialog"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -108.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Some text to describe what's happening"
+
+[node name="Options" type="VBoxContainer" parent="UILayer/EventDialog"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" parent="UILayer/EventDialog/Options" instance=ExtResource("12_pgrna")]
+layout_mode = 2
+text = "Some description"
+autowrap_mode = 2
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_avahw")

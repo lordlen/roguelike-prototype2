@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=8 format=3 uid="uid://cliwh1ki312ok"]
+
+[ext_resource type="Script" uid="uid://pvp52vcunixo" path="res://items/shrines/shrine.gd" id="1_e8ge2"]
+[ext_resource type="Script" uid="uid://caxxhujwchyij" path="res://items/shrine_actions/bloody_shrine/bloody_shrine1.gd" id="1_niobb"]
+[ext_resource type="Script" uid="uid://7ar6fxymk4hy" path="res://items/shrine_actions/bloody_shrine/bloody_shrine2.gd" id="2_j22u5"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="3_j22u5"]
+
+[sub_resource type="Resource" id="Resource_7k17t"]
+script = ExtResource("1_niobb")
+action_name = "Pray"
+metadata/_custom_type_script = "uid://caxxhujwchyij"
+
+[sub_resource type="Resource" id="Resource_qpokp"]
+script = ExtResource("2_j22u5")
+metadata/_custom_type_script = "uid://7ar6fxymk4hy"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpokp"]
+atlas = ExtResource("3_j22u5")
+region = Rect2(128, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_e8ge2")
+item_name = "Bloody Shrine"
+texture = SubResource("AtlasTexture_qpokp")
+item_actions = Array[Object]([SubResource("Resource_7k17t"), SubResource("Resource_qpokp")])
+metadata/_custom_type_script = "uid://pvp52vcunixo"

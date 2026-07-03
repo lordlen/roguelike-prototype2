@@ -9,9 +9,9 @@ var offhand: CardInstance = null
 
 func _init(deck_list: Array[CardResource], innate_list: Array[CardResource]):
 	for card in deck_list:
-		self.deck_list.push_back(card)
+		self.deck_list.push_back(card.duplicate(true))
 	for card in innate_list:
-		self.innate_list.push_back(card)
+		self.innate_list.push_back(card.duplicate(true))
 
 # initialize should be called every time the player goes to another floor, removing
 # statuses and any kind of card scaling

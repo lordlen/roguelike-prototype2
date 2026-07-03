@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=8 format=3 uid="uid://bdcapm5d7w8bt"]
+
+[ext_resource type="Script" uid="uid://bmivken2lw1d6" path="res://items/shrine_actions/mirror_shrine/mirror_shrine1.gd" id="1_0ddfj"]
+[ext_resource type="Script" uid="uid://pvp52vcunixo" path="res://items/shrines/shrine.gd" id="1_8kx7s"]
+[ext_resource type="Script" uid="uid://ce3tdtdr10cvw" path="res://items/shrine_actions/mirror_shrine/mirror_shrine2.gd" id="1_gkyit"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="3_0ddfj"]
+
+[sub_resource type="Resource" id="Resource_h7unj"]
+script = ExtResource("1_0ddfj")
+action_name = "Look"
+metadata/_custom_type_script = "uid://bmivken2lw1d6"
+
+[sub_resource type="Resource" id="Resource_42qgu"]
+script = ExtResource("1_gkyit")
+action_name = "Shatter"
+metadata/_custom_type_script = "uid://ce3tdtdr10cvw"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42qgu"]
+atlas = ExtResource("3_0ddfj")
+region = Rect2(112, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_8kx7s")
+item_name = "Mirror Shrine"
+texture = SubResource("AtlasTexture_42qgu")
+item_actions = Array[Object]([SubResource("Resource_h7unj"), SubResource("Resource_42qgu")])
+metadata/_custom_type_script = "uid://pvp52vcunixo"

@@ -4,7 +4,7 @@ extends CardEffect
 @export var num_hits: int
 @export var card_name: String
 
-func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i]) -> void:
+func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	for c in actor.deck.draw_pile:
 		if c.card_name == card_name:
 			c.attack += atk_value

@@ -6,7 +6,11 @@ func _ready() -> void:
 	EventBus.new_actor_added.connect(on_new_actor_added)
 	EventBus.new_item_added.connect(on_new_item_added)
 	
-	Char.new(load(Char.stats_resources["hero"]), Vector2i(0,0))
+	var hero := Char.new(load(Char.stats_resources["hero"]), Vector2i(0,0))
+	var card_list : Array[CardInstance] = []
+	for card_resource in hero.deck.deck_list:
+		var card_instance := CardInstance.new(card_resource)
+		card_list.push_back(card_instance)
 	build_floor()
 
 func build_floor():
@@ -48,3 +52,7 @@ func _update_fog(char: Char):
 				if !char.explored_set.has(Vector2i(x,y)):
 					$Terrain/BlackFog.set_cell(Vector2i(x,y),0, Vector2i(0,4))
 		
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.

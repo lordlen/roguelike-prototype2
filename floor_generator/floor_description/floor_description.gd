@@ -11,9 +11,11 @@ extends Resource
 @export var turns_per_spawn: int = 100
 
 @export var item_pool: ItemPoolDescription
+@export var shrine_pool: ItemPoolDescription
+
 # items
 @export var potion_ratio: float = 1
-@export var shrine_ratio: float = 0 # 0.3
+@export var shrine_ratio: float = 1 # 0.3
 @export var gold_ratio: float = 1
 
 @export var initial_spawns: SpawnDescription

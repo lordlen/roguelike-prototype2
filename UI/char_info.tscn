@@ -15,6 +15,7 @@ atlas = ExtResource("5_di6j3")
 region = Rect2(0, 16, 16, 16)
 
 [node name="CharInfo" type="Panel"]
+visible = false
 custom_minimum_size = Vector2(0, 128)
 offset_right = 251.0
 offset_bottom = 128.0

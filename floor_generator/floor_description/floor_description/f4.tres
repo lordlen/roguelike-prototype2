@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FloorDescription" load_steps=27 format=3 uid="uid://dtnwiou8s4o2j"]
+[gd_resource type="Resource" script_class="FloorDescription" load_steps=28 format=3 uid="uid://dtnwiou8s4o2j"]
 
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_gk84h"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="1_r4dtd"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://bxtdio0jocibu" path="res://patterns/long_corridor.tres" id="15_1ec8d"]
 [ext_resource type="Resource" uid="uid://btljq16rqurqj" path="res://patterns/pillar.tres" id="16_jt7hm"]
 [ext_resource type="Resource" uid="uid://brcq5wokjhj4b" path="res://patterns/river.tres" id="17_ax4hi"]
+[ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="19_hyemp"]
 [ext_resource type="Resource" uid="uid://cnpojlql4ld0d" path="res://patterns/room_patterns/special_features/grass.tres" id="19_kkrvn"]
 [ext_resource type="Resource" uid="uid://df0uqg57jqj12" path="res://patterns/room_patterns/special_features/river.tres" id="20_qjdgf"]
 [ext_resource type="Resource" uid="uid://p0rhw655kxjm" path="res://patterns/room_patterns/special_features/small_corridor.tres" id="21_vf71x"]
@@ -48,6 +49,7 @@ room_patterns = Array[ExtResource("1_r4dtd")]([ExtResource("9_56r5f"), ExtResour
 special_patterns = Array[ExtResource("1_r4dtd")]([ExtResource("19_kkrvn"), ExtResource("20_qjdgf"), ExtResource("21_vf71x"), ExtResource("22_nxr0j")])
 stairs_patterns = Array[ExtResource("1_r4dtd")]([ExtResource("23_c50ir")])
 item_pool = ExtResource("7_8wh87")
+shrine_pool = ExtResource("19_hyemp")
 initial_spawns = SubResource("Resource_qil1r")
 subsequent_spawns = SubResource("Resource_arl57")
 elite_spawns = SubResource("Resource_47kvl")

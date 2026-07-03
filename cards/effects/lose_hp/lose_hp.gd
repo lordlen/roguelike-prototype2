@@ -1,7 +1,7 @@
 extends CardEffect
 
 @export var value: int
-func do(actor: Char, target_char: Char, card: CardInstance, path: Array[Vector2i]) -> void:
+func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	actor.take_damage(value)
 	card_effect_finished.emit()
 

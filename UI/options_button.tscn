@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxf37wpyk66y4"]
+
+[ext_resource type="Script" uid="uid://ki4fkplh8c75" path="res://event_button.gd" id="1_p0xya"]
+
+[node name="Button" type="Button"]
+text = "what the hell is this"
+script = ExtResource("1_p0xya")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

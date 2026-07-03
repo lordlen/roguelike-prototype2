@@ -21,7 +21,7 @@ func execute() -> bool:
 	# get the last element of the path
 	var dest := path[len(path) - 1]
 
-	var is_successful := item_action.use(actor, dest)
+	var is_successful := await item_action.use(actor, dest)
 
 	if is_successful:
 		actor.inventory.remove_item(item)

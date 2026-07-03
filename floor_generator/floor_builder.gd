@@ -53,6 +53,8 @@ func build_floor(floor_id: int):
 		var item : Item = floor_description.item_pool.get_random_item()
 		var pos : Vector2i = special_positions.pop_back()
 		ItemManager.add_item_to_overworld(item, pos)
+		# remove the pedestal
+		map.update_tile(pos, RoomPattern.TileType.FLOOR)
 	
 	for i in range(num_gold):
 		# TODO: get a variable number of gold
@@ -60,6 +62,14 @@ func build_floor(floor_id: int):
 		item.amount = 100
 		var pos : Vector2i = special_positions.pop_back()
 		ItemManager.add_item_to_overworld(item, pos)
+		map.update_tile(pos, RoomPattern.TileType.FLOOR)
+	
+	for i in range(num_shrine):
+		var item : Item = floor_description.shrine_pool.get_random_item()
+		var pos : Vector2i = special_positions.pop_back()
+		ItemManager.add_item_to_overworld(item, pos)
+		# remove the pedestal
+		map.update_tile(pos, RoomPattern.TileType.FLOOR)
 
 	var stairs_patterns : Array[RoomPattern]= []
 

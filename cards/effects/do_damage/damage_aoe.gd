@@ -1,6 +1,6 @@
 extends CardEffect
 
-func do(attacker: Char, defender: Char, card: CardInstance, path: Array[Vector2i]) -> void:
+func do(attacker: Char, defender: Char, card: CardInstance) -> void:
 	for x in range(attacker.grid_position.x - card.atk_range, attacker.grid_position.x + card.atk_range + 1):
 		for y in range(attacker.grid_position.y - card.atk_range, attacker.grid_position.y + card.atk_range + 1):
 			var pos := Vector2i(x,y)
