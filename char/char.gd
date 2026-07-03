@@ -111,11 +111,11 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	self.followers = []
 	
 	self.inventory = InventoryComponent.new(self, 3)
-	#TODO: remove temporary potions
-	if user_controlled:
-		var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
-		self.inventory.add_item(potion)
-		EventBus.inventory_updated.emit(self)
+	##TODO: remove temporary potions
+	#if user_controlled:
+		#var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
+		#self.inventory.add_item(potion)
+		#EventBus.inventory_updated.emit(self)
 	
 	moved_last_turn = false
 	if alignment == Alignment.EVIL:

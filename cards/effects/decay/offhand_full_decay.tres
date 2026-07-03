@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dr6qm45ybwdfu"]
+
+[ext_resource type="Script" uid="uid://bdp0h0mp50sur" path="res://cards/effects/decay/offhand_full_decay.gd" id="1_y7onw"]
+
+[resource]
+script = ExtResource("1_y7onw")
+identifier = "offhand_full_decay"
+description = "Set offhand defense to 0 until redraw."
+metadata/_custom_type_script = "uid://8j480ywki30u"

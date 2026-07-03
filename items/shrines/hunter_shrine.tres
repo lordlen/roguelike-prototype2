@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=8 format=3 uid="uid://dwmfqrsbqlvrx"]
+
+[ext_resource type="Script" uid="uid://pvp52vcunixo" path="res://items/shrines/shrine.gd" id="1_gkrho"]
+[ext_resource type="Script" uid="uid://tg4ok7ia3rwn" path="res://items/shrine_actions/hunter_shrine/hunter_shrine1.gd" id="1_np4ul"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="2_4stjb"]
+[ext_resource type="Script" uid="uid://brbhqup0qgkwl" path="res://items/shrine_actions/hunter_shrine/hunter_shrine2.gd" id="2_tcwhw"]
+
+[sub_resource type="Resource" id="Resource_dbafq"]
+script = ExtResource("1_np4ul")
+action_name = "Pray"
+metadata/_custom_type_script = "uid://tg4ok7ia3rwn"
+
+[sub_resource type="Resource" id="Resource_xhlds"]
+script = ExtResource("2_tcwhw")
+action_name = "Take bow"
+metadata/_custom_type_script = "uid://brbhqup0qgkwl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np4ul"]
+atlas = ExtResource("2_4stjb")
+region = Rect2(32, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_gkrho")
+item_name = "Hunter Shrine"
+texture = SubResource("AtlasTexture_np4ul")
+item_actions = Array[Object]([SubResource("Resource_dbafq"), SubResource("Resource_xhlds")])
+metadata/_custom_type_script = "uid://pvp52vcunixo"

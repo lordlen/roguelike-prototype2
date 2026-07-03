@@ -4,38 +4,54 @@
 [ext_resource type="PackedScene" uid="uid://dcxtws0dhq5pw" path="res://UI/card_icon.tscn" id="2_nsd0m"]
 [ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="2_wahmo"]
 
-[node name="CardRewardDialog" type="AcceptDialog"]
-canvas_item_default_texture_filter = 0
-oversampling_override = 1.0
-title = "Select a card"
-initial_position = 1
-size = Vector2i(600, 150)
-ok_button_text = "Skip"
+[node name="CardRewardDialog" type="Panel"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -108.0
+offset_right = 300.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_jn06u")
 card_reward_generator = ExtResource("2_wahmo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = -8.0
+offset_right = -5.0
 offset_bottom = 101.0
 grow_horizontal = 2
 alignment = 1
 
 [node name="CardReward1" parent="HBoxContainer" instance=ExtResource("2_nsd0m")]
-visible = false
 layout_mode = 2
 
 [node name="CardReward2" parent="HBoxContainer" instance=ExtResource("2_nsd0m")]
-visible = false
 layout_mode = 2
 
 [node name="CardReward3" parent="HBoxContainer" instance=ExtResource("2_nsd0m")]
-visible = false
 layout_mode = 2
 
-[connection signal="pressed" from="HBoxContainer/CardReward1" to="." method="_on_card_reward_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/CardReward2" to="." method="_on_card_reward_2_pressed"]
-[connection signal="pressed" from="HBoxContainer/CardReward3" to="." method="_on_card_reward_3_pressed"]
+[node name="SkipButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -31.0
+offset_right = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Skip"
+
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=8 format=3 uid="uid://cex8e56nox8dp"]
+
+[ext_resource type="Script" uid="uid://pvp52vcunixo" path="res://items/shrines/shrine.gd" id="1_817ga"]
+[ext_resource type="Script" uid="uid://dilc5ac6kvafh" path="res://items/shrine_actions/glass_shrine/glass_shrine1.gd" id="1_ih0gs"]
+[ext_resource type="Script" uid="uid://cw3usm3h53u07" path="res://items/shrine_actions/glass_shrine/glass_shrine2.gd" id="2_58kgy"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="4_6q04f"]
+
+[sub_resource type="Resource" id="Resource_n8jpe"]
+script = ExtResource("1_ih0gs")
+action_name = "Pray"
+metadata/_custom_type_script = "uid://dilc5ac6kvafh"
+
+[sub_resource type="Resource" id="Resource_gkqik"]
+script = ExtResource("2_58kgy")
+action_name = "Desecrate"
+metadata/_custom_type_script = "uid://cw3usm3h53u07"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5bkn"]
+atlas = ExtResource("4_6q04f")
+region = Rect2(96, 16, 16, 16)
+filter_clip = true
+
+[resource]
+script = ExtResource("1_817ga")
+item_name = "Glass Shrine"
+texture = SubResource("AtlasTexture_x5bkn")
+item_actions = Array[Object]([SubResource("Resource_n8jpe"), SubResource("Resource_gkqik")])
+metadata/_custom_type_script = "uid://pvp52vcunixo"

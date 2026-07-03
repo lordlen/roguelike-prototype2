@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=10 format=3 uid="uid://b2hqj6e6kkmva"]
+
+[ext_resource type="Script" uid="uid://pvp52vcunixo" path="res://items/shrines/shrine.gd" id="1_1fsm2"]
+[ext_resource type="Script" uid="uid://c35hoxlwe7dir" path="res://items/shrine_actions/turtle_shrine/turtle_shrine1.gd" id="1_4ok8p"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="2_6i4mg"]
+[ext_resource type="Script" uid="uid://binwqd5e4ahhb" path="res://items/shrine_actions/turtle_shrine/turtle_shrine2.gd" id="2_wtfp8"]
+[ext_resource type="Script" uid="uid://6matssbqmag4" path="res://items/shrine_actions/turtle_shrine/turtle_shrine3.gd" id="3_t1bix"]
+
+[sub_resource type="Resource" id="Resource_pkpw2"]
+script = ExtResource("1_4ok8p")
+action_name = "Pray"
+metadata/_custom_type_script = "uid://c35hoxlwe7dir"
+
+[sub_resource type="Resource" id="Resource_k6evc"]
+script = ExtResource("2_wtfp8")
+action_name = "Feed"
+metadata/_custom_type_script = "uid://binwqd5e4ahhb"
+
+[sub_resource type="Resource" id="Resource_xday7"]
+script = ExtResource("3_t1bix")
+action_name = "Desecrate"
+metadata/_custom_type_script = "uid://6matssbqmag4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnkta"]
+atlas = ExtResource("2_6i4mg")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_1fsm2")
+item_name = "Turtle Shrine"
+texture = SubResource("AtlasTexture_gnkta")
+item_actions = Array[Object]([SubResource("Resource_pkpw2"), SubResource("Resource_k6evc"), SubResource("Resource_xday7")])
+metadata/_custom_type_script = "uid://pvp52vcunixo"

@@ -27,6 +27,8 @@ func set_options(owner: Char, options: Array[ItemAction]):
 	var options_button_scene: PackedScene = load("res://UI/options_button.tscn")
 	# add new buttons
 	for action in options:
+		if !action.is_usable(owner):
+			continue
 		var options_button : OptionsButton= options_button_scene.instantiate()
 		options_button.set_action(action)
 		options_button.set_user(owner)

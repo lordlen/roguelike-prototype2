@@ -23,6 +23,9 @@ func get_radius_desc() -> String:
 		return ""
 	return " (radius: %d)" % effect_radius
 
+func is_usable(owner: Char):
+	return true
+
 func _get_target_chars(pos: Vector2i) -> Array[Char]:
 	var positions : Array[Vector2i] = []
 	for x in range(pos.x - effect_radius, pos.x + effect_radius + 1):

@@ -35,6 +35,10 @@ func remove_item(item: Item) -> void:
 	items.erase(item)
 	EventBus.inventory_updated.emit(owner)
 
+func remove_at(ind: int) -> void:
+	items.pop_at(ind)
+	EventBus.inventory_updated.emit(owner)
+
 func add_gold(value: int) -> void:
 	gold += value
 	EventBus.update_gold.emit(owner)

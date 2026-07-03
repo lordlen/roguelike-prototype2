@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=8 format=3 uid="uid://byijgeyyqlf8c"]
+
+[ext_resource type="Script" uid="uid://pvp52vcunixo" path="res://items/shrines/shrine.gd" id="1_kho1g"]
+[ext_resource type="Script" uid="uid://xn3tv6j10p84" path="res://items/shrine_actions/simplicity_shrine/simplicity_shrine1.gd" id="1_uvt87"]
+[ext_resource type="Script" uid="uid://b2yjhrumyo8bb" path="res://items/shrine_actions/simplicity_shrine/simplicity_shrine2.gd" id="2_emv6n"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="2_fy6tu"]
+
+[sub_resource type="Resource" id="Resource_adbi6"]
+script = ExtResource("1_uvt87")
+action_name = "Strikes"
+metadata/_custom_type_script = "uid://xn3tv6j10p84"
+
+[sub_resource type="Resource" id="Resource_p5awq"]
+script = ExtResource("2_emv6n")
+action_name = "Defends"
+metadata/_custom_type_script = "uid://b2yjhrumyo8bb"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70r87"]
+atlas = ExtResource("2_fy6tu")
+region = Rect2(64, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_kho1g")
+item_name = "Simplicity Shrine"
+texture = SubResource("AtlasTexture_70r87")
+item_actions = Array[Object]([SubResource("Resource_adbi6"), SubResource("Resource_p5awq")])
+metadata/_custom_type_script = "uid://pvp52vcunixo"

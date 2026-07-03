@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=14 format=3 uid="uid://cshojnbtmbulc"]
+[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=13 format=3 uid="uid://cshojnbtmbulc"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_g7xp1"]
 [ext_resource type="Resource" uid="uid://bqbd7h3blkn1" path="res://cards/card_resources/hero/common/all_out_strike.tres" id="2_4kgsb"]
@@ -12,9 +12,8 @@
 [ext_resource type="Resource" uid="uid://clgcmas3762qd" path="res://cards/card_resources/hero/common/shield_charge.tres" id="10_2le0l"]
 [ext_resource type="Resource" uid="uid://bqkukg27xxc4f" path="res://cards/card_resources/hero/common/leaf_shield.tres" id="11_4kgsb"]
 [ext_resource type="Resource" uid="uid://r0xmcf3pni07" path="res://cards/card_resources/hero/common/whirl.tres" id="11_ttwsv"]
-[ext_resource type="Resource" uid="uid://c8ygn5t3qrtii" path="res://cards/card_resources/hero/common/hemokinesis.tres" id="12_7g44m"]
 
 [resource]
 script = ExtResource("2_khdtg")
-CommonPool = Array[ExtResource("1_g7xp1")]([ExtResource("2_4kgsb"), ExtResource("3_7g44m"), ExtResource("4_bji5y"), ExtResource("5_gaomr"), ExtResource("7_8goj0"), ExtResource("8_k22cd"), ExtResource("9_w8h1m"), ExtResource("10_2le0l"), ExtResource("11_ttwsv"), ExtResource("11_4kgsb"), ExtResource("12_7g44m")])
+CommonPool = Array[ExtResource("1_g7xp1")]([ExtResource("2_4kgsb"), ExtResource("3_7g44m"), ExtResource("4_bji5y"), ExtResource("5_gaomr"), ExtResource("7_8goj0"), ExtResource("8_k22cd"), ExtResource("9_w8h1m"), ExtResource("10_2le0l"), ExtResource("11_ttwsv"), ExtResource("11_4kgsb")])
 metadata/_custom_type_script = "uid://cmd7omwhxqjw8"

@@ -1951,6 +1951,7 @@ grow_vertical = 2
 script = ExtResource("2_h2lqh")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UILayer/CharInfoContainer"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

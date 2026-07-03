@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=6 format=3 uid="uid://cs771hab1pdi4"]
+
+[ext_resource type="Script" uid="uid://pvp52vcunixo" path="res://items/shrines/shrine.gd" id="1_0ehu4"]
+[ext_resource type="Script" uid="uid://byvea8384satt" path="res://items/shrine_actions/purifying_shrine/purifying_shrine.gd" id="1_u3t7i"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="3_wquv4"]
+
+[sub_resource type="Resource" id="Resource_bjt04"]
+script = ExtResource("1_u3t7i")
+action_name = "Pray"
+metadata/_custom_type_script = "uid://byvea8384satt"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avnsb"]
+atlas = ExtResource("3_wquv4")
+region = Rect2(112, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_0ehu4")
+item_name = "Purifying Shrine"
+texture = SubResource("AtlasTexture_avnsb")
+item_actions = Array[Object]([SubResource("Resource_bjt04")])
+metadata/_custom_type_script = "uid://pvp52vcunixo"

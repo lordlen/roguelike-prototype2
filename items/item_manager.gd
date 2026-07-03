@@ -41,7 +41,8 @@ func get_items_in_area(positions: Array[Vector2i]) -> Array[ItemOverworld]:
 	return ret
 
 func clear_items():
-	for key in item_dictionary:
+	var keys := item_dictionary.keys().duplicate()
+	for key in keys:
 		var items := item_dictionary[key]
 		while !items.is_empty():
 			pop_item_from_overworld(key)

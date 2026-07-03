@@ -89,6 +89,7 @@ func discard_offhand():
 		offhand = null
 
 func dispose_offhand():
+	print('dispose_offhand')
 	if offhand == null:
 		return
 
