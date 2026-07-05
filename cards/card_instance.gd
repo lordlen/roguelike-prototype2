@@ -41,9 +41,9 @@ func _init(r: CardResource):
 	is_innate = r.is_innate
 	is_ethereal = r.is_ethereal
 	
-	attack_effects = r.attack_effects.duplicate()
-	defense_effects = r.defense_effects.duplicate()
-	on_hit_effects = r.on_hit_effects.duplicate()
+	attack_effects = r.attack_effects.duplicate(true)
+	defense_effects = r.defense_effects.duplicate(true)
+	on_hit_effects = r.on_hit_effects.duplicate(true)
 	tmp_attack_effects = []
 	tmp_defense_effects = []
 	tmp_on_hit_effects = []

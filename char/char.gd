@@ -189,7 +189,9 @@ func turn_start():
 	flow_map = null
 	moved_this_turn = false
 	
-	if is_defending and is_hit:
+	# if offhand has defense effects, also dispose
+	if is_defending and (is_hit or (deck.offhand != null and\
+	!(deck.offhand.defense_effects + deck.offhand.tmp_defense_effects).is_empty())):
 		deck.dispose_offhand()
 
 	deck.draw_empty()

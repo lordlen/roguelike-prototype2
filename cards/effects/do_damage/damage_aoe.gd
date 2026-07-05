@@ -12,4 +12,6 @@ func do(attacker: Char, defender: Char, card: CardInstance) -> void:
 			var attack_val := card.attack
 			for _i in num_hits:
 				char.take_hit(attacker, attack_val)
+				if char.is_dead():
+					break
 	card_effect_finished.emit()

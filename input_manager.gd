@@ -15,7 +15,12 @@ var actor: Char
 
 func _ready() -> void:
 	EventBus.user_input_requested.connect(on_user_input_requested)
+	EventBus.camera_move_requested.connect(move_camera_position)
 	EventBus.item_used.connect(on_item_used)
+	EventBus.wait_button_pressed.connect(on_wait_pressed)
+	EventBus.swap_button_pressed.connect(on_swap_pressed)
+	EventBus.reshuffle_button_pressed.connect(on_reshuffle_pressed)
+	EventBus.defend_button_pressed.connect(on_defend_pressed)
 
 func on_user_input_requested(actor: Char):
 	listening_user_input = true
@@ -98,3 +103,26 @@ func on_item_used(item: Item, item_action: ItemAction):
 			var turn_passed := await UseItemAction.new(actor, item, item_action, actor.grid_position).execute()
 			if turn_passed:
 				end_turn()
+
+func move_camera_position(grid_position: Vector2i):
+	position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
+
+func on_wait_pressed():
+	if listening_user_input:
+		end_turn()
+
+func on_swap_pressed():
+	if listening_user_input:
+		self.actor.swap()
+
+func on_reshuffle_pressed():
+	if listening_user_input:
+		var turn_passed := await ReshuffleAction.new(self.actor).execute()
+		if turn_passed:
+			end_turn()
+
+func on_defend_pressed():
+	if listening_user_input:
+		var turn_passed := await DefendAction.new(self.actor).execute()
+		if turn_passed:
+			end_turn()

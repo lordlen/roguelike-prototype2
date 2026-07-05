@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SetNumHits" load_steps=2 format=3 uid="uid://cxmgcucws5eu3"]
+
+[ext_resource type="Script" uid="uid://c83nf83y5qf2p" path="res://cards/effects/increment_stats/set_num_hits.gd" id="1_uv3gq"]
+
+[resource]
+script = ExtResource("1_uv3gq")
+identifier = "set_num_hits_0"
+metadata/_custom_type_script = "uid://8j480ywki30u"

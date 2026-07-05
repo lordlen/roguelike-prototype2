@@ -4,7 +4,7 @@ extends CardEffect
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	if actor.deck.offhand != null:
-		actor.deck.offhand.tmp_on_hit_effects.push_back(card_effect)
+		CardEffect.combine_effects(actor.deck.offhand.tmp_on_hit_effects, [card_effect])
 
 func get_description() -> String:
 	return description % card_effect.get_description()

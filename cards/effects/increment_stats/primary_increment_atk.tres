@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bdf12l6o3oiib"]
+
+[ext_resource type="Script" uid="uid://sif60vjtsjr1" path="res://cards/effects/increment_stats/primary_increment_attack.gd" id="1_2kvmi"]
+
+[resource]
+script = ExtResource("1_2kvmi")
+atk_value = 2
+identifier = "primary_increment_attack"
+description = "Primary "
+metadata/_custom_type_script = "uid://8j480ywki30u"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://iubmhdp0xp51"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_hmcxy"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_5k5r2"]
+[ext_resource type="Resource" uid="uid://do3dp27xexj7s" path="res://cards/effects/leaf_storm/leaf_storm_start.tres" id="2_chscd"]
+[ext_resource type="Resource" uid="uid://dp4oks3b466a5" path="res://cards/effects/do_damage/damage_aoe.tres" id="3_upun0"]
+[ext_resource type="Resource" uid="uid://cxmgcucws5eu3" path="res://cards/effects/increment_stats/set_num_hits_0.tres" id="4_66t7m"]
+[ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="6_upun0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66t7m"]
+atlas = ExtResource("6_upun0")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_5k5r2")
+texture = SubResource("AtlasTexture_66t7m")
+attack = 4
+range = 1
+attack_effects = Array[ExtResource("1_hmcxy")]([ExtResource("2_chscd"), ExtResource("3_upun0"), ExtResource("4_66t7m")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

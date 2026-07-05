@@ -17,6 +17,8 @@ signal stairs_popup_signal
 
 signal notable_occurance
 
+signal camera_move_requested
+
 signal char_stopped_moving
 
 signal inventory_updated
@@ -29,3 +31,8 @@ signal cards_selected
 
 signal event_requested
 signal event_concluded
+
+signal wait_button_pressed
+signal swap_button_pressed
+signal reshuffle_button_pressed
+signal defend_button_pressed

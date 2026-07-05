@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://hxhctvfn7bhe"]
+[gd_scene load_steps=10 format=3 uid="uid://hxhctvfn7bhe"]
 
 [ext_resource type="Texture2D" uid="uid://buvo8ycn8vw3t" path="res://resources/solid_white.png" id="1_3hslj"]
 [ext_resource type="Script" uid="uid://b7voof1h1kces" path="res://UI/char_info.gd" id="1_4au0v"]
 [ext_resource type="PackedScene" uid="uid://dcxtws0dhq5pw" path="res://UI/card_icon.tscn" id="2_7ult6"]
 [ext_resource type="PackedScene" uid="uid://dpycyvsiqurf6" path="res://UI/card_list_icon.tscn" id="4_5q3x0"]
 [ext_resource type="Texture2D" uid="uid://ni4f1vnmov4a" path="res://resources/draw_discard.png" id="5_di6j3"]
+[ext_resource type="Texture2D" uid="uid://dytjh3g53grrv" path="res://resources/camera_move_button.png" id="6_ov0qe"]
+[ext_resource type="Script" uid="uid://b7eowkhp3pwu2" path="res://UI/camera_button.gd" id="7_ov0qe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i68f"]
 atlas = ExtResource("5_di6j3")
@@ -15,9 +17,8 @@ atlas = ExtResource("5_di6j3")
 region = Rect2(0, 16, 16, 16)
 
 [node name="CharInfo" type="Panel"]
-visible = false
 custom_minimum_size = Vector2(0, 128)
-offset_right = 251.0
+offset_right = 277.0
 offset_bottom = 128.0
 size_flags_vertical = 3
 script = ExtResource("1_4au0v")
@@ -26,7 +27,7 @@ script = ExtResource("1_4au0v")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_bottom = 31.0
 grow_horizontal = 2
 text = "My Name"
 
@@ -85,7 +86,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -68.0
+offset_top = -64.0
+offset_right = -51.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -112,3 +114,24 @@ is_sorted = true
 layout_mode = 2
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_e44n4")
+
+[node name="CameraButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -50.0
+offset_right = -10.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("6_ov0qe")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("7_ov0qe")
+
+[connection signal="pressed" from="CameraButton" to="." method="_on_camera_button_pressed"]

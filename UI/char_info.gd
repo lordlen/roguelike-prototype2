@@ -43,3 +43,8 @@ func update(ch: Char):
 		$MarginContainer/HBoxContainer/DrawPile.set_card_list(ch.deck.draw_pile)
 		$MarginContainer/HBoxContainer/DiscardPile.set_card_list(ch.deck.discard_pile)
 	
+
+
+func _on_camera_button_pressed() -> void:
+	var pos := character.grid_position
+	EventBus.camera_move_requested.emit(pos)

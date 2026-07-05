@@ -7,4 +7,6 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		actor.attack_animation.call_deferred(target_char.grid_position)
 		await actor.char_finished_attacking
 		await target_char.take_hit(actor, attack_val)
+		if target_char.is_dead():
+			break
 	card_effect_finished.emit()

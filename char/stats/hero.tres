@@ -34,5 +34,5 @@ vision_range = 10
 sleeping = SubResource("Resource_ejhup")
 wandering = SubResource("Resource_x8o02")
 hunting = SubResource("Resource_67pbj")
-cards = Array[ExtResource("1_67pbj")]([ExtResource("2_x8o02"), ExtResource("2_x8o02"), ExtResource("2_x8o02"), ExtResource("3_vjd6e"), ExtResource("3_vjd6e"), ExtResource("3_vjd6e")])
+cards = Array[ExtResource("1_67pbj")]([ExtResource("3_vjd6e"), ExtResource("3_vjd6e"), ExtResource("3_vjd6e"), ExtResource("2_x8o02"), ExtResource("2_x8o02"), ExtResource("2_x8o02")])
 metadata/_custom_type_script = "uid://btuk5gl5wcri7"

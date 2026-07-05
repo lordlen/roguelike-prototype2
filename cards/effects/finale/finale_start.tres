@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://rjf015no34ik"]
+
+[ext_resource type="Script" uid="uid://bqbnu8o0a8v44" path="res://cards/effects/finale/finale_start.gd" id="1_bvh1e"]
+
+[resource]
+script = ExtResource("1_bvh1e")
+identifier = "finale_start"
+description = "Hit as many times as cards in the discard pile."
+metadata/_custom_type_script = "uid://8j480ywki30u"
