@@ -54,7 +54,7 @@ func character_controller(event: InputEvent):
 		for actor in ActorManager.get_chars():
 			actor.visible = true
 	elif event.is_action_pressed("wait"):
-		turn_passed = true
+		turn_passed = await WaitAction.new(self.actor).execute()
 	elif event.is_action_pressed("swap"):
 		self.actor.swap()
 	elif event.is_action_pressed("reshuffle"):

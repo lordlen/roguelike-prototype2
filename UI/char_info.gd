@@ -47,4 +47,5 @@ func update(ch: Char):
 
 func _on_camera_button_pressed() -> void:
 	var pos := character.grid_position
+	character.spawn_indicator_particle()
 	EventBus.camera_move_requested.emit(pos)

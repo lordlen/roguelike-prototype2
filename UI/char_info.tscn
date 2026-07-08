@@ -1,12 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://hxhctvfn7bhe"]
+[gd_scene load_steps=14 format=3 uid="uid://hxhctvfn7bhe"]
 
 [ext_resource type="Texture2D" uid="uid://buvo8ycn8vw3t" path="res://resources/solid_white.png" id="1_3hslj"]
 [ext_resource type="Script" uid="uid://b7voof1h1kces" path="res://UI/char_info.gd" id="1_4au0v"]
 [ext_resource type="PackedScene" uid="uid://dcxtws0dhq5pw" path="res://UI/card_icon.tscn" id="2_7ult6"]
 [ext_resource type="PackedScene" uid="uid://dpycyvsiqurf6" path="res://UI/card_list_icon.tscn" id="4_5q3x0"]
+[ext_resource type="Texture2D" uid="uid://eqqgdwr01yd2" path="res://resources/tiny_indicators.png" id="4_rw6pc"]
 [ext_resource type="Texture2D" uid="uid://ni4f1vnmov4a" path="res://resources/draw_discard.png" id="5_di6j3"]
 [ext_resource type="Texture2D" uid="uid://dytjh3g53grrv" path="res://resources/camera_move_button.png" id="6_ov0qe"]
 [ext_resource type="Script" uid="uid://b7eowkhp3pwu2" path="res://UI/camera_button.gd" id="7_ov0qe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqtr0"]
+atlas = ExtResource("4_rw6pc")
+region = Rect2(0, 0, 4, 4)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qgtt7"]
+load_path = "res://.godot/imported/tiny_indicators.png-f0b74f80228cf84264197514d1686ad4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhae5"]
+atlas = SubResource("CompressedTexture2D_qgtt7")
+region = Rect2(4, 0, 4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i68f"]
 atlas = ExtResource("5_di6j3")
@@ -17,6 +29,7 @@ atlas = ExtResource("5_di6j3")
 region = Rect2(0, 16, 16, 16)
 
 [node name="CharInfo" type="Panel"]
+z_index = 10
 custom_minimum_size = Vector2(0, 128)
 offset_right = 277.0
 offset_bottom = 128.0
@@ -100,9 +113,40 @@ layout_mode = 2
 
 [node name="PrimaryIcon" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_7ult6")]
 layout_mode = 2
+tooltip_text = "Primary
+This card is used to attack."
+
+[node name="AttackIndicator" type="TextureRect" parent="MarginContainer/HBoxContainer/PrimaryIcon"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5.5
+offset_top = -12.0
+offset_right = 6.5
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_rqtr0")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="OffhandIcon" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_7ult6")]
 layout_mode = 2
+tooltip_text = "Offhand
+This card is used to defend."
+
+[node name="DefendIndicator" type="TextureRect" parent="MarginContainer/HBoxContainer/OffhandIcon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5.5
+offset_top = -12.0
+offset_right = 6.5
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_hhae5")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="DrawPile" parent="MarginContainer/HBoxContainer" instance=ExtResource("4_5q3x0")]
 layout_mode = 2
@@ -123,10 +167,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = -50.0
-offset_right = -10.0
-offset_bottom = -16.0
+offset_left = -58.0
+offset_top = -62.0
+offset_right = -5.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("6_ov0qe")

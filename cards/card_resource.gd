@@ -12,14 +12,24 @@ const card_map := {
 	toxic_body = "res://cards/card_resources/toxic_body.tres"
 }
 
+var max_stats = 100
+
 @export var texture: Texture2D
 
 @export var name: String
 
-@export var attack: int
-@export var defense: int
-@export var num_hits: int
-@export var range: int
+@export var attack: int:
+	set(value):
+		attack = clamp(value, 0, max_stats)
+@export var defense: int:
+	set(value):
+		defense = clamp(value, 0, max_stats)
+@export var num_hits: int:
+	set(value):
+		num_hits = clamp(value, 0, max_stats)
+@export var range: int:
+	set(value):
+		range = clamp(value, 0, max_stats)
 @export var is_dodge: bool
 @export var exhausts: bool
 @export var is_innate: bool

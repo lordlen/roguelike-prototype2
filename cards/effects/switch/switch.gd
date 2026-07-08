@@ -2,6 +2,6 @@ extends CardEffect
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var discard_card : CardInstance = actor.deck.discard_pile.pop_back()
-	actor.deck.discard_offhand()
-	actor.deck.offhand = discard_card
+	actor.deck.discard_primary()
+	actor.deck.primary = discard_card
 	card_effect_finished.emit()

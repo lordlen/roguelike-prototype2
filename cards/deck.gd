@@ -1,5 +1,6 @@
 class_name Deck
 
+var deck_owner: Char
 var deck_list: Array[CardResource] = []
 var innate_list: Array[CardResource] = []
 var draw_pile: Array[CardInstance] = []
@@ -7,7 +8,11 @@ var discard_pile: Array[CardInstance] = []
 var primary: CardInstance = null
 var offhand: CardInstance = null
 
-func _init(deck_list: Array[CardResource], innate_list: Array[CardResource]):
+static var reshuffle_texture := preload("res://indicators/reshuffle_indicator.tres")
+
+
+func _init(owner: Char, deck_list: Array[CardResource], innate_list: Array[CardResource]):
+	deck_owner = owner
 	for card in deck_list:
 		self.deck_list.push_back(card.duplicate(true))
 	for card in innate_list:
@@ -50,6 +55,7 @@ func draw_empty():
 	if offhand == null:
 		var card : CardInstance = draw()
 		offhand = card
+	EventBus.character_deck_updated.emit(deck_owner)
 
 func draw() -> CardInstance:
 	if draw_pile.is_empty():
@@ -62,11 +68,16 @@ func discard_primary():
 	if primary != null:
 		primary.clear_tmp_effects()
 		discard_pile.push_back(primary)
+		
+		deck_owner.spawn_discard_particle(primary.texture)
+		
 		primary = null
+		EventBus.character_deck_updated.emit(deck_owner)
 
 func exhaust_primary():
 	if primary != null:
 		primary = null
+		EventBus.character_deck_updated.emit(deck_owner)
 
 func dispose_primary():
 	if primary == null:
@@ -80,16 +91,18 @@ func dispose_primary():
 func exhaust_offhand():
 	if offhand != null:
 		offhand = null
+		EventBus.character_deck_updated.emit(deck_owner)
 
 func discard_offhand():
 	# remove temporary effects from the offhand
 	if offhand != null:
 		offhand.clear_tmp_effects()
 		discard_pile.push_back(offhand)
+		deck_owner.spawn_discard_particle(offhand.texture)
 		offhand = null
+		EventBus.character_deck_updated.emit(deck_owner)
 
 func dispose_offhand():
-	print('dispose_offhand')
 	if offhand == null:
 		return
 
@@ -102,12 +115,14 @@ func discard_top():
 	if draw_pile.size() != 0:
 		var discarded_card : CardInstance = draw_pile.pop_back()
 		discard_pile.push_back(discarded_card)
+		EventBus.character_deck_updated.emit(deck_owner)
 
 func discard_all():
 	discard_primary()
 	discard_offhand()
 	discard_pile.append_array(draw_pile)
 	draw_pile.clear()
+	EventBus.character_deck_updated.emit(deck_owner)
 
 func reshuffle():
 	# discard hand
@@ -144,19 +159,18 @@ func reshuffle():
 	
 	draw_pile = tmp
 	draw_empty()
-	# reset decay
-	#if primary != null:
-		#primary.reset_defense_decay()
-	#if offhand != null:
-		#offhand.reset_defense_decay()
+	var reshuffle_indicator := load("res://indicators/reshuffle_indicator.tres")
+	deck_owner.spawn_discard_particle(reshuffle_indicator)
 
 func swap():
 	var temp := offhand
 	offhand = primary
 	primary = temp
+	EventBus.character_deck_updated.emit(deck_owner)
 
 func add_to_draw(card: CardInstance):
 	draw_pile.push_back(card)
+	EventBus.character_deck_updated.emit(deck_owner)
 
 func dredge():
 	if discard_pile.is_empty():

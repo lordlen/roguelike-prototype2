@@ -76,6 +76,9 @@ var offset_target: Vector2
 var inventory: InventoryComponent
 var char_stats: CharacterStats
 
+var discard_particle_scene: PackedScene = load("res://indicators/discard_particle.tscn")
+var indicator_particle_scene: PackedScene = load("res://indicators/indicator_particle.tscn")
+
 func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	char_stats = stats
 	self.char_id = _curr_char_id
@@ -90,7 +93,7 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	self.max_hp = randi_range(stats.min_hp, stats.max_hp)
 	self.curr_hp = self.max_hp
 
-	self.deck = Deck.new(stats.cards, stats.innate_cards)
+	self.deck = Deck.new(self, stats.cards, stats.innate_cards)
 	self.deck.initialize()
 	
 	# AI
@@ -146,7 +149,15 @@ func _physics_process(delta: float) -> void:
 				is_returning = true
 			else:
 				offset = offset.move_toward(offset_target, attack_speed * delta)
-		
+
+func spawn_discard_particle(texture: Texture):
+	var discard_particle : Sprite2D = discard_particle_scene.instantiate()
+	discard_particle.texture = texture
+	add_child(discard_particle)
+
+func spawn_indicator_particle():
+	var indicator_particle : Sprite2D = indicator_particle_scene.instantiate()
+	add_child(indicator_particle)
 
 func attack_animation(target_grid_pos: Vector2i):
 	is_attacking = true

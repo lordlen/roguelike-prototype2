@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://50uljec0g7bw"]
+
+[sub_resource type="GDScript" id="GDScript_typ3j"]
+script/source = "extends Node2D
+
+var anchor: Vector2i
+
+func _unhandled_input(event: InputEvent) -> void:
+	if !visible:
+		return
+	if event is InputEventMouseMotion:
+		# translate mouse positions to grid
+		var mouse_position_grid : Vector2i = floor(get_global_mouse_position() / Consts.TILE_SIZE)
+		var path := Geometry2D.bresenham_line(anchor, mouse_position_grid)
+"
+
+[node name="LineIndicator" type="Node2D"]
+script = SubResource("GDScript_typ3j")
