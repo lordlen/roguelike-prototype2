@@ -85,7 +85,7 @@ func random_spawn_character(spawn_group: SpawnGroup, is_awake := false, is_elite
 	var followers : Array[CharacterStats] = spawn_group.group.slice(1)
 	var spawn_tiles : Array[RoomPattern.TileType] = [RoomPattern.TileType.FLOOR, RoomPattern.TileType.GRASS]
 	if ch_stats.traversal == Char.Traversal.AQUATIC:
-		spawn_tiles = [RoomPattern.TileType.WATER]
+		spawn_tiles.append(RoomPattern.TileType.WATER)
 	var possible_positions := Globals.floor_map.get_type_positions(spawn_tiles)
 	# check all actors
 	var actor_positions = ActorManager.get_chars().map(func(ch: Char) -> Vector2i: return ch.grid_position)

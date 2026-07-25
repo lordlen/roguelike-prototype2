@@ -1,9 +1,10 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://0abnriy70kus"]
 
-[ext_resource type="Script" uid="uid://cm4a5thrbfw4e" path="res://cards/effects/modify_terrain/generate_random_grass.gd" id="1_5vd6f"]
+[ext_resource type="Script" uid="uid://cm4a5thrbfw4e" path="res://cards/effects/modify_terrain/generate_random_tile.gd" id="1_5vd6f"]
 
 [resource]
 script = ExtResource("1_5vd6f")
+tile_type = 3
 identifier = "generate_grass"
 description = "Create a grass tile in an adjacent tile."
 metadata/_custom_type_script = "uid://8j480ywki30u"

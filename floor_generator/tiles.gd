@@ -8,7 +8,8 @@ static var TileDictionary : Dictionary[RoomPattern.TileType, Tile] = {
 	RoomPattern.TileType.WATER: Water.new(),
 	RoomPattern.TileType.PEDESTAL: Ground.new(),
 	RoomPattern.TileType.TRAMPLED_GRASS: Ground.new(),
-	RoomPattern.TileType.STAIRS: Ground.new()
+	RoomPattern.TileType.STAIRS: Ground.new(),
+	RoomPattern.TileType.LOCKED_DOOR: Wall.new()
 }
 
 static func get_pf_cost(traversal: Char.Traversal, tile_type: RoomPattern.TileType) -> float:
@@ -51,8 +52,6 @@ class Ground extends Tile:
 		return false
 	
 	static func pf_cost(traversal: Char.Traversal) -> float:
-		if traversal == Char.Traversal.AQUATIC:
-			return INF
 		return 1.0
 
 class Grass extends Tile:
@@ -66,12 +65,12 @@ class Grass extends Tile:
 		return true
 	
 	static func pf_cost(traversal: Char.Traversal) -> float:
-		if traversal == Char.Traversal.AQUATIC:
-			return INF
 		return 1.0
 
 class Water extends Tile:
 	static func on_walk(actor: Char) -> void:
+		if actor.traversal == Char.Traversal.AQUATIC:
+			return
 		if actor.deck.draw_pile.is_empty():
 			# drowning damage
 			actor.take_damage(1)

@@ -53,6 +53,8 @@ func character_controller(event: InputEvent):
 	if event.is_action_pressed("see_all"):
 		for actor in ActorManager.get_chars():
 			actor.visible = true
+		for item in ItemManager.get_all_items():
+			item.visible = true
 	elif event.is_action_pressed("wait"):
 		turn_passed = await WaitAction.new(self.actor).execute()
 	elif event.is_action_pressed("swap"):

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://co4v26dq3dq2q"]
+
+[ext_resource type="Script" uid="uid://bq302hvgrdk0q" path="res://cards/effects/summon/summon_adjacent.gd" id="1_fm5dg"]
+[ext_resource type="Resource" uid="uid://clwmjki86acoi" path="res://char/stats/slime.tres" id="2_73enj"]
+
+[resource]
+script = ExtResource("1_fm5dg")
+summoned_char = ExtResource("2_73enj")
+identifier = "summon_slime_adjacent"
+description = "Summon a slime."
+metadata/_custom_type_script = "uid://8j480ywki30u"

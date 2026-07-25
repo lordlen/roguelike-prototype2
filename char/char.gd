@@ -3,6 +3,13 @@ extends Sprite2D
 
 signal char_finished_moving
 signal char_finished_attacking
+signal char_attacked
+signal char_defended
+signal char_reshuffled
+signal char_used_item
+signal char_is_hit
+signal char_took_damage
+signal char_card_added
 
 const stats_resources := {
 	hero = "res://char/stats/hero.tres",
@@ -114,6 +121,9 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	self.followers = []
 	
 	self.inventory = InventoryComponent.new(self, 3)
+	
+	for item in stats.items:
+		item.on_pick_up(self.inventory)
 	##TODO: remove temporary potions
 	#if user_controlled:
 		#var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
@@ -315,6 +325,7 @@ func take_hit(attacker: Char, damage: int):
 	is_hit = true
 	if offhand != null:
 		offhand.do_on_hit(attacker, self)
+		char_is_hit.emit(attacker)
 	EventBus.character_deck_updated.emit(self)
 
 func take_damage(damage: int) -> void:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://mociuiinq7qc"]
+
+[ext_resource type="Script" uid="uid://dnne6i10kgkhq" path="res://cards/effects/modify_terrain/generate_pool.gd" id="1_jhi5g"]
+
+[resource]
+script = ExtResource("1_jhi5g")
+num_tiles = 4
+identifier = "generate_pool"
+description = "Generate %d water tiles around the target."
+metadata/_custom_type_script = "uid://8j480ywki30u"

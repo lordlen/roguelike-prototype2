@@ -1,5 +1,7 @@
 extends CardEffect
 
+@export var tile_type: RoomPattern.TileType
+
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# find a floor tile in an adjacent tile
 	var adj := DijkstraMap._get_adjacent_edges(actor.grid_position)
@@ -13,5 +15,5 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		card_effect_finished.emit()
 		return
 	var random_cell : Vector2i = valid_tiles.pick_random()
-	Globals.floor_map.update_tile(random_cell, RoomPattern.TileType.GRASS)
+	Globals.floor_map.update_tile(random_cell, tile_type)
 	card_effect_finished.emit()

@@ -40,7 +40,8 @@ func act(actor: Char) -> Array[Action]:
 		actor.deck.swap()
 	
 	# if reshuffle is necessary
-	if actor.deck.primary == null or (actor.is_cautious and len(actor.deck.discard_pile) >= 1 and\
+	if ((actor.deck.primary == null or actor.deck.offhand == null) and primary_atk + offhand_atk == 0)\
+	or (actor.is_cautious and len(actor.deck.discard_pile) >= 1 and\
 	Pathfinder.chebychev_dist(actor.grid_position, actor.target_ch.grid_position) > 1) and\
 	Globals.floor_map.get_tile(actor.grid_position) != RoomPattern.TileType.WATER:
 		return [ReshuffleAction.new(actor)]
@@ -50,8 +51,12 @@ func act(actor: Char) -> Array[Action]:
 		# request target flow map
 		actor.hunt_with_team(actor.target_ch)
 		
-		# if target is far and reshuffle is needed
-		ret.push_back(AttackAction.new(actor, actor.target_ch))
+		# if both cards have 0 range and enemy can attack
+		
+		if actor.deck.primary.atk_range == 0 or (enemy_can_attack(actor, actor.target_ch) and offhand_is_decayed_enough(actor)):
+			ret.push_back(DefendAction.new(actor))
+		else:
+			ret.push_back(AttackAction.new(actor, actor.target_ch))
 	else:
 		if actor.target_flow_map.destination_reached(actor.grid_position):
 			# if actor is within scent range, request a new target location
@@ -64,3 +69,16 @@ func act(actor: Char) -> Array[Action]:
 				return actor.curr_state.act(actor)
 		ret.push_back(GoCloserAction.new(actor))
 	return ret
+
+func enemy_can_attack(actor: Char, enemy: Char) -> bool:
+	if enemy.deck.primary == null:
+		return false
+	var target_max_range = enemy.deck.primary.atk_range
+	if enemy.deck.offhand and enemy.deck.offhand.atk_range:
+		target_max_range = max(target_max_range, enemy.deck.offhand.atk_range)
+	return Pathfinder.chebychev_dist(actor.grid_position, enemy.grid_position) > target_max_range
+
+func offhand_is_decayed_enough(actor: Char) -> bool:
+	if actor.deck.offhand == null:
+		return false
+	return actor.deck.offhand.defense_decay * 2 > actor.deck.offhand.defense

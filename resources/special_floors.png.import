@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://givwulucyxr8"
-path="res://.godot/imported/pattern_painter.png-8830474a61e477f6ca1049ce2d2cb69c.ctex"
+uid="uid://b82rx211w5jr0"
+path="res://.godot/imported/special_floors.png-b6fe3617ac5ceabfa079aa0c81b174c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/pattern_painter.png"
-dest_files=["res://.godot/imported/pattern_painter.png-8830474a61e477f6ca1049ce2d2cb69c.ctex"]
+source_file="res://resources/special_floors.png"
+dest_files=["res://.godot/imported/special_floors.png-b6fe3617ac5ceabfa079aa0c81b174c9.ctex"]
 
 [params]
 

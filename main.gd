@@ -1,5 +1,14 @@
 extends Node
 
+var floor_builders: Array[FloorBuilder] = [
+	load("res://floor_generator/floor_builders/boss1.tres") as FloorBuilder,
+	load("res://floor_generator/floor_builders/f1builder.tres") as FloorBuilder,
+	load("res://floor_generator/floor_builders/f2builder.tres") as FloorBuilder,
+	load("res://floor_generator/floor_builders/f3builder.tres") as FloorBuilder,
+	load("res://floor_generator/floor_builders/f4builder.tres") as FloorBuilder,
+	load("res://floor_generator/floor_builders/f5builder.tres") as FloorBuilder,
+]
+
 func _ready() -> void:
 	randomize()
 	EventBus.character_fov_updated.connect(_update_fog)
@@ -14,8 +23,8 @@ func _ready() -> void:
 	build_floor()
 
 func build_floor():
-	var floor_builder := FloorBuilder.new()
-	floor_builder.build_floor(Globals.current_floor)
+	var floor_builder := floor_builders[Globals.current_floor]
+	floor_builder.build_floor()
 	
 	$Terrain.draw_tiles(Globals.floor_map.get_all_tiles())
 	Globals.current_floor += 1
@@ -51,8 +60,3 @@ func _update_fog(char: Char):
 					$Terrain/GrayFog.set_cell(Vector2i(x,y),0, Vector2i(0,4))
 				if !char.explored_set.has(Vector2i(x,y)):
 					$Terrain/BlackFog.set_cell(Vector2i(x,y),0, Vector2i(0,4))
-		
-
-
-func _on_button_pressed() -> void:
-	pass # Replace with function body.

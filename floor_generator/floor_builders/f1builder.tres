@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=28 format=3 uid="uid://bjtjavkgkjgen"]
+
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_np8sq"]
+[ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_ntyuq"]
+[ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="2_g2q1s"]
+[ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_t7xql"]
+[ext_resource type="Resource" uid="uid://oadmhwxeateq" path="res://floor_generator/floor_description/spawn_groups/single_rat.tres" id="4_gchsd"]
+[ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="5_tnbuw"]
+[ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="6_5nywl"]
+[ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="7_kog2a"]
+[ext_resource type="Resource" uid="uid://dprerqpsu1pdc" path="res://patterns/croissant.tres" id="8_vhi5e"]
+[ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="9_8jewq"]
+[ext_resource type="Resource" uid="uid://ctmdd8rcov4kq" path="res://patterns/hut.tres" id="10_deku5"]
+[ext_resource type="Resource" uid="uid://bbpq1mknhs4j5" path="res://patterns/L.tres" id="11_ts2kh"]
+[ext_resource type="Resource" uid="uid://cdw5yrf7nn8il" path="res://patterns/lake.tres" id="12_vdh0n"]
+[ext_resource type="Resource" uid="uid://bxtdio0jocibu" path="res://patterns/long_corridor.tres" id="13_jtd78"]
+[ext_resource type="Resource" uid="uid://btljq16rqurqj" path="res://patterns/pillar.tres" id="14_8ff72"]
+[ext_resource type="Resource" uid="uid://brcq5wokjhj4b" path="res://patterns/river.tres" id="15_k2yuw"]
+[ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="16_ar0nc"]
+[ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="17_pofh4"]
+[ext_resource type="Resource" uid="uid://cnpojlql4ld0d" path="res://patterns/room_patterns/special_features/grass.tres" id="18_0w76a"]
+[ext_resource type="Resource" uid="uid://df0uqg57jqj12" path="res://patterns/room_patterns/special_features/river.tres" id="19_ahc1t"]
+[ext_resource type="Resource" uid="uid://p0rhw655kxjm" path="res://patterns/room_patterns/special_features/small_corridor.tres" id="20_fhqyc"]
+[ext_resource type="Resource" uid="uid://bhjsa6gi2wnyp" path="res://patterns/room_patterns/special_features/windy.tres" id="21_2513n"]
+[ext_resource type="Resource" uid="uid://5lrc0bcqndhs" path="res://patterns/stairs.tres" id="22_0k83t"]
+
+[sub_resource type="Resource" id="Resource_k253u"]
+script = ExtResource("3_t7xql")
+pool = Array[ExtResource("1_np8sq")]([ExtResource("2_g2q1s")])
+weights = Array[float]([1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_ev3rf"]
+script = ExtResource("3_t7xql")
+pool = Array[ExtResource("1_np8sq")]([ExtResource("4_gchsd")])
+weights = Array[float]([1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_dhm6t"]
+script = ExtResource("3_t7xql")
+pool = Array[ExtResource("1_np8sq")]([ExtResource("2_g2q1s"), ExtResource("4_gchsd")])
+weights = Array[float]([1.0, 1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_3aogm"]
+script = ExtResource("16_ar0nc")
+room_patterns = Array[ExtResource("6_5nywl")]([ExtResource("7_kog2a"), ExtResource("8_vhi5e"), ExtResource("9_8jewq"), ExtResource("10_deku5"), ExtResource("11_ts2kh"), ExtResource("12_vdh0n"), ExtResource("13_jtd78"), ExtResource("14_8ff72"), ExtResource("15_k2yuw")])
+special_patterns = Array[ExtResource("6_5nywl")]([ExtResource("18_0w76a"), ExtResource("19_ahc1t"), ExtResource("20_fhqyc"), ExtResource("21_2513n")])
+stairs_patterns = Array[ExtResource("6_5nywl")]([ExtResource("22_0k83t")])
+item_pool = ExtResource("5_tnbuw")
+shrine_pool = ExtResource("17_pofh4")
+initial_spawns = SubResource("Resource_ev3rf")
+subsequent_spawns = SubResource("Resource_dhm6t")
+elite_spawns = SubResource("Resource_k253u")
+metadata/_custom_type_script = "uid://cihmjv6v0inos"
+
+[resource]
+script = ExtResource("1_ntyuq")
+floor_description = SubResource("Resource_3aogm")
+metadata/_custom_type_script = "uid://bo2wewg8np8bl"

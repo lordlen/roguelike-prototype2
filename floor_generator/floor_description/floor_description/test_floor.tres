@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FloorDescription" load_steps=20 format=3 uid="uid://bojx5xmr6fj8x"]
+[gd_resource type="Resource" script_class="FloorDescription" load_steps=22 format=3 uid="uid://bojx5xmr6fj8x"]
 
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="1_urpx3"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_x23qt"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="2_o3qu8"]
 [ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="4_4h30h"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="4_8f5s5"]
-[ext_resource type="Resource" uid="uid://b7drjwn27o2c3" path="res://floor_generator/floor_description/spawn_groups/solo_toad.tres" id="4_c01sh"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="4_wfa5x"]
+[ext_resource type="Resource" uid="uid://dun657orwosmg" path="res://char/stats/boss/slime_fountainhead.tres" id="5_wfa5x"]
 [ext_resource type="Resource" uid="uid://oadmhwxeateq" path="res://floor_generator/floor_description/spawn_groups/single_rat.tres" id="5_xms8m"]
 [ext_resource type="Resource" uid="uid://cdw5yrf7nn8il" path="res://patterns/lake.tres" id="6_pgy4m"]
 [ext_resource type="Resource" uid="uid://cnpojlql4ld0d" path="res://patterns/room_patterns/special_features/grass.tres" id="8_h636e"]
@@ -23,9 +24,14 @@ pool = Array[ExtResource("1_x23qt")]([ExtResource("2_4aq6b")])
 weights = Array[float]([1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
+[sub_resource type="Resource" id="Resource_gwo4x"]
+script = ExtResource("1_x23qt")
+group = Array[ExtResource("4_wfa5x")]([ExtResource("5_wfa5x")])
+metadata/_custom_type_script = "uid://cgbukm4afxlvj"
+
 [sub_resource type="Resource" id="Resource_ev3rf"]
 script = ExtResource("2_8f5s5")
-pool = Array[ExtResource("1_x23qt")]([ExtResource("4_c01sh")])
+pool = Array[ExtResource("1_x23qt")]([SubResource("Resource_gwo4x")])
 weights = Array[float]([1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 

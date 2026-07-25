@@ -33,6 +33,12 @@ func get_top_item(pos: Vector2i) -> ItemOverworld:
 	var item_list := item_dictionary[pos]
 	return item_list[len(item_list) - 1]
 
+func get_all_items():
+	var ret := []
+	for arr in item_dictionary.values():
+		ret += arr
+	return ret
+
 func get_items_in_area(positions: Array[Vector2i]) -> Array[ItemOverworld]:
 	var ret : Array[ItemOverworld] = []
 	for pos in positions:

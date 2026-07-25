@@ -15,7 +15,7 @@ extends Resource
 
 # items
 @export var potion_ratio: float = 1
-@export var shrine_ratio: float = 1 # 0.3
+@export var shrine_ratio: float = 0
 @export var gold_ratio: float = 1
 
 @export var initial_spawns: SpawnDescription

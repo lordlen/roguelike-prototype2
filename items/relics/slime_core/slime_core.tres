@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://2f48os8hifos"]
+
+[ext_resource type="Script" uid="uid://cub76j05lxa01" path="res://items/relics/slime_core/slime_core.gd" id="1_t2qml"]
+
+[resource]
+script = ExtResource("1_t2qml")
+num_tiles = 4
+item_name = "Slime Core"
+item_actions = Array[Object]([])
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

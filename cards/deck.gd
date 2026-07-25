@@ -34,11 +34,11 @@ func initialize():
 		var instance := CardInstance.new(card_resource)
 		instance.is_innate = true
 		draw_pile.push_back(instance)
-	
 	reshuffle()
 
 func add_to_deck_list(card_resource: CardResource):
 	deck_list.push_back(card_resource)
+	deck_owner.char_card_added.emit(card_resource)
 	var instance := CardInstance.new(card_resource)
 	insert_to_draw_randomly(instance)
 

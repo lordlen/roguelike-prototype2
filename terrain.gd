@@ -12,7 +12,8 @@ static var TerrainIndexDictionary : Dictionary[RoomPattern.TileType, int] = {
 	RoomPattern.TileType.WATER: 3,
 	RoomPattern.TileType.PEDESTAL: 4,
 	RoomPattern.TileType.TRAMPLED_GRASS: 5,
-	RoomPattern.TileType.STAIRS: 6
+	RoomPattern.TileType.STAIRS: 6,
+	RoomPattern.TileType.LOCKED_DOOR: 7
 }
 
 func _ready() -> void:
@@ -70,7 +71,7 @@ func draw_tiles(tiles: Dictionary[Vector2i, RoomPattern.TileType]):
 	
 	walls.clear()
 	var tile_array = []
-	for tile_type_ind in range(7):
+	for tile_type_ind in range(TerrainIndexDictionary.size()):
 		tile_array.push_back([])
 	
 	for c in tiles:

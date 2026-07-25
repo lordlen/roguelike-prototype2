@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="FloorDescription" load_steps=29 format=3 uid="uid://baqkxuee3xp5i"]
+[gd_resource type="Resource" script_class="FloorDescription" load_steps=27 format=3 uid="uid://baqkxuee3xp5i"]
 
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_fdnf3"]
-[ext_resource type="Resource" uid="uid://cbkxce3rq71gp" path="res://floor_generator/floor_description/spawn_groups/slimy_saboteurs.tres" id="2_j82tf"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_qnx3x"]
+[ext_resource type="Resource" uid="uid://f3wn6yu6t30d" path="res://floor_generator/floor_description/spawn_groups/single_goblin.tres" id="5_0d1y5"]
 [ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="5_p15yt"]
-[ext_resource type="Resource" uid="uid://dm3ad3f34obhn" path="res://floor_generator/floor_description/spawn_groups/single_toad.tres" id="6_frl2f"]
 [ext_resource type="Resource" uid="uid://bfl70ibh5j5x8" path="res://floor_generator/floor_description/spawn_groups/single_slime.tres" id="6_j82tf"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="7_vd0fj"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="8_yde55"]
@@ -24,24 +23,23 @@
 [ext_resource type="Resource" uid="uid://p0rhw655kxjm" path="res://patterns/room_patterns/special_features/small_corridor.tres" id="21_dpnkp"]
 [ext_resource type="Resource" uid="uid://bhjsa6gi2wnyp" path="res://patterns/room_patterns/special_features/windy.tres" id="22_6l61t"]
 [ext_resource type="Resource" uid="uid://5lrc0bcqndhs" path="res://patterns/stairs.tres" id="23_xy6qc"]
-[ext_resource type="Resource" uid="uid://b7drjwn27o2c3" path="res://floor_generator/floor_description/spawn_groups/solo_toad.tres" id="24_i3pb8"]
 
 [sub_resource type="Resource" id="Resource_47kvl"]
 script = ExtResource("3_qnx3x")
-pool = Array[ExtResource("1_fdnf3")]([ExtResource("2_j82tf")])
+pool = Array[ExtResource("1_fdnf3")]([ExtResource("6_j82tf")])
 weights = Array[float]([1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_qil1r"]
 script = ExtResource("3_qnx3x")
-pool = Array[ExtResource("1_fdnf3")]([ExtResource("5_p15yt"), ExtResource("6_frl2f"), ExtResource("6_j82tf")])
-weights = Array[float]([2.0, 1.0, 1.0])
+pool = Array[ExtResource("1_fdnf3")]([ExtResource("5_p15yt"), ExtResource("5_0d1y5"), ExtResource("6_j82tf")])
+weights = Array[float]([1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_arl57"]
 script = ExtResource("3_qnx3x")
-pool = Array[ExtResource("1_fdnf3")]([ExtResource("5_p15yt"), ExtResource("24_i3pb8"), ExtResource("6_j82tf")])
-weights = Array[float]([2.0, 1.0, 1.0])
+pool = Array[ExtResource("1_fdnf3")]([ExtResource("6_j82tf"), ExtResource("5_0d1y5"), ExtResource("5_p15yt")])
+weights = Array[float]([1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [resource]

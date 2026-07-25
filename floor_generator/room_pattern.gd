@@ -8,7 +8,8 @@ enum TileType {
 	WATER,
 	PEDESTAL,
 	TRAMPLED_GRASS,
-	STAIRS
+	STAIRS,
+	LOCKED_DOOR,
 }
 
 const TILE_TYPE_MAP := {
@@ -17,7 +18,8 @@ const TILE_TYPE_MAP := {
 	Color.GREEN: TileType.GRASS,
 	Color.BLUE: TileType.WATER,
 	Color.YELLOW: TileType.PEDESTAL,
-	Color.MAGENTA: TileType.STAIRS
+	Color.MAGENTA: TileType.STAIRS,
+	Color.RED: TileType.LOCKED_DOOR
 }
 
 const room_outline_resource := {

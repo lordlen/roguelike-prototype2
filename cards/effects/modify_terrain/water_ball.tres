@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dggkwvnoedsci"]
+
+[ext_resource type="Script" uid="uid://ctfjytjxvxjyi" path="res://cards/effects/modify_terrain/water_ball.gd" id="1_467ta"]
+
+[resource]
+script = ExtResource("1_467ta")
+identifier = "water_ball"
+description = "Destroy adjacent water tiles. Hit as many times as water destroyed."
+metadata/_custom_type_script = "uid://8j480ywki30u"

@@ -23,6 +23,7 @@ func execute() -> bool:
 		if len(path) - 1 >=  dist:
 			attacker.deck.primary.do_attack.call_deferred(attacker, defender)
 			await attacker.deck.primary.card_action_finished
+			attacker.char_attacked.emit(defender)
 			action_finished.emit()
 			return true
 	action_finished.emit()

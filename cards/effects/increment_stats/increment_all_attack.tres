@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IncrementAllAttackCard" load_steps=2 format=3 uid="uid://dcmi64by70tkk"]
+
+[ext_resource type="Script" uid="uid://b66pa00t5sed" path="res://cards/effects/increment_stats/increment_all_attack.gd" id="1_n2sei"]
+
+[resource]
+script = ExtResource("1_n2sei")
+atk_value = 1
+identifier = "increment_all_attack"
+description = "+%d/+0 for all cards."
+metadata/_custom_type_script = "uid://8j480ywki30u"

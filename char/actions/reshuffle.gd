@@ -7,5 +7,6 @@ func _init(actor: Char):
 
 func execute() -> bool:
 	actor.deck.reshuffle()
+	actor.char_reshuffled.emit()
 	action_finished.emit()
 	return true
