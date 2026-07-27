@@ -85,6 +85,7 @@ var char_stats: CharacterStats
 
 var discard_particle_scene: PackedScene = load("res://indicators/discard_particle.tscn")
 var indicator_particle_scene: PackedScene = load("res://indicators/indicator_particle.tscn")
+var damage_particle_scene: PackedScene = load("res://indicators/damage_particle.tscn")
 
 func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	char_stats = stats
@@ -164,6 +165,11 @@ func spawn_discard_particle(texture: Texture):
 	var discard_particle : Sprite2D = discard_particle_scene.instantiate()
 	discard_particle.texture = texture
 	add_child(discard_particle)
+
+func spawn_damage_particle(value: int):
+	var damage_particle: Node2D = damage_particle_scene.instantiate()
+	damage_particle.get_node("Label").text = str(value)
+	add_child(damage_particle)
 
 func spawn_indicator_particle():
 	var indicator_particle : Sprite2D = indicator_particle_scene.instantiate()
@@ -329,6 +335,7 @@ func take_hit(attacker: Char, damage: int):
 	EventBus.character_deck_updated.emit(self)
 
 func take_damage(damage: int) -> void:
+	spawn_damage_particle(damage)
 	self.curr_hp -= damage
 	self.curr_hp = clamp(curr_hp, 0, max_hp)
 	EventBus.character_hp_updated.emit(self)

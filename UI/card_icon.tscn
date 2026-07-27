@@ -10,7 +10,7 @@ region = Rect2(16, 0, 16, 16)
 [sub_resource type="Theme" id="Theme_yy7b2"]
 
 [node name="Icon" type="TextureButton"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(16, 16)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

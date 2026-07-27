@@ -1978,7 +1978,7 @@ script = ExtResource("1_3shck")
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 59.0
-offset_right = 251.0
+offset_right = 171.0
 grow_vertical = 2
 script = ExtResource("2_h2lqh")
 
@@ -2051,6 +2051,7 @@ offset_right = 83.0
 offset_bottom = 14.0
 grow_vertical = 2
 text = "F1"
+vertical_alignment = 1
 
 [node name="GoldLabel" type="Label" parent="UILayer/TopPanel"]
 layout_mode = 1
@@ -2063,6 +2064,7 @@ offset_right = 144.0
 offset_bottom = 11.5
 grow_vertical = 2
 text = "Gold:"
+vertical_alignment = 1
 
 [node name="GoldAmount" type="Label" parent="UILayer/TopPanel"]
 layout_mode = 1
@@ -2075,6 +2077,7 @@ offset_right = 190.0
 offset_bottom = 11.5
 grow_vertical = 2
 text = "0"
+vertical_alignment = 1
 script = ExtResource("6_0i68f")
 
 [node name="PotionContainer" type="GridContainer" parent="UILayer/TopPanel"]
@@ -2096,8 +2099,8 @@ script = ExtResource("6_lg7om")
 [node name="CardCountContainer" type="HBoxContainer" parent="UILayer/TopPanel"]
 layout_mode = 0
 offset_left = 550.0
-offset_right = 590.0
-offset_bottom = 40.0
+offset_right = 642.0
+offset_bottom = 55.0
 
 [node name="CardCountIcon" type="TextureRect" parent="UILayer/TopPanel/CardCountContainer"]
 layout_mode = 2
@@ -2109,6 +2112,7 @@ stretch_mode = 4
 
 [node name="CardCount" type="Label" parent="UILayer/TopPanel/CardCountContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "0"
 script = ExtResource("9_e44n4")
 
@@ -2217,9 +2221,9 @@ stretch_mode = 4
 [node name="DefendButton" type="TextureButton" parent="UILayer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Defend (c)
-Use the offhand to defend, negating more damage than the offhand normally does.
-If the offhand has an \"on defend\" effect or the player was attacked this turn, discard the offhand."
+tooltip_text = "Block (c)
+Use the offhand to block, negating more damage than the offhand normally does.
+If the offhand has an \"on block\" effect or the player was attacked on the turn you blocked, discard the offhand."
 texture_normal = SubResource("AtlasTexture_agy8s")
 stretch_mode = 4
 
@@ -2236,6 +2240,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 script = ExtResource("15_nsrdk")
 

@@ -112,7 +112,7 @@ func get_description() -> String:
 			desc += '(' + e.get_description() + ')'
 	
 	if len(defense_effects + tmp_defense_effects) > 0:
-		desc += "\nOn Defend: "
+		desc += "\nOn Block: "
 		for e in defense_effects:
 			desc += '\n'
 			desc += e.get_description()

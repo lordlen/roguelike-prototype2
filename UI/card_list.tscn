@@ -38,18 +38,15 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-expand_mode = 1
 
 [node name="PrimaryIcon2" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5q3mj")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-expand_mode = 5
 
 [node name="PrimaryIcon3" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5q3mj")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-expand_mode = 5

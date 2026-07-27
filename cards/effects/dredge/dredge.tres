@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_vq36w")
 identifier = "dredge"
-description = "Randomly insert to your draw pile the top card of your discard pile"
+description = "Randomly insert the top card of your discard pile to your draw pile."
 metadata/_custom_type_script = "uid://8j480ywki30u"
