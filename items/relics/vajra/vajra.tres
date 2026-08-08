@@ -9,6 +9,7 @@ region = Rect2(512, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_43et2")
+item_name = "vajra"
 texture = SubResource("AtlasTexture_jr4ar")
 item_actions = null
 metadata/_custom_type_script = "uid://bjmfeovut25cw"

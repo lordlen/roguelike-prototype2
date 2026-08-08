@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://dhjvqe7ms2u8j"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_ua2vv"]
+[ext_resource type="Resource" uid="uid://dpnvrus13merh" path="res://cards/effects/discard/discard_self_primary.tres" id="2_dytsb"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_oiffo"]
+
+[resource]
+script = ExtResource("2_oiffo")
+name = "Slimed"
+defense = 3
+exhausts = true
+defense_effects = Array[ExtResource("1_ua2vv")]([ExtResource("2_dytsb")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

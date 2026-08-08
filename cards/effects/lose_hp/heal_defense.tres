@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HealDefense" load_steps=2 format=3 uid="uid://c3lxfhs3ol1fo"]
+
+[ext_resource type="Script" uid="uid://cknpos7exl5g5" path="res://cards/effects/lose_hp/heal_defense.gd" id="1_sq7cg"]
+
+[resource]
+script = ExtResource("1_sq7cg")
+identifier = "heal_def"
+description = "Heal for how much defense this card has."
+metadata/_custom_type_script = "uid://8j480ywki30u"

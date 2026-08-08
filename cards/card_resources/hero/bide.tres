@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://dmabv4uunp722"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_4f1tx"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_b731b"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_eldrt"]
+[ext_resource type="Resource" uid="uid://bnfc2r77678an" path="res://cards/effects/increment_stats/tmp_atk_up.tres" id="3_b731b"]
+
+[resource]
+script = ExtResource("2_eldrt")
+name = "Bide"
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_4f1tx")]([ExtResource("2_b731b")])
+on_took_damage_effects = Array[ExtResource("1_4f1tx")]([ExtResource("3_b731b")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

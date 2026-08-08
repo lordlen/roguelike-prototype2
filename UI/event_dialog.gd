@@ -5,8 +5,6 @@ func _ready() -> void:
 	EventBus.event_requested.connect(_on_event_requested)
 
 func _on_event_requested(actor: Char, title: String, description: String, options: Array[ItemAction]):
-	print(title)
-	print(description)
 	set_title(title)
 	set_description(description)
 	set_options(actor, options)

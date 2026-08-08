@@ -69,7 +69,7 @@ func do_actor_turns():
 		
 		spawn_turn_count = 0
 		var spawn_group := subsequent_spawns.get_random_spawn_group()
-		random_spawn_character(spawn_group, true)
+		random_spawn_character(spawn_group, [], true)
 
 	block_process = false
 
@@ -78,7 +78,7 @@ func configure_spawning(spawn_desc: SpawnDescription, num_turns_to_spawn):
 	self.num_turns_to_spawn = num_turns_to_spawn
 	self.spawn_turn_count = 0
 
-func random_spawn_character(spawn_group: SpawnGroup, is_awake := false, is_elite := false):
+func random_spawn_character(spawn_group: SpawnGroup, items: Array[Item], is_awake := false):
 	# find a random point on the map. If aquatic, only get water tiles
 	# if not aquatic, just pick a non-water tile
 	var ch_stats := spawn_group.group[0]
@@ -100,7 +100,9 @@ func random_spawn_character(spawn_group: SpawnGroup, is_awake := false, is_elite
 		print('no valid spawn tiles')
 	else:
 		var pos : Vector2i = unoccupied_tiles.pick_random()
-		var leader := Char.new(ch_stats, pos, is_elite)
+		var leader := Char.new(ch_stats, pos)
+		for item in items:
+			item.on_pick_up(leader.inventory)
 		var f_ind := 0
 		for x in range(pos.x - 1, pos.x + 2):
 			for y in range(pos.y - 1, pos.y + 2):
@@ -117,12 +119,12 @@ func random_spawn_character(spawn_group: SpawnGroup, is_awake := false, is_elite
 		if is_awake:
 			leader.wander()
 
-func spawn_initial_characters(spawn_description: SpawnDescription, num_spawns: int, is_elite: bool = false):
+func spawn_initial_characters(spawn_description: SpawnDescription, num_spawns: int, items: Array[Item] = [], is_elite: bool = false):
 	for i in range(num_spawns):
 		# pick a random index from
 		var ind = rng.rand_weighted(spawn_description.weights)
 		var spawn_group := spawn_description.pool[ind]
-		random_spawn_character(spawn_group, is_elite, is_elite)
+		random_spawn_character(spawn_group, items, is_elite)
 
 func get_actor_in_position(pos: Vector2i) -> Char:
 	if char_dict.has(pos):

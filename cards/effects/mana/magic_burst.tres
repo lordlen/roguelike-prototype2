@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cc7yy8w0606q4"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_ie1k8"]
+[ext_resource type="Script" uid="uid://bllyymfehjyls" path="res://cards/effects/mana/magic_burst.gd" id="2_ywkqd"]
+
+[resource]
+script = ExtResource("2_ywkqd")
+identifier = "magic_burst"
+description = "Cast Spell now does AOE damage."
+metadata/_custom_type_script = "uid://8j480ywki30u"

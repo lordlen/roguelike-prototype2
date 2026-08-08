@@ -1,17 +1,14 @@
 extends CardEffect
 
 func do(attacker: Char, defender: Char, card: CardInstance) -> void:
-	for x in range(attacker.grid_position.x - card.atk_range, attacker.grid_position.x + card.atk_range + 1):
-		for y in range(attacker.grid_position.y - card.atk_range, attacker.grid_position.y + card.atk_range + 1):
-			var pos := Vector2i(x,y)
-			var char := ActorManager.get_actor_in_position(pos)
-			if char == null or char.alignment == attacker.alignment:
-				continue
-			
-			var num_hits := card.num_hits
-			var attack_val := card.attack
-			for _i in num_hits:
-				char.take_hit(attacker, attack_val)
-				if char.is_dead():
-					break
+	var num_hits := card.num_hits
+	var attack_val := card.attack
+	var atk_range := card.atk_range
+	CardHelper.deal_aoe_damage(attack_val, num_hits, attacker, attacker.grid_position, atk_range)
 	card_effect_finished.emit()
+
+func get_full_description(card: CardInstance) -> String:
+	return "%s %s" % [card.get_attack(), super.get_full_description(card)]
+
+func get_shortform(card: CardInstance) -> String:
+	return "%s %s" % [card.get_attack(), super.get_shortform(card)]

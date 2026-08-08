@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=29 format=3 uid="uid://c1gv3nh1oabji"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=28 format=3 uid="uid://c1gv3nh1oabji"]
 
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_7px57"]
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_jftws"]
-[ext_resource type="Resource" uid="uid://0oodccnnffm" path="res://floor_generator/floor_description/spawn_groups/double_rat.tres" id="2_u3bbg"]
+[ext_resource type="Resource" uid="uid://cov06ge30uvjx" path="res://floor_generator/floor_description/spawn_groups/double_jackal.tres" id="2_pxyyr"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_nlr0i"]
 [ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="4_wh4lw"]
 [ext_resource type="Resource" uid="uid://oadmhwxeateq" path="res://floor_generator/floor_description/spawn_groups/single_rat.tres" id="5_vb3i2"]
@@ -27,7 +27,7 @@
 
 [sub_resource type="Resource" id="Resource_k253u"]
 script = ExtResource("3_nlr0i")
-pool = Array[ExtResource("1_7px57")]([ExtResource("2_u3bbg")])
+pool = Array[ExtResource("1_7px57")]([ExtResource("2_pxyyr")])
 weights = Array[float]([1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
@@ -35,12 +35,6 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 script = ExtResource("3_nlr0i")
 pool = Array[ExtResource("1_7px57")]([ExtResource("4_wh4lw"), ExtResource("5_vb3i2")])
 weights = Array[float]([1.0, 4.0])
-metadata/_custom_type_script = "uid://cwled7fqlcl6g"
-
-[sub_resource type="Resource" id="Resource_dhm6t"]
-script = ExtResource("3_nlr0i")
-pool = Array[ExtResource("1_7px57")]([ExtResource("4_wh4lw"), ExtResource("5_vb3i2")])
-weights = Array[float]([1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_afuqt"]
@@ -51,7 +45,6 @@ stairs_patterns = Array[ExtResource("7_44a2a")]([ExtResource("23_bkf5g")])
 item_pool = ExtResource("6_tw7h6")
 shrine_pool = ExtResource("18_8xm6m")
 initial_spawns = SubResource("Resource_ev3rf")
-subsequent_spawns = SubResource("Resource_dhm6t")
 elite_spawns = SubResource("Resource_k253u")
 metadata/_custom_type_script = "uid://cihmjv6v0inos"
 

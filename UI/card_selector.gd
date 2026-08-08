@@ -22,9 +22,9 @@ func set_card_list(card_list: Array[CardInstance]):
 		$ScrollContainer/GridContainer.remove_child(icon)
 		icon.queue_free()
 	
-	var card_icon_scene : PackedScene = load("res://UI/card_icon.tscn")
+	var card_icon_scene : PackedScene = load("res://UI/card_display.tscn")
 	for card in card_list:
-		var card_icon: CardIcon = card_icon_scene.instantiate()
+		var card_icon: CardDisplay = card_icon_scene.instantiate()
 		card_icon.toggle_mode = true
 		card_icon.set_card_data(card)
 		card_icon.toggled.connect(_on_icon_toggled)
@@ -53,7 +53,7 @@ func _on_confirm_button_pressed() -> void:
 	var children := $ScrollContainer/GridContainer.get_children()
 	var indices : Array[int] = []
 	for i in range(len(children)):
-		var card_icon: CardIcon = children[i]
+		var card_icon: CardDisplay = children[i]
 		if card_icon.button_pressed:
 			indices.push_back(i)
 	

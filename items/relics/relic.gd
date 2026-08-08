@@ -1,6 +1,11 @@
 class_name Relic
 extends Item
 
+@export var description: String
+
+func get_description() -> String:
+	return description
+
 func on_self_pickup(owner):
 	pass
 

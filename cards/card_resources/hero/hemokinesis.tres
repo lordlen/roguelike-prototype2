@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://c8ygn5t3qrtii"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_i1r64"]
+[ext_resource type="Resource" uid="uid://d1olj4404ftxx" path="res://cards/effects/lose_hp/lose_hp.tres" id="2_003y6"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_8gwqh"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="3_jpe45"]
+
+[resource]
+script = ExtResource("2_8gwqh")
+name = "Hemokinesis"
+attack = 11
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_i1r64")]([ExtResource("2_003y6"), ExtResource("3_jpe45")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -11,3 +11,6 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	card.num_hits += water_count
 
 	card_effect_finished.emit()
+
+func get_shortform(card: CardInstance) -> String:
+	return "%s %s" % [card.get_attack(), super.get_shortform(card)]

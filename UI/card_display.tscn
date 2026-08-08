@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://fra6rfb08bdm"]
+
+[ext_resource type="Texture2D" uid="uid://bualaqlc7wosp" path="res://resources/char_info.png" id="1_m0cj8"]
+[ext_resource type="Script" uid="uid://dvbwb26etju5f" path="res://UI/card_display.gd" id="2_3ygv7"]
+[ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="2_ef1xc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0cj8"]
+atlas = ExtResource("1_m0cj8")
+region = Rect2(0, 0, 18, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdx46"]
+atlas = ExtResource("2_ef1xc")
+region = Rect2(0, 0, 16, 16)
+
+[node name="CardFrame" type="TextureButton"]
+custom_minimum_size = Vector2(54, 63)
+offset_right = 54.0
+offset_bottom = 63.0
+tooltip_text = "Right click to see more info"
+texture_normal = SubResource("AtlasTexture_m0cj8")
+stretch_mode = 4
+script = ExtResource("2_3ygv7")
+
+[node name="CardThumbnail" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 51.0
+offset_bottom = 51.0
+texture = SubResource("AtlasTexture_tdx46")
+
+[node name="AttackLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 48.0
+offset_right = 37.0
+offset_bottom = 64.75
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 12
+text = "10x2"
+horizontal_alignment = 1
+
+[node name="DefenseLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 54.0
+offset_bottom = 64.75
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="AltText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 12
+
+[connection signal="card_icon_pressed" from="." to="." method="_on_card_icon_pressed"]
+[connection signal="gui_input" from="." to="." method="_on_button_gui_input"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

@@ -18,6 +18,3 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		Globals.floor_map.update_tile(random_cell, RoomPattern.TileType.WATER)
 		valid_tiles.erase(random_cell)
 	card_effect_finished.emit()
-
-func get_description() -> String:
-	return self.description % num_tiles

@@ -1,9 +1,16 @@
 extends CardEffect
 
-@export var card_id: String
+@export var card_resource: CardResource
+@export var num_cards: int
 
-func do(attacker: Char, defender: Char, card: CardInstance) -> void:
-	var card_resource : CardResource = load(CardResource.card_map[card_id])
+func do(actor: Char, target: Char, card: CardInstance) -> void:
 	var card_instance := CardInstance.new(card_resource)
-	attacker.deck.add_to_draw(card_instance)
+	for i in range(num_cards):
+		actor.deck.add_to_draw(card_instance)
 	card_effect_finished.emit()
+
+func get_full_description(card: CardInstance) -> String:
+	return "%s %s" % [num_cards, super.get_full_description(card)]
+
+func get_shortform(card: CardInstance) -> String:
+	return "%s %s" % [num_cards, super.get_shortform(card)]

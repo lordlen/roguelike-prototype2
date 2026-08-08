@@ -1,14 +1,18 @@
 class_name Char
-extends Sprite2D 
+extends Area2D 
 
 signal char_finished_moving
 signal char_finished_attacking
+
+signal char_picked_up
+
 signal char_attacked
 signal char_defended
 signal char_reshuffled
 signal char_used_item
 signal char_is_hit
 signal char_took_damage
+signal char_move_effect
 signal char_card_added
 
 const stats_resources := {
@@ -71,6 +75,7 @@ var target_flow_map: DijkstraMap
 var moved_last_turn: bool
 var moved_this_turn: bool
 
+var sprite: Sprite2D
 var speed := 500
 var new_pos : Vector2
 var is_moving: bool
@@ -92,9 +97,19 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	self.char_id = _curr_char_id
 	_curr_char_id += 1
 	self.is_elite = is_elite
-	self.texture = stats.texture
+	#self.texture = stats.texture
+	#centered = false
+	sprite = Sprite2D.new()
+	sprite.texture = stats.texture
+	sprite.centered = false
+	add_child(sprite)
+	var collision := CollisionShape2D.new()
+	collision.position = Vector2(Consts.TILE_SIZE / 2, Consts.TILE_SIZE / 2)
+	var rect := RectangleShape2D.new()
+	rect.size = Vector2(16,16)
+	collision.shape = rect
+	add_child(collision)
 	self.grid_position = position
-	centered = false
 	self.position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
 	self.new_pos = self.position
 	self.character_name = stats.character_name
@@ -124,7 +139,7 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	self.inventory = InventoryComponent.new(self, 3)
 	
 	for item in stats.items:
-		item.on_pick_up(self.inventory)
+		item.duplicate(true).on_pick_up(self.inventory)
 	##TODO: remove temporary potions
 	#if user_controlled:
 		#var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
@@ -150,16 +165,16 @@ func _physics_process(delta: float) -> void:
 	if is_attacking:
 		# move offset to the target
 		if is_returning:
-			if offset.is_equal_approx(Vector2.ZERO):
+			if sprite.offset.is_equal_approx(Vector2.ZERO):
 				is_attacking = false
 				char_finished_attacking.emit()
 			else:
-				offset = offset.move_toward(Vector2.ZERO, attack_speed * delta)
+				sprite.offset = sprite.offset.move_toward(Vector2.ZERO, attack_speed * delta)
 		else:
-			if offset.is_equal_approx(offset_target):
+			if sprite.offset.is_equal_approx(offset_target):
 				is_returning = true
 			else:
-				offset = offset.move_toward(offset_target, attack_speed * delta)
+				sprite.offset = sprite.offset.move_toward(offset_target, attack_speed * delta)
 
 func spawn_discard_particle(texture: Texture):
 	var discard_particle : Sprite2D = discard_particle_scene.instantiate()
@@ -167,8 +182,12 @@ func spawn_discard_particle(texture: Texture):
 	add_child(discard_particle)
 
 func spawn_damage_particle(value: int):
-	var damage_particle: Node2D = damage_particle_scene.instantiate()
-	damage_particle.get_node("Label").text = str(value)
+	var damage_particle: DamageParticle = damage_particle_scene.instantiate()
+	if value > 0:
+		damage_particle.set_color(Color.RED)
+	elif value < 0:
+		damage_particle.set_color(Color.GREEN)
+	damage_particle.get_node("Label").text = str(abs(value))
 	add_child(damage_particle)
 
 func spawn_indicator_particle():
@@ -330,14 +349,17 @@ func take_hit(attacker: Char, damage: int):
 	take_damage(final_damage)
 	is_hit = true
 	if offhand != null:
-		offhand.do_on_hit(attacker, self)
-		char_is_hit.emit(attacker)
+		if !self.is_defending:
+			self.deck.offhand.decay_defense()
+	char_is_hit.emit(self, attacker)
 	EventBus.character_deck_updated.emit(self)
 
 func take_damage(damage: int) -> void:
 	spawn_damage_particle(damage)
 	self.curr_hp -= damage
 	self.curr_hp = clamp(curr_hp, 0, max_hp)
+	if damage > 0:
+		self.char_took_damage.emit(self)
 	EventBus.character_hp_updated.emit(self)
 	if self.curr_hp <= 0:
 		die()
@@ -360,6 +382,8 @@ func die():
 	if is_elite:
 		var card_item: Item = load("res://items/card_item/card_item.tres")
 		ItemManager.add_item_to_overworld(card_item, grid_position)
+
+	inventory.drop_all_items()
 	EventBus.character_died.emit(self)
 
 func is_dead():

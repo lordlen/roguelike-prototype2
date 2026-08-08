@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://1n6f5bqctxyw"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_wowfb"]
+[ext_resource type="Resource" uid="uid://dfb0y4x1uhprh" path="res://cards/effects/add_card/add_shiv.tres" id="2_cgm1x"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ksxxg"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_sj6nj"]
+[ext_resource type="Resource" uid="uid://dli6yw47om827" path="res://cards/effects/relocate/backslide.tres" id="3_cgm1x"]
+
+[resource]
+script = ExtResource("2_ksxxg")
+name = "Backflip"
+attack = 1
+defense = 4
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_wowfb")]([ExtResource("2_sj6nj"), ExtResource("2_cgm1x"), ExtResource("3_cgm1x")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

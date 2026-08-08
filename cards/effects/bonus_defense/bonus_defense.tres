@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dsxfu48ixgdu1"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dsxfu48ixgdu1"]
 
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_deoci"]
 [ext_resource type="Script" uid="uid://b14i5188nflao" path="res://cards/effects/bonus_defense/bonus_defense.gd" id="1_iu1fw"]
 
 [resource]
 script = ExtResource("1_iu1fw")
 identifier = "bonus_defense"
-description = "Add this card's defense to bonus defense this turn."
+description = "Gain n bonus defense this turn."
+number_placeholder = "n"
 metadata/_custom_type_script = "uid://8j480ywki30u"

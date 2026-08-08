@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bt6fjo8pciix"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_cfft5"]
+[ext_resource type="Script" uid="uid://mhfmhsqr0aiw" path="res://cards/effects/relocate/shadowstep.gd" id="2_s4h53"]
+
+[resource]
+script = ExtResource("2_s4h53")
+identifier = "shadowstep"
+description = "Relocate behind the target."
+metadata/_custom_type_script = "uid://8j480ywki30u"

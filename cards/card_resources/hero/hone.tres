@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://di101am50umer"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_al10k"]
+[ext_resource type="Resource" uid="uid://cptq8ldij6l7t" path="res://cards/effects/increment_stats/shiv_up.tres" id="2_vd67p"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="3_feqnq"]
+
+[resource]
+script = ExtResource("3_feqnq")
+name = "Hone"
+defense = 5
+defense_effects = Array[ExtResource("1_al10k")]([ExtResource("2_vd67p")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -13,10 +13,10 @@ func generate_card_rewards():
 		$HBoxContainer.remove_child(child)
 		child.queue_free()
 	
-	var card_icon_scene: PackedScene = load("res://UI/card_icon.tscn")
+	var card_icon_scene: PackedScene = load("res://UI/card_display.tscn")
 	for card_resource in cards:
 		var card_instance := CardInstance.new(card_resource)
-		var card_icon : CardIcon = card_icon_scene.instantiate()
+		var card_icon : CardDisplay = card_icon_scene.instantiate()
 		card_icon.set_card_data(card_instance)
 		card_icon.card_icon_pressed.connect(_on_card_reward_pressed)
 		$HBoxContainer.add_child(card_icon)

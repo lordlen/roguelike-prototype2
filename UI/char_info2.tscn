@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnlsf1yf60gbl"]
+
+[ext_resource type="Script" uid="uid://cghcv8kisipx6" path="res://UI/char_info2.gd" id="1_k2tqk"]
+[ext_resource type="Texture2D" uid="uid://buvo8ycn8vw3t" path="res://resources/solid_white.png" id="2_dthuv"]
+[ext_resource type="PackedScene" uid="uid://fra6rfb08bdm" path="res://UI/card_display.tscn" id="3_fng2v"]
+[ext_resource type="Texture2D" uid="uid://bualaqlc7wosp" path="res://resources/char_info.png" id="4_k2tqk"]
+[ext_resource type="PackedScene" uid="uid://crn3ax80inynt" path="res://UI/card_pile_icon.tscn" id="5_3a3f5"]
+
+[sub_resource type="SystemFont" id="SystemFont_gymf7"]
+generate_mipmaps = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a3f5"]
+atlas = ExtResource("4_k2tqk")
+region = Rect2(26, 4, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2tqk"]
+atlas = ExtResource("4_k2tqk")
+region = Rect2(26, 9, 3, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa873"]
+atlas = ExtResource("4_k2tqk")
+region = Rect2(19, 8, 6, 7)
+
+[node name="CharInfo" type="Panel"]
+z_index = 10
+custom_minimum_size = Vector2(150, 114)
+offset_right = 150.0
+offset_bottom = 114.0
+scale = Vector2(2, 2)
+size_flags_vertical = 3
+tooltip_text = "Click to move camera to character."
+script = ExtResource("1_k2tqk")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -65.0
+offset_bottom = 16.75
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_gymf7")
+theme_override_font_sizes/font_size = 12
+text = "My Name"
+
+[node name="StateLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 5.5833335
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+
+[node name="HPLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 7.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 12
+text = "HP:"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.5
+offset_top = 20.0
+offset_right = -5.0
+offset_bottom = 32.0
+grow_horizontal = 2
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_dthuv")
+texture_over = ExtResource("2_dthuv")
+texture_progress = ExtResource("2_dthuv")
+tint_under = Color(0.65891117, 1.9131974e-06, 5.2943824e-07, 1)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0, 0.54063284, 4.813075e-07, 1)
+
+[node name="Label" type="Label" parent="TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -3.0
+offset_right = 8.0
+offset_bottom = 2.5833335
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "100/100"
+
+[node name="Offense" parent="." instance=ExtResource("3_fng2v")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 42.0
+offset_right = 60.0
+offset_bottom = 105.0
+
+[node name="OffenseIcon" type="TextureRect" parent="Offense"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_3a3f5")
+
+[node name="Defense" parent="." instance=ExtResource("3_fng2v")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 42.0
+offset_right = 117.0
+offset_bottom = 105.0
+
+[node name="DefenseIcon" type="TextureRect" parent="Defense"]
+layout_mode = 0
+offset_left = -3.5
+offset_top = -3.0
+offset_right = -0.5
+offset_bottom = 1.0
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_k2tqk")
+
+[node name="DrawPile" parent="." instance=ExtResource("5_3a3f5")]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 42.0
+offset_right = 141.0
+offset_bottom = 63.0
+tooltip_text = "Draw pile."
+is_sorted = true
+
+[node name="DiscardPile" parent="." instance=ExtResource("5_3a3f5")]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 78.0
+offset_right = 141.0
+offset_bottom = 99.0
+tooltip_text = "Discard Pile"
+texture_normal = SubResource("AtlasTexture_qa873")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://2yy35wn5se04"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_0yu5s"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_eek7g"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ta5xm"]
+
+[resource]
+script = ExtResource("2_ta5xm")
+name = "Shiv"
+attack = 2
+num_hits = 1
+range = 2
+exhausts = true
+is_instant = true
+attack_effects = Array[ExtResource("1_0yu5s")]([ExtResource("2_eek7g")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

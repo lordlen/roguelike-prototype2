@@ -78,27 +78,6 @@ func build(floor: Floor) -> Floor:
 		else:
 			failed_attempts += 1
 	
-	# Add cycles.
-	# first, find all wall tiles where there is a floor tile on 2 opposite sides
-	# for each side, compute the cost using A star. If it's too far, then remove the wall
-	
-	# loop through all tiles and find a wall with a
-	#if connect_close_rooms:
-		#for x in range(width):
-			#for y in range(height):
-				#var v := Vector2i(x,y)
-				#if floor.get_tile(v + Vector2i.LEFT) != RoomPattern.TileType.UNOCCUPIED\
-				#and floor.get_tile(v + Vector2i.RIGHT) != RoomPattern.TileType.UNOCCUPIED:
-					#var cost = len(floor.compute_path(v + Vector2i.LEFT, v + Vector2i.RIGHT))
-					#if cost >= distance_threshold:
-						#floor.set_tile(v, RoomPattern.TileType.FLOOR)
-				#
-				#if floor.get_tile(v + Vector2i.UP) != RoomPattern.TileType.UNOCCUPIED\
-				#and floor.get_tile(v + Vector2i.DOWN) != RoomPattern.TileType.UNOCCUPIED:
-					#var cost = len(floor.compute_path(v + Vector2i.UP, v + Vector2i.DOWN))
-					#if cost >= distance_threshold:
-						#floor.set_tile(v, RoomPattern.TileType.FLOOR)
-	
 	if connect_close_rooms:
 		var num_attempts = 0
 		var max_attempts = 1000

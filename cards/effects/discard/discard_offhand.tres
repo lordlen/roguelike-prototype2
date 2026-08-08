@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dpb4nmiytas2i"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dpb4nmiytas2i"]
 
 [ext_resource type="Script" uid="uid://dmjsrjjubgf5c" path="res://cards/effects/discard/discard_offhand.gd" id="1_n1kuw"]
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_u2qx2"]
 
 [resource]
 script = ExtResource("1_n1kuw")
-identifier = "discard_offhand"
-description = "Discard target's offhand."
+identifier = "discard_def"
+description = "Discard target defense."
 metadata/_custom_type_script = "uid://8j480ywki30u"

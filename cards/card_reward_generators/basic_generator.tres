@@ -1,19 +1,22 @@
-[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=13 format=3 uid="uid://cshojnbtmbulc"]
+[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=16 format=3 uid="uid://cshojnbtmbulc"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_g7xp1"]
-[ext_resource type="Resource" uid="uid://bqbd7h3blkn1" path="res://cards/card_resources/hero/common/all_out_strike.tres" id="2_4kgsb"]
+[ext_resource type="Resource" uid="uid://bqbd7h3blkn1" path="res://cards/card_resources/hero/all_out_strike.tres" id="2_gaomr"]
 [ext_resource type="Script" uid="uid://cmd7omwhxqjw8" path="res://cards/card_reward_generator.gd" id="2_khdtg"]
-[ext_resource type="Resource" uid="uid://c6n7thm7lxisr" path="res://cards/card_resources/hero/common/bash.tres" id="3_7g44m"]
-[ext_resource type="Resource" uid="uid://dghlden3lrrqk" path="res://cards/card_resources/hero/common/defensive_stance.tres" id="4_bji5y"]
-[ext_resource type="Resource" uid="uid://ndido6grhne3" path="res://cards/card_resources/hero/common/double_attack.tres" id="5_gaomr"]
-[ext_resource type="Resource" uid="uid://co3e7ef0tqd6v" path="res://cards/card_resources/hero/common/hold_fast.tres" id="7_8goj0"]
-[ext_resource type="Resource" uid="uid://hc44gl880ye7" path="res://cards/card_resources/hero/common/parry.tres" id="8_k22cd"]
-[ext_resource type="Resource" uid="uid://bt7aa7nb1sdpc" path="res://cards/card_resources/hero/common/revitalize.tres" id="9_w8h1m"]
-[ext_resource type="Resource" uid="uid://clgcmas3762qd" path="res://cards/card_resources/hero/common/shield_charge.tres" id="10_2le0l"]
-[ext_resource type="Resource" uid="uid://bqkukg27xxc4f" path="res://cards/card_resources/hero/common/leaf_shield.tres" id="11_4kgsb"]
-[ext_resource type="Resource" uid="uid://r0xmcf3pni07" path="res://cards/card_resources/hero/common/whirl.tres" id="11_ttwsv"]
+[ext_resource type="Resource" uid="uid://1n6f5bqctxyw" path="res://cards/card_resources/hero/backflip.tres" id="3_7s58c"]
+[ext_resource type="Resource" uid="uid://dmabv4uunp722" path="res://cards/card_resources/hero/bide.tres" id="4_8goj0"]
+[ext_resource type="Resource" uid="uid://ce6ploubodtyv" path="res://cards/card_resources/hero/bloodlust.tres" id="5_k22cd"]
+[ext_resource type="Resource" uid="uid://dgvwi42d7kf6r" path="res://cards/card_resources/hero/blood_shield.tres" id="6_w8h1m"]
+[ext_resource type="Resource" uid="uid://dk061xxpidxlv" path="res://cards/card_resources/hero/bloom.tres" id="7_2le0l"]
+[ext_resource type="Resource" uid="uid://c1bbp72yl453i" path="res://cards/card_resources/hero/caltrops.tres" id="8_ttwsv"]
+[ext_resource type="Resource" uid="uid://dntrr3b8yetkm" path="res://cards/card_resources/hero/finale.tres" id="9_xtuc7"]
+[ext_resource type="Resource" uid="uid://c8ygn5t3qrtii" path="res://cards/card_resources/hero/hemokinesis.tres" id="10_smwna"]
+[ext_resource type="Resource" uid="uid://bqkukg27xxc4f" path="res://cards/card_resources/hero/leaf_shield.tres" id="11_4kgsb"]
+[ext_resource type="Resource" uid="uid://co3e7ef0tqd6v" path="res://cards/card_resources/hero/hold_fast.tres" id="11_nbrjb"]
+[ext_resource type="Resource" uid="uid://di101am50umer" path="res://cards/card_resources/hero/hone.tres" id="12_uhusx"]
+[ext_resource type="Resource" uid="uid://dpdv0xcs1tlet" path="res://cards/card_resources/hero/leaf_blades.tres" id="13_13mtx"]
 
 [resource]
 script = ExtResource("2_khdtg")
-CommonPool = Array[ExtResource("1_g7xp1")]([ExtResource("2_4kgsb"), ExtResource("3_7g44m"), ExtResource("4_bji5y"), ExtResource("5_gaomr"), ExtResource("7_8goj0"), ExtResource("8_k22cd"), ExtResource("9_w8h1m"), ExtResource("10_2le0l"), ExtResource("11_ttwsv"), ExtResource("11_4kgsb")])
+CommonPool = Array[ExtResource("1_g7xp1")]([ExtResource("2_gaomr"), ExtResource("3_7s58c"), ExtResource("4_8goj0"), ExtResource("5_k22cd"), ExtResource("6_w8h1m"), ExtResource("7_2le0l"), ExtResource("8_ttwsv"), ExtResource("9_xtuc7"), ExtResource("10_smwna"), ExtResource("11_nbrjb"), ExtResource("12_uhusx"), ExtResource("13_13mtx"), ExtResource("11_4kgsb")])
 metadata/_custom_type_script = "uid://cmd7omwhxqjw8"

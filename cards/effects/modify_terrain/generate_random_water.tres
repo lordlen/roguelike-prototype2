@@ -1,10 +1,14 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://csbiomhofhmid"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://csbiomhofhmid"]
 
 [ext_resource type="Script" uid="uid://cm4a5thrbfw4e" path="res://cards/effects/modify_terrain/generate_random_tile.gd" id="1_c38aw"]
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_revod"]
 
 [resource]
 script = ExtResource("1_c38aw")
 tile_type = 4
-identifier = "generate_random_water"
-description = "Create a water tile in an adjacent tile."
+valid_tile_types = Array[int]([1, 6, 3])
+num_gen = 1
+identifier = "flood"
+description = "Create n water tile(s)."
+number_placeholder = "n"
 metadata/_custom_type_script = "uid://8j480ywki30u"

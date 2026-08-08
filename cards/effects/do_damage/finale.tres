@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dnk0em7tmw1fw"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_c7rqk"]
+[ext_resource type="Script" uid="uid://yxqk6wts65h4" path="res://cards/effects/do_damage/finale.gd" id="1_mxx5v"]
+
+[resource]
+script = ExtResource("1_mxx5v")
+identifier = "damage_finale"
+description = "Deal n damage as many times as cards in the discard pile."
+number_placeholder = "n"
+metadata/_custom_type_script = "uid://8j480ywki30u"

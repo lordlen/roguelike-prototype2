@@ -1,17 +1,11 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://siwpm2by5u4s"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://siwpm2by5u4s"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_4jl41"]
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_hptuq"]
 [ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_qw2cb"]
-[ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="4_3dcvu"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ol4wd"]
-atlas = ExtResource("4_3dcvu")
-region = Rect2(0, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_4jl41")
-texture = SubResource("AtlasTexture_ol4wd")
 name = "Strike"
 attack = 6
 num_hits = 1

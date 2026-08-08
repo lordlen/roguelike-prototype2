@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://bqbd7h3blkn1"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_s84ib"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_a0bou"]
+[ext_resource type="Resource" uid="uid://6lnx0kxjb21w" path="res://cards/effects/discard/discard_self.tres" id="3_ws07w"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="4_btibk"]
+
+[resource]
+script = ExtResource("4_btibk")
+name = "All-Out Strike"
+attack = 10
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_s84ib")]([ExtResource("2_a0bou"), ExtResource("3_ws07w")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

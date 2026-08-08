@@ -10,5 +10,8 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var backslide_path := pf.get_straight_path_actor(actor.grid_position, new_position, actor.traversal)
 	var dest := backslide_path[len(backslide_path) - 1]
 	
+	if dest != actor.grid_position:
+		actor.char_move_effect.emit()
+	
 	actor.move_to(dest)
 	card_effect_finished.emit()

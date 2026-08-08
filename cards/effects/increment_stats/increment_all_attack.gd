@@ -13,6 +13,3 @@ func combine_effect(other_effect: CardEffect) -> CardEffect:
 	if self.is_same_effect(other_effect):
 		self.atk_value += (other_effect as IncrementAllAttackCard).atk_value
 	return self
-
-func get_description() -> String:
-	return description % atk_value

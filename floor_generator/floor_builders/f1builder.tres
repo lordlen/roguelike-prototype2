@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=28 format=3 uid="uid://bjtjavkgkjgen"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=27 format=3 uid="uid://bjtjavkgkjgen"]
 
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_np8sq"]
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_ntyuq"]
@@ -36,12 +36,6 @@ pool = Array[ExtResource("1_np8sq")]([ExtResource("4_gchsd")])
 weights = Array[float]([1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
-[sub_resource type="Resource" id="Resource_dhm6t"]
-script = ExtResource("3_t7xql")
-pool = Array[ExtResource("1_np8sq")]([ExtResource("2_g2q1s"), ExtResource("4_gchsd")])
-weights = Array[float]([1.0, 1.0])
-metadata/_custom_type_script = "uid://cwled7fqlcl6g"
-
 [sub_resource type="Resource" id="Resource_3aogm"]
 script = ExtResource("16_ar0nc")
 room_patterns = Array[ExtResource("6_5nywl")]([ExtResource("7_kog2a"), ExtResource("8_vhi5e"), ExtResource("9_8jewq"), ExtResource("10_deku5"), ExtResource("11_ts2kh"), ExtResource("12_vdh0n"), ExtResource("13_jtd78"), ExtResource("14_8ff72"), ExtResource("15_k2yuw")])
@@ -50,7 +44,6 @@ stairs_patterns = Array[ExtResource("6_5nywl")]([ExtResource("22_0k83t")])
 item_pool = ExtResource("5_tnbuw")
 shrine_pool = ExtResource("17_pofh4")
 initial_spawns = SubResource("Resource_ev3rf")
-subsequent_spawns = SubResource("Resource_dhm6t")
 elite_spawns = SubResource("Resource_k253u")
 metadata/_custom_type_script = "uid://cihmjv6v0inos"
 

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_5k5r2"]
 [ext_resource type="Resource" uid="uid://do3dp27xexj7s" path="res://cards/effects/leaf_storm/leaf_storm_start.tres" id="2_chscd"]
 [ext_resource type="Resource" uid="uid://dp4oks3b466a5" path="res://cards/effects/do_damage/damage_aoe.tres" id="3_upun0"]
-[ext_resource type="Resource" uid="uid://cxmgcucws5eu3" path="res://cards/effects/increment_stats/set_num_hits_0.tres" id="4_66t7m"]
+[ext_resource type="Resource" uid="uid://cxmgcucws5eu3" path="res://cards/effects/increment_stats/set_num_hits.tres" id="4_66t7m"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="6_upun0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66t7m"]

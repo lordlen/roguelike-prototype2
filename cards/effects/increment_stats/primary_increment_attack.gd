@@ -8,6 +8,3 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		actor.deck.primary.attack += atk_value
 	
 	card_effect_finished.emit()
-
-func get_description() -> String:
-	return description % atk_value

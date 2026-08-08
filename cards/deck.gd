@@ -10,9 +10,15 @@ var offhand: CardInstance = null
 
 static var reshuffle_texture := preload("res://indicators/reshuffle_indicator.tres")
 
-
 func _init(owner: Char, deck_list: Array[CardResource], innate_list: Array[CardResource]):
 	deck_owner = owner
+	
+	owner.char_attacked.connect(on_attack)
+	owner.char_defended.connect(on_defend)
+	owner.char_is_hit.connect(on_hit)
+	owner.char_took_damage.connect(on_took_damage)
+	owner.char_move_effect.connect(on_move_effect)
+	
 	for card in deck_list:
 		self.deck_list.push_back(card.duplicate(true))
 	for card in innate_list:
@@ -169,6 +175,11 @@ func swap():
 	EventBus.character_deck_updated.emit(deck_owner)
 
 func add_to_draw(card: CardInstance):
+	var rand_ind := randi() % (len(draw_pile) + 1)
+	draw_pile.insert(rand_ind, card)
+	EventBus.character_deck_updated.emit(deck_owner)
+
+func add_to_top_draw(card: CardInstance):
 	draw_pile.push_back(card)
 	EventBus.character_deck_updated.emit(deck_owner)
 
@@ -178,9 +189,7 @@ func dredge():
 	# get the top of the discard pile
 	var card : CardInstance = discard_pile.pop_back()
 	
-	# insert in a random location
-	var rand_ind := randi() % (len(draw_pile) + 1)
-	draw_pile.insert(rand_ind, card)
+	add_to_draw(card)
 
 func insert_to_draw_randomly(card: CardInstance):
 	# insert in a random location
@@ -195,3 +204,64 @@ func exhaust_ethereal():
 		exhaust_primary()
 	if offhand != null and offhand.is_ethereal:
 		exhaust_offhand()
+
+func get_all_card_instances() -> Array[CardInstance]:
+	var result: Array[CardInstance] = []
+	if primary:
+		result.push_back(primary)
+	if offhand:
+		result.push_back(offhand)
+	result.append_array(draw_pile)
+	result.append_array(discard_pile)
+	return result
+
+func find_card(card_name: String):
+	var cards := get_all_card_instances()
+	var ind := cards.find_custom(func(c:CardInstance): return c.card_name == card_name)
+	if ind == -1:
+		return null
+	return cards[ind]
+
+func index_card_discard(card_name: String) -> int:
+	var cards := discard_pile
+	var ind := cards.find_custom(func(c:CardInstance): return c.card_name == card_name)
+	return ind
+
+func index_card_draw(card_name: String) -> int:
+	var cards := draw_pile
+	var ind := cards.find_custom(func(c:CardInstance): return c.card_name == card_name)
+	return ind
+
+func pop_card(card_name: String):
+	var ind := index_card_discard(card_name)
+	if ind != -1:
+		var card := discard_pile[ind]
+		discard_pile.remove_at(ind)
+		return card
+	ind = index_card_draw(card_name)
+	if ind != -1:
+		var card := draw_pile[ind]
+		draw_pile.remove_at(ind)
+		return card
+	return null
+
+func on_attack(actor: Char, defender: Char):
+	if actor.deck.primary != null:
+		actor.deck.primary.do_attack(actor, defender)
+
+func on_defend(actor: Char):
+	if offhand != null:
+		actor.deck.offhand.do_defend(actor)
+
+func on_hit(actor: Char, attacker: Char):
+	if offhand != null:
+		offhand.do_on_hit(attacker, actor)
+
+func on_took_damage(actor: Char):
+	# all cards with on_took_damage use their effects
+	for card in get_all_card_instances():
+		card.do_on_took_damage(actor)
+
+func on_move_effect():
+	for card in get_all_card_instances():
+		card.do_on_move_effects(deck_owner)

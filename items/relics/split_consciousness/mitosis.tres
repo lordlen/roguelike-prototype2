@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SplitConsciousness" load_steps=4 format=3 uid="uid://d5fpc5aeddee"]
+
+[ext_resource type="Script" uid="uid://bphdsfixj2g7j" path="res://items/relics/split_consciousness/mitosis.gd" id="1_003jx"]
+[ext_resource type="Texture2D" uid="uid://c03ikb6kqulof" path="res://resources/relics.png" id="2_ptyvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcj2v"]
+atlas = ExtResource("2_ptyvg")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_003jx")
+description = "If hp reaches less than half, summon a slime with the same hp."
+item_name = "Mitosis"
+texture = SubResource("AtlasTexture_fcj2v")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

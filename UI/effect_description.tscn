@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq3d7iuixo2ty"]
+
+[ext_resource type="Script" uid="uid://15scjikly353" path="res://UI/effect_description.gd" id="1_mqd41"]
+
+[sub_resource type="FontFile" id="FontFile_d5hb2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 181.0
+offset_bottom = 76.0
+script = ExtResource("1_mqd41")
+
+[node name="DescriptionContainer" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_fonts/bold_font = SubResource("FontFile_d5hb2")
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "n [color=orange]shiv[/color]
+Add n shivs to the draw pile"
+fit_content = true

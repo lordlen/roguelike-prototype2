@@ -19,5 +19,4 @@ extends Resource
 @export var gold_ratio: float = 1
 
 @export var initial_spawns: SpawnDescription
-@export var subsequent_spawns: SpawnDescription
 @export var elite_spawns: SpawnDescription

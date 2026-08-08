@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://dpdv0xcs1tlet"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_bv2a3"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_4p3d7"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_qopwx"]
+[ext_resource type="Resource" uid="uid://bqownndjjpvg1" path="res://cards/effects/leaf_storm/leaf_blades.tres" id="2_uxw3f"]
+
+[resource]
+script = ExtResource("2_qopwx")
+name = "Leaf Blades"
+attack = 6
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_bv2a3")]([ExtResource("2_4p3d7"), ExtResource("2_uxw3f")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

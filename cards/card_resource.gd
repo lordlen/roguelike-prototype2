@@ -12,7 +12,7 @@ const card_map := {
 	toxic_body = "res://cards/card_resources/toxic_body.tres"
 }
 
-var max_stats = 100
+const max_stats = 100
 
 @export var texture: Texture2D
 
@@ -34,10 +34,13 @@ var max_stats = 100
 @export var exhausts: bool
 @export var is_innate: bool
 @export var is_ethereal: bool
+@export var is_instant: bool
 
 @export var attack_effects: Array[CardEffect]
 @export var defense_effects: Array[CardEffect]
 @export var on_hit_effects: Array[CardEffect]
+@export var on_took_damage_effects: Array[CardEffect]
+@export var on_move_effects: Array[CardEffect]
 
 func combine(other_card: CardResource) -> CardResource:
 	# create a completely new card resource
@@ -54,9 +57,12 @@ func combine(other_card: CardResource) -> CardResource:
 	new_card.exhausts = new_card.exhausts or other_card.exhausts
 	new_card.is_innate = new_card.is_innate or other_card.is_innate
 	new_card.is_ethereal = new_card.is_ethereal or other_card.is_ethereal
+	new_card.is_instant = new_card.is_instant or other_card.is_instant
 	
 	# now effects need to be added to each other
 	new_card.attack_effects = CardEffect.combine_effects(new_card.attack_effects, other_card.attack_effects)
 	new_card.defense_effects = CardEffect.combine_effects(new_card.defense_effects, other_card.defense_effects)
 	new_card.on_hit_effects = CardEffect.combine_effects(new_card.on_hit_effects, other_card.on_hit_effects)
+	new_card.on_took_damage_effects = CardEffect.combine_effects(new_card.on_took_damage_effects, other_card.on_took_damage_effects)
+	new_card.discard_effects = CardEffect.combine_effects(new_card.discard_effects, other_card.discard_effects)
 	return new_card

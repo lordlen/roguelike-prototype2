@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://r0xmcf3pni07"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_swair"]
+[ext_resource type="Resource" uid="uid://dp4oks3b466a5" path="res://cards/effects/do_damage/damage_aoe.tres" id="2_yjnul"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="3_jgy1p"]
+
+[resource]
+script = ExtResource("3_jgy1p")
+name = "Whirl"
+attack = 9
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_swair")]([ExtResource("2_yjnul")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

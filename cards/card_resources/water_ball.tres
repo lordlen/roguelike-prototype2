@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://dggkwvnoedsci" path="res://cards/effects/modify_terrain/water_ball.tres" id="2_xo7gu"]
 [ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="3_4uhxc"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="3_egd4l"]
-[ext_resource type="Resource" uid="uid://cxmgcucws5eu3" path="res://cards/effects/increment_stats/set_num_hits_0.tres" id="4_gt5w7"]
+[ext_resource type="Resource" uid="uid://cxmgcucws5eu3" path="res://cards/effects/increment_stats/set_num_hits.tres" id="4_gt5w7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m3nb"]
 atlas = ExtResource("3_egd4l")

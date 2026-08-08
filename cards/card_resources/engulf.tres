@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://cmytrnrqi28ix"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://cmytrnrqi28ix"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_eeq78"]
-[ext_resource type="Resource" uid="uid://b12dp7w8ycl6f" path="res://cards/effects/do_damage/damage_equals_hp.tres" id="2_2cbu8"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_m52g6"]
+[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_seop6"]
+[ext_resource type="Resource" uid="uid://pgke78xy1mq" path="res://cards/effects/add_card/add_slimed.tres" id="3_ftfwi"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="3_m52g6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2cbu8"]
@@ -12,7 +13,9 @@ region = Rect2(144, 0, 16, 16)
 [resource]
 script = ExtResource("2_m52g6")
 texture = SubResource("AtlasTexture_2cbu8")
+name = "Engulf"
+attack = 6
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_eeq78")]([ExtResource("2_2cbu8")])
+attack_effects = Array[ExtResource("1_eeq78")]([ExtResource("2_seop6"), ExtResource("3_ftfwi")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

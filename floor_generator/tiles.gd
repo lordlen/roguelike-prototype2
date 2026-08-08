@@ -87,3 +87,15 @@ class Water extends Tile:
 		if traversal == Char.Traversal.GROUNDED:
 			return 2.0
 		return 1.0
+
+# pressure plates
+class PressurePlate extends Tile:
+		
+	static func is_impassable() -> bool:
+		return false
+
+	static func is_opaque() -> bool:
+		return false
+
+	static func pf_cost(traversal: Char.Traversal) -> float:
+		return 8

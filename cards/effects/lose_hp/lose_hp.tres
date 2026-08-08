@@ -1,10 +1,13 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d1olj4404ftxx"]
+[gd_resource type="Resource" script_class="LoseHp" load_steps=3 format=3 uid="uid://d1olj4404ftxx"]
 
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_ga8qh"]
 [ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="1_gcykp"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_gcykp")
-value = 2
+value = 1
 identifier = "lose_hp"
-description = "Lose %d hp"
+description = "Lose n hp."
+number_placeholder = "n"
 metadata/_custom_type_script = "uid://8j480ywki30u"

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dp4oks3b466a5"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dp4oks3b466a5"]
 
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_lbngu"]
 [ext_resource type="Script" uid="uid://7xri5doqhxue" path="res://cards/effects/do_damage/damage_aoe.gd" id="1_sfu4f"]
 
 [resource]
 script = ExtResource("1_sfu4f")
-identifier = "damage"
-description = "Deal damage to all enemies in range."
+identifier = "damageAOE"
+description = "Deal n damage to all enemies in range."
+number_placeholder = "n"
 metadata/_custom_type_script = "uid://8j480ywki30u"

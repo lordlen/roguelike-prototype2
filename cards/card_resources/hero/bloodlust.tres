@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://ce6ploubodtyv"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_6uxxu"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_htpsh"]
+[ext_resource type="Resource" uid="uid://c3lxfhs3ol1fo" path="res://cards/effects/lose_hp/heal_defense.tres" id="2_k57xa"]
+[ext_resource type="Resource" uid="uid://dgnwyp0rwtn0l" path="res://cards/effects/increment_stats/def_up.tres" id="3_k57xa"]
+[ext_resource type="Resource" uid="uid://bk0owu533h6jq" path="res://cards/effects/increment_stats/set_def.tres" id="3_wdx6k"]
+
+[resource]
+script = ExtResource("2_htpsh")
+name = "Bloodlust"
+defense_effects = Array[ExtResource("1_6uxxu")]([ExtResource("2_k57xa"), ExtResource("3_wdx6k")])
+on_took_damage_effects = Array[ExtResource("1_6uxxu")]([ExtResource("3_k57xa")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

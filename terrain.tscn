@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=46 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://yb5tlb7u883" path="res://ui_button_panel.gd" id="13_nsrdk"]
 [ext_resource type="Texture2D" uid="uid://0171lijm1iqf" path="res://resources/ui_buttons.png" id="13_qofig"]
 [ext_resource type="Script" uid="uid://d0vje1rxysrni" path="res://UI/defend_value.gd" id="15_nsrdk"]
+[ext_resource type="PackedScene" uid="uid://6f5d45fu8cv0" path="res://UI/card_description_popup.tscn" id="16_mrt7q"]
+[ext_resource type="PackedScene" uid="uid://bys5excwfjlap" path="res://char_info_detailed.tscn" id="17_lhepi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i68f"]
 atlas = ExtResource("8_e44n4")
@@ -1978,7 +1980,8 @@ script = ExtResource("1_3shck")
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 59.0
-offset_right = 171.0
+offset_right = 150.0
+offset_bottom = -1.0
 grow_vertical = 2
 script = ExtResource("2_h2lqh")
 
@@ -2033,6 +2036,7 @@ dialog_text = "Do you want to go to the next floor?"
 script = ExtResource("4_hl62s")
 
 [node name="CardRewardDialog" parent="UILayer" instance=ExtResource("5_xo2vs")]
+visible = false
 
 [node name="TopPanel" type="Panel" parent="UILayer"]
 anchors_preset = 10
@@ -2118,7 +2122,10 @@ script = ExtResource("9_e44n4")
 
 [node name="CardListSelector" parent="UILayer" instance=ExtResource("10_q6cs3")]
 visible = false
-offset_bottom = 205.0
+offset_left = -158.0
+offset_top = -166.0
+offset_right = 157.0
+offset_bottom = 153.0
 
 [node name="EventDialog" type="Panel" parent="UILayer"]
 visible = false
@@ -2178,9 +2185,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -146.0
-offset_top = -70.0
-offset_right = 146.0
+offset_left = -115.0
+offset_top = -49.0
+offset_right = 114.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("13_nsrdk")
@@ -2222,8 +2229,8 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Block (c)
-Use the offhand to block, negating more damage than the offhand normally does.
-If the offhand has an \"on block\" effect or the player was attacked on the turn you blocked, discard the offhand."
+Use the defense to block, negating more damage than the offhand normally does.
+The defense is discarded at the end of the turn when blocking successfully."
 texture_normal = SubResource("AtlasTexture_agy8s")
 stretch_mode = 4
 
@@ -2235,14 +2242,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_top = -17.0
+offset_right = 13.5
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 script = ExtResource("15_nsrdk")
+
+[node name="CardDescription" parent="UILayer" instance=ExtResource("16_mrt7q")]
+visible = false
+
+[node name="CharInfoDetailed" parent="UILayer" instance=ExtResource("17_lhepi")]
+visible = false
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_avahw")
@@ -2257,7 +2270,7 @@ self_modulate = Color(0, 0, 0, 0.52156866)
 tile_set = SubResource("TileSet_3shck")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(637, 477)
 script = ExtResource("5_iqhxt")
 
 [node name="ActorList" type="Node2D" parent="."]

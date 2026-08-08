@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cyrc2f4jpwyrw"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cyrc2f4jpwyrw"]
 
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_5pc7y"]
 [ext_resource type="Script" uid="uid://b13bdyokh553w" path="res://cards/effects/amalgamate/amalgamate.gd" id="1_6dnm1"]
 
 [resource]

@@ -1,10 +1,17 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://2f48os8hifos"]
+[gd_resource type="Resource" script_class="SlimeCore" load_steps=4 format=3 uid="uid://2f48os8hifos"]
 
 [ext_resource type="Script" uid="uid://cub76j05lxa01" path="res://items/relics/slime_core/slime_core.gd" id="1_t2qml"]
+[ext_resource type="Texture2D" uid="uid://c03ikb6kqulof" path="res://resources/relics.png" id="2_7kd2r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spqnw"]
+atlas = ExtResource("2_7kd2r")
+region = Rect2(0, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_t2qml")
 num_tiles = 4
+description = "Every 2 times you reshuffle, summon a slime."
 item_name = "Slime Core"
+texture = SubResource("AtlasTexture_spqnw")
 item_actions = Array[Object]([])
 metadata/_custom_type_script = "uid://bjmfeovut25cw"

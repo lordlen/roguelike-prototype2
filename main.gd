@@ -1,11 +1,12 @@
 extends Node
 
 var floor_builders: Array[FloorBuilder] = [
+	# load("res://floor_generator/floor_builders/test_floor.tres") as FloorBuilder,
 	load("res://floor_generator/floor_builders/f1builder.tres") as FloorBuilder,
 	load("res://floor_generator/floor_builders/f2builder.tres") as FloorBuilder,
 	load("res://floor_generator/floor_builders/f3builder.tres") as FloorBuilder,
 	load("res://floor_generator/floor_builders/f4builder.tres") as FloorBuilder,
-	load("res://floor_generator/floor_builders/f5builder.tres") as FloorBuilder,
+	#load("res://floor_generator/floor_builders/f5builder.tres") as FloorBuilder,
 	load("res://floor_generator/floor_builders/boss1.tres") as FloorBuilder,
 ]
 

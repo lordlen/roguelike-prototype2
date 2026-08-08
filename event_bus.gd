@@ -5,6 +5,7 @@ signal user_input_requested
 signal new_actor_added
 signal character_died
 signal character_state_changed
+signal character_info_requested
 
 signal character_hp_updated
 signal character_deck_updated
@@ -28,6 +29,7 @@ signal update_gold
 
 signal card_selector_requested
 signal cards_selected
+signal card_info_requested
 
 signal event_requested
 signal event_concluded

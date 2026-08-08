@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=29 format=3 uid="uid://b1v86iegr1jxw"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=31 format=3 uid="uid://b1v86iegr1jxw"]
 
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_2ng6m"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_14ulr"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="2_h4bdi"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_jalfh"]
+[ext_resource type="Resource" uid="uid://clwmjki86acoi" path="res://char/stats/slime.tres" id="3_vqvqh"]
 [ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="4_hg51c"]
 [ext_resource type="Resource" uid="uid://f3wn6yu6t30d" path="res://floor_generator/floor_description/spawn_groups/single_goblin.tres" id="5_0tba4"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="5_3mqf4"]
@@ -25,22 +27,21 @@
 [ext_resource type="Resource" uid="uid://5lrc0bcqndhs" path="res://patterns/stairs.tres" id="22_2ixqe"]
 [ext_resource type="Resource" uid="uid://bfl70ibh5j5x8" path="res://floor_generator/floor_description/spawn_groups/single_slime.tres" id="24_f2nak"]
 
+[sub_resource type="Resource" id="Resource_sriks"]
+script = ExtResource("1_14ulr")
+group = Array[ExtResource("2_h4bdi")]([ExtResource("3_vqvqh"), ExtResource("3_vqvqh")])
+metadata/_custom_type_script = "uid://cgbukm4afxlvj"
+
 [sub_resource type="Resource" id="Resource_47kvl"]
 script = ExtResource("3_jalfh")
-pool = Array[ExtResource("1_14ulr")]([ExtResource("24_f2nak")])
+pool = Array[ExtResource("1_14ulr")]([SubResource("Resource_sriks")])
 weights = Array[float]([1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_qil1r"]
 script = ExtResource("3_jalfh")
 pool = Array[ExtResource("1_14ulr")]([ExtResource("4_hg51c"), ExtResource("5_0tba4"), ExtResource("24_f2nak")])
-weights = Array[float]([1.0, 1.0, 1.0])
-metadata/_custom_type_script = "uid://cwled7fqlcl6g"
-
-[sub_resource type="Resource" id="Resource_arl57"]
-script = ExtResource("3_jalfh")
-pool = Array[ExtResource("1_14ulr")]([ExtResource("24_f2nak"), ExtResource("5_0tba4"), ExtResource("4_hg51c")])
-weights = Array[float]([1.0, 1.0, 1.0])
+weights = Array[float]([4.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_ggcuy"]
@@ -51,7 +52,6 @@ stairs_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("22_2ixqe")])
 item_pool = ExtResource("5_3mqf4")
 shrine_pool = ExtResource("17_3yiw6")
 initial_spawns = SubResource("Resource_qil1r")
-subsequent_spawns = SubResource("Resource_arl57")
 elite_spawns = SubResource("Resource_47kvl")
 metadata/_custom_type_script = "uid://cihmjv6v0inos"
 
