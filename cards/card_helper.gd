@@ -2,12 +2,13 @@ class_name CardHelper
 
 #destroy grass around target and return the number of grass
 static func mow_grass(pos: Vector2i) -> int:
+	var trampled_grass := load("res://floor_generator/tiles/trampled_grass.tres")
 	# get the adjacent tiles
 	var adjacent_tiles := DijkstraMap._get_adjacent_edges(pos)
 	var grass_count := 0
 	for cell in adjacent_tiles + [pos]:
-		if Globals.floor_map.get_tile(cell) == RoomPattern.TileType.GRASS:
-			Globals.floor_map.update_tile(cell, RoomPattern.TileType.TRAMPLED_GRASS)
+		if Globals.floor_map.get_tile(cell).terrain_id == 2:
+			Globals.floor_map.update_tile(cell, trampled_grass)
 			grass_count += 1
 	return grass_count
 

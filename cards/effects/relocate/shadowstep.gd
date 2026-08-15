@@ -9,7 +9,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var behind := target_char.grid_position + path[1] - path[0]
 	# check if "behind" is occupied.
 	var occupying_actor := ActorManager.get_actor_in_position(behind)
-	if occupying_actor != null or Tiles.TileDictionary[Globals.floor_map.get_tile(behind)].pf_cost(actor.traversal) == INF:
+	if occupying_actor != null or Globals.floor_map.get_tile(behind).get_pf_cost(actor.traversal) == INF:
 		# do nothing
 		pass
 	else:

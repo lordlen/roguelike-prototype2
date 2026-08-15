@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TileResource" load_steps=4 format=3 uid="uid://cv1rfq1hxdigg"]
+
+[ext_resource type="Script" uid="uid://6gp4dbu3qr53" path="res://floor_generator/tiles/tile_actions/grass_walk.gd" id="1_7mohq"]
+[ext_resource type="Script" uid="uid://bfjog00ipfkcc" path="res://floor_generator/tiles/tile.gd" id="1_xw11g"]
+
+[sub_resource type="Resource" id="Resource_lj6xu"]
+script = ExtResource("1_7mohq")
+metadata/_custom_type_script = "uid://6gp4dbu3qr53"
+
+[resource]
+script = ExtResource("1_xw11g")
+terrain_id = 2
+is_opaque = true
+grounded_cost = 1.0
+aquatic_cost = 1.0
+flying_cost = 1.0
+on_walk_action = SubResource("Resource_lj6xu")
+metadata/_custom_type_script = "uid://bfjog00ipfkcc"

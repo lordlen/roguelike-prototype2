@@ -34,18 +34,20 @@ func initialize():
 	
 	for card_resource in deck_list:
 		var instance := CardInstance.new(card_resource)
+		deck_owner.char_card_added.emit(instance)
 		draw_pile.push_back(instance)
 	
 	for card_resource in innate_list:
 		var instance := CardInstance.new(card_resource)
 		instance.is_innate = true
+		deck_owner.char_card_added.emit(instance)
 		draw_pile.push_back(instance)
 	reshuffle()
 
 func add_to_deck_list(card_resource: CardResource):
 	deck_list.push_back(card_resource)
-	deck_owner.char_card_added.emit(card_resource)
 	var instance := CardInstance.new(card_resource)
+	deck_owner.char_card_added.emit(instance)
 	insert_to_draw_randomly(instance)
 
 func remove_from_deck_list(card_resource: CardResource):
@@ -245,9 +247,9 @@ func pop_card(card_name: String):
 		return card
 	return null
 
-func on_attack(actor: Char, defender: Char):
-	if actor.deck.primary != null:
-		actor.deck.primary.do_attack(actor, defender)
+func on_attack(defender: Char):
+	if deck_owner.deck.primary != null:
+		deck_owner.deck.primary.do_attack(deck_owner, defender)
 
 func on_defend(actor: Char):
 	if offhand != null:
@@ -257,10 +259,10 @@ func on_hit(actor: Char, attacker: Char):
 	if offhand != null:
 		offhand.do_on_hit(attacker, actor)
 
-func on_took_damage(actor: Char):
+func on_took_damage():
 	# all cards with on_took_damage use their effects
 	for card in get_all_card_instances():
-		card.do_on_took_damage(actor)
+		card.do_on_took_damage(deck_owner)
 
 func on_move_effect():
 	for card in get_all_card_instances():

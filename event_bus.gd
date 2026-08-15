@@ -26,6 +26,8 @@ signal inventory_updated
 signal item_used
 signal new_item_added
 signal update_gold
+signal item_description_requested
+signal item_description_hidden
 
 signal card_selector_requested
 signal cards_selected

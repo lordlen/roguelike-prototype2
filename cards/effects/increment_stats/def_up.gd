@@ -9,7 +9,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 
 func combine_effect(other_effect: CardEffect) -> CardEffect:
 	if self.is_same_effect(other_effect):
-		self.atk_value += (other_effect as AtkUp).atk_value
+		self.value += (other_effect as DefUp).value
 	return self
 
 func get_full_description(card: CardInstance) -> String:

@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="FixedFloorBuilder" load_steps=8 format=3 uid="uid://bu7y4bm7n2ffs"]
+[gd_resource type="Resource" script_class="FixedFloorBuilder" load_steps=11 format=3 uid="uid://bu7y4bm7n2ffs"]
 
 [ext_resource type="Resource" uid="uid://c6dyekjqd05jh" path="res://patterns/boss_patterns/boss1dijkstra.tres" id="1_6k8m6"]
 [ext_resource type="Resource" uid="uid://cssvk0msmohxg" path="res://patterns/boss_patterns/boss1pattern.tres" id="1_nbw1f"]
+[ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_vpu1a"]
 [ext_resource type="Script" uid="uid://xdii0ds0a4wo" path="res://floor_generator/fixed_floor_builder.gd" id="1_whdm7"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="3_iu8qf"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="4_6k8m6"]
+[ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="4_7hxki"]
 [ext_resource type="Resource" uid="uid://dun657orwosmg" path="res://char/stats/boss/slime_fountainhead.tres" id="5_ehue6"]
+[ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="5_g6num"]
 
 [sub_resource type="Resource" id="Resource_hmbkw"]
 script = ExtResource("3_iu8qf")
@@ -19,4 +22,8 @@ floor_layout_dijkstra = ExtResource("1_6k8m6")
 hero_spawn_point = Vector2i(8, 18)
 spawn_groups = Array[ExtResource("3_iu8qf")]([SubResource("Resource_hmbkw")])
 positions = Array[Vector2i]([Vector2i(8, 12)])
+potion_pool = ExtResource("4_7hxki")
+card_pool = ExtResource("1_vpu1a")
+relic_pool = ExtResource("5_g6num")
+floor_name = "Boss1"
 metadata/_custom_type_script = "uid://xdii0ds0a4wo"

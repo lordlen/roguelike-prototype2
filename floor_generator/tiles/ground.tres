@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TileResource" load_steps=2 format=3 uid="uid://dn0vmp1g1iu2"]
+
+[ext_resource type="Script" uid="uid://bfjog00ipfkcc" path="res://floor_generator/tiles/tile.gd" id="1_m1r6m"]
+
+[resource]
+script = ExtResource("1_m1r6m")
+grounded_cost = 1.0
+aquatic_cost = 1.0
+flying_cost = 1.0
+metadata/_custom_type_script = "uid://bfjog00ipfkcc"

@@ -12,6 +12,20 @@ func set_char(char: Char):
 	$TraversalLabel/TraversalType.text = Char.Traversal.find_key(char.traversal)
 	$GoldLabel/GoldAmount.text = str(char.inventory.gold)
 	$CardRewardLabel/CardRewardAmount.text = str(char.inventory.card_rewards)
+	
+	for child in $PotionLabel/GridContainer.get_children():
+		remove_child(child)
+		child.queue_free()
+	
+	for potion in char.inventory.items:
+		var texture := potion.texture
+		var description := potion.get_description()
+		
+		var potion_texture := TextureRect.new()
+		potion_texture.texture = texture
+		potion_texture.tooltip_text = description
+		$PotionLabel/GridContainer.add_child(potion_texture)
+
 	# loop each relic
 	# clear children
 	for child in $RelicLabel/GridContainer.get_children():

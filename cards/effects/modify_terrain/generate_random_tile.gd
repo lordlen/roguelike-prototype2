@@ -1,7 +1,7 @@
 extends CardEffect
 
-@export var tile_type: RoomPattern.TileType
-@export var valid_tile_types: Array[RoomPattern.TileType]
+@export var tile_type: TileResource
+@export var valid_tile_types: Array[TileResource.Terrains]
 @export var num_gen: int
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
@@ -9,8 +9,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var adj := DijkstraMap._get_adjacent_edges(target_char.grid_position)
 	var valid_tiles: Array[Vector2i] = []
 	for cell in adj + [target_char.grid_position]:
-		var tile = Tiles.TileDictionary[Globals.floor_map.get_tile(cell)]
-		if Globals.floor_map.get_tile(cell) in valid_tile_types:
+		if Globals.floor_map.get_tile(cell).terrain_id in valid_tile_types:
 			valid_tiles.push_back(cell)
 
 	if valid_tiles.is_empty():

@@ -14,6 +14,8 @@ signal char_is_hit
 signal char_took_damage
 signal char_move_effect
 signal char_card_added
+signal char_next_floor
+signal char_waited
 
 const stats_resources := {
 	hero = "res://char/stats/hero.tres",
@@ -140,11 +142,6 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	
 	for item in stats.items:
 		item.duplicate(true).on_pick_up(self.inventory)
-	##TODO: remove temporary potions
-	#if user_controlled:
-		#var potion := load("res://items/potions/clairvoyance_potion.tres") as Item
-		#self.inventory.add_item(potion)
-		#EventBus.inventory_updated.emit(self)
 	
 	moved_last_turn = false
 	if alignment == Alignment.EVIL:
@@ -214,21 +211,7 @@ func move_to(new_grid_pos: Vector2i, speed: float = INF):
 		self.is_moving = true
 
 	var tile := Globals.floor_map.get_tile(new_grid_pos)
-	if tile == RoomPattern.TileType.GRASS\
-	and traversal != Traversal.FLYING:
-		Globals.floor_map.update_tile(new_grid_pos, RoomPattern.TileType.TRAMPLED_GRASS)
-
-	# stairs dialog
-	if user_controlled:
-		if tile == RoomPattern.TileType.STAIRS:
-			# activate the stairs dialog
-			self.action_queue.clear()
-			EventBus.stairs_popup_signal.emit()
-		if ItemManager.item_in_position(grid_position):
-			var item := ItemManager.get_top_item(grid_position).item_resource
-			var successful_pickup := await item.on_pick_up(inventory)
-			if successful_pickup:
-				ItemManager.pop_item_from_overworld(grid_position)
+	tile.on_walk(self)
 
 func turn_start():
 	moved_last_turn = moved_this_turn
@@ -247,15 +230,29 @@ func turn_start():
 	
 	if deck.offhand != null:
 		deck.offhand.reset_bonus_defense()
-	
-	# get the tile the char is standing on
-	var tile := Tiles.TileDictionary[Globals.floor_map.get_tile(grid_position)]
-	tile.on_walk(self)
 
 	EventBus.character_deck_updated.emit(self)
 	update_vision()
+	
+	if user_controlled:
+		pick_up_item()
 
-func get_flow_map(is_forced: bool = false) -> DijkstraMap:
+func pick_up_item() -> void:
+	if ItemManager.item_in_position(grid_position):
+		var item_overworld := ItemManager.get_top_item(grid_position)
+		var price := item_overworld.price
+		if price != 0:
+			if inventory.gold >= price:
+				inventory.add_gold(-price)
+				item_overworld.set_price(0)
+			else:
+				return
+		var item := item_overworld.item_resource
+		var successful_pickup := item.on_pick_up(inventory)
+		if successful_pickup:
+			ItemManager.pop_item_from_overworld(grid_position)
+
+func get_flow_map(traversal: Char.Traversal, is_forced: bool = false) -> DijkstraMap:
 	if flow_map != null and !is_forced:
 		return flow_map
 	flow_map = DijkstraMap.new(Globals.floor_map)
@@ -311,7 +308,7 @@ func pass_turn():
 func can_traverse(pos: Vector2i):
 	var tile := Globals.floor_map.get_tile(pos)
 	
-	return Tiles.get_pf_cost(traversal, tile) != INF
+	return tile.get_pf_cost(traversal) != INF
 
 func is_user_controlled():
 	return user_controlled
@@ -359,7 +356,7 @@ func take_damage(damage: int) -> void:
 	self.curr_hp -= damage
 	self.curr_hp = clamp(curr_hp, 0, max_hp)
 	if damage > 0:
-		self.char_took_damage.emit(self)
+		self.char_took_damage.emit()
 	EventBus.character_hp_updated.emit(self)
 	if self.curr_hp <= 0:
 		die()
@@ -379,9 +376,6 @@ func die():
 			follower.follow(new_leader)
 	if leader != self:
 		leader.followers.erase(self)
-	if is_elite:
-		var card_item: Item = load("res://items/card_item/card_item.tres")
-		ItemManager.add_item_to_overworld(card_item, grid_position)
 
 	inventory.drop_all_items()
 	EventBus.character_died.emit(self)
@@ -397,7 +391,7 @@ func wander():
 
 func hunt(prey : Char):
 	target_ch = prey
-	target_flow_map = prey.get_flow_map()
+	target_flow_map = prey.get_flow_map(traversal)
 	curr_state = hunting_state
 	EventBus.character_state_changed.emit(self)
 

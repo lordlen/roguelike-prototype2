@@ -6,6 +6,7 @@ extends CardEffect
 func do(actor: Char, target: Char, card: CardInstance) -> void:
 	var card_instance := CardInstance.new(card_resource)
 	for i in range(num_cards):
+		actor.char_card_added.emit(card_instance)
 		actor.deck.add_to_draw(card_instance)
 	card_effect_finished.emit()
 

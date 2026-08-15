@@ -2,7 +2,7 @@ class_name Floor
 
 var width: int
 var height: int
-var used_cells: Dictionary[Vector2i, RoomPattern.TileType]
+var used_cells: Dictionary[Vector2i, TileResource]
 var astar: AStarGrid2D
 var random_dijkstra_maps: Array[DijkstraMap] = []
 func _init(width: int, height: int):
@@ -35,7 +35,7 @@ func initialize_all_dijkstra_maps():
 func pick_random_dijkstra_map() -> DijkstraMap:
 	return random_dijkstra_maps.pick_random()
 
-func append_back(used_cells: Array[Vector2i], cell_types: Array[RoomPattern.TileType]):
+func append_back(used_cells: Array[Vector2i], cell_types: Array[TileResource]):
 	if len(used_cells) != len(cell_types):
 		print('mismatched lengths')
 		return
@@ -46,22 +46,22 @@ func append_back(used_cells: Array[Vector2i], cell_types: Array[RoomPattern.Tile
 		
 		set_tile(cell, type)
 
-func set_tile(cell: Vector2i, type: RoomPattern.TileType):
-	self.used_cells[cell] = type
-	if type != RoomPattern.TileType.UNOCCUPIED:
+func set_tile(cell: Vector2i, tile: TileResource):
+	self.used_cells[cell] = tile
+	if tile.grounded_cost != INF:
 		astar.set_point_solid(cell, false)
 	else:
 		astar.set_point_solid(cell)
 
-func update_tile(cell: Vector2i, type: RoomPattern.TileType):
+func update_tile(cell: Vector2i, type: TileResource):
 	set_tile(cell, type)
 	EventBus.floor_tile_updated.emit(cell, type)
 
-func get_tile(v: Vector2i) -> RoomPattern.TileType:
+func get_tile(v: Vector2i) -> TileResource:
 	if v in used_cells:
 		return used_cells[v]
 	else:
-		return RoomPattern.TileType.UNOCCUPIED
+		return load("res://floor_generator/tiles/wall.tres")
 
 # cells are cells for a room
 func is_no_point_overlap(cells: Array[Vector2i]) -> bool:
@@ -131,16 +131,16 @@ func get_random_wall() -> Array[Vector2i]:
 func has(v:Vector2i):
 	return used_cells.has(v)
 	
-func get_all_tiles() -> Dictionary[Vector2i, RoomPattern.TileType]:
+func get_all_tiles() -> Dictionary[Vector2i, TileResource]:
 	return used_cells
 
 func compute_path(from: Vector2i, to: Vector2i) -> Array[Vector2i]:
 	return astar.get_id_path(from, to)
 
-func get_type_positions(tile_types: Array[RoomPattern.TileType]) -> Array[Vector2i]:
+func get_type_positions(tile_types: Array[TileResource.Terrains]) -> Array[Vector2i]:
 	var position_list : Array[Vector2i] = []
 	for position in used_cells:
-		if used_cells[position] in tile_types:
+		if used_cells[position].terrain_id in tile_types:
 			position_list.push_back(position)
 	return position_list
 
@@ -148,6 +148,6 @@ func get_valid_adjacent(center: Vector2i) -> Array[Vector2i]:
 	var ret : Array[Vector2i] = []
 	for cell in DijkstraMap._get_adjacent_edges(center):
 		if ActorManager.get_actor_in_position(cell) == null and\
-		!Tiles.TileDictionary[Globals.floor_map.get_tile(cell)].is_impassable():
+		Globals.floor_map.get_tile(cell).get_pf_cost(Char.Traversal.GROUNDED) != INF:
 			ret.push_back(cell)
 	return ret

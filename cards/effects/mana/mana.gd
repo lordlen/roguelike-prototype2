@@ -9,6 +9,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		# create a cast spell card
 		var cs_resource := load("res://cards/card_resources/special/cast_spell.tres")
 		cs = CardInstance.new(cs_resource)
+		actor.char_card_added.emit(cs)
 		actor.deck.add_to_discard(cs)
 
 	# increase cs atk by value

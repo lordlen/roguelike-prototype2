@@ -21,7 +21,7 @@ func execute() -> bool:
 		var path := pf.get_straight_path(attacker.grid_position, defender.grid_position, attacker.traversal)
 		if len(path) - 1 >=  dist:
 			var card := attacker.deck.primary
-			attacker.char_attacked.emit(attacker, defender)
+			attacker.char_attacked.emit(defender)
 			await attacker.deck.primary.card_action_finished
 			attacker.deck.dispose_primary()
 			await attacker.get_tree().create_timer(0.5).timeout

@@ -6,13 +6,19 @@ extends Item
 func get_description() -> String:
 	return description
 
+func on_wait(owner):
+	pass
+
+func on_next_floor(owner):
+	pass
+
 func on_self_pickup(owner):
 	pass
 
 func on_relic_added(owner: Char):
 	pass
 
-func on_card_added(owner: Char, card_resource: CardResource):
+func on_card_added(owner: Char, card: CardInstance):
 	pass
 
 func on_attack(actor: Char, defender: Char):

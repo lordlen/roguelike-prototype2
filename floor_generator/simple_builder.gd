@@ -79,10 +79,11 @@ func build(floor: Floor) -> Floor:
 			failed_attempts += 1
 	
 	if connect_close_rooms:
+		var floor_tile := load("res://floor_generator/tiles/ground.tres")
 		var num_attempts = 0
 		var max_attempts = 1000
 		# pick 2 random floor tiles
-		var floor_positions := floor.get_type_positions([RoomPattern.TileType.FLOOR])
+		var floor_positions := floor.get_type_positions([TileResource.Terrains.GROUND])
 		while num_attempts < max_attempts:
 			# get 2 random floor tiles
 			var cell1 : Vector2i = floor_positions.pick_random()
@@ -95,15 +96,15 @@ func build(floor: Floor) -> Floor:
 				# connect the two
 				# randomly select whether we want x or y first
 				var corridor_tiles : Array[Vector2i] = []
-				var tile_types: Array[RoomPattern.TileType] = []
+				var tile_types: Array[TileResource] = []
 				var x_inc = 1 if cell1.x < cell2.x else -1
 				var y_inc = 1 if cell1.y < cell2.y else -1
 				for x in range(cell1.x, cell2.x + x_inc, x_inc):
 					corridor_tiles.push_back(Vector2i(x, cell1.y))
-					tile_types.push_back(RoomPattern.TileType.FLOOR)
+					tile_types.push_back(floor_tile)
 				for y in range(cell1.y + y_inc, cell2.y + y_inc, y_inc):
 					corridor_tiles.push_back(Vector2i(cell2.x, y))
-					tile_types.push_back(RoomPattern.TileType.FLOOR)
+					tile_types.push_back(floor_tile)
 				floor.append_back(corridor_tiles, tile_types)
 			else:
 				num_attempts += 1
@@ -111,11 +112,12 @@ func build(floor: Floor) -> Floor:
 	var ca_generator = CellularAutomataGenerator.new(width, height, 0.20, 7)
 	var grass := ca_generator.build()
 
+	var grass_resource := load("res://floor_generator/tiles/grass.tres")
 	for x in range(width):
 		for y in range(height):
 			var v := Vector2i(x,y)
-			if floor.get_tile(v) == RoomPattern.TileType.FLOOR and v in grass:
-				floor.set_tile(v, RoomPattern.TileType.GRASS)
+			if floor.get_tile(v).terrain_id in [0] and v in grass:
+				floor.set_tile(v, grass_resource)
 
 	## set water
 	#var water_generator := WaterGenerator.new(width, height)

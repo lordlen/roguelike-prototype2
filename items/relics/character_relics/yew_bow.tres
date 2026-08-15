@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://s0vxy3c6umj8"]
+
+[ext_resource type="Script" uid="uid://f00g7wpslrv1" path="res://items/relics/character_relics/yew_bow.gd" id="1_ip2ip"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_jpog2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_622xs"]
+atlas = ExtResource("2_jpog2")
+region = Rect2(64, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_ip2ip")
+description = "Increase a card's range by 1."
+item_name = "Yew Bow"
+texture = SubResource("AtlasTexture_622xs")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

@@ -25,7 +25,7 @@ func get_straight_path(from: Vector2i, to: Vector2i, traversibility: Char.Traver
 	var size := 1
 	for pos in path.slice(1, len(path) - 1):
 		var tile := Globals.floor_map.get_tile(pos)
-		var is_traversible := Tiles.TileDictionary[tile].pf_cost(traversibility) != INF
+		var is_traversible := tile.get_pf_cost(traversibility) != INF
 		if !is_traversible:
 			return path.slice(0, size)
 		size += 1
@@ -41,7 +41,7 @@ func get_straight_path_actor(from: Vector2i, to: Vector2i, traversibility: Char.
 	var size := 1
 	for pos in path.slice(1, len(path)):
 		var tile := Globals.floor_map.get_tile(pos)
-		var is_traversible := Tiles.TileDictionary[tile].pf_cost(traversibility) != INF
+		var is_traversible := tile.get_pf_cost(traversibility) != INF
 		if !is_traversible or char_dict.has(pos):
 			return path.slice(0, size)
 		size += 1

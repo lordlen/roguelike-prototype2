@@ -1,25 +1,17 @@
 class_name RoomPattern
 
-enum TileType {
-	UNOCCUPIED,
-	FLOOR,
-	WALL,
-	GRASS,
-	WATER,
-	PEDESTAL,
-	TRAMPLED_GRASS,
-	STAIRS,
-	LOCKED_DOOR,
-}
-
-const TILE_TYPE_MAP := {
-	Color.BLACK: TileType.WALL,
-	Color.WHITE: TileType.FLOOR,
-	Color.GREEN: TileType.GRASS,
-	Color.BLUE: TileType.WATER,
-	Color.YELLOW: TileType.PEDESTAL,
-	Color.MAGENTA: TileType.STAIRS,
-	Color.RED: TileType.LOCKED_DOOR
+static var TILE_TYPE_MAP := {
+	Color.BLACK: load("res://floor_generator/tiles/wall.tres"),
+	Color.WHITE: load("res://floor_generator/tiles/ground.tres"),
+	Color.GREEN: load("res://floor_generator/tiles/grass.tres"),
+	Color.BLUE: load("res://floor_generator/tiles/water.tres"),
+	Color.YELLOW: load("res://floor_generator/tiles/pedestal.tres"),
+	Color8(255, 255, 0, 254): load("res://floor_generator/tiles/pressure_p_statue.tres"),
+	Color.MAGENTA: load("res://floor_generator/tiles/stairs.tres"),
+	Color.RED: load("res://floor_generator/tiles/locked_door.tres"),
+	Color.CYAN: load("res://floor_generator/tiles/goblin_statue.tres"),
+	Color8(0,255,255,254): load("res://floor_generator/tiles/slime_statue.tres"),
+	Color8(0,255,255,253): load("res://floor_generator/tiles/rat_statue.tres"),
 }
 
 const room_outline_resource := {
@@ -41,7 +33,7 @@ const feature_resource := {
 }
 
 var used_cells: Array[Vector2i]
-var used_cells_types: Array[TileType]
+var used_cells_types: Array[TileResource]
 func _init(pattern_image: PatternResource):
 	var image: Image = pattern_image.pattern.get_image()
 	var uc : Array[Vector2i] = []
@@ -85,5 +77,5 @@ func get_used_cells(rotation: Vector2i, translation: Vector2i) -> Array[Vector2i
 	ret.assign(used_cells.map(func(v: Vector2i) -> Vector2i: return rotate(v, rotation) + translation))
 	return ret
 
-func get_cell_types():
+func get_cell_types() -> Array[TileResource]:
 	return used_cells_types

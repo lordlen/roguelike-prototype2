@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="FixedFloorBuilder" load_steps=13 format=3 uid="uid://cfitjtx0diity"]
+
+[ext_resource type="Script" uid="uid://xdii0ds0a4wo" path="res://floor_generator/fixed_floor_builder.gd" id="1_iyk1f"]
+[ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_vw0l6"]
+[ext_resource type="Texture2D" uid="uid://b82rx211w5jr0" path="res://resources/special_floors.png" id="1_wcte7"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="2_t2rhq"]
+[ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="2_uig16"]
+[ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="4_ric3n"]
+[ext_resource type="Resource" uid="uid://bqn1ehspdshfg" path="res://items/activation_tile/healing_tile.tres" id="4_v2pik"]
+[ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="5_v2pik"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcte7"]
+atlas = ExtResource("1_wcte7")
+region = Rect2(210, 0, 70, 40)
+
+[sub_resource type="Resource" id="Resource_uig16"]
+script = ExtResource("2_uig16")
+pattern = SubResource("AtlasTexture_wcte7")
+metadata/_custom_type_script = "uid://u281p1f1m7k"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hm2y"]
+atlas = ExtResource("1_wcte7")
+region = Rect2(140, 0, 70, 40)
+
+[sub_resource type="Resource" id="Resource_vw0l6"]
+script = ExtResource("2_uig16")
+pattern = SubResource("AtlasTexture_4hm2y")
+metadata/_custom_type_script = "uid://u281p1f1m7k"
+
+[resource]
+script = ExtResource("1_iyk1f")
+floor_layout_resource = SubResource("Resource_vw0l6")
+floor_layout_dijkstra = SubResource("Resource_uig16")
+hero_spawn_point = Vector2i(7, 11)
+potion_pool = ExtResource("4_ric3n")
+card_pool = ExtResource("1_vw0l6")
+relic_pool = ExtResource("5_v2pik")
+healing_tile = ExtResource("4_v2pik")
+num_potions = 3
+num_cards = 5
+num_relics = 2
+potion_cost = 50
+card_cost = 75
+relic_cost = 200
+healing_cost = 100
+floor_name = "Shop"
+metadata/_custom_type_script = "uid://xdii0ds0a4wo"

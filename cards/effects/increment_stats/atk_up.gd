@@ -4,6 +4,7 @@ extends CardEffect
 @export var atk_value: int
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+	print("attack up %d" % atk_value)
 	card.attack += atk_value
 	card_effect_finished.emit()
 

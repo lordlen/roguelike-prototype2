@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=31 format=3 uid="uid://b1v86iegr1jxw"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=29 format=3 uid="uid://b1v86iegr1jxw"]
 
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_2ng6m"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_14ulr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="6_f4p5v"]
 [ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="7_vlb78"]
 [ext_resource type="Resource" uid="uid://dprerqpsu1pdc" path="res://patterns/croissant.tres" id="8_h2it4"]
+[ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="9_d1ji6"]
 [ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="9_vdcyu"]
 [ext_resource type="Resource" uid="uid://ctmdd8rcov4kq" path="res://patterns/hut.tres" id="10_83vna"]
 [ext_resource type="Resource" uid="uid://bbpq1mknhs4j5" path="res://patterns/L.tres" id="11_0e5hf"]
@@ -20,11 +21,8 @@
 [ext_resource type="Resource" uid="uid://brcq5wokjhj4b" path="res://patterns/river.tres" id="15_o7r0w"]
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="16_xtnre"]
 [ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="17_3yiw6"]
-[ext_resource type="Resource" uid="uid://cnpojlql4ld0d" path="res://patterns/room_patterns/special_features/grass.tres" id="18_sl8x0"]
-[ext_resource type="Resource" uid="uid://df0uqg57jqj12" path="res://patterns/room_patterns/special_features/river.tres" id="19_mayfh"]
-[ext_resource type="Resource" uid="uid://p0rhw655kxjm" path="res://patterns/room_patterns/special_features/small_corridor.tres" id="20_r7ycy"]
-[ext_resource type="Resource" uid="uid://bhjsa6gi2wnyp" path="res://patterns/room_patterns/special_features/windy.tres" id="21_lja8s"]
-[ext_resource type="Resource" uid="uid://5lrc0bcqndhs" path="res://patterns/stairs.tres" id="22_2ixqe"]
+[ext_resource type="Resource" uid="uid://cu06btq57vfu3" path="res://patterns/room_patterns/special_features/slime_den.tres" id="22_0tba4"]
+[ext_resource type="Resource" uid="uid://cau3mgws2ax0c" path="res://patterns/room_patterns/special_features/goblin_den.tres" id="23_16ib7"]
 [ext_resource type="Resource" uid="uid://bfl70ibh5j5x8" path="res://floor_generator/floor_description/spawn_groups/single_slime.tres" id="24_f2nak"]
 
 [sub_resource type="Resource" id="Resource_sriks"]
@@ -47,9 +45,9 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 [sub_resource type="Resource" id="Resource_ggcuy"]
 script = ExtResource("16_xtnre")
 room_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("7_vlb78"), ExtResource("8_h2it4"), ExtResource("9_vdcyu"), ExtResource("10_83vna"), ExtResource("11_0e5hf"), ExtResource("12_67dxa"), ExtResource("13_tmq0w"), ExtResource("14_x5faf"), ExtResource("15_o7r0w")])
-special_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("18_sl8x0"), ExtResource("19_mayfh"), ExtResource("20_r7ycy"), ExtResource("21_lja8s")])
-stairs_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("22_2ixqe")])
+special_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("22_0tba4"), ExtResource("23_16ib7")])
 item_pool = ExtResource("5_3mqf4")
+relic_pool = ExtResource("9_d1ji6")
 shrine_pool = ExtResource("17_3yiw6")
 initial_spawns = SubResource("Resource_qil1r")
 elite_spawns = SubResource("Resource_47kvl")
@@ -58,4 +56,5 @@ metadata/_custom_type_script = "uid://cihmjv6v0inos"
 [resource]
 script = ExtResource("1_2ng6m")
 floor_description = SubResource("Resource_ggcuy")
+floor_name = "F4"
 metadata/_custom_type_script = "uid://bo2wewg8np8bl"

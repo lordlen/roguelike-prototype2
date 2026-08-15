@@ -1,8 +1,6 @@
 class_name CustomAstar
 extends AStarGrid2D
 
-var costs: Dictionary[RoomPattern.TileType, float]
-
 var char_cost := 4.0
 
 var traversal: Char.Traversal
@@ -20,4 +18,4 @@ func _compute_cost(from_id: Vector2i, to_id: Vector2i) -> float:
 
 	var actor_cost := char_cost if actor != null else 0.0
 	
-	return Tiles.TileDictionary[tile].pf_cost(traversal) + actor_cost
+	return tile.get_pf_cost(traversal) + actor_cost

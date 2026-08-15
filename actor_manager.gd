@@ -83,9 +83,13 @@ func random_spawn_character(spawn_group: SpawnGroup, items: Array[Item], is_awak
 	# if not aquatic, just pick a non-water tile
 	var ch_stats := spawn_group.group[0]
 	var followers : Array[CharacterStats] = spawn_group.group.slice(1)
-	var spawn_tiles : Array[RoomPattern.TileType] = [RoomPattern.TileType.FLOOR, RoomPattern.TileType.GRASS]
+	var spawn_tiles : Array[TileResource.Terrains] = [
+		TileResource.Terrains.GROUND,
+		TileResource.Terrains.GRASS,
+		TileResource.Terrains.TRAMPLED_GRASS
+	]
 	if ch_stats.traversal == Char.Traversal.AQUATIC:
-		spawn_tiles.append(RoomPattern.TileType.WATER)
+		spawn_tiles.append(TileResource.Terrains.WATER)
 	var possible_positions := Globals.floor_map.get_type_positions(spawn_tiles)
 	# check all actors
 	var actor_positions = ActorManager.get_chars().map(func(ch: Char) -> Vector2i: return ch.grid_position)
@@ -133,7 +137,6 @@ func get_actor_in_position(pos: Vector2i) -> Char:
 		return null
 
 func get_actors_in_positions(positions: Array[Vector2i]) -> Array[Char]:
-	var char_dict := get_chars_dict()
 	var ret : Array[Char] = []
 	for pos in positions:
 		if char_dict.has(pos):

@@ -11,7 +11,7 @@ func use(owner: Char, pos: Vector2i) -> bool:
 
 	var target_chars := _get_target_chars(pos)
 
-	var positions : Array[Vector2i] = Globals.floor_map.get_type_positions([RoomPattern.TileType.FLOOR])
+	var positions : Array[Vector2i] = Globals.floor_map.get_type_positions([TileResource.Terrains.GROUND])
 	for target_char in target_chars:
 		# find a random, unoccupied location
 		

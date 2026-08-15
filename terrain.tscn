@@ -1,10 +1,12 @@
-[gd_scene load_steps=46 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=49 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
+[ext_resource type="Script" uid="uid://bssxptdtqb6x4" path="res://floor_generator/region_description.gd" id="2_agy8s"]
 [ext_resource type="Texture2D" uid="uid://d8c1shexwyt8" path="res://resources/autotile.png" id="2_avahw"]
 [ext_resource type="Script" uid="uid://cmwn0g84amk8m" path="res://UI/char_info_container.gd" id="2_h2lqh"]
 [ext_resource type="Script" uid="uid://d4in3tnhalqhi" path="res://UI/logs.gd" id="3_h2lqh"]
+[ext_resource type="Resource" uid="uid://dd7bng7p6048e" path="res://floor_generator/region_description/region1.tres" id="3_lj33d"]
 [ext_resource type="Script" uid="uid://dwuhxx6l7dx8l" path="res://terrain.gd" id="3_n7k1k"]
 [ext_resource type="Script" uid="uid://7c0e606cjuj6" path="res://stairs_dialog.gd" id="4_hl62s"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="4_iqhxt"]
@@ -22,6 +24,7 @@
 [ext_resource type="Script" uid="uid://d0vje1rxysrni" path="res://UI/defend_value.gd" id="15_nsrdk"]
 [ext_resource type="PackedScene" uid="uid://6f5d45fu8cv0" path="res://UI/card_description_popup.tscn" id="16_mrt7q"]
 [ext_resource type="PackedScene" uid="uid://bys5excwfjlap" path="res://char_info_detailed.tscn" id="17_lhepi"]
+[ext_resource type="PackedScene" uid="uid://bq32evy5ojloo" path="res://UI/item_description.tscn" id="20_lj33d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i68f"]
 atlas = ExtResource("8_e44n4")
@@ -76,6 +79,8 @@ tile_data = PackedInt32Array(458752, 2, 0, 327681, 2, 0, 393217, 2, 0, 458753, 2
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0u6kl"]
 texture = ExtResource("1_206su")
 0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 4
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrain = 0
@@ -113,7 +118,6 @@ texture = ExtResource("1_206su")
 28:0/0 = 0
 29:0/0 = 0
 29:0/0/terrain_set = 0
-29:0/0/terrain = 4
 30:0/0 = 0
 31:0/0 = 0
 0:1/0 = 0
@@ -136,6 +140,8 @@ texture = ExtResource("1_206su")
 12:1/0 = 0
 13:1/0 = 0
 14:1/0 = 0
+14:1/0/terrain_set = 0
+14:1/0/terrain = 8
 15:1/0 = 0
 16:1/0 = 0
 17:1/0 = 0
@@ -1372,6 +1378,8 @@ terrain_set_0/terrain_6/name = "stairs_down"
 terrain_set_0/terrain_6/color = Color(0.25, 0.5, 0.40625, 1)
 terrain_set_0/terrain_7/name = "locked_door"
 terrain_set_0/terrain_7/color = Color(0.25, 0.5, 0.5, 1)
+terrain_set_0/terrain_8/name = "statue"
+terrain_set_0/terrain_8/color = Color(0.25, 0.40625, 0.5, 1)
 sources/0 = SubResource("TileSetAtlasSource_0u6kl")
 sources/1 = SubResource("TileSetAtlasSource_3shck")
 sources/3 = SubResource("TileSetAtlasSource_e1kr5")
@@ -1973,6 +1981,7 @@ sources/0 = SubResource("TileSetAtlasSource_hl62s")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3shck")
+region_descriptions = Array[ExtResource("2_agy8s")]([ExtResource("3_lj33d")])
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -2096,7 +2105,6 @@ offset_right = 571.0
 offset_bottom = 41.33333
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
-tooltip_text = "hellksjdlkfjskldfljlsj"
 columns = 4
 script = ExtResource("6_lg7om")
 
@@ -2256,6 +2264,11 @@ visible = false
 
 [node name="CharInfoDetailed" parent="UILayer" instance=ExtResource("17_lhepi")]
 visible = false
+
+[node name="ItemDescription" parent="UILayer" instance=ExtResource("20_lj33d")]
+visible = false
+offset_top = -3.0
+offset_bottom = 3.0
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_avahw")

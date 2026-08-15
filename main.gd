@@ -1,14 +1,9 @@
 extends Node
 
-var floor_builders: Array[FloorBuilder] = [
-	# load("res://floor_generator/floor_builders/test_floor.tres") as FloorBuilder,
-	load("res://floor_generator/floor_builders/f1builder.tres") as FloorBuilder,
-	load("res://floor_generator/floor_builders/f2builder.tres") as FloorBuilder,
-	load("res://floor_generator/floor_builders/f3builder.tres") as FloorBuilder,
-	load("res://floor_generator/floor_builders/f4builder.tres") as FloorBuilder,
-	#load("res://floor_generator/floor_builders/f5builder.tres") as FloorBuilder,
-	load("res://floor_generator/floor_builders/boss1.tres") as FloorBuilder,
-]
+@export var region_descriptions : Array[RegionDescription]
+
+var region_ind := 0
+var floor_name: String
 
 func _ready() -> void:
 	randomize()
@@ -21,14 +16,22 @@ func _ready() -> void:
 	for card_resource in hero.deck.deck_list:
 		var card_instance := CardInstance.new(card_resource)
 		card_list.push_back(card_instance)
+	for region in region_descriptions:
+		region.initalize()
 	build_floor()
 
 func build_floor():
-	var floor_builder := floor_builders[Globals.current_floor]
+	if !region_descriptions[region_ind].has_next():
+		region_ind += 1
+	if region_ind >= len(region_descriptions):
+		print("win")
+		return
+	var floor_builder := region_descriptions[region_ind].get_next_floor()
 	floor_builder.build_floor()
 	
 	$Terrain.draw_tiles(Globals.floor_map.get_all_tiles())
-	Globals.current_floor += 1
+	
+	$UILayer/TopPanel/FloorNumber.text = floor_builder.floor_name
 	
 	# reset hero vision
 	for char in Globals.user_controlled:
@@ -41,7 +44,9 @@ func build_floor():
 func on_stairs_entered():
 	$UILayer/CardRewardDialog.generate_card_rewards()
 	build_floor()
-	$UILayer/TopPanel/FloorNumber.text = "F%d" % Globals.current_floor
+	# activate on next floor effects
+	for chars in ActorManager.get_chars():
+		chars.char_next_floor.emit()
 
 func on_new_actor_added(char: Char):
 	$ActorList.add_child(char)

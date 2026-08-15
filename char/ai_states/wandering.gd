@@ -16,7 +16,7 @@ func act(actor: Char) -> Array[Action]:
 		return actor.curr_state.act(actor)
 	
 	if len(actor.deck.discard_pile) != 0\
-	and Globals.floor_map.get_tile(actor.grid_position) != RoomPattern.TileType.WATER:
+	and Globals.floor_map.get_tile(actor.grid_position).terrain_id == 3:
 		return [ReshuffleAction.new(actor)]
 	
 	# if hasn't moved last turn, move elsewhere

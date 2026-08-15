@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dc8i2f1hy8ei5"]
+
+[ext_resource type="Script" uid="uid://cgaoe2tfj1s40" path="res://items/relics/character_relics/smooth_stone.gd" id="1_bowqu"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_6ehg0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mum6w"]
+atlas = ExtResource("2_6ehg0")
+region = Rect2(64, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_bowqu")
+description = "Increase defense of all cards by 1."
+item_name = "Smooth Stone"
+texture = SubResource("AtlasTexture_mum6w")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

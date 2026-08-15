@@ -3,8 +3,12 @@ extends Node
 # array of a list of items
 var item_dictionary: Dictionary[Vector2i, Array]
 
-func add_item_to_overworld(item: Item, grid_position: Vector2i):
-	var item_overworld := ItemOverworld.new(item, grid_position)
+func add_item_to_overworld(item: Item, grid_position: Vector2i, price: int = 0):
+	var item_overworld_scene : PackedScene= load("res://items/item_overworld.tscn")
+	var item_overworld : ItemOverworld = item_overworld_scene.instantiate()#ItemOverworld.new(item, grid_position)
+	item_overworld.set_item(item)
+	item_overworld.set_pos(grid_position)
+	item_overworld.set_price(price)
 	if !item_dictionary.has(grid_position):
 		item_dictionary[grid_position] = []
 	

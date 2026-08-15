@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bem05xbwswf6t"]
+
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="1_gryw3"]
+[ext_resource type="Script" uid="uid://d1nfpppyyu7yb" path="res://items/item_overworld_script.gd" id="2_gryw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gryw3"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk38k"]
+atlas = ExtResource("1_gryw3")
+region = Rect2(64, 64, 16, 16)
+
+[node name="ItemOverworld" type="Area2D"]
+visible = false
+script = ExtResource("2_gryw3")
+
+[node name="Cost" type="Label" parent="."]
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 38.333336
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 90
+text = "100"
+horizontal_alignment = 1
+
+[node name="MouseCollision" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_gryw3")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_lk38k")
+centered = false
+
+[node name="AltText" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 8
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

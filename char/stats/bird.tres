@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://yl456slxjht7"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=15 format=3 uid="uid://yl456slxjht7"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_u0mwt"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="2_fegvw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://d20njqkckukoi" path="res://cards/card_resources/swoop.tres" id="3_1580j"]
 [ext_resource type="Resource" uid="uid://bl7ln6lrj33yn" path="res://cards/card_resources/flight.tres" id="4_6cek0"]
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="5_a2kcb"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="6_1580j"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="7_60e4g"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="8_2wgf8"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="9_vuwg2"]

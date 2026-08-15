@@ -34,14 +34,14 @@ func is_wall(tile, quadrant: Quadrant) -> bool:
 		return false
 	
 	var grid_pos := quadrant.transform(tile)
-	return Tiles.TileDictionary[floor.get_tile(grid_pos)].is_opaque()
+	return floor.get_tile(grid_pos).is_opaque
 
 func is_floor(tile, quadrant: Quadrant):
 	if tile == null:
 		return false
 	
 	var grid_pos := quadrant.transform(tile)
-	return !Tiles.TileDictionary[floor.get_tile(grid_pos)].is_opaque()
+	return !floor.get_tile(grid_pos).is_opaque
 
 
 func reveal(tile: Vector2i, quadrant: Quadrant):

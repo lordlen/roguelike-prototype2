@@ -4,7 +4,7 @@ extends CardEffect
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	if target_char.deck.primary != null:
-		target_char.deck.primary.attack_effects.push_back(card_effect)
+		CardEffect.combine_effects(target_char.deck.primary.attack_effects, [card_effect.duplicate()])
 		target_char.deck.primary.is_changed = true
 	card_effect_finished.emit()
 

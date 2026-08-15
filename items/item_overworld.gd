@@ -1,4 +1,4 @@
-class_name ItemOverworld
+#class_name ItemOverworld
 extends Sprite2D
 
 var item_resource: Item

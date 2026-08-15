@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://do3dp27xexj7s"]
-
-[ext_resource type="Script" uid="uid://dd7es1g2705g0" path="res://cards/effects/leaf_storm/leaf_storm_start.gd" id="1_dcogx"]
-
-[resource]
-script = ExtResource("1_dcogx")
-identifier = "leaf_storm_start"
-description = "Destroy adjacent grass tiles. Hit as many times as grass destroyed."
-metadata/_custom_type_script = "uid://8j480ywki30u"

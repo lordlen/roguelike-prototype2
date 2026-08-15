@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TileResource" load_steps=4 format=3 uid="uid://tvtx7ajofj6x"]
+
+[ext_resource type="Script" uid="uid://cc3k21dwfobwr" path="res://floor_generator/tiles/tile_actions/statue_plate_walk.gd" id="1_ffhbt"]
+[ext_resource type="Script" uid="uid://bfjog00ipfkcc" path="res://floor_generator/tiles/tile.gd" id="1_l1e3y"]
+
+[sub_resource type="Resource" id="Resource_0i3fe"]
+script = ExtResource("1_ffhbt")
+effect_radius = 8
+metadata/_custom_type_script = "uid://cc3k21dwfobwr"
+
+[resource]
+script = ExtResource("1_l1e3y")
+terrain_id = 4
+grounded_cost = 8.0
+aquatic_cost = 8.0
+flying_cost = 8.0
+on_walk_action = SubResource("Resource_0i3fe")
+metadata/_custom_type_script = "uid://bfjog00ipfkcc"

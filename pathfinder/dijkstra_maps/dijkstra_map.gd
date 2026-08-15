@@ -8,7 +8,6 @@ var width: int
 var height: int
 var targets: Array[Vector2i]
 var floor : Floor
-var cost_map: Dictionary[RoomPattern.TileType, float]
 var char_dict: Dictionary[Vector2i, Char]
 var chars: Array[Char]
 var traversal: Char.Traversal
@@ -94,7 +93,7 @@ func instantiate(depth: int = max_int) -> void:
 			# if out of bounds, impassable tile, or a character who hasn't moved
 			# is in the way, treat all as impassable
 			var blocking_char := ActorManager.get_actor_in_position(v)
-			var w := Tiles.get_pf_cost(traversal, tile)\
+			var w := tile.get_pf_cost(traversal)\
 			+ (4.0 if (blocking_char != null and !blocking_char.moved_last_turn) else 0.0)
 			if !is_within_bounds(v) or w == INF:
 				continue

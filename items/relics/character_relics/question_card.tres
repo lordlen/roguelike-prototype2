@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c8paffamdioqe"]
+
+[ext_resource type="Script" uid="uid://2ns7akn18axj" path="res://items/relics/character_relics/question_card.gd" id="1_dmkhk"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_sujlu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebie1"]
+atlas = ExtResource("2_sujlu")
+region = Rect2(64, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_dmkhk")
+description = "Add 1 extra card reward per floor."
+item_name = "Question Card"
+texture = SubResource("AtlasTexture_ebie1")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

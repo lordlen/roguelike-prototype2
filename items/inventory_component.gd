@@ -21,6 +21,16 @@ func _init(owner: Char, item_limit: int) -> void:
 	owner.char_reshuffled.connect(on_reshuffle)
 	owner.char_is_hit.connect(on_hit)
 	owner.char_took_damage.connect(on_took_damage)
+	owner.char_next_floor.connect(on_next_floor)
+	owner.char_waited.connect(on_wait)
+
+func on_wait():
+	for relic in relics:
+		relic.on_wait(owner)
+
+func on_next_floor():
+	for relic in relics:
+		relic.on_next_floor(owner)
 
 func has_droppable_item() -> bool:
 	return len(items) > 0 or gold > 0 or card_rewards > 0
@@ -29,9 +39,9 @@ func on_relic_added():
 	for relic in relics:
 		relic.on_relic_added(owner)
 
-func on_card_added(card_resource: CardResource):
+func on_card_added(card: CardInstance):
 	for relic in relics:
-		relic.on_card_added(owner, card_resource)
+		relic.on_card_added(owner, card)
 
 func on_attack(defender: Char):
 	for relic in relics:
@@ -112,11 +122,11 @@ func drop_all_items() -> void:
 	# gold
 	if gold > 0:
 		var item : Gold = load("res://items/gold/gold.tres")
-		item.amount = 100
+		item.amount = gold
 		ItemManager.add_item_to_overworld(item, owner.grid_position)
 	# card reward
 	for i in range(card_rewards):
-		var card_item: Item = load("res://items/card_item/card_item.tres")
+		var card_item: Item = load("res://items/card_item/card_reward_item.tres")
 		ItemManager.add_item_to_overworld(card_item, owner.grid_position)
 	# potions
 	for item in items:

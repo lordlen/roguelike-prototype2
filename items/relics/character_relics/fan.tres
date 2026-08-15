@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dpd0iu1qnk75d"]
+
+[ext_resource type="Script" uid="uid://dupc2x0x10sdg" path="res://items/relics/character_relics/fan.gd" id="1_42tja"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_7hg3q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8g4h"]
+atlas = ExtResource("2_7hg3q")
+region = Rect2(64, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_42tja")
+description = "For every third attack, gain 2 bonus defense."
+item_name = "Fan"
+texture = SubResource("AtlasTexture_v8g4h")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

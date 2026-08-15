@@ -43,7 +43,7 @@ func act(actor: Char) -> Array[Action]:
 	if ((actor.deck.primary == null or actor.deck.offhand == null) and primary_atk + offhand_atk == 0)\
 	or (actor.is_cautious and len(actor.deck.discard_pile) >= 1 and\
 	Pathfinder.chebychev_dist(actor.grid_position, actor.target_ch.grid_position) > 1) and\
-	Globals.floor_map.get_tile(actor.grid_position) != RoomPattern.TileType.WATER:
+	Globals.floor_map.get_tile(actor.grid_position).terrain_id != 3:
 		return [ReshuffleAction.new(actor)]
 
 	# can see the target
