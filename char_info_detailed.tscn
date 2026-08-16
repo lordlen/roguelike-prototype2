@@ -1,34 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://bys5excwfjlap"]
+[gd_scene load_steps=5 format=3 uid="uid://bys5excwfjlap"]
 
 [ext_resource type="Script" uid="uid://covumddkcgw37" path="res://UI/char_info_detailed.gd" id="1_3cqj8"]
+[ext_resource type="Script" uid="uid://cgo0sftjgc5u8" path="res://UI/popup_control.gd" id="1_8q1pe"]
 [ext_resource type="Texture2D" uid="uid://c03ikb6kqulof" path="res://resources/relics.png" id="1_12wfd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cqj8"]
 atlas = ExtResource("1_12wfd")
 region = Rect2(0, 0, 16, 16)
 
-[node name="Panel" type="Panel"]
+[node name="Control" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_8q1pe")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 158.0
 offset_top = 142.0
 offset_right = 530.0
 offset_bottom = 406.0
 script = ExtResource("1_3cqj8")
 
-[node name="CharName" type="Label" parent="."]
+[node name="CharName" type="Label" parent="Panel"]
 layout_mode = 0
 offset_right = 168.0
 offset_bottom = 27.916666
 theme_override_font_sizes/font_size = 20
 text = "Character name"
 
-[node name="TraversalLabel" type="Label" parent="."]
+[node name="TraversalLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 78.0
 offset_bottom = 55.0
 text = "Traversal:"
 
-[node name="TraversalType" type="Label" parent="TraversalLabel"]
+[node name="TraversalType" type="Label" parent="Panel/TraversalLabel"]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 1.0
@@ -36,14 +47,14 @@ offset_right = 265.0
 offset_bottom = 24.0
 text = "Grounded"
 
-[node name="GoldLabel" type="Label" parent="."]
+[node name="GoldLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_top = 64.0
 offset_right = 41.0
 offset_bottom = 87.0
 text = "Gold:"
 
-[node name="GoldAmount" type="Label" parent="GoldLabel"]
+[node name="GoldAmount" type="Label" parent="Panel/GoldLabel"]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 2.0
@@ -51,14 +62,14 @@ offset_right = 219.0
 offset_bottom = 25.0
 text = "100"
 
-[node name="CardRewardLabel" type="Label" parent="."]
+[node name="CardRewardLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_top = 98.0
 offset_right = 41.0
 offset_bottom = 121.0
 text = "Card Rewards:"
 
-[node name="CardRewardAmount" type="Label" parent="CardRewardLabel"]
+[node name="CardRewardAmount" type="Label" parent="Panel/CardRewardLabel"]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 2.0
@@ -66,7 +77,7 @@ offset_right = 220.0
 offset_bottom = 25.0
 text = "100"
 
-[node name="PotionLabel" type="Label" parent="."]
+[node name="PotionLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 138.0
@@ -74,7 +85,7 @@ offset_right = 41.0
 offset_bottom = 161.0
 text = "Potions:"
 
-[node name="GridContainer" type="GridContainer" parent="PotionLabel"]
+[node name="GridContainer" type="GridContainer" parent="Panel/PotionLabel"]
 layout_mode = 0
 offset_left = 74.0
 offset_top = -3.0
@@ -83,24 +94,24 @@ offset_bottom = 16.0
 scale = Vector2(2, 2)
 columns = 7
 
-[node name="TextureButton" type="TextureRect" parent="PotionLabel/GridContainer"]
+[node name="TextureButton" type="TextureRect" parent="Panel/PotionLabel/GridContainer"]
 layout_mode = 2
 tooltip_text = "Summon a slime every 2 reshuffles."
 texture = SubResource("AtlasTexture_3cqj8")
 
-[node name="TextureButton2" type="TextureRect" parent="PotionLabel/GridContainer"]
+[node name="TextureButton2" type="TextureRect" parent="Panel/PotionLabel/GridContainer"]
 layout_mode = 2
 tooltip_text = "Summon a slime every 2 reshuffles."
 texture = SubResource("AtlasTexture_3cqj8")
 
-[node name="RelicLabel" type="Label" parent="."]
+[node name="RelicLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_top = 174.0
 offset_right = 59.0
 offset_bottom = 197.0
 text = "Relics:"
 
-[node name="GridContainer" type="GridContainer" parent="RelicLabel"]
+[node name="GridContainer" type="GridContainer" parent="Panel/RelicLabel"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 21.0
@@ -109,12 +120,12 @@ offset_bottom = 55.0
 scale = Vector2(2, 2)
 columns = 10
 
-[node name="TextureButton" type="TextureRect" parent="RelicLabel/GridContainer"]
+[node name="TextureButton" type="TextureRect" parent="Panel/RelicLabel/GridContainer"]
 layout_mode = 2
 tooltip_text = "Summon a slime every 2 reshuffles."
 texture = SubResource("AtlasTexture_3cqj8")
 
-[node name="TextureButton2" type="TextureRect" parent="RelicLabel/GridContainer"]
+[node name="TextureButton2" type="TextureRect" parent="Panel/RelicLabel/GridContainer"]
 layout_mode = 2
 tooltip_text = "Summon a slime every 2 reshuffles."
 texture = SubResource("AtlasTexture_3cqj8")

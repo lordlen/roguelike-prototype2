@@ -4,7 +4,6 @@ extends Panel
 var cards: Array[CardResource] = []
 
 func generate_card_rewards():
-	visible = true
 	var card_rewards := ActorManager.get_user_controlled_chars()[0].inventory.claim_card_rewards()
 	cards = card_reward_generator.generate_card_rewards(card_rewards)
 	
@@ -20,6 +19,7 @@ func generate_card_rewards():
 		card_icon.set_card_data(card_instance)
 		card_icon.card_icon_pressed.connect(_on_card_reward_pressed)
 		$HBoxContainer.add_child(card_icon)
+	get_parent().show()
 
 func _on_card_reward_pressed(ind: int) -> void:
 	var user_controlled := ActorManager.get_user_controlled_chars()
@@ -27,7 +27,7 @@ func _on_card_reward_pressed(ind: int) -> void:
 		var char := ActorManager.get_user_controlled_chars()[0]
 		char.deck.add_to_deck_list(cards[ind])
 		EventBus.character_deck_updated.emit(char)
-	visible = false
+	get_parent().hide()
 
 func _on_skip_button_pressed() -> void:
-	visible = false
+	get_parent().hide()

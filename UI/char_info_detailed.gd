@@ -5,7 +5,7 @@ func _ready() -> void:
 
 func _on_character_info_requested(ch: Char):
 	set_char(ch)
-	visible = true
+	get_parent().show()
 
 func set_char(char: Char):
 	$CharName.text = char.character_name
@@ -40,9 +40,3 @@ func set_char(char: Char):
 		relic_texture.texture = texture
 		relic_texture.tooltip_text = description
 		$RelicLabel/GridContainer.add_child(relic_texture)
-
-func _input(event: InputEvent) -> void:
-	if visible and event is InputEventMouseButton and event.pressed:
-		# Check if mouse is outside the panel's global rect area
-		if not get_global_rect().has_point(event.global_position):
-			hide()

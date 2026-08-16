@@ -11,7 +11,7 @@ func on_requested(card_list: Array[CardInstance], target_num_selections: int, de
 	set_card_list(card_list)
 	set_target_num_selections(target_num_selections)
 	set_text(description)
-	visible = true
+	get_parent().show()
 
 func set_card_list(card_list: Array[CardInstance]):
 	num_selections = 0
@@ -59,4 +59,4 @@ func _on_confirm_button_pressed() -> void:
 	
 	# emit some signal to indicate the selection. Package indices in the signal
 	EventBus.cards_selected.emit(indices)
-	visible = false
+	get_parent().hide()

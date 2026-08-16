@@ -3,12 +3,6 @@ extends Panel
 func _ready() -> void:
 	EventBus.card_info_requested.connect(set_card)
 
-func _input(event: InputEvent) -> void:
-	if visible and event is InputEventMouseButton and event.pressed:
-		# Check if mouse is outside the panel's global rect area
-		if not get_global_rect().has_point(event.global_position):
-			hide()
-
 func set_card(card: CardInstance) -> void:
 	if card == null:
 		return
@@ -35,4 +29,5 @@ func set_card(card: CardInstance) -> void:
 			var effect_description: EffectDescription = effect_description_scene.instantiate()
 			effect_description.set_text(effect.get_numeric(), effect.get_identifier(), effect.get_description())
 			$VBoxContainer.add_child(effect_description)
-	visible = true
+	
+	get_parent().show()

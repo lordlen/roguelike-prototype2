@@ -42,7 +42,7 @@ func build_floor():
 		char.deck.initialize()
 	
 func on_stairs_entered():
-	$UILayer/CardRewardDialog.generate_card_rewards()
+	$UILayer/CardRewardDialog/CardRewardDialog.generate_card_rewards()
 	build_floor()
 	# activate on next floor effects
 	for chars in ActorManager.get_chars():

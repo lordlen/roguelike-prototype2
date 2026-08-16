@@ -4,7 +4,16 @@
 [ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="2_wahmo"]
 [ext_resource type="PackedScene" uid="uid://fra6rfb08bdm" path="res://UI/card_display.tscn" id="3_nsd0m"]
 
-[node name="CardRewardDialog" type="Panel"]
+[node name="PopupControl" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="CardRewardDialog" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -19,7 +28,7 @@ grow_vertical = 2
 script = ExtResource("1_jn06u")
 card_reward_generator = ExtResource("2_wahmo")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="CardRewardDialog"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -30,16 +39,16 @@ offset_bottom = 78.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="CardFrame" parent="HBoxContainer" instance=ExtResource("3_nsd0m")]
+[node name="CardFrame" parent="CardRewardDialog/HBoxContainer" instance=ExtResource("3_nsd0m")]
 layout_mode = 2
 
-[node name="CardFrame2" parent="HBoxContainer" instance=ExtResource("3_nsd0m")]
+[node name="CardFrame2" parent="CardRewardDialog/HBoxContainer" instance=ExtResource("3_nsd0m")]
 layout_mode = 2
 
-[node name="CardFrame3" parent="HBoxContainer" instance=ExtResource("3_nsd0m")]
+[node name="CardFrame3" parent="CardRewardDialog/HBoxContainer" instance=ExtResource("3_nsd0m")]
 layout_mode = 2
 
-[node name="SkipButton" type="Button" parent="."]
+[node name="SkipButton" type="Button" parent="CardRewardDialog"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -53,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Skip"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CardRewardDialog"]
 layout_mode = 0
 offset_left = 9.5
 offset_top = 102.0
@@ -61,4 +70,4 @@ offset_right = 295.5
 offset_bottom = 125.0
 text = "Choose a card to add to your deck"
 
-[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="CardRewardDialog/SkipButton" to="CardRewardDialog" method="_on_skip_button_pressed"]

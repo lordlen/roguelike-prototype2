@@ -3,7 +3,16 @@
 [ext_resource type="Script" uid="uid://mjpvrtdbri04" path="res://UI/card_selector.gd" id="1_1cp3m"]
 [ext_resource type="PackedScene" uid="uid://fra6rfb08bdm" path="res://UI/card_display.tscn" id="2_1cp3m"]
 
-[node name="Panel" type="Panel"]
+[node name="Control" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -17,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1cp3m")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 clip_children = 1
 layout_mode = 1
 anchors_preset = -1
@@ -30,37 +39,37 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
 
-[node name="CardFrame" parent="ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
+[node name="CardFrame" parent="Panel/ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
 layout_mode = 2
 
-[node name="CardFrame2" parent="ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
+[node name="CardFrame2" parent="Panel/ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
 layout_mode = 2
 
-[node name="CardFrame3" parent="ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
+[node name="CardFrame3" parent="Panel/ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
 layout_mode = 2
 
-[node name="CardFrame4" parent="ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
+[node name="CardFrame4" parent="Panel/ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
 layout_mode = 2
 
-[node name="CardFrame5" parent="ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
+[node name="CardFrame5" parent="Panel/ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
 layout_mode = 2
 
-[node name="CardFrame6" parent="ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
+[node name="CardFrame6" parent="Panel/ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
 layout_mode = 2
 
-[node name="CardFrame7" parent="ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
+[node name="CardFrame7" parent="Panel/ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
 layout_mode = 2
 
-[node name="CardFrame8" parent="ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
+[node name="CardFrame8" parent="Panel/ScrollContainer/GridContainer" instance=ExtResource("2_1cp3m")]
 layout_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="."]
+[node name="Label" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -75,7 +84,7 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 16
 text = "Select some cards"
 
-[node name="ConfirmButton" type="Button" parent="."]
+[node name="ConfirmButton" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -91,4 +100,4 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "Confirm"
 
-[connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="Panel/ConfirmButton" to="Panel" method="_on_confirm_button_pressed"]

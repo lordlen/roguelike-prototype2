@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://6f5d45fu8cv0"]
+[gd_scene load_steps=10 format=3 uid="uid://6f5d45fu8cv0"]
 
 [ext_resource type="Script" uid="uid://caa15a8iotm2d" path="res://UI/card_description_popup.gd" id="1_d5hb2"]
+[ext_resource type="Script" uid="uid://cgo0sftjgc5u8" path="res://UI/popup_control.gd" id="1_tm1gv"]
 [ext_resource type="Texture2D" uid="uid://bualaqlc7wosp" path="res://resources/char_info.png" id="1_ypd0o"]
 [ext_resource type="Script" uid="uid://cmt70k0rg11j5" path="res://UI/card_description_item_list.gd" id="2_d5hb2"]
 [ext_resource type="PackedScene" uid="uid://bq3d7iuixo2ty" path="res://UI/effect_description.tscn" id="5_tm1gv"]
@@ -21,7 +22,17 @@ region = Rect2(26, 14, 4, 4)
 atlas = ExtResource("1_ypd0o")
 region = Rect2(26, 9, 4, 4)
 
-[node name="CardDescription" type="Panel"]
+[node name="Control" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_tm1gv")
+
+[node name="CardDescription" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -35,7 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d5hb2")
 
-[node name="CardName" type="RichTextLabel" parent="."]
+[node name="CardName" type="RichTextLabel" parent="CardDescription"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
@@ -43,7 +54,7 @@ offset_right = 227.5
 offset_bottom = 28.25
 text = "Card Name"
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="ItemList" type="ItemList" parent="CardDescription"]
 layout_mode = 0
 offset_left = 8.5
 offset_top = 30.25
@@ -66,7 +77,7 @@ item_3/icon = SubResource("AtlasTexture_4spss")
 item_3/selectable = false
 script = ExtResource("2_d5hb2")
 
-[node name="Description" type="RichTextLabel" parent="."]
+[node name="Description" type="RichTextLabel" parent="CardDescription"]
 layout_mode = 0
 offset_left = 59.5
 offset_top = 30.25
@@ -77,7 +88,7 @@ bbcode_enabled = true
 text = "6 damage
 2 [color=orange]shiv[/color]"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="CardDescription"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -89,12 +100,12 @@ offset_top = 0.05824995
 offset_right = 130.5
 offset_bottom = 168.05824
 
-[node name="Panel" parent="VBoxContainer" instance=ExtResource("5_tm1gv")]
+[node name="Panel" parent="CardDescription/VBoxContainer" instance=ExtResource("5_tm1gv")]
 layout_mode = 2
 
-[node name="PanelContainer" parent="VBoxContainer" instance=ExtResource("5_tm1gv")]
+[node name="PanelContainer" parent="CardDescription/VBoxContainer" instance=ExtResource("5_tm1gv")]
 visible = false
 layout_mode = 2
 
-[connection signal="meta_hover_ended" from="Description" to="Description" method="_on_meta_hover_ended"]
-[connection signal="meta_hover_started" from="Description" to="Description" method="_on_meta_hover_started"]
+[connection signal="meta_hover_ended" from="CardDescription/Description" to="CardDescription/Description" method="_on_meta_hover_ended"]
+[connection signal="meta_hover_started" from="CardDescription/Description" to="CardDescription/Description" method="_on_meta_hover_started"]
