@@ -51,12 +51,7 @@ func act(actor: Char) -> Array[Action]:
 		# request target flow map
 		actor.hunt_with_team(actor.target_ch)
 		
-		# if both cards have 0 range and enemy can attack
-		
-		if actor.deck.primary.atk_range == 0 or (enemy_can_attack(actor, actor.target_ch) and offhand_is_decayed_enough(actor)):
-			ret.push_back(DefendAction.new(actor))
-		else:
-			ret.push_back(AttackAction.new(actor, actor.target_ch))
+		ret.push_back(AttackAction.new(actor, actor.target_ch))
 	else:
 		if actor.target_flow_map.destination_reached(actor.grid_position):
 			# if actor is within scent range, request a new target location

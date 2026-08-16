@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://crie0xoknuknq"
 [resource]
 script = ExtResource("2_hlsj6")
 card_resource = SubResource("Resource_4ep46")
-num_cards = 1
+num_cards = 2
 identifier = "shiv"
 description = "Add n shivs to the draw pile."
 number_placeholder = "n"

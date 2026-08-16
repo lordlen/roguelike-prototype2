@@ -349,6 +349,7 @@ func take_hit(attacker: Char, damage: int):
 		if !self.is_defending:
 			self.deck.offhand.decay_defense()
 	char_is_hit.emit(self, attacker)
+	action_queue.clear()
 	EventBus.character_deck_updated.emit(self)
 
 func take_damage(damage: int) -> void:

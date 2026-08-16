@@ -84,8 +84,8 @@ func do_on_move_effects(actor: Char) -> void:
 
 func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 	for e in effects:
-		await e.do(actor, target, self)
-		#await e.card_effect_finished
+		e.do.call_deferred(actor, target, self)
+		await e.card_effect_finished
 	# remove tmp effects from the array
 	for i in range(len(effects) - 1, -1, -1):
 		var e := effects[i]

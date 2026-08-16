@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://xvlre2goif6r"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://xvlre2goif6r"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_bvoqu"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_5d6cf"]
 [ext_resource type="Resource" uid="uid://dcmi64by70tkk" path="res://cards/effects/increment_stats/increment_all_attack.tres" id="2_nntts"]
+[ext_resource type="Resource" uid="uid://g42s340n1q0h" path="res://cards/effects/bonus_defense/fixed_bonus_defense.tres" id="3_6h6hn"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="4_6h6hn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2y5t"]
@@ -13,6 +14,6 @@ region = Rect2(240, 0, 16, 16)
 script = ExtResource("2_5d6cf")
 texture = SubResource("AtlasTexture_g2y5t")
 name = "Plot"
-defense = 4
-defense_effects = Array[ExtResource("1_bvoqu")]([ExtResource("2_nntts")])
+range = 3
+attack_effects = Array[ExtResource("1_bvoqu")]([ExtResource("2_nntts"), ExtResource("3_6h6hn")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"
