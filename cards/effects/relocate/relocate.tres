@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cod3rlld7d247"]
-
-[ext_resource type="Script" uid="uid://byio008ouqqsn" path="res://cards/effects/relocate/relocate.gd" id="1_ksp7o"]
-
-[resource]
-script = ExtResource("1_ksp7o")
-identifier = "relocate"
-description = "Relocate to target"
-metadata/_custom_type_script = "uid://8j480ywki30u"

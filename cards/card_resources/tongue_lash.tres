@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://cs6epmu878bk5"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://cs6epmu878bk5"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_o5may"]
-[ext_resource type="Resource" uid="uid://bnfvmd8kaluel" path="res://cards/effects/add_card/add_croak.tres" id="2_1nctw"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_1nctw"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_e7aaw"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="3_rcdso"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="4_rcdso"]
-[ext_resource type="Resource" uid="uid://ct0pjeabmqswe" path="res://cards/effects/exhaust/self_exhaust_offhand.tres" id="4_rinwi"]
+
+[sub_resource type="Resource" id="Resource_rcdso"]
+script = ExtResource("2_1nctw")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rinwi"]
 atlas = ExtResource("4_rcdso")
@@ -19,5 +21,5 @@ attack = 8
 num_hits = 1
 range = 2
 exhausts = true
-attack_effects = Array[ExtResource("1_o5may")]([ExtResource("3_rcdso"), ExtResource("2_1nctw"), ExtResource("4_rinwi")])
+attack_effects = Array[ExtResource("1_o5may")]([SubResource("Resource_rcdso")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

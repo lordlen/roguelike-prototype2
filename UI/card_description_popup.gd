@@ -23,7 +23,7 @@ func set_card(card: CardInstance) -> void:
 	var unique_keywords : Dictionary[String, bool] = {}
 	for e in card.get_all_effects():
 		for effect in e.get_all_nested_card_effects():
-			if effect.get_identifier() in unique_keywords or !effect.description:
+			if effect.get_identifier() in unique_keywords or !effect.get_description():
 				continue
 			unique_keywords[effect.get_identifier()] = true
 			var effect_description: EffectDescription = effect_description_scene.instantiate()

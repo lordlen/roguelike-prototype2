@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dli6yw47om827"]
-
-[ext_resource type="Script" uid="uid://bi5tu5pg2y40b" path="res://cards/effects/relocate/backslide.gd" id="1_6grec"]
-
-[resource]
-script = ExtResource("1_6grec")
-identifier = "backslide"
-description = "Move back 1 tile."
-metadata/_custom_type_script = "uid://8j480ywki30u"

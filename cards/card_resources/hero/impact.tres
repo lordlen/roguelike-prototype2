@@ -1,27 +1,17 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://do8uvnls68gv2"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://do8uvnls68gv2"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_nluqr"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_d42hj"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_d42hj"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_pjxtu"]
 [ext_resource type="Script" uid="uid://pfxy8agsakrm" path="res://cards/effects/increment_stats/tmp_atk_up.gd" id="2_t2afs"]
-[ext_resource type="Script" uid="uid://cqxp32k8xbrdw" path="res://cards/effects/increment_stats/atk_up.gd" id="3_d42hj"]
 
-[sub_resource type="Resource" id="Resource_ghtfm"]
-script = ExtResource("3_d42hj")
-atk_value = -3
-identifier = "atk_up"
-description = "Increase the attack of this card by n."
-number_placeholder = "n"
-is_temp = true
-metadata/_custom_type_script = "uid://8j480ywki30u"
+[sub_resource type="Resource" id="Resource_kv684"]
+script = ExtResource("2_d42hj")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_s4f0t"]
 script = ExtResource("2_t2afs")
 atk_value = 3
-tmp_attack_down = SubResource("Resource_ghtfm")
-identifier = "tmp_offense_atk_up"
-description = "Temporarily increase the attack of the offense by n"
-number_placeholder = "n"
 metadata/_custom_type_script = "uid://8j480ywki30u"
 
 [resource]
@@ -30,6 +20,6 @@ name = "Impact"
 attack = 6
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_nluqr")]([ExtResource("2_d42hj")])
+attack_effects = Array[ExtResource("1_nluqr")]([SubResource("Resource_kv684")])
 on_move_effects = Array[ExtResource("1_nluqr")]([SubResource("Resource_s4f0t")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

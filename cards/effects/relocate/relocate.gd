@@ -1,4 +1,11 @@
+class_name Relocate
 extends CardEffect
+
+func get_identifier() -> String:
+	return "relocate"
+	
+func get_description() -> String:
+	return 'Relocate to the target.'
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# assume that this only gets called if the attacker is in range

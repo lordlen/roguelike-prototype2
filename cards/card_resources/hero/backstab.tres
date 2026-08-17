@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://bgmncm0ujwi5"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bgmncm0ujwi5"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_5unam"]
-[ext_resource type="Resource" uid="uid://bt6fjo8pciix" path="res://cards/effects/relocate/shadowstep.tres" id="2_7wqkj"]
+[ext_resource type="Script" uid="uid://mhfmhsqr0aiw" path="res://cards/effects/relocate/shadowstep.gd" id="2_7wqkj"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_d17qk"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="3_acwoc"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="3_7wqkj"]
+
+[sub_resource type="Resource" id="Resource_g20bv"]
+script = ExtResource("2_7wqkj")
+metadata/_custom_type_script = "uid://mhfmhsqr0aiw"
+
+[sub_resource type="Resource" id="Resource_acwoc"]
+script = ExtResource("3_7wqkj")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [resource]
 script = ExtResource("2_d17qk")
@@ -11,5 +19,5 @@ name = "Backstab"
 attack = 10
 num_hits = 1
 range = 2
-attack_effects = Array[ExtResource("1_5unam")]([ExtResource("2_7wqkj"), ExtResource("3_acwoc")])
+attack_effects = Array[ExtResource("1_5unam")]([SubResource("Resource_g20bv"), SubResource("Resource_acwoc")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

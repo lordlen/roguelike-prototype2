@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://caun66tuooh2g"]
-
-[ext_resource type="Script" uid="uid://rust51kdp5h2" path="res://cards/effects/dredge/dredge.gd" id="1_vq36w"]
-
-[resource]
-script = ExtResource("1_vq36w")
-identifier = "dredge"
-description = "Randomly insert the top card of your discard pile to your draw pile."
-metadata/_custom_type_script = "uid://8j480ywki30u"

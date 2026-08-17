@@ -1,4 +1,14 @@
+class_name RecallEffect
 extends CardEffect
+
+func get_identifier() -> String:
+	return "recall"
+	
+func get_description() -> String:
+	return 'Put "Cast Spell" on top of the draw pile.'
+
+func get_numeric() -> String:
+	return "n"
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# find in discard

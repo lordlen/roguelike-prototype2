@@ -144,6 +144,24 @@ func get_type_positions(tile_types: Array[TileResource.Terrains]) -> Array[Vecto
 			position_list.push_back(position)
 	return position_list
 
+func get_type_positions_in_area(tile_types: Array[TileResource.Terrains], area: Array[Vector2i]) -> Array[Vector2i]:
+	var position_list : Array[Vector2i] = []
+	for position in area:
+		if !is_within_bounds(position):
+			continue
+		if get_tile(position).terrain_id in tile_types:
+			position_list.push_back(position)
+	return position_list
+
+func get_area(pos: Vector2i, radius: int) -> Array[Vector2i]:
+	var ret : Array[Vector2i] = []
+	for x in range(pos.x - radius, pos.x + radius + 1):
+		for y in range(pos.y - radius, pos.y + radius + 1):
+			var new_pos := Vector2i(x, y)
+			if is_within_bounds(new_pos):
+				ret.push_back(Vector2i(x, y))
+	return ret
+
 func get_valid_adjacent(center: Vector2i) -> Array[Vector2i]:
 	var ret : Array[Vector2i] = []
 	for cell in DijkstraMap._get_adjacent_edges(center):

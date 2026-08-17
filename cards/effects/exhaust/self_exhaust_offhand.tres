@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ct0pjeabmqswe"]
-
-[ext_resource type="Script" uid="uid://d0er8wyhg3f3o" path="res://cards/effects/exhaust/self_exhaust_offhand.gd" id="1_qdtbw"]
-
-[resource]
-script = ExtResource("1_qdtbw")
-identifier = "self_exhaust_offhand"
-description = "Exhaust own offhand."
-metadata/_custom_type_script = "uid://8j480ywki30u"

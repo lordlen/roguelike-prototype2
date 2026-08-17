@@ -1,21 +1,20 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://dmd4s7uiyxxly"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_ff4dg"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_e00sd"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_sx1ue"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_yxp07"]
-[ext_resource type="Script" uid="uid://cm4a5thrbfw4e" path="res://cards/effects/modify_terrain/generate_random_tile.gd" id="3_e00sd"]
+[ext_resource type="Script" uid="uid://cyiovmciiswfd" path="res://cards/effects/modify_terrain/flood.gd" id="3_g5ptr"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="3_sx1ue"]
-[ext_resource type="Resource" uid="uid://ct6uqy4awoaic" path="res://floor_generator/tiles/water.tres" id="4_4sp2f"]
 
-[sub_resource type="Resource" id="Resource_hd68y"]
-script = ExtResource("3_e00sd")
-tile_type = ExtResource("4_4sp2f")
-valid_tile_types = Array[int]([0, 2, 5])
+[sub_resource type="Resource" id="Resource_4sp2f"]
+script = ExtResource("2_e00sd")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_e00sd"]
+script = ExtResource("3_g5ptr")
 num_gen = 4
-identifier = "flood"
-description = "Create n water tile(s)."
-number_placeholder = "n"
-metadata/_custom_type_script = "uid://8j480ywki30u"
+target = 1
+metadata/_custom_type_script = "uid://cyiovmciiswfd"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxp07"]
 atlas = ExtResource("3_sx1ue")
@@ -29,5 +28,5 @@ attack = 6
 num_hits = 1
 range = 2
 is_innate = true
-attack_effects = Array[ExtResource("1_ff4dg")]([ExtResource("2_yxp07"), SubResource("Resource_hd68y")])
+attack_effects = Array[ExtResource("1_ff4dg")]([SubResource("Resource_4sp2f"), SubResource("Resource_e00sd")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

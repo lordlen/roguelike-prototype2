@@ -1,11 +1,18 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://cfoxxistwgnke"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://cfoxxistwgnke"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_jydf5"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_03vl3"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_cdf0b"]
-[ext_resource type="Resource" uid="uid://cyrc2f4jpwyrw" path="res://cards/effects/amalgamate/amalgamate.tres" id="2_rd7fd"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_cdf0b"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="3_03vl3"]
-[ext_resource type="Resource" uid="uid://bvdepb2ikqkth" path="res://cards/effects/discard/discard_self_offhand.tres" id="4_s82da"]
+[ext_resource type="Script" uid="uid://b13bdyokh553w" path="res://cards/effects/amalgamate/amalgamate.gd" id="3_s82da"]
+
+[sub_resource type="Resource" id="Resource_s82da"]
+script = ExtResource("2_cdf0b")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_cvvp2"]
+script = ExtResource("3_s82da")
+metadata/_custom_type_script = "uid://b13bdyokh553w"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rd7fd"]
 atlas = ExtResource("3_03vl3")
@@ -19,6 +26,5 @@ attack = 1
 defense = 1
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_jydf5")]([ExtResource("2_cdf0b"), ExtResource("2_rd7fd")])
-on_hit_effects = Array[ExtResource("1_jydf5")]([ExtResource("4_s82da")])
+attack_effects = Array[ExtResource("1_jydf5")]([SubResource("Resource_s82da"), SubResource("Resource_cvvp2")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

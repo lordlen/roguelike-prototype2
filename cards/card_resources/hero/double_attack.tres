@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://ndido6grhne3"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://ndido6grhne3"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_un542"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_ardbf"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_c5f50"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_u7oqi"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="4_ardbf"]
+
+[sub_resource type="Resource" id="Resource_fcp6y"]
+script = ExtResource("2_c5f50")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drt36"]
 atlas = ExtResource("4_ardbf")
@@ -16,5 +20,5 @@ name = "Double Attack"
 attack = 4
 num_hits = 2
 range = 1
-attack_effects = Array[ExtResource("1_un542")]([ExtResource("2_ardbf")])
+attack_effects = Array[ExtResource("1_un542")]([SubResource("Resource_fcp6y")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

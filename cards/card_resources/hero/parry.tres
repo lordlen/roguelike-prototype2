@@ -1,32 +1,28 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=10 format=3 uid="uid://c7onti12nawxv"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=11 format=3 uid="uid://c7onti12nawxv"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_3fr1c"]
-[ext_resource type="Resource" uid="uid://cod3rlld7d247" path="res://cards/effects/relocate/relocate.tres" id="2_76kch"]
+[ext_resource type="Script" uid="uid://byio008ouqqsn" path="res://cards/effects/relocate/relocate.gd" id="2_0cygw"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_268y2"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="3_0cygw"]
-[ext_resource type="Resource" uid="uid://dli6yw47om827" path="res://cards/effects/relocate/backslide.tres" id="4_e56uk"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="3_e56uk"]
+[ext_resource type="Script" uid="uid://bi5tu5pg2y40b" path="res://cards/effects/relocate/backslide.gd" id="4_0cygw"]
 [ext_resource type="Script" uid="uid://pfxy8agsakrm" path="res://cards/effects/increment_stats/tmp_atk_up.gd" id="5_e56uk"]
-[ext_resource type="Script" uid="uid://cqxp32k8xbrdw" path="res://cards/effects/increment_stats/atk_up.gd" id="6_o87s3"]
 
 [sub_resource type="Resource" id="Resource_4622n"]
-resource_local_to_scene = true
-script = ExtResource("6_o87s3")
-atk_value = -5
-identifier = "atk_up"
-description = "Increase the attack of this card by n."
-number_placeholder = "n"
-is_temp = true
-metadata/_custom_type_script = "uid://8j480ywki30u"
+script = ExtResource("2_0cygw")
+metadata/_custom_type_script = "uid://byio008ouqqsn"
+
+[sub_resource type="Resource" id="Resource_o87s3"]
+script = ExtResource("3_e56uk")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_e56uk"]
+script = ExtResource("4_0cygw")
+metadata/_custom_type_script = "uid://bi5tu5pg2y40b"
 
 [sub_resource type="Resource" id="Resource_edjgg"]
 resource_local_to_scene = true
 script = ExtResource("5_e56uk")
 atk_value = 5
-tmp_attack_down = SubResource("Resource_4622n")
-stacks = true
-identifier = "tmp_offense_atk_up"
-description = "Temporarily increase the attack of the offense by n"
-number_placeholder = "n"
 metadata/_custom_type_script = "uid://8j480ywki30u"
 
 [resource]
@@ -35,6 +31,6 @@ name = "Parry"
 defense = 5
 num_hits = 1
 range = 2
-attack_effects = Array[ExtResource("1_3fr1c")]([ExtResource("2_76kch"), ExtResource("3_0cygw")])
-on_hit_effects = Array[ExtResource("1_3fr1c")]([ExtResource("4_e56uk"), SubResource("Resource_edjgg")])
+attack_effects = Array[ExtResource("1_3fr1c")]([SubResource("Resource_4622n"), SubResource("Resource_o87s3")])
+on_hit_effects = Array[ExtResource("1_3fr1c")]([SubResource("Resource_e56uk"), SubResource("Resource_edjgg")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

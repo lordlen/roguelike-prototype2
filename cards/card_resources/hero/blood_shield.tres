@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://dgvwi42d7kf6r"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://dgvwi42d7kf6r"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_ltgwp"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_eet2y"]
-[ext_resource type="Resource" uid="uid://d1olj4404ftxx" path="res://cards/effects/lose_hp/lose_hp.tres" id="2_krvk8"]
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="2_krvk8"]
+
+[sub_resource type="Resource" id="Resource_li5xr"]
+script = ExtResource("2_krvk8")
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
 
 [resource]
 script = ExtResource("2_eet2y")
 name = "Blood Shield"
 defense = 10
-on_hit_effects = Array[ExtResource("1_ltgwp")]([ExtResource("2_krvk8")])
+on_hit_effects = Array[ExtResource("1_ltgwp")]([SubResource("Resource_li5xr")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

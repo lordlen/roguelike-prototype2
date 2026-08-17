@@ -1,13 +1,24 @@
+class_name TmpAtkUp
 extends CardEffect
 
 @export var atk_value: int
-@export var tmp_attack_down: CardEffect
-@export var stacks: bool
+@export var stacks: bool = true
+
+func get_identifier() -> String:
+	return "tmp_atk_up"
+	
+func get_description() -> String:
+	return "Temporarily increase attack of this card by n"
+
+func get_numeric() -> String:
+	return "n"
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
-	print("attack up tmp")
 	card.attack += atk_value
-	CardEffect.combine_effects(card.attack_effects, [tmp_attack_down.duplicate()])
+	var atk_down := AtkUp.new()
+	atk_down.atk_value = -atk_value
+	atk_down.is_temp = true
+	CardEffect.combine_effects(card.attack_effects, [atk_down])
 	
 	card_effect_finished.emit()
 

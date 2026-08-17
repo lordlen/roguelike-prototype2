@@ -1,4 +1,11 @@
+class_name MagicBurstEffect
 extends CardEffect
+
+func get_identifier() -> String:
+	return "magic_burst"
+	
+func get_description() -> String:
+	return "Cast Spell now does AOE damage."
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# check if "cast spell" is in the deck.
@@ -9,6 +16,6 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		cs = CardInstance.new(cs_resource)
 		actor.deck.add_to_discard(cs)
 	# replace "damage" to damage aoe
-	var damageAOE := load("res://cards/effects/do_damage/damage_aoe.tres")
+	var damageAOE := DamageAoe.new()
 	cs.attack_effects[0] = damageAOE
 	card_effect_finished.emit()

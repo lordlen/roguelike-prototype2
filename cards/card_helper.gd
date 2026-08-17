@@ -12,6 +12,17 @@ static func mow_grass(pos: Vector2i) -> int:
 			grass_count += 1
 	return grass_count
 
+static func drain_water(pos: Vector2i) -> int:
+	var ground_tile_resource := load("res://floor_generator/tiles/ground.tres")
+	# get the adjacent tiles
+	var adjacent_tiles := DijkstraMap._get_adjacent_edges(pos)
+	var water_count := 0
+	for cell in adjacent_tiles + [pos]:
+		if Globals.floor_map.get_tile(cell).terrain_id == 3:
+			Globals.floor_map.update_tile(cell, ground_tile_resource)
+			water_count += 1
+	return water_count
+
 static func deal_damage(attack_val: int, num_hits, actor: Char, target_char: Char):
 	for _i in num_hits:
 		actor.attack_animation.call_deferred(target_char.grid_position)

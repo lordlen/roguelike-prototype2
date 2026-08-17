@@ -1,4 +1,11 @@
+class_name Backslide
 extends CardEffect
+
+func get_identifier() -> String:
+	return "backslide"
+	
+func get_description() -> String:
+	return 'Move back 1 tile.'
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# subtract the target and actor location

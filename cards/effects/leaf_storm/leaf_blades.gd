@@ -1,6 +1,13 @@
+class_name Leaf2Shiv
 extends CardEffect
 
 @export var card_resource: CardResource
+
+func get_identifier() -> String:
+	return "leaf2shiv"
+	
+func get_description() -> String:
+	return "Destroy adjacent grass tiles. Add as many shivs to the draw pile as grass destroyed."
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var num_grass := CardHelper.mow_grass(actor.grid_position)

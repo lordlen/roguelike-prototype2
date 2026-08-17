@@ -1,20 +1,18 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dk061xxpidxlv"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_7olc8"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_660wy"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_2wn2g"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_qtr3p"]
-[ext_resource type="Script" uid="uid://cm4a5thrbfw4e" path="res://cards/effects/modify_terrain/generate_random_tile.gd" id="3_2wn2g"]
-[ext_resource type="Resource" uid="uid://cv1rfq1hxdigg" path="res://floor_generator/tiles/grass.tres" id="4_2wn2g"]
+[ext_resource type="Script" uid="uid://dly02v1jvmmys" path="res://cards/effects/modify_terrain/cultivate.gd" id="3_660wy"]
 
-[sub_resource type="Resource" id="Resource_nk2pl"]
-script = ExtResource("3_2wn2g")
-tile_type = ExtResource("4_2wn2g")
-valid_tile_types = Array[int]([0, 3, 5])
+[sub_resource type="Resource" id="Resource_orvvk"]
+script = ExtResource("2_2wn2g")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_2wn2g"]
+script = ExtResource("3_660wy")
 num_gen = 4
-identifier = "cultivate"
-description = "Create n grass tile(s)."
-number_placeholder = "n"
-metadata/_custom_type_script = "uid://8j480ywki30u"
+metadata/_custom_type_script = "uid://dly02v1jvmmys"
 
 [resource]
 script = ExtResource("2_qtr3p")
@@ -22,5 +20,5 @@ name = "Bloom"
 attack = 8
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_7olc8")]([ExtResource("2_660wy"), SubResource("Resource_nk2pl")])
+attack_effects = Array[ExtResource("1_7olc8")]([SubResource("Resource_orvvk"), SubResource("Resource_2wn2g")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

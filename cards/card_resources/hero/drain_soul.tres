@@ -1,16 +1,17 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://cb28du6a5qtbg"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://cb28du6a5qtbg"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_r0kmg"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_h8ojf"]
 [ext_resource type="Script" uid="uid://rrn2acqulw8a" path="res://cards/effects/mana/mana.gd" id="2_nopwo"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_scl4o"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_scl4o"]
+
+[sub_resource type="Resource" id="Resource_wpnii"]
+script = ExtResource("2_scl4o")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_scl4o"]
 script = ExtResource("2_nopwo")
 value = 4
-identifier = "mana"
-description = "Add \"Cast Spell\" to the discard if not in the deck. Add n attack to \"Cast Spell\"."
-number_placeholder = "n"
 metadata/_custom_type_script = "uid://8j480ywki30u"
 
 [resource]
@@ -19,5 +20,5 @@ name = "Drain Soul"
 attack = 6
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_r0kmg")]([ExtResource("2_scl4o"), SubResource("Resource_scl4o")])
+attack_effects = Array[ExtResource("1_r0kmg")]([SubResource("Resource_wpnii"), SubResource("Resource_scl4o")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

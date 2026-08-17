@@ -1,10 +1,23 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://1n6f5bqctxyw"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://1n6f5bqctxyw"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_wowfb"]
-[ext_resource type="Resource" uid="uid://dfb0y4x1uhprh" path="res://cards/effects/add_card/add_shiv.tres" id="2_cgm1x"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ksxxg"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_sj6nj"]
-[ext_resource type="Resource" uid="uid://dli6yw47om827" path="res://cards/effects/relocate/backslide.tres" id="3_cgm1x"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_sj6nj"]
+[ext_resource type="Script" uid="uid://de3hrn6re45yh" path="res://cards/effects/add_card/shiv.gd" id="3_sj6nj"]
+[ext_resource type="Script" uid="uid://bi5tu5pg2y40b" path="res://cards/effects/relocate/backslide.gd" id="4_sj6nj"]
+
+[sub_resource type="Resource" id="Resource_51g8d"]
+script = ExtResource("2_sj6nj")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_sj6nj"]
+script = ExtResource("3_sj6nj")
+num_cards = 2
+metadata/_custom_type_script = "uid://de3hrn6re45yh"
+
+[sub_resource type="Resource" id="Resource_y8t13"]
+script = ExtResource("4_sj6nj")
+metadata/_custom_type_script = "uid://bi5tu5pg2y40b"
 
 [resource]
 script = ExtResource("2_ksxxg")
@@ -13,5 +26,5 @@ attack = 1
 defense = 4
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_wowfb")]([ExtResource("2_sj6nj"), ExtResource("2_cgm1x"), ExtResource("3_cgm1x")])
+attack_effects = Array[ExtResource("1_wowfb")]([SubResource("Resource_51g8d"), SubResource("Resource_sj6nj"), SubResource("Resource_y8t13")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -20,7 +20,8 @@ func use(owner: Char, pos: Vector2i) -> bool:
 	selected_card_resource.attack += 5
 	selected_card_resource.defense += 4
 	# add "lose 2 hp"
-	var lose_hp_effect : CardEffect = load("res://cards/effects/lose_hp/lose_hp.tres")
+	var lose_hp_effect : CardEffect = LoseHp.new()
+	lose_hp_effect.value = 2
 	# add this effect to both defense and attack
 	selected_card_resource.attack_effects.push_back(lose_hp_effect)
 	selected_card_resource.defense_effects.push_back(lose_hp_effect)

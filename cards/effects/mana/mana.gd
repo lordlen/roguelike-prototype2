@@ -2,6 +2,16 @@ class_name Mana
 extends CardEffect
 
 @export var value: int
+
+func get_identifier() -> String:
+	return "mana"
+	
+func get_description() -> String:
+	return 'Add "Cast Spell" to the discard if not in the deck. Add n attack to "Cast Spell".'
+
+func get_numeric() -> String:
+	return "n"
+
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# check if "cast spell" is in the deck.
 	var cs = actor.deck.find_card("Cast Spell")
@@ -22,9 +32,6 @@ func combine_effect(other_effect: CardEffect) -> CardEffect:
 	
 	value += (other_effect as LoseHp).value
 	return self
-
-func get_full_description(card: CardInstance) -> String:
-	return "%d %s" % [value, super.get_full_description(card)]
 
 func get_shortform(card: CardInstance) -> String:
 	return "%d %s" % [value, super.get_shortform(card)]

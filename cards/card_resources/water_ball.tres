@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://dpqsqhsgvgoxy"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dpqsqhsgvgoxy"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_k4801"]
+[ext_resource type="Script" uid="uid://u2cmlepjq7ad" path="res://cards/effects/do_damage/water_ball.gd" id="2_3m3nb"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_egd4l"]
-[ext_resource type="Resource" uid="uid://dggkwvnoedsci" path="res://cards/effects/modify_terrain/water_ball.tres" id="2_xo7gu"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="3_4uhxc"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="3_egd4l"]
-[ext_resource type="Resource" uid="uid://cxmgcucws5eu3" path="res://cards/effects/increment_stats/set_num_hits.tres" id="4_gt5w7"]
+
+[sub_resource type="Resource" id="Resource_8xe4x"]
+script = ExtResource("2_3m3nb")
+metadata/_custom_type_script = "uid://u2cmlepjq7ad"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m3nb"]
 atlas = ExtResource("3_egd4l")
@@ -17,5 +19,5 @@ texture = SubResource("AtlasTexture_3m3nb")
 name = "Water Ball"
 attack = 8
 range = 1
-attack_effects = Array[ExtResource("1_k4801")]([ExtResource("2_xo7gu"), ExtResource("3_4uhxc"), ExtResource("4_gt5w7")])
+attack_effects = Array[ExtResource("1_k4801")]([SubResource("Resource_8xe4x")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

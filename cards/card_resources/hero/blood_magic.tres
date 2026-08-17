@@ -1,21 +1,22 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://bhilkmttrcwht"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bhilkmttrcwht"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_m8rpk"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_amspo"]
-[ext_resource type="Resource" uid="uid://d1olj4404ftxx" path="res://cards/effects/lose_hp/lose_hp.tres" id="2_e4ott"]
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="2_e4ott"]
 [ext_resource type="Script" uid="uid://rrn2acqulw8a" path="res://cards/effects/mana/mana.gd" id="3_rbig8"]
+
+[sub_resource type="Resource" id="Resource_rbig8"]
+script = ExtResource("2_e4ott")
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
 
 [sub_resource type="Resource" id="Resource_8wtj1"]
 script = ExtResource("3_rbig8")
 value = 7
-identifier = "mana"
-description = "Add \"Cast Spell\" to the discard if not in the deck. Add n attack to \"Cast Spell\"."
-number_placeholder = "n"
 metadata/_custom_type_script = "uid://8j480ywki30u"
 
 [resource]
 script = ExtResource("2_amspo")
 name = "Blood Magic"
 defense = 5
-defense_effects = Array[ExtResource("1_m8rpk")]([ExtResource("2_e4ott"), SubResource("Resource_8wtj1")])
+defense_effects = Array[ExtResource("1_m8rpk")]([SubResource("Resource_rbig8"), SubResource("Resource_8wtj1")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

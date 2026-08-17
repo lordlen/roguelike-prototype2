@@ -1,4 +1,11 @@
+class_name Amalgamate
 extends CardEffect
+
+func get_identifier() -> String:
+	return "amalgamate"
+
+func get_description() -> String:
+	return "Combine this card with the offhand."
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# take the offhand instance and combine the stats

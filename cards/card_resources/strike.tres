@@ -1,8 +1,12 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://siwpm2by5u4s"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://siwpm2by5u4s"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_4jl41"]
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_hptuq"]
-[ext_resource type="Resource" uid="uid://cvhjddgfmj3jm" path="res://cards/effects/do_damage/damage.tres" id="2_qw2cb"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_qw2cb"]
+
+[sub_resource type="Resource" id="Resource_3dcvu"]
+script = ExtResource("2_qw2cb")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [resource]
 script = ExtResource("1_4jl41")
@@ -10,5 +14,5 @@ name = "Strike"
 attack = 6
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_hptuq")]([ExtResource("2_qw2cb")])
+attack_effects = Array[ExtResource("1_hptuq")]([SubResource("Resource_3dcvu")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"
