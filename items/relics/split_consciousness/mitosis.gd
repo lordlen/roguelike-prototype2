@@ -5,9 +5,7 @@ var used := false
 var num_dupes := 1
 
 func on_hit(actor: Char, attacker: Char):
-	if used == true:
-		return true
-	if actor.curr_hp >= actor.max_hp / 2:
+	if used or actor.curr_hp >= actor.max_hp / 2:
 		return true
 	
 	# spawn a random enemy with some hp
@@ -23,11 +21,14 @@ func on_hit(actor: Char, attacker: Char):
 	
 	for i in range(min(num_dupes, len(valid_adjacent))):
 		var rand_adjacent := valid_adjacent[i]
-		var char := Char.new(actor.char_stats, rand_adjacent)
-		char.set_hp(actor.curr_hp)
-		char.max_hp = actor.curr_hp
+		var ch := Char.new(actor.char_stats, rand_adjacent)
+		ch.set_hp(actor.curr_hp)
+		ch.max_hp = actor.curr_hp
 		# remove / disable the relic
-		char.inventory.clear_relics()
+		ch.inventory.clear_relics()
 		# force discard all to prevent attacking on summon
-		char.deck.discard_all()
+		ch.deck.discard_all()
+	
+	# also discard all for the user
+	actor.deck.discard_all()
 	return true

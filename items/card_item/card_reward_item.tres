@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardItem" load_steps=4 format=3 uid="uid://bmrblu1gxtbsl"]
+[gd_resource type="Resource" script_class="CardRewardItem" load_steps=4 format=3 uid="uid://bmrblu1gxtbsl"]
 
 [ext_resource type="Script" uid="uid://dpfkben5mfmtm" path="res://items/card_item/card_reward_item.gd" id="1_d434s"]
 [ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_gv3cu"]
@@ -9,6 +9,7 @@ region = Rect2(48, 64, 16, 16)
 
 [resource]
 script = ExtResource("1_d434s")
+rarity = 1
 item_name = "Card Reward"
 texture = SubResource("AtlasTexture_ctpkn")
 item_actions = null

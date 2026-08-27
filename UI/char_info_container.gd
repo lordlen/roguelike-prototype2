@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func on_actor_added(ch: Char):
 	var actor_info := char_info.instantiate()
+	actor_info.hide()
 	actor_info.set_character(ch)
 	actor_info.update(ch)
 	$ScrollContainer/CharInfoList.add_child(actor_info)

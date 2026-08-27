@@ -11,6 +11,13 @@ func _init(actor: Char, dest: Vector2i):
 
 func execute() -> bool:
 	var blocking_actor = ActorManager.get_actor_in_position(dest)
+	
+	# locked door check
+	if Globals.floor_map.get_tile(dest).terrain_id == TileResource.Terrains.LOCKED_DOOR\
+	and actor.inventory.keys > 0:
+		var ground := load("res://floor_generator/tiles/ground.tres")
+		Globals.floor_map.update_tile(dest, ground)
+	
 	if !actor.can_traverse(dest) or (blocking_actor != null and blocking_actor.alignment != actor.alignment):
 		action_finished.emit()
 		return false

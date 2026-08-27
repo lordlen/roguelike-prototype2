@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=11 format=3 uid="uid://8c2xywux2lsj"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_n5ffb"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_e2dn8"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_p4med"]
+[ext_resource type="Script" uid="uid://b66pa00t5sed" path="res://cards/effects/increment_stats/increment_all_attack.gd" id="3_wcyh2"]
+[ext_resource type="Script" uid="uid://w6n3wvsyybxr" path="res://cards/effects/discard/sap.gd" id="4_bkath"]
+[ext_resource type="Script" uid="uid://de3hrn6re45yh" path="res://cards/effects/add_card/shiv.gd" id="4_wcyh2"]
+
+[sub_resource type="Resource" id="Resource_bkath"]
+script = ExtResource("2_p4med")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_6ylgl"]
+script = ExtResource("3_wcyh2")
+atk_value = 1
+metadata/_custom_type_script = "uid://b66pa00t5sed"
+
+[sub_resource type="Resource" id="Resource_er4ov"]
+script = ExtResource("4_bkath")
+metadata/_custom_type_script = "uid://w6n3wvsyybxr"
+
+[sub_resource type="Resource" id="Resource_r3yba"]
+script = ExtResource("4_wcyh2")
+num_cards = 3
+metadata/_custom_type_script = "uid://de3hrn6re45yh"
+
+[resource]
+script = ExtResource("2_e2dn8")
+name = "Improvised Blade"
+rarity = 1
+attack = 8
+defense = 3
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_n5ffb")]([SubResource("Resource_bkath"), SubResource("Resource_6ylgl"), SubResource("Resource_er4ov")])
+on_discard_effects = Array[ExtResource("1_n5ffb")]([SubResource("Resource_r3yba")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

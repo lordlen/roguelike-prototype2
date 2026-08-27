@@ -5,7 +5,7 @@ func get_identifier() -> String:
 	return "magic_burst"
 	
 func get_description() -> String:
-	return "Cast Spell now does AOE damage."
+	return '"Cast Spell" now does AOE damage.'
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# check if "cast spell" is in the deck.

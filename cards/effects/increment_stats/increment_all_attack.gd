@@ -22,3 +22,6 @@ func combine_effect(other_effect: CardEffect) -> CardEffect:
 	if self.is_same_effect(other_effect):
 		self.atk_value += (other_effect as IncrementAllAttackCard).atk_value
 	return self
+
+func get_shortform(card: CardInstance) -> String:
+	return "%s %s" % [atk_value, super.get_shortform(card)]

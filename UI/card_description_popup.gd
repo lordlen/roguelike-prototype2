@@ -27,7 +27,7 @@ func set_card(card: CardInstance) -> void:
 				continue
 			unique_keywords[effect.get_identifier()] = true
 			var effect_description: EffectDescription = effect_description_scene.instantiate()
-			effect_description.set_text(effect.get_numeric(), effect.get_identifier(), effect.get_description())
+			effect_description.set_text(effect.get_shortform_desc(), effect.get_description())
 			$VBoxContainer.add_child(effect_description)
 	
 	get_parent().show()

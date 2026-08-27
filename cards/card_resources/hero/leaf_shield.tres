@@ -1,16 +1,23 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://bqkukg27xxc4f"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://bqkukg27xxc4f"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_hxauk"]
 [ext_resource type="Script" uid="uid://dly02v1jvmmys" path="res://cards/effects/modify_terrain/cultivate.gd" id="2_m8sg2"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="3_60qa6"]
 
+[sub_resource type="Resource" id="Resource_m8sg2"]
+script = ExtResource("2_m8sg2")
+num_gen = 2
+metadata/_custom_type_script = "uid://dly02v1jvmmys"
+
 [sub_resource type="Resource" id="Resource_hxauk"]
 script = ExtResource("2_m8sg2")
+num_gen = 2
 metadata/_custom_type_script = "uid://dly02v1jvmmys"
 
 [resource]
 script = ExtResource("3_60qa6")
 name = "Leaf Shield"
 defense = 6
+defense_effects = Array[ExtResource("1_hxauk")]([SubResource("Resource_m8sg2")])
 on_hit_effects = Array[ExtResource("1_hxauk")]([SubResource("Resource_hxauk")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

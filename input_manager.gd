@@ -1,10 +1,10 @@
 extends Camera2D
 class_name MainCamera
 
-var _previousPosition: Vector2 = Vector2(0, 0);
-var _moveCamera: bool = false;
-var _mouse_is_pressed: bool = false;
-var THRESHOLD: int = 8;
+var _previousPosition: Vector2 = Vector2(0, 0)
+var _moveCamera: bool = false
+var _mouse_is_pressed: bool = false
+var THRESHOLD: int = 8
 
 var listening_user_input: bool = false
 var is_aiming := false
@@ -12,6 +12,16 @@ var stored_item: Item
 var stored_action: ItemAction
 
 var actor: Char
+
+var target_pos: Vector2
+var target_speed: float = 10
+var is_targeting := false
+
+func _physics_process(delta: float) -> void:
+	if is_targeting:
+		position = position.lerp(target_pos, delta * target_speed)
+		if position.distance_to(target_pos) <= THRESHOLD:
+			is_targeting = false
 
 func _ready() -> void:
 	EventBus.user_input_requested.connect(on_user_input_requested)
@@ -107,8 +117,9 @@ func on_item_used(item: Item, item_action: ItemAction):
 				end_turn()
 
 func move_camera_position(grid_position: Vector2i):
-	position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
-
+	target_pos = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
+	is_targeting = true
+	
 func on_wait_pressed():
 	if listening_user_input:
 		end_turn()

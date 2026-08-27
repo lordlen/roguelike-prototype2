@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=13 format=3 uid="uid://bp2blyxs008ga"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://bp2blyxs008ga"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_aemvs"]
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="2_3qbnk"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="2_egrc3"]
 [ext_resource type="Resource" uid="uid://v83m0k8g2ysm" path="res://cards/card_resources/nip.tres" id="2_ixnro"]
+[ext_resource type="Resource" uid="uid://dgsuvok1hwhbc" path="res://cards/card_resources/gnaw.tres" id="3_lvt2a"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="4_a8qrl"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="4_ixnro"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="5_a8qrl"]
@@ -30,11 +31,12 @@ script = ExtResource("2_egrc3")
 texture = SubResource("AtlasTexture_ameka")
 character_name = "Giant Rat"
 alignment = 1
+color = Color(0.5254902, 0.5019608, 0.5529412, 1)
 min_hp = 6
 max_hp = 8
 scent_range = 2
 sleeping = SubResource("Resource_utu3l")
 wandering = SubResource("Resource_k13kk")
 hunting = SubResource("Resource_idk1w")
-cards = Array[ExtResource("1_aemvs")]([ExtResource("2_ixnro")])
+cards = Array[ExtResource("1_aemvs")]([ExtResource("2_ixnro"), ExtResource("3_lvt2a")])
 metadata/_custom_type_script = "uid://btuk5gl5wcri7"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://c2wmxs4dg4sp4"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_7nqk2"]
+[ext_resource type="Script" uid="uid://dk8k7s7bvhfwg" path="res://cards/effects/add_card/curse.gd" id="2_7bue2"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ocjhk"]
+
+[sub_resource type="Resource" id="Resource_yef2d"]
+script = ExtResource("2_7bue2")
+num_cards = 1
+metadata/_custom_type_script = "uid://dk8k7s7bvhfwg"
+
+[resource]
+script = ExtResource("2_ocjhk")
+name = "Haunt"
+attack = 1
+range = 1
+attack_effects = Array[ExtResource("1_7nqk2")]([SubResource("Resource_yef2d")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

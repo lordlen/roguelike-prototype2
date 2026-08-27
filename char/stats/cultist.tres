@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://dtib6436kc0vk"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_brviq"]
+[ext_resource type="Resource" uid="uid://52dwvwi4nuyd" path="res://cards/card_resources/chant.tres" id="2_15sn8"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_aj7iv"]
+[ext_resource type="Resource" uid="uid://bptpqm71fx45" path="res://cards/card_resources/ritual.tres" id="3_cquog"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_vbaag"]
+[ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="4_1upxo"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="4_aj7iv"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="7_48y2y"]
+[ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="9_qg5ph"]
+
+[sub_resource type="Resource" id="Resource_2ijqt"]
+script = ExtResource("4_1upxo")
+metadata/_custom_type_script = "uid://bytwv002xet0b"
+
+[sub_resource type="Resource" id="Resource_hubgb"]
+script = ExtResource("7_48y2y")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbaag"]
+atlas = ExtResource("4_aj7iv")
+region = Rect2(64, 112, 16, 16)
+
+[sub_resource type="Resource" id="Resource_6xfpj"]
+script = ExtResource("9_qg5ph")
+metadata/_custom_type_script = "uid://cwayprpkdikls"
+
+[resource]
+script = ExtResource("3_vbaag")
+texture = SubResource("AtlasTexture_vbaag")
+character_name = "Cultist"
+alignment = 1
+color = Color(0.23753911, 0.23753914, 0.23753911, 1)
+min_hp = 25
+max_hp = 30
+sleeping = SubResource("Resource_hubgb")
+wandering = SubResource("Resource_6xfpj")
+hunting = SubResource("Resource_2ijqt")
+cards = Array[ExtResource("1_brviq")]([ExtResource("2_15sn8"), ExtResource("2_15sn8"), ExtResource("3_cquog")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

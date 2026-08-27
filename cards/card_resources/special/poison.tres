@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://cfjdw3la3hqhy"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_xyv6t"]
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="2_afd00"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_evtrc"]
+
+[sub_resource type="Resource" id="Resource_amwbg"]
+script = ExtResource("2_afd00")
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
+
+[resource]
+script = ExtResource("2_evtrc")
+name = "Poison"
+rarity = 3
+range = 1
+exhausts = true
+is_ethereal = true
+is_instant = true
+on_draw_effects = Array[ExtResource("1_xyv6t")]([SubResource("Resource_amwbg")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

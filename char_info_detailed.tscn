@@ -20,9 +20,9 @@ script = ExtResource("1_8q1pe")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 158.0
-offset_top = 142.0
+offset_top = 61.0
 offset_right = 530.0
-offset_bottom = 406.0
+offset_bottom = 325.0
 script = ExtResource("1_3cqj8")
 
 [node name="CharName" type="Label" parent="Panel"]
@@ -37,6 +37,8 @@ layout_mode = 0
 offset_top = 32.0
 offset_right = 78.0
 offset_bottom = 55.0
+tooltip_text = "How the character traverses."
+mouse_filter = 0
 text = "Traversal:"
 
 [node name="TraversalType" type="Label" parent="Panel/TraversalLabel"]
@@ -47,11 +49,31 @@ offset_right = 265.0
 offset_bottom = 24.0
 text = "Grounded"
 
+[node name="ScentRangeLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 66.0
+offset_right = 78.0
+offset_bottom = 89.0
+tooltip_text = "While hunting, the range enemies can detect you without vision."
+mouse_filter = 0
+text = "Scent Range:"
+
+[node name="ScentRangeValue" type="Label" parent="Panel/ScentRangeLabel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 1.0
+offset_right = 265.0
+offset_bottom = 24.0
+text = "1"
+
 [node name="GoldLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_top = 64.0
+offset_top = 99.0
 offset_right = 41.0
-offset_bottom = 87.0
+offset_bottom = 122.0
+tooltip_text = "Used to buy from the shop.
+Dropped upon death."
+mouse_filter = 0
 text = "Gold:"
 
 [node name="GoldAmount" type="Label" parent="Panel/GoldLabel"]
@@ -62,30 +84,18 @@ offset_right = 219.0
 offset_bottom = 25.0
 text = "100"
 
-[node name="CardRewardLabel" type="Label" parent="Panel"]
+[node name="ItemLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_top = 98.0
-offset_right = 41.0
-offset_bottom = 121.0
-text = "Card Rewards:"
-
-[node name="CardRewardAmount" type="Label" parent="Panel/CardRewardLabel"]
-layout_mode = 0
-offset_left = 180.0
-offset_top = 2.0
-offset_right = 220.0
-offset_bottom = 25.0
-text = "100"
-
-[node name="PotionLabel" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 1.0
+offset_left = 3.0
 offset_top = 138.0
-offset_right = 41.0
+offset_right = 59.0
 offset_bottom = 161.0
-text = "Potions:"
+tooltip_text = "Potions and card rewards.
+Dropped upon death."
+mouse_filter = 0
+text = "Items:"
 
-[node name="GridContainer" type="GridContainer" parent="Panel/PotionLabel"]
+[node name="GridContainer" type="GridContainer" parent="Panel/ItemLabel"]
 layout_mode = 0
 offset_left = 74.0
 offset_top = -3.0
@@ -94,29 +104,33 @@ offset_bottom = 16.0
 scale = Vector2(2, 2)
 columns = 7
 
-[node name="TextureButton" type="TextureRect" parent="Panel/PotionLabel/GridContainer"]
+[node name="TextureButton" type="TextureRect" parent="Panel/ItemLabel/GridContainer"]
 layout_mode = 2
 tooltip_text = "Summon a slime every 2 reshuffles."
 texture = SubResource("AtlasTexture_3cqj8")
 
-[node name="TextureButton2" type="TextureRect" parent="Panel/PotionLabel/GridContainer"]
+[node name="TextureButton2" type="TextureRect" parent="Panel/ItemLabel/GridContainer"]
 layout_mode = 2
 tooltip_text = "Summon a slime every 2 reshuffles."
 texture = SubResource("AtlasTexture_3cqj8")
 
 [node name="RelicLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_top = 174.0
-offset_right = 59.0
-offset_bottom = 197.0
+offset_left = 1.0
+offset_top = 185.0
+offset_right = 60.0
+offset_bottom = 208.0
+tooltip_text = "Relics that provide passive effects.
+Does NOT drop upon death."
+mouse_filter = 0
 text = "Relics:"
 
 [node name="GridContainer" type="GridContainer" parent="Panel/RelicLabel"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 21.0
-offset_right = 183.0
-offset_bottom = 55.0
+offset_left = 53.0
+offset_top = -4.0
+offset_right = 205.5
+offset_bottom = 31.5
 scale = Vector2(2, 2)
 columns = 10
 

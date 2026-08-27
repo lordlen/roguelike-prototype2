@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dnh488icy1kuv"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_4mvxl"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_4165s"]
+[ext_resource type="Script" uid="uid://c56tu66yr0yqq" path="res://cards/effects/discard/disarm.gd" id="2_o5655"]
+[ext_resource type="Script" uid="uid://dmjsrjjubgf5c" path="res://cards/effects/discard/break.gd" id="3_vcv1i"]
+
+[sub_resource type="Resource" id="Resource_tjs4k"]
+script = ExtResource("2_o5655")
+target = 1
+metadata/_custom_type_script = "uid://c56tu66yr0yqq"
+
+[sub_resource type="Resource" id="Resource_o35ab"]
+script = ExtResource("3_vcv1i")
+target = 1
+metadata/_custom_type_script = "uid://dmjsrjjubgf5c"
+
+[resource]
+script = ExtResource("2_4165s")
+name = "Mind Control"
+range = 2
+attack_effects = Array[ExtResource("1_4mvxl")]([SubResource("Resource_tjs4k"), SubResource("Resource_o35ab")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

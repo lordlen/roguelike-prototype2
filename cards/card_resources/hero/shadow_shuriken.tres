@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://cpmrxei642i1q"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_y4w5v"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_7ip31"]
+[ext_resource type="Script" uid="uid://de3hrn6re45yh" path="res://cards/effects/add_card/shiv.gd" id="2_ol710"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_rlf72"]
+
+[sub_resource type="Resource" id="Resource_350gt"]
+script = ExtResource("2_rlf72")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_rlf72"]
+script = ExtResource("2_ol710")
+num_cards = 3
+metadata/_custom_type_script = "uid://de3hrn6re45yh"
+
+[resource]
+script = ExtResource("2_7ip31")
+name = "Shadow Shuriken"
+attack = 4
+num_hits = 1
+range = 2
+attack_effects = Array[ExtResource("1_y4w5v")]([SubResource("Resource_350gt"), SubResource("Resource_rlf72")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

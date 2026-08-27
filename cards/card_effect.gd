@@ -24,15 +24,22 @@ func get_numeric() -> String:
 	return ""
 
 func get_all_nested_card_effects() -> Array[CardEffect]:
-	return []
+	return [self]
 
 func get_shortform(card: CardInstance) -> String:
 	var identifier := get_identifier()
 	if is_temp:
 		identifier += "(once)"
 	if get_description():
-		return "[color=orange]%s[/color]" % identifier
+		return "[color=orange]%s[/color]" % [identifier]
 	return identifier
+
+func get_shortform_desc() -> String:
+	var numeric := get_numeric()
+	if numeric == "":
+		return "[color=orange]%s[/color]" % get_identifier()
+	else:
+		return "%s [color=orange]%s[/color]" % [numeric, get_identifier()]
 
 func is_same_effect(other_effect: CardEffect) -> bool:
 	return self.get_identifier() == other_effect.get_identifier()\

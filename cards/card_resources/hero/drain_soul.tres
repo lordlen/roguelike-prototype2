@@ -17,8 +17,8 @@ metadata/_custom_type_script = "uid://8j480ywki30u"
 [resource]
 script = ExtResource("2_h8ojf")
 name = "Drain Soul"
-attack = 6
+attack = 4
 num_hits = 1
-range = 1
+range = 2
 attack_effects = Array[ExtResource("1_r0kmg")]([SubResource("Resource_wpnii"), SubResource("Resource_scl4o")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

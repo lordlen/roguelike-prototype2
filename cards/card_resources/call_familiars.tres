@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://dq5bckyms8s83"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_21n8l"]
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="2_525sm"]
+[ext_resource type="Resource" uid="uid://dlc88tlc7j40a" path="res://char/stats/familiar.tres" id="2_pr0a4"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_uvs08"]
+[ext_resource type="Script" uid="uid://b8xc6asei4xbv" path="res://cards/effects/summon/summon.gd" id="3_525sm"]
+
+[sub_resource type="Resource" id="Resource_4a6pp"]
+script = ExtResource("2_525sm")
+value = 6
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
+
+[sub_resource type="Resource" id="Resource_ctcmc"]
+script = ExtResource("3_525sm")
+num_summons = 2
+char_resource = ExtResource("2_pr0a4")
+metadata/_custom_type_script = "uid://b8xc6asei4xbv"
+
+[resource]
+script = ExtResource("2_uvs08")
+name = "Call Familiars"
+range = 3
+attack_effects = Array[ExtResource("1_21n8l")]([SubResource("Resource_4a6pp"), SubResource("Resource_ctcmc")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

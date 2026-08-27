@@ -1,20 +1,27 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://2yy35wn5se04"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://2yy35wn5se04"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_0yu5s"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_eek7g"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ta5xm"]
+[ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="3_eek7g"]
 
 [sub_resource type="Resource" id="Resource_6fvx3"]
 script = ExtResource("2_eek7g")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
+[sub_resource type="Resource" id="Resource_hwbvp"]
+script = ExtResource("3_eek7g")
+metadata/_custom_type_script = "uid://befkr8rvi0mwo"
+
 [resource]
 script = ExtResource("2_ta5xm")
 name = "Shiv"
+rarity = 3
 attack = 3
 num_hits = 1
-range = 3
+range = 2
 exhausts = true
 is_instant = true
 attack_effects = Array[ExtResource("1_0yu5s")]([SubResource("Resource_6fvx3")])
+defense_effects = Array[ExtResource("1_0yu5s")]([SubResource("Resource_hwbvp")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

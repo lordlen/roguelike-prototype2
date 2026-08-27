@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://cxpxrjk37wl7h"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_jbgo5"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_6looy"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_wg0l4"]
+[ext_resource type="Script" uid="uid://b66pa00t5sed" path="res://cards/effects/increment_stats/increment_all_attack.gd" id="3_wa0lv"]
+[ext_resource type="Script" uid="uid://4q5v6t4c1adn" path="res://cards/effects/exhaust/exhaust_off.gd" id="4_wa0lv"]
+
+[sub_resource type="Resource" id="Resource_n0i5r"]
+script = ExtResource("2_6looy")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_dsop8"]
+script = ExtResource("3_wa0lv")
+atk_value = 3
+metadata/_custom_type_script = "uid://b66pa00t5sed"
+
+[sub_resource type="Resource" id="Resource_bi7p2"]
+script = ExtResource("4_wa0lv")
+metadata/_custom_type_script = "uid://4q5v6t4c1adn"
+
+[resource]
+script = ExtResource("2_wg0l4")
+name = "Berserk"
+rarity = 2
+attack = 9
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_jbgo5")]([SubResource("Resource_n0i5r"), SubResource("Resource_dsop8"), SubResource("Resource_bi7p2")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

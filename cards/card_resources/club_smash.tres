@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://beg070ojhv37"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_86rov"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_0m0ol"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_swrbi"]
+[ext_resource type="Script" uid="uid://dmjsrjjubgf5c" path="res://cards/effects/discard/break.gd" id="3_0m0ol"]
+
+[sub_resource type="Resource" id="Resource_rmafa"]
+script = ExtResource("2_0m0ol")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_avsyf"]
+script = ExtResource("3_0m0ol")
+target = 1
+metadata/_custom_type_script = "uid://dmjsrjjubgf5c"
+
+[resource]
+script = ExtResource("2_swrbi")
+name = "Club Smash"
+attack = 8
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_86rov")]([SubResource("Resource_rmafa"), SubResource("Resource_avsyf")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

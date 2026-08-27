@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://q6wo8bgy0gso"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_aa7th"]
+[ext_resource type="Script" uid="uid://dmhi7sixrix4g" path="res://cards/effects/discard/grass_scry.gd" id="2_6ivaj"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="3_nvlxq"]
+
+[sub_resource type="Resource" id="Resource_cvg6t"]
+script = ExtResource("2_6ivaj")
+metadata/_custom_type_script = "uid://dmhi7sixrix4g"
+
+[resource]
+script = ExtResource("3_nvlxq")
+name = "Botanomancy"
+rarity = 2
+defense = 4
+defense_effects = Array[ExtResource("1_aa7th")]([SubResource("Resource_cvg6t")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

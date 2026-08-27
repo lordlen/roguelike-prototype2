@@ -11,7 +11,9 @@ func on_requested(card_list: Array[CardInstance], target_num_selections: int, de
 	set_card_list(card_list)
 	set_target_num_selections(target_num_selections)
 	set_text(description)
+	$ConfirmButton.disabled = target_num_selections != 0
 	get_parent().show()
+	
 
 func set_card_list(card_list: Array[CardInstance]):
 	num_selections = 0

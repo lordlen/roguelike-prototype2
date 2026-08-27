@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://bc7kd7y4lmfy1"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_8gu2e"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_khmbr"]
+[ext_resource type="Script" uid="uid://btjl8dqnvv1n6" path="res://cards/effects/increment_stats/main_hits_up.gd" id="2_qc2df"]
+
+[sub_resource type="Resource" id="Resource_f57ux"]
+script = ExtResource("2_qc2df")
+value = 1
+metadata/_custom_type_script = "uid://btjl8dqnvv1n6"
+
+[resource]
+script = ExtResource("2_khmbr")
+name = "echo"
+rarity = 2
+defense = 3
+exhausts = true
+defense_effects = Array[ExtResource("1_8gu2e")]([SubResource("Resource_f57ux")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

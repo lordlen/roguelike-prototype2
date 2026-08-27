@@ -17,6 +17,7 @@ metadata/_custom_type_script = "uid://8j480ywki30u"
 [resource]
 script = ExtResource("2_amspo")
 name = "Blood Magic"
-defense = 5
+rarity = 1
+defense = 6
 defense_effects = Array[ExtResource("1_m8rpk")]([SubResource("Resource_rbig8"), SubResource("Resource_8wtj1")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

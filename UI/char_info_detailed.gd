@@ -10,21 +10,22 @@ func _on_character_info_requested(ch: Char):
 func set_char(char: Char):
 	$CharName.text = char.character_name
 	$TraversalLabel/TraversalType.text = Char.Traversal.find_key(char.traversal)
+	$ScentRangeLabel/ScentRangeValue.text = str(char.scent_range)
 	$GoldLabel/GoldAmount.text = str(char.inventory.gold)
-	$CardRewardLabel/CardRewardAmount.text = str(char.inventory.card_rewards)
 	
-	for child in $PotionLabel/GridContainer.get_children():
+	for child in $ItemLabel/GridContainer.get_children():
 		remove_child(child)
 		child.queue_free()
 	
-	for potion in char.inventory.items:
-		var texture := potion.texture
-		var description := potion.get_description()
+	for item: Item in char.inventory.items + char.inventory.card_rewards2:
+		var texture := item.texture
+		var description := item.get_description()
 		
-		var potion_texture := TextureRect.new()
-		potion_texture.texture = texture
-		potion_texture.tooltip_text = description
-		$PotionLabel/GridContainer.add_child(potion_texture)
+		var item_texture := TextureRect.new()
+		item_texture.texture = texture
+		item_texture.self_modulate = item.color
+		item_texture.tooltip_text = description
+		$ItemLabel/GridContainer.add_child(item_texture)
 
 	# loop each relic
 	# clear children

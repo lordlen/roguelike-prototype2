@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=13 format=3 uid="uid://dlc88tlc7j40a"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_sik1w"]
+[ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="2_6k07y"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_aa2sk"]
+[ext_resource type="Resource" uid="uid://d1s7gyjlx0t8j" path="res://cards/card_resources/offering.tres" id="2_yumjb"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_r5cqo"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="4_aa2sk"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="5_yumjb"]
+[ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="7_nugyt"]
+
+[sub_resource type="Resource" id="Resource_xbmon"]
+script = ExtResource("2_6k07y")
+metadata/_custom_type_script = "uid://bytwv002xet0b"
+
+[sub_resource type="Resource" id="Resource_rhr8w"]
+script = ExtResource("5_yumjb")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5cqo"]
+atlas = ExtResource("4_aa2sk")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="Resource" id="Resource_nja60"]
+script = ExtResource("7_nugyt")
+metadata/_custom_type_script = "uid://cwayprpkdikls"
+
+[resource]
+script = ExtResource("3_r5cqo")
+texture = SubResource("AtlasTexture_r5cqo")
+character_name = "Familiar"
+alignment = 1
+traversal = 2
+color = Color(0.16078432, 0.16078432, 0.5411765, 1)
+min_hp = 3
+max_hp = 3
+scent_range = 2
+sleeping = SubResource("Resource_rhr8w")
+wandering = SubResource("Resource_nja60")
+hunting = SubResource("Resource_xbmon")
+cards = Array[ExtResource("1_sik1w")]([ExtResource("2_yumjb"), ExtResource("2_yumjb")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

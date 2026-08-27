@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=16 format=3 uid="uid://cimp2n2feysvh"]
+
+[ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_0n7st"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_cskbt"]
+[ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_ct0gs"]
+[ext_resource type="Resource" uid="uid://cw1hglm5kal3c" path="res://floor_generator/floor_description/spawn_groups/single_ogre.tres" id="2_2yyv0"]
+[ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_ct0gs"]
+[ext_resource type="Resource" uid="uid://biy8dyhir3qa2" path="res://floor_generator/floor_description/spawn_groups/single_vampire.tres" id="4_2yyv0"]
+[ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="4_lft3q"]
+[ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="5_wjul0"]
+[ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="6_aay64"]
+[ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="7_vdx7s"]
+[ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="8_dsgl2"]
+[ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="9_51pdb"]
+
+[sub_resource type="Resource" id="Resource_uti8u"]
+script = ExtResource("3_ct0gs")
+pool = Array[ExtResource("1_cskbt")]([ExtResource("2_2yyv0")])
+weights = Array[float]([1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_x2lt4"]
+script = ExtResource("3_ct0gs")
+pool = Array[ExtResource("1_cskbt")]([ExtResource("4_2yyv0")])
+weights = Array[float]([1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_45kwe"]
+script = ExtResource("8_dsgl2")
+room_patterns = Array[ExtResource("6_aay64")]([ExtResource("7_vdx7s")])
+num_rooms = 2
+num_initial_spawns = 1
+num_elite_spawns = 0
+item_pool = ExtResource("4_lft3q")
+relic_pool = ExtResource("5_wjul0")
+shrine_pool = ExtResource("9_51pdb")
+potion_ratio = 0.0
+gold_ratio = 0.0
+initial_spawns = SubResource("Resource_x2lt4")
+elite_spawns = SubResource("Resource_uti8u")
+metadata/_custom_type_script = "uid://cihmjv6v0inos"
+
+[resource]
+script = ExtResource("1_0n7st")
+floor_description = SubResource("Resource_45kwe")
+floor_name = "Test floor"
+card_reward_generator = ExtResource("1_ct0gs")
+metadata/_custom_type_script = "uid://bo2wewg8np8bl"

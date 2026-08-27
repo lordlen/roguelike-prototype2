@@ -3,6 +3,7 @@ extends Resource
 
 @export var item_name: String
 @export var texture: Texture
+@export var color: Color = Color.WHITE
 @export var item_actions: Array[ItemAction] = [ItemAction.new()]
 @export var display_description_on_hover: bool = true
 

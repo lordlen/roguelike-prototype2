@@ -9,7 +9,7 @@ region = Rect2(16, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_003jx")
-description = "If hp reaches less than half, summon a slime with the same hp."
+description = "If hp reaches less than half, discard all and summon a slime with the same hp."
 item_name = "Mitosis"
 texture = SubResource("AtlasTexture_fcj2v")
 item_actions = null

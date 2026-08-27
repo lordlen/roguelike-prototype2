@@ -16,6 +16,7 @@ extends FloorBuilder
 @export var num_potions: int
 @export var num_cards: int
 @export var num_relics: int
+@export var num_healing: int
 @export_subgroup("Cost")
 @export var potion_cost: int
 @export var card_cost: int
@@ -79,7 +80,11 @@ func build_floor():
 		
 		p_ind += 1
 	
-	if p_ind < len(p_positions):
+	for i in range(num_healing):
+		if p_ind >= len(p_positions):
+			break
+		
 		ItemManager.add_item_to_overworld(
 			healing_tile, p_positions[p_ind], healing_cost)
+
 		p_ind += 1

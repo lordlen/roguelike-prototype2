@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=26 format=3 uid="uid://c0vncmspxmiw2"]
+
+[ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_0b6pp"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_k5a1d"]
+[ext_resource type="Resource" uid="uid://ccytgfl1kira4" path="res://floor_generator/floor_description/spawn_groups/triple_zombie.tres" id="2_0b6pp"]
+[ext_resource type="Resource" uid="uid://biy8dyhir3qa2" path="res://floor_generator/floor_description/spawn_groups/single_vampire.tres" id="3_k5a1d"]
+[ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="4_hvl8t"]
+[ext_resource type="Resource" uid="uid://bqracyhwv401b" path="res://floor_generator/floor_description/spawn_groups/double_zombie.tres" id="5_0b6pp"]
+[ext_resource type="Resource" uid="uid://c6g3jctoctm54" path="res://floor_generator/floor_description/spawn_groups/single_cultist.tres" id="6_5pd4n"]
+[ext_resource type="Resource" uid="uid://dtkivaldy4pf6" path="res://floor_generator/floor_description/spawn_groups/single_warden.tres" id="7_led7c"]
+[ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="8_di1c1"]
+[ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="9_41m32"]
+[ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="10_klshn"]
+[ext_resource type="Resource" uid="uid://7mpefh2wkpvp" path="res://patterns/region2/1_row.tres" id="11_sr7df"]
+[ext_resource type="Resource" uid="uid://c7ntiudon2k2w" path="res://patterns/region2/2_rows.tres" id="12_r7rtf"]
+[ext_resource type="Resource" uid="uid://cersor6om4npq" path="res://patterns/region2/cross.tres" id="13_ytqj7"]
+[ext_resource type="Resource" uid="uid://cgo67d2pivf4b" path="res://patterns/region2/fountain.tres" id="14_d02ft"]
+[ext_resource type="Resource" uid="uid://b8ifuv5rqlpp7" path="res://patterns/region2/small_hut.tres" id="15_ee4am"]
+[ext_resource type="Resource" uid="uid://v1no3o1350pb" path="res://patterns/region2/small_square.tres" id="16_gpdy7"]
+[ext_resource type="Resource" uid="uid://ca1yx3lh7viyr" path="res://patterns/region2/square.tres" id="17_qjdma"]
+[ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="18_50ktj"]
+[ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="19_gpki4"]
+[ext_resource type="Resource" uid="uid://c3t3lfgr5qogl" path="res://patterns/room_patterns/special_features/rat_den.tres" id="20_y3fsd"]
+[ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="21_v7ig6"]
+
+[sub_resource type="Resource" id="Resource_k253u"]
+script = ExtResource("4_hvl8t")
+pool = Array[ExtResource("1_k5a1d")]([ExtResource("2_0b6pp"), ExtResource("3_k5a1d")])
+weights = Array[float]([1.0, 1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_ev3rf"]
+script = ExtResource("4_hvl8t")
+pool = Array[ExtResource("1_k5a1d")]([ExtResource("5_0b6pp"), ExtResource("6_5pd4n"), ExtResource("7_led7c"), ExtResource("3_k5a1d")])
+weights = Array[float]([2.0, 2.0, 1.0, 1.0])
+metadata/_custom_type_script = "uid://cwled7fqlcl6g"
+
+[sub_resource type="Resource" id="Resource_3aogm"]
+script = ExtResource("18_50ktj")
+room_patterns = Array[ExtResource("10_klshn")]([ExtResource("11_sr7df"), ExtResource("12_r7rtf"), ExtResource("13_ytqj7"), ExtResource("14_d02ft"), ExtResource("15_ee4am"), ExtResource("16_gpdy7"), ExtResource("17_qjdma")])
+special_patterns = Array[ExtResource("10_klshn")]([ExtResource("20_y3fsd")])
+item_pool = ExtResource("8_di1c1")
+relic_pool = ExtResource("9_41m32")
+shrine_pool = ExtResource("19_gpki4")
+initial_spawns = SubResource("Resource_ev3rf")
+elite_spawns = SubResource("Resource_k253u")
+metadata/_custom_type_script = "uid://cihmjv6v0inos"
+
+[resource]
+script = ExtResource("21_v7ig6")
+floor_description = SubResource("Resource_3aogm")
+floor_name = "F6"
+card_reward_generator = ExtResource("1_0b6pp")
+metadata/_custom_type_script = "uid://bo2wewg8np8bl"

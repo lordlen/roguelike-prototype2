@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=25 format=3 uid="uid://c1gv3nh1oabji"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=26 format=3 uid="uid://c1gv3nh1oabji"]
 
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_7px57"]
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_jftws"]
-[ext_resource type="Resource" uid="uid://cov06ge30uvjx" path="res://floor_generator/floor_description/spawn_groups/double_jackal.tres" id="2_pxyyr"]
+[ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_w30ny"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_nlr0i"]
-[ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="4_wh4lw"]
 [ext_resource type="Resource" uid="uid://oadmhwxeateq" path="res://floor_generator/floor_description/spawn_groups/single_rat.tres" id="5_vb3i2"]
+[ext_resource type="Resource" uid="uid://c7gtc8e0voup7" path="res://floor_generator/floor_description/spawn_groups/single_crab.tres" id="6_ob6xa"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="6_tw7h6"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="7_44a2a"]
 [ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="7_gshnx"]
+[ext_resource type="Resource" uid="uid://f3wn6yu6t30d" path="res://floor_generator/floor_description/spawn_groups/single_goblin.tres" id="7_xi74e"]
 [ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="8_usaqq"]
 [ext_resource type="Resource" uid="uid://dprerqpsu1pdc" path="res://patterns/croissant.tres" id="9_663xm"]
 [ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="10_2suec"]
@@ -24,14 +25,14 @@
 
 [sub_resource type="Resource" id="Resource_k253u"]
 script = ExtResource("3_nlr0i")
-pool = Array[ExtResource("1_7px57")]([ExtResource("2_pxyyr")])
+pool = Array[ExtResource("1_7px57")]([ExtResource("7_xi74e")])
 weights = Array[float]([1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_ev3rf"]
 script = ExtResource("3_nlr0i")
-pool = Array[ExtResource("1_7px57")]([ExtResource("4_wh4lw"), ExtResource("5_vb3i2")])
-weights = Array[float]([1.0, 4.0])
+pool = Array[ExtResource("1_7px57")]([ExtResource("5_vb3i2"), ExtResource("6_ob6xa"), ExtResource("7_xi74e")])
+weights = Array[float]([2.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_afuqt"]
@@ -49,4 +50,5 @@ metadata/_custom_type_script = "uid://cihmjv6v0inos"
 script = ExtResource("1_jftws")
 floor_description = SubResource("Resource_afuqt")
 floor_name = "F2"
+card_reward_generator = ExtResource("1_w30ny")
 metadata/_custom_type_script = "uid://bo2wewg8np8bl"

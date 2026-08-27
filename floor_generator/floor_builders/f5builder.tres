@@ -1,57 +1,52 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=27 format=3 uid="uid://bqavchea5vxh0"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=24 format=3 uid="uid://bwv71kpvp3b1b"]
 
-[ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_awfp5"]
-[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_ceww7"]
-[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="2_nuvs6"]
-[ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_4obxe"]
-[ext_resource type="Resource" uid="uid://dr7n7ycjb11b" path="res://char/stats/jackal.tres" id="3_wx512"]
-[ext_resource type="Resource" uid="uid://b147660eyg6mw" path="res://char/stats/goblin.tres" id="4_emeix"]
-[ext_resource type="Resource" uid="uid://bfl70ibh5j5x8" path="res://floor_generator/floor_description/spawn_groups/single_slime.tres" id="5_3c0iy"]
-[ext_resource type="Resource" uid="uid://f3wn6yu6t30d" path="res://floor_generator/floor_description/spawn_groups/single_goblin.tres" id="7_sdwir"]
-[ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="7_vo1bt"]
-[ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="8_7rcdw"]
-[ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="9_7acag"]
-[ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="9_m7xqd"]
-[ext_resource type="Resource" uid="uid://dprerqpsu1pdc" path="res://patterns/croissant.tres" id="10_fgc1e"]
-[ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="11_ssf8d"]
-[ext_resource type="Resource" uid="uid://ctmdd8rcov4kq" path="res://patterns/hut.tres" id="12_36jnb"]
-[ext_resource type="Resource" uid="uid://bbpq1mknhs4j5" path="res://patterns/L.tres" id="13_kktjx"]
-[ext_resource type="Resource" uid="uid://cdw5yrf7nn8il" path="res://patterns/lake.tres" id="14_31mno"]
-[ext_resource type="Resource" uid="uid://bxtdio0jocibu" path="res://patterns/long_corridor.tres" id="15_giqtb"]
-[ext_resource type="Resource" uid="uid://btljq16rqurqj" path="res://patterns/pillar.tres" id="16_v21gg"]
-[ext_resource type="Resource" uid="uid://brcq5wokjhj4b" path="res://patterns/river.tres" id="17_4rxfc"]
-[ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="18_v66ss"]
-[ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="19_cbbgr"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_aa0y6"]
+[ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_jdb56"]
+[ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="4_2dd70"]
+[ext_resource type="Resource" uid="uid://pfwemucjaw4j" path="res://floor_generator/floor_description/spawn_groups/single_zombie.tres" id="4_aa0y6"]
+[ext_resource type="Resource" uid="uid://bqracyhwv401b" path="res://floor_generator/floor_description/spawn_groups/double_zombie.tres" id="4_ipe85"]
+[ext_resource type="Resource" uid="uid://c1tf5pab7q3oo" path="res://floor_generator/floor_description/spawn_groups/single_ghost.tres" id="5_aa0y6"]
+[ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="5_mltmi"]
+[ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="6_oji3x"]
+[ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="7_nuvs6"]
+[ext_resource type="Resource" uid="uid://7mpefh2wkpvp" path="res://patterns/region2/1_row.tres" id="8_7qsrt"]
+[ext_resource type="Resource" uid="uid://c7ntiudon2k2w" path="res://patterns/region2/2_rows.tres" id="9_ipe85"]
+[ext_resource type="Resource" uid="uid://cersor6om4npq" path="res://patterns/region2/cross.tres" id="10_aa0y6"]
+[ext_resource type="Resource" uid="uid://cgo67d2pivf4b" path="res://patterns/region2/fountain.tres" id="11_jdb56"]
+[ext_resource type="Resource" uid="uid://b8ifuv5rqlpp7" path="res://patterns/region2/small_hut.tres" id="12_m7xqd"]
+[ext_resource type="Resource" uid="uid://v1no3o1350pb" path="res://patterns/region2/small_square.tres" id="13_2dd70"]
+[ext_resource type="Resource" uid="uid://ca1yx3lh7viyr" path="res://patterns/region2/square.tres" id="14_mltmi"]
+[ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="17_wpj1s"]
+[ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="18_tqdo5"]
+[ext_resource type="Resource" uid="uid://c3t3lfgr5qogl" path="res://patterns/room_patterns/special_features/rat_den.tres" id="19_qs75v"]
+[ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="20_m1jjc"]
 
-[sub_resource type="Resource" id="Resource_tbgyn"]
-script = ExtResource("1_ceww7")
-group = Array[ExtResource("2_nuvs6")]([ExtResource("3_wx512"), ExtResource("4_emeix")])
-metadata/_custom_type_script = "uid://cgbukm4afxlvj"
-
-[sub_resource type="Resource" id="Resource_47kvl"]
-script = ExtResource("3_4obxe")
-pool = Array[ExtResource("1_ceww7")]([SubResource("Resource_tbgyn")])
+[sub_resource type="Resource" id="Resource_k253u"]
+script = ExtResource("4_2dd70")
+pool = Array[ExtResource("1_aa0y6")]([ExtResource("4_ipe85")])
 weights = Array[float]([1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
-[sub_resource type="Resource" id="Resource_qil1r"]
-script = ExtResource("3_4obxe")
-pool = Array[ExtResource("1_ceww7")]([ExtResource("5_3c0iy"), ExtResource("7_sdwir")])
+[sub_resource type="Resource" id="Resource_ev3rf"]
+script = ExtResource("4_2dd70")
+pool = Array[ExtResource("1_aa0y6")]([ExtResource("4_aa0y6"), ExtResource("5_aa0y6")])
 weights = Array[float]([1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
-[sub_resource type="Resource" id="Resource_se1oi"]
-script = ExtResource("18_v66ss")
-room_patterns = Array[ExtResource("8_7rcdw")]([ExtResource("9_7acag"), ExtResource("10_fgc1e"), ExtResource("11_ssf8d"), ExtResource("12_36jnb"), ExtResource("13_kktjx"), ExtResource("14_31mno"), ExtResource("15_giqtb"), ExtResource("16_v21gg"), ExtResource("17_4rxfc")])
-item_pool = ExtResource("7_vo1bt")
-relic_pool = ExtResource("9_m7xqd")
-shrine_pool = ExtResource("19_cbbgr")
-initial_spawns = SubResource("Resource_qil1r")
-elite_spawns = SubResource("Resource_47kvl")
+[sub_resource type="Resource" id="Resource_3aogm"]
+script = ExtResource("17_wpj1s")
+room_patterns = Array[ExtResource("7_nuvs6")]([ExtResource("8_7qsrt"), ExtResource("9_ipe85"), ExtResource("10_aa0y6"), ExtResource("11_jdb56"), ExtResource("12_m7xqd"), ExtResource("13_2dd70"), ExtResource("14_mltmi")])
+special_patterns = Array[ExtResource("7_nuvs6")]([ExtResource("19_qs75v")])
+item_pool = ExtResource("5_mltmi")
+relic_pool = ExtResource("6_oji3x")
+shrine_pool = ExtResource("18_tqdo5")
+initial_spawns = SubResource("Resource_ev3rf")
+elite_spawns = SubResource("Resource_k253u")
 metadata/_custom_type_script = "uid://cihmjv6v0inos"
 
 [resource]
-script = ExtResource("1_awfp5")
-floor_description = SubResource("Resource_se1oi")
+script = ExtResource("20_m1jjc")
+floor_description = SubResource("Resource_3aogm")
 floor_name = "F5"
+card_reward_generator = ExtResource("1_jdb56")
 metadata/_custom_type_script = "uid://bo2wewg8np8bl"

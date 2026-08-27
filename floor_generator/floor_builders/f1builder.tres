@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=24 format=3 uid="uid://bjtjavkgkjgen"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=25 format=3 uid="uid://bjtjavkgkjgen"]
 
+[ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_ipnwp"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_np8sq"]
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_ntyuq"]
-[ext_resource type="Resource" uid="uid://ds4tmcbsypsfu" path="res://floor_generator/floor_description/spawn_groups/single_jackal.tres" id="2_g2q1s"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_t7xql"]
+[ext_resource type="Resource" uid="uid://c7gtc8e0voup7" path="res://floor_generator/floor_description/spawn_groups/single_crab.tres" id="3_xk462"]
 [ext_resource type="Resource" uid="uid://oadmhwxeateq" path="res://floor_generator/floor_description/spawn_groups/single_rat.tres" id="4_gchsd"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="5_tnbuw"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="6_5nywl"]
@@ -23,14 +24,14 @@
 
 [sub_resource type="Resource" id="Resource_k253u"]
 script = ExtResource("3_t7xql")
-pool = Array[ExtResource("1_np8sq")]([ExtResource("2_g2q1s")])
-weights = Array[float]([1.0])
+pool = Array[ExtResource("1_np8sq")]([ExtResource("4_gchsd"), ExtResource("3_xk462")])
+weights = Array[float]([1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_ev3rf"]
 script = ExtResource("3_t7xql")
-pool = Array[ExtResource("1_np8sq")]([ExtResource("4_gchsd")])
-weights = Array[float]([1.0])
+pool = Array[ExtResource("1_np8sq")]([ExtResource("4_gchsd"), ExtResource("3_xk462")])
+weights = Array[float]([1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_3aogm"]
@@ -48,4 +49,5 @@ metadata/_custom_type_script = "uid://cihmjv6v0inos"
 script = ExtResource("1_ntyuq")
 floor_description = SubResource("Resource_3aogm")
 floor_name = "F1"
+card_reward_generator = ExtResource("1_ipnwp")
 metadata/_custom_type_script = "uid://bo2wewg8np8bl"

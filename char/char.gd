@@ -103,6 +103,7 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	#centered = false
 	sprite = Sprite2D.new()
 	sprite.texture = stats.texture
+	sprite.self_modulate = stats.color
 	sprite.centered = false
 	add_child(sprite)
 	var collision := CollisionShape2D.new()
@@ -212,6 +213,8 @@ func move_to(new_grid_pos: Vector2i, speed: float = INF):
 
 	var tile := Globals.floor_map.get_tile(new_grid_pos)
 	tile.on_walk(self)
+	if user_controlled:
+		EventBus.camera_move_requested.emit(new_grid_pos)
 
 func turn_start():
 	moved_last_turn = moved_this_turn
@@ -220,7 +223,7 @@ func turn_start():
 	
 	# if offhand has defense effects, also dispose
 	if is_defending and (is_hit or (deck.offhand != null and\
-	!(deck.offhand.defense_effects + deck.offhand.tmp_defense_effects).is_empty())):
+	!deck.offhand.defense_effects.is_empty())):
 		deck.dispose_offhand()
 
 	deck.draw_empty()
@@ -320,14 +323,14 @@ func is_asleep():
 func act_player():
 	turn_start()
 	if action_queue.is_empty():
-		EventBus.emit_signal("user_input_requested", self)
+		EventBus.user_input_requested.emit(self)
 	else:
 		var action : Action = action_queue.pop_front()
 		var is_success = await action.execute()
 		# if an action fails, remove the queue and request user input
 		if !is_success:
 			action_queue.clear()
-			EventBus.emit_signal("user_input_requested", self)
+			EventBus.user_input_requested.emit(self)
 		else:
 			EventBus.emit_signal("turn_ended")
 
@@ -405,6 +408,11 @@ func wander_to(pos: Vector2i):
 	target_flow_map.instantiate()
 	for follower in followers:
 		follower.target_flow_map = target_flow_map
+	wander()
+
+func wander_with_map(map: DijkstraMap):
+	for follower in followers:
+		follower.target_flow_map = map
 	wander()
 
 func wander_to_random():

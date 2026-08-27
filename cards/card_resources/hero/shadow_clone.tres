@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://f434krghwv0s"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_lknxd"]
+[ext_resource type="Script" uid="uid://ek81ynqyky26" path="res://cards/effects/auto_attack/offhand_attack.gd" id="2_8ua6w"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_irpm4"]
+[ext_resource type="Script" uid="uid://bi5tu5pg2y40b" path="res://cards/effects/relocate/backslide.gd" id="2_koo7e"]
+[ext_resource type="Script" uid="uid://demq7moru60ru" path="res://cards/effects/add_card/dupe_shivs.gd" id="3_8ua6w"]
+
+[sub_resource type="Resource" id="Resource_ppyio"]
+script = ExtResource("2_8ua6w")
+metadata/_custom_type_script = "uid://ek81ynqyky26"
+
+[sub_resource type="Resource" id="Resource_vrodt"]
+script = ExtResource("2_koo7e")
+metadata/_custom_type_script = "uid://bi5tu5pg2y40b"
+
+[sub_resource type="Resource" id="Resource_c38du"]
+script = ExtResource("3_8ua6w")
+metadata/_custom_type_script = "uid://demq7moru60ru"
+
+[resource]
+script = ExtResource("2_irpm4")
+name = "Shadow Clone"
+rarity = 2
+range = 1
+attack_effects = Array[ExtResource("1_lknxd")]([SubResource("Resource_ppyio"), SubResource("Resource_vrodt"), SubResource("Resource_c38du")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -4,9 +4,19 @@ extends TextureButton
 var card: CardInstance
 signal card_icon_pressed
 
+func set_color_by_rarity(rarity: CardResource.Rarity):
+	match rarity:
+		CardResource.Rarity.UNCOMMON:
+			self_modulate = Color.DEEP_SKY_BLUE
+		CardResource.Rarity.RARE:
+			self_modulate = Color.YELLOW
+		_:
+			self_modulate = Color.WHITE
+
 func set_card_data(card: CardInstance) -> void:
 	self.card = card
 	if card != null:
+		set_color_by_rarity(card.rarity)
 		if card.texture != null:
 			$CardThumbnail.texture = card.texture
 			$AltText.text = ""
@@ -28,7 +38,7 @@ func _on_toggled(is_toggled: bool) -> void:
 		scale = Vector2(1.0, 1.0)
 
 func _on_button_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.is_released():
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			card_icon_pressed.emit(get_index())
 		if event.button_index == MOUSE_BUTTON_RIGHT:

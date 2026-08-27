@@ -5,7 +5,10 @@ var cards: Array[CardResource] = []
 
 func generate_card_rewards():
 	var card_rewards := ActorManager.get_user_controlled_chars()[0].inventory.claim_card_rewards()
-	cards = card_reward_generator.generate_card_rewards(card_rewards)
+	var count : Array[int] = [0, 0, 0]
+	for card in card_rewards:
+		count[card.rarity] += 1
+	cards = card_reward_generator.generate_rarity_cards(count)
 	
 	# remove all old children
 	for child in $HBoxContainer.get_children():

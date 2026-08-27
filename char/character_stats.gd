@@ -7,6 +7,7 @@ extends Resource
 @export var user_controlled: bool
 @export var traversal: Char.Traversal
 @export var is_cautious: bool
+@export var color: Color = Color.WHITE
 
 # stats like hp
 @export var min_hp: int

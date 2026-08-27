@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://tsnkwhy7vxpq"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_fdsr5"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_4o4xx"]
+[ext_resource type="Script" uid="uid://c02on2py10vfe" path="res://cards/effects/push/pull.gd" id="2_jae1v"]
+[ext_resource type="Script" uid="uid://c56tu66yr0yqq" path="res://cards/effects/discard/disarm.gd" id="3_j3un3"]
+
+[sub_resource type="Resource" id="Resource_nos7c"]
+script = ExtResource("2_jae1v")
+metadata/_custom_type_script = "uid://c02on2py10vfe"
+
+[sub_resource type="Resource" id="Resource_kfpra"]
+script = ExtResource("3_j3un3")
+target = 1
+metadata/_custom_type_script = "uid://c56tu66yr0yqq"
+
+[resource]
+script = ExtResource("2_4o4xx")
+name = "Ethereal Chains"
+range = 3
+attack_effects = Array[ExtResource("1_fdsr5")]([SubResource("Resource_nos7c"), SubResource("Resource_kfpra")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

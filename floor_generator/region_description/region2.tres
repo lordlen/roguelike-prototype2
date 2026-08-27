@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RegionDescription" load_steps=8 format=3 uid="uid://bnojxifccxnv2"]
+
+[ext_resource type="Script" uid="uid://djmsa127x546v" path="res://floor_generator/floor_builder.gd" id="1_wc6qw"]
+[ext_resource type="Resource" uid="uid://bwv71kpvp3b1b" path="res://floor_generator/floor_builders/f5builder.tres" id="2_6lpdn"]
+[ext_resource type="Script" uid="uid://bssxptdtqb6x4" path="res://floor_generator/region_description.gd" id="2_xw4b0"]
+[ext_resource type="Resource" uid="uid://c44c12ean0snx" path="res://floor_generator/floor_builders/f6builder.tres" id="3_m5tfq"]
+[ext_resource type="Resource" uid="uid://cmybpi7l0qd4k" path="res://floor_generator/floor_builders/f7builder.tres" id="4_h8xi5"]
+[ext_resource type="Resource" uid="uid://cfitjtx0diity" path="res://floor_generator/floor_builders/shop.tres" id="4_w2k7q"]
+[ext_resource type="Resource" uid="uid://c0vncmspxmiw2" path="res://floor_generator/floor_builders/f8builder.tres" id="5_gbadl"]
+
+[resource]
+script = ExtResource("2_xw4b0")
+normal_floors = Array[ExtResource("1_wc6qw")]([ExtResource("2_6lpdn"), ExtResource("3_m5tfq"), ExtResource("4_h8xi5"), ExtResource("5_gbadl")])
+shop_floors = Array[ExtResource("1_wc6qw")]([ExtResource("4_w2k7q")])
+shop_insertions = Array[int]([3, 4])
+special_room_floors = Array[int]([2, 3])
+metadata/_custom_type_script = "uid://bssxptdtqb6x4"

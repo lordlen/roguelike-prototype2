@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=16 format=3 uid="uid://b883c6tuexqjp"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_pw7t5"]
+[ext_resource type="Resource" uid="uid://dnh488icy1kuv" path="res://cards/card_resources/mind_control.tres" id="2_82ks0"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_gf8og"]
+[ext_resource type="Resource" uid="uid://cb28du6a5qtbg" path="res://cards/card_resources/hero/drain_soul.tres" id="3_fnwnk"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_wapu8"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="4_gf8og"]
+[ext_resource type="Resource" uid="uid://d1s7gyjlx0t8j" path="res://cards/card_resources/offering.tres" id="4_s6r6j"]
+[ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="5_7yjvu"]
+[ext_resource type="Resource" uid="uid://dq5bckyms8s83" path="res://cards/card_resources/call_familiars.tres" id="6_yjucb"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="9_msjh4"]
+[ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="11_segq6"]
+
+[sub_resource type="Resource" id="Resource_k2prr"]
+script = ExtResource("5_7yjvu")
+metadata/_custom_type_script = "uid://bytwv002xet0b"
+
+[sub_resource type="Resource" id="Resource_ckrpy"]
+script = ExtResource("9_msjh4")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wapu8"]
+atlas = ExtResource("4_gf8og")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="Resource" id="Resource_q5lnd"]
+script = ExtResource("11_segq6")
+metadata/_custom_type_script = "uid://cwayprpkdikls"
+
+[resource]
+script = ExtResource("3_wapu8")
+texture = SubResource("AtlasTexture_wapu8")
+character_name = "Vampire"
+alignment = 1
+color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+min_hp = 20
+max_hp = 24
+sleeping = SubResource("Resource_ckrpy")
+wandering = SubResource("Resource_q5lnd")
+hunting = SubResource("Resource_k2prr")
+cards = Array[ExtResource("1_pw7t5")]([ExtResource("2_82ks0"), ExtResource("3_fnwnk"), ExtResource("4_s6r6j"), ExtResource("4_s6r6j")])
+innate_cards = Array[ExtResource("1_pw7t5")]([ExtResource("6_yjucb")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

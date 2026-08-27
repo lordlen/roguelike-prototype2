@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://cgnd2016ybejg"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_6vmqx"]
-[ext_resource type="Script" uid="uid://7xri5doqhxue" path="res://cards/effects/do_damage/damage_aoe.gd" id="2_4uybt"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_4uybt"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_kodck"]
 [ext_resource type="Script" uid="uid://rrn2acqulw8a" path="res://cards/effects/mana/mana.gd" id="3_3vq7j"]
 [ext_resource type="Script" uid="uid://bllyymfehjyls" path="res://cards/effects/mana/magic_burst.gd" id="4_4uybt"]
 
 [sub_resource type="Resource" id="Resource_3vq7j"]
 script = ExtResource("2_4uybt")
-metadata/_custom_type_script = "uid://7xri5doqhxue"
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_f3oaq"]
 script = ExtResource("3_3vq7j")
@@ -22,7 +22,8 @@ metadata/_custom_type_script = "uid://bllyymfehjyls"
 [resource]
 script = ExtResource("2_kodck")
 name = "Magic Burst"
-attack = 6
+rarity = 1
+attack = 8
 num_hits = 1
 range = 1
 attack_effects = Array[ExtResource("1_6vmqx")]([SubResource("Resource_3vq7j"), SubResource("Resource_f3oaq"), SubResource("Resource_4y3fv")])

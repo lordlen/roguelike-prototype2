@@ -17,6 +17,3 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	for i in range(min(num_gen, len(valid_tiles))):
 		Globals.floor_map.update_tile(valid_tiles[i], tile_type)
 	card_effect_finished.emit()
-
-func get_shortform(card: CardInstance) -> String:
-	return "%d %s" % [num_gen, super.get_shortform(card)]

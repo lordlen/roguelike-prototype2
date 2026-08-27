@@ -6,6 +6,7 @@ signal card_action_finished
 var texture: Texture2D
 var card_name: String
 var description: String
+var rarity: CardResource.Rarity
 
 var attack: int
 var defense: int
@@ -17,23 +18,21 @@ var is_innate: bool
 var is_ethereal: bool
 var is_instant: bool
 
-var effects: Dictionary[String, Array]
-
 var attack_effects: Array[CardEffect]
 var defense_effects: Array[CardEffect]
+var on_use_effects: Array[CardEffect]
 var on_hit_effects: Array[CardEffect]
 var on_took_damage_effects: Array[CardEffect]
 var on_move_effects: Array[CardEffect]
-
-var tmp_attack_effects: Array[CardEffect]
-var tmp_defense_effects: Array[CardEffect]
-var tmp_on_hit_effects: Array[CardEffect]
+var on_discard_effects: Array[CardEffect]
+var on_draw_effects: Array[CardEffect]
 
 var bonus_defense := 0
 var defense_decay := 0
 var is_changed := false
 
 func _init(r: CardResource):
+	rarity = r.rarity
 	texture = r.texture
 	card_name = r.name
 	
@@ -49,20 +48,12 @@ func _init(r: CardResource):
 	
 	attack_effects = r.attack_effects.duplicate(true)
 	defense_effects = r.defense_effects.duplicate(true)
+	on_use_effects = r.on_use_effects.duplicate(true)
 	on_hit_effects = r.on_hit_effects.duplicate(true)
 	on_took_damage_effects = r.on_took_damage_effects.duplicate(true)
 	on_move_effects = r.on_move_effects.duplicate(true)
-	tmp_attack_effects = []
-	tmp_defense_effects = []
-	tmp_on_hit_effects = []
-
-func handle_card_event(event_name: String, actor: Char, target: Char):
-	if effects[event_name]:
-		for e in effects[event_name]:
-			e.do.call_deferred(actor, target, self)
-			await e.card_effect_finished
-		EventBus.character_deck_updated.emit(actor)
-		card_action_finished.emit()
+	on_discard_effects = r.on_discard_effects.duplicate(true)
+	on_draw_effects = r.on_draw_effects.duplicate(true)
 
 func do_attack(actor: Char, defender: Char) -> void:
 	do_effects(actor, defender, attack_effects)
@@ -82,6 +73,15 @@ func do_on_took_damage(actor: Char) -> void:
 func do_on_move_effects(actor: Char) -> void:
 	do_effects(actor, actor, on_move_effects)
 
+func do_on_discard_effects(actor: Char) -> void:
+	do_effects(actor, actor, on_discard_effects)
+
+func do_on_draw_effects(actor: Char) -> void:
+	do_effects(actor, actor, on_draw_effects)
+
+func do_on_use_effects(actor: Char) -> void:
+	do_effects(actor, actor, on_use_effects)
+
 func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 	for e in effects:
 		e.do.call_deferred(actor, target, self)
@@ -94,16 +94,11 @@ func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 	EventBus.character_deck_updated.emit(actor)
 	card_action_finished.emit()
 
-func clear_tmp_effects():
-	tmp_attack_effects.clear()
-	tmp_defense_effects.clear()
-	tmp_on_hit_effects.clear()
-
 func effect_is_changed():
-	return is_changed or len(tmp_attack_effects + tmp_defense_effects + tmp_on_hit_effects) > 0
+	return is_changed
 
 func get_all_effects():
-	return attack_effects + defense_effects + on_hit_effects + on_took_damage_effects
+	return attack_effects + defense_effects + on_hit_effects + on_took_damage_effects + on_move_effects + on_discard_effects
 
 func get_description() -> String:
 	var result := ""
@@ -140,61 +135,30 @@ func get_description() -> String:
 			result += '\n'
 
 	if len(on_move_effects) > 0:
-		result += RichTextHelper.text_with_tooltip("On Move Effect: \n", "Trigger effects when you moved with a card effect from anywhere")
+		result += RichTextHelper.text_with_tooltip("On Move: \n", "Trigger effects when you moved with a card effect from anywhere.")
 		for e in on_move_effects:
+			result += '\t' + e.get_shortform(self)
+			result += '\n'
+	
+	if len(on_discard_effects) > 0:
+		result += RichTextHelper.text_with_tooltip("On Discard: \n", "Trigger effects when you discard this card with another effect.")
+		for e in on_discard_effects:
+			result += '\t' + e.get_shortform(self)
+			result += '\n'
+	
+	if len(on_draw_effects) > 0:
+		result += RichTextHelper.text_with_tooltip("On Draw: \n", "Trigger effects when you draw this card.")
+		for e in on_draw_effects:
+			result += '\t' + e.get_shortform(self)
+			result += '\n'
+	
+	if len(on_use_effects) > 0:
+		result += RichTextHelper.text_with_tooltip("On Use: \n", "Trigger effects when you use this card.")
+		for e in on_use_effects:
 			result += '\t' + e.get_shortform(self)
 			result += '\n'
 
 	return result
-
-#func get_description() -> String:
-	#var desc := "[b]%s[/b]" % card_name
-	#if effect_is_changed():
-		#desc += "*"
-#
-	#if atk_range > 1:
-		#desc += "\n+%d Range." % atk_range
-	#
-	#if exhausts:
-		#desc += "\nExhaust."
-	#
-	#if is_innate:
-		#desc += "\nInnate."
-	#
-	#if is_ethereal:
-		#desc += "\nEthereal"
-	#
-	#for e in self.attack_effects:
-		#if e.get_description() != "":
-			#desc += '\n'
-			#desc += e.get_description()
-	#
-	#for e in self.tmp_attack_effects:
-		#if e.get_description() != "":
-			#desc += '\n'
-			#desc += '(' + e.get_description() + ')'
-	#
-	#if len(defense_effects + tmp_defense_effects) > 0:
-		#desc += "\nOn Block: "
-		#for e in defense_effects:
-			#desc += '\n'
-			#desc += e.get_description()
-		#for e in tmp_defense_effects:
-			#desc += '\n'
-			#desc += '(' + e.get_description() + ')'
-#
-	#if len(on_hit_effects + tmp_on_hit_effects) > 0:
-		#desc += "\nOn Hit: "
-		#for e in on_hit_effects:
-			#desc += '\n'
-			#desc += e.get_description()
-		#
-		#for e in tmp_on_hit_effects:
-			#desc += '\n'
-			#desc += '(' + e.get_description() + ')'
-	#
-	#desc = desc.strip_edges()
-	#return desc
 
 func get_attack() -> String:
 	return "%dx%d" % [attack, num_hits] if num_hits > 1 else str(attack)
@@ -205,9 +169,10 @@ func get_defense_string() -> String:
 func get_defense() -> int:
 	return max(0, defense - defense_decay + bonus_defense)
 
-func on_draw():
+func on_draw(owner: Char):
 	reset_defense_decay()
 	reset_bonus_defense()
+	do_on_draw_effects(owner)
 
 func add_bonus_defense(val: int):
 	bonus_defense += val

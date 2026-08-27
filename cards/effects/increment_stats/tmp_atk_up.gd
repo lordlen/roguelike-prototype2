@@ -18,7 +18,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var atk_down := AtkUp.new()
 	atk_down.atk_value = -atk_value
 	atk_down.is_temp = true
-	CardEffect.combine_effects(card.attack_effects, [atk_down])
+	CardEffect.combine_effects(card.on_use_effects, [atk_down])
 	
 	card_effect_finished.emit()
 
@@ -26,7 +26,7 @@ func combine_effect(other_effect: CardEffect) -> CardEffect:
 	if !stacks:
 		return self
 	if self.is_same_effect(other_effect):
-		self.atk_value += (other_effect as AtkUp).atk_value
+		self.atk_value += (other_effect as TmpAtkUp).atk_value
 	return self
 
 func get_shortform(card: CardInstance) -> String:

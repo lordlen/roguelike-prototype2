@@ -1,11 +1,11 @@
-[gd_scene load_steps=49 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=47 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
 [ext_resource type="Script" uid="uid://bssxptdtqb6x4" path="res://floor_generator/region_description.gd" id="2_agy8s"]
 [ext_resource type="Texture2D" uid="uid://d8c1shexwyt8" path="res://resources/autotile.png" id="2_avahw"]
 [ext_resource type="Script" uid="uid://cmwn0g84amk8m" path="res://UI/char_info_container.gd" id="2_h2lqh"]
-[ext_resource type="Script" uid="uid://d4in3tnhalqhi" path="res://UI/logs.gd" id="3_h2lqh"]
+[ext_resource type="Resource" uid="uid://bnojxifccxnv2" path="res://floor_generator/region_description/region2.tres" id="3_4spss"]
 [ext_resource type="Resource" uid="uid://dd7bng7p6048e" path="res://floor_generator/region_description/region1.tres" id="3_lj33d"]
 [ext_resource type="Script" uid="uid://dwuhxx6l7dx8l" path="res://terrain.gd" id="3_n7k1k"]
 [ext_resource type="Script" uid="uid://7c0e606cjuj6" path="res://stairs_dialog.gd" id="4_hl62s"]
@@ -14,8 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dxrnkoy1jieuy" path="res://UI/card_reward_dialog.tscn" id="5_xo2vs"]
 [ext_resource type="Script" uid="uid://28bomu2s107p" path="res://UI/gold_amount.gd" id="6_0i68f"]
 [ext_resource type="Script" uid="uid://djehyyein7u8h" path="res://UI/potion_container.gd" id="6_lg7om"]
-[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="8_e44n4"]
-[ext_resource type="Script" uid="uid://dhb2jbo7iasf3" path="res://card_count.gd" id="9_e44n4"]
+[ext_resource type="Script" uid="uid://dt5vt4jmthp7r" path="res://UI/card_reward_container.gd" id="10_agy8s"]
 [ext_resource type="PackedScene" uid="uid://w70rvwim7l6d" path="res://UI/card_selector.tscn" id="10_q6cs3"]
 [ext_resource type="Script" uid="uid://ba8qij3w3lqqm" path="res://UI/event_dialog.gd" id="11_pgrna"]
 [ext_resource type="PackedScene" uid="uid://dxf37wpyk66y4" path="res://UI/options_button.tscn" id="12_pgrna"]
@@ -25,10 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://6f5d45fu8cv0" path="res://UI/card_description_popup.tscn" id="16_mrt7q"]
 [ext_resource type="PackedScene" uid="uid://bys5excwfjlap" path="res://char_info_detailed.tscn" id="17_lhepi"]
 [ext_resource type="PackedScene" uid="uid://bq32evy5ojloo" path="res://UI/item_description.tscn" id="20_lj33d"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0i68f"]
-atlas = ExtResource("8_e44n4")
-region = Rect2(48, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6k1t"]
 atlas = ExtResource("13_qofig")
@@ -1981,14 +1976,15 @@ sources/0 = SubResource("TileSetAtlasSource_hl62s")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3shck")
-region_descriptions = Array[ExtResource("2_agy8s")]([ExtResource("3_lj33d")])
+region_descriptions = Array[ExtResource("2_agy8s")]([ExtResource("3_lj33d"), ExtResource("3_4spss")])
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="CharInfoContainer" type="Panel" parent="UILayer"]
+custom_minimum_size = Vector2(150, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 59.0
+offset_top = 42.0
 offset_right = 150.0
 offset_bottom = -1.0
 grow_vertical = 2
@@ -2008,33 +2004,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
 
-[node name="LogPanel" type="Panel" parent="UILayer"]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -323.0
-offset_top = -118.0
-offset_right = 325.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("3_h2lqh")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UILayer/LogPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Logs" type="Label" parent="UILayer/LogPanel/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="StairsDialog" type="ConfirmationDialog" parent="UILayer"]
 oversampling_override = 1.0
 mode = 3
@@ -2050,7 +2019,7 @@ visible = false
 [node name="TopPanel" type="Panel" parent="UILayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 56.0
+offset_bottom = 42.0
 grow_horizontal = 2
 
 [node name="FloorNumber" type="Label" parent="UILayer/TopPanel"]
@@ -2096,44 +2065,42 @@ script = ExtResource("6_0i68f")
 [node name="PotionContainer" type="GridContainer" parent="UILayer/TopPanel"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 299.0
-offset_top = -20.0
-offset_right = 571.0
-offset_bottom = 41.33333
+offset_left = -101.0
+offset_top = -18.0
+offset_right = 171.0
+offset_bottom = 31.333336
+grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 columns = 4
 script = ExtResource("6_lg7om")
 
-[node name="CardCountContainer" type="HBoxContainer" parent="UILayer/TopPanel"]
-layout_mode = 0
-offset_left = 550.0
-offset_right = 642.0
-offset_bottom = 55.0
-
-[node name="CardCountIcon" type="TextureRect" parent="UILayer/TopPanel/CardCountContainer"]
-layout_mode = 2
-tooltip_text = "Card rewards
-Determines how many card rewards acquired after the floor is finished."
-texture = SubResource("AtlasTexture_0i68f")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="CardCount" type="Label" parent="UILayer/TopPanel/CardCountContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "0"
-script = ExtResource("9_e44n4")
+[node name="CardRewardContainer" type="GridContainer" parent="UILayer/TopPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 0
+grow_vertical = 2
+columns = 6
+script = ExtResource("10_agy8s")
 
 [node name="CardListSelector" parent="UILayer" instance=ExtResource("10_q6cs3")]
 visible = false
-offset_left = -158.0
-offset_top = -166.0
-offset_right = 157.0
-offset_bottom = 153.0
+offset_left = -129.0
+offset_top = -112.0
+offset_right = 186.0
+offset_bottom = 207.0
 
 [node name="EventDialog" type="Panel" parent="UILayer"]
 visible = false

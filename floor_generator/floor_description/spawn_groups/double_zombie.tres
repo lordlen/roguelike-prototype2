@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpawnGroup" load_steps=4 format=3 uid="uid://bqracyhwv401b"]
+
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_v5xd5"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="2_dvb04"]
+[ext_resource type="Resource" uid="uid://bqrj3bxo4xipg" path="res://char/stats/zombie.tres" id="2_g4mia"]
+
+[resource]
+script = ExtResource("2_dvb04")
+group = Array[ExtResource("1_v5xd5")]([ExtResource("2_g4mia"), ExtResource("2_g4mia")])
+metadata/_custom_type_script = "uid://cgbukm4afxlvj"

@@ -1,15 +1,11 @@
 class_name CardResource
 extends Resource
 
-const card_map := {
-	strike = "res://cards/card_resources/strike.tres",
-	defend = "res://cards/card_resources/defend.tres",
-	dodge = "res://cards/card_resources/dodge.tres",
-	claw = "res://cards/card_resources/claw.tres",
-	lunge = "res://cards/card_resources/lunge.tres",
-	croak = "res://cards/card_resources/croak.tres",
-	tongue_lash = "res://cards/card_resources/tongue_lash.tres",
-	toxic_body = "res://cards/card_resources/toxic_body.tres"
+enum Rarity {
+	COMMON = 0,
+	UNCOMMON = 1,
+	RARE = 2,
+	NONE = 3
 }
 
 const max_stats = 100
@@ -17,6 +13,8 @@ const max_stats = 100
 @export var texture: Texture2D
 
 @export var name: String
+
+@export var rarity: Rarity
 
 @export var attack: int:
 	set(value):
@@ -38,9 +36,12 @@ const max_stats = 100
 
 @export var attack_effects: Array[CardEffect]
 @export var defense_effects: Array[CardEffect]
+@export var on_use_effects: Array[CardEffect]
 @export var on_hit_effects: Array[CardEffect]
 @export var on_took_damage_effects: Array[CardEffect]
 @export var on_move_effects: Array[CardEffect]
+@export var on_discard_effects: Array[CardEffect]
+@export var on_draw_effects: Array[CardEffect]
 
 func combine(other_card: CardResource) -> CardResource:
 	# create a completely new card resource
@@ -62,7 +63,9 @@ func combine(other_card: CardResource) -> CardResource:
 	# now effects need to be added to each other
 	new_card.attack_effects = CardEffect.combine_effects(new_card.attack_effects, other_card.attack_effects)
 	new_card.defense_effects = CardEffect.combine_effects(new_card.defense_effects, other_card.defense_effects)
+	new_card.on_use_effects = CardEffect.combine_effects(new_card.on_use_effects, other_card.on_use_effects)
 	new_card.on_hit_effects = CardEffect.combine_effects(new_card.on_hit_effects, other_card.on_hit_effects)
 	new_card.on_took_damage_effects = CardEffect.combine_effects(new_card.on_took_damage_effects, other_card.on_took_damage_effects)
 	new_card.discard_effects = CardEffect.combine_effects(new_card.discard_effects, other_card.discard_effects)
+	new_card.on_draw_effects = CardEffect.combine_effects(new_card.on_draw_effects, other_card.on_draw_effects)
 	return new_card

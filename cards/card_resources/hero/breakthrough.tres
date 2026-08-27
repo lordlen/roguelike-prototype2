@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=11 format=3 uid="uid://bubf871hjp8c4"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_fkv76"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_gu3nu"]
+[ext_resource type="Script" uid="uid://7xri5doqhxue" path="res://cards/effects/do_damage/damage_aoe.gd" id="2_xxvrk"]
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="3_bmldj"]
+[ext_resource type="Script" uid="uid://c85xosutpbsmu" path="res://cards/effects/push/aoe_push.gd" id="4_bmldj"]
+[ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="5_pfmmy"]
+
+[sub_resource type="Resource" id="Resource_pfmmy"]
+script = ExtResource("2_xxvrk")
+metadata/_custom_type_script = "uid://7xri5doqhxue"
+
+[sub_resource type="Resource" id="Resource_li0x2"]
+script = ExtResource("4_bmldj")
+metadata/_custom_type_script = "uid://c85xosutpbsmu"
+
+[sub_resource type="Resource" id="Resource_q5kav"]
+script = ExtResource("3_bmldj")
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
+
+[sub_resource type="Resource" id="Resource_hlgcq"]
+script = ExtResource("5_pfmmy")
+metadata/_custom_type_script = "uid://befkr8rvi0mwo"
+
+[resource]
+script = ExtResource("2_gu3nu")
+name = "Breakthrough"
+rarity = 1
+attack = 7
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_fkv76")]([SubResource("Resource_pfmmy"), SubResource("Resource_li0x2"), SubResource("Resource_q5kav")])
+defense_effects = Array[ExtResource("1_fkv76")]([SubResource("Resource_hlgcq")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

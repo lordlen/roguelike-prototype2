@@ -7,6 +7,7 @@ var price := 0
 func set_item(item: Item):
 	item_resource = item
 	$ItemSprite.texture = item.texture
+	$ItemSprite.self_modulate = item.color
 	if item.texture == null:
 		$AltText.text = item.item_name
 

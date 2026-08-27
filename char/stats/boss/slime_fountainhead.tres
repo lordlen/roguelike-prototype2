@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=16 format=3 uid="uid://dun657orwosmg"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=18 format=3 uid="uid://dun657orwosmg"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_qycwf"]
 [ext_resource type="Resource" uid="uid://dmd4s7uiyxxly" path="res://cards/card_resources/water_cannon.tres" id="2_61vl0"]
@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://dpqsqhsgvgoxy" path="res://cards/card_resources/water_ball.tres" id="4_m2nm8"]
 [ext_resource type="Script" uid="uid://dysi8wi87fjq5" path="res://char/ai_states/slime_fountainhead/hunting.gd" id="5_idvpt"]
 [ext_resource type="Resource" uid="uid://2f48os8hifos" path="res://items/relics/slime_core/slime_core.tres" id="7_75a8q"]
+[ext_resource type="Resource" uid="uid://btnw0qi2yom56" path="res://items/key/key.tres" id="8_71wn3"]
+[ext_resource type="Resource" uid="uid://bbgbclnasjf2j" path="res://items/card_item/rare_card_reward.tres" id="9_m2nm8"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="9_vpxj7"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="10_fe8h7"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="11_61vl0"]
@@ -31,9 +33,10 @@ metadata/_custom_type_script = "uid://cwayprpkdikls"
 [resource]
 script = ExtResource("3_jt30y")
 texture = SubResource("AtlasTexture_1sqec")
-character_name = "Slime Fountainhead"
+character_name = "Fountainhead"
 alignment = 1
 traversal = 1
+color = Color(1, 0.27450982, 0.27450982, 1)
 min_hp = 50
 max_hp = 50
 scent_range = 100
@@ -41,5 +44,5 @@ sleeping = SubResource("Resource_6mq58")
 wandering = SubResource("Resource_71wn3")
 hunting = SubResource("Resource_fpg4n")
 cards = Array[ExtResource("1_qycwf")]([ExtResource("2_61vl0"), ExtResource("3_71wn3"), ExtResource("4_m2nm8")])
-items = Array[ExtResource("2_n1nmk")]([ExtResource("7_75a8q")])
+items = Array[ExtResource("2_n1nmk")]([ExtResource("7_75a8q"), ExtResource("8_71wn3"), ExtResource("9_m2nm8"), ExtResource("9_m2nm8")])
 metadata/_custom_type_script = "uid://btuk5gl5wcri7"

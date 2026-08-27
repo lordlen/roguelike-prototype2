@@ -10,7 +10,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	for i in range(num_cards):
 		var card_instance := CardInstance.new(card_resource)
 		t.char_card_added.emit(card_instance)
-		t.deck.add_to_draw(card_instance)
+		t.deck.add_to_discard(card_instance)
 	card_effect_finished.emit()
 
 func get_shortform(card: CardInstance) -> String:

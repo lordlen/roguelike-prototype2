@@ -12,6 +12,7 @@ func execute() -> bool:
 
 	#actor.deck.offhand.do_defend(actor)
 	actor.char_defended.emit(actor)
+	await actor.deck.offhand.card_action_finished
 	EventBus.character_deck_updated.emit(actor)
 	var defend_indicator := load("res://indicators/defend_indicator.tres")
 	actor.spawn_discard_particle(defend_indicator)

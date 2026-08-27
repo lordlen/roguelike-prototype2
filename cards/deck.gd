@@ -69,14 +69,15 @@ func draw() -> CardInstance:
 	if draw_pile.is_empty():
 		return null
 	var c : CardInstance = draw_pile.pop_back()
-	c.on_draw()
+	c.on_draw(deck_owner)
 	return c
+
+func put_top(card: CardInstance) -> void:
+	draw_pile.push_back(card)
 
 func discard_primary():
 	if primary != null:
-		primary.clear_tmp_effects()
 		discard_pile.push_back(primary)
-		
 		deck_owner.spawn_discard_particle(primary.texture)
 		
 		primary = null
@@ -91,6 +92,8 @@ func dispose_primary():
 	if primary == null:
 		return
 	
+	primary.do_on_use_effects(deck_owner)
+	
 	if primary.exhausts:
 		exhaust_primary()
 	else:
@@ -104,7 +107,6 @@ func exhaust_offhand():
 func discard_offhand():
 	# remove temporary effects from the offhand
 	if offhand != null:
-		offhand.clear_tmp_effects()
 		discard_pile.push_back(offhand)
 		deck_owner.spawn_discard_particle(offhand.texture)
 		offhand = null
@@ -114,6 +116,8 @@ func dispose_offhand():
 	if offhand == null:
 		return
 
+	offhand.do_on_use_effects(deck_owner)
+
 	if offhand.exhausts:
 		exhaust_offhand()
 	else:
@@ -122,14 +126,29 @@ func dispose_offhand():
 func discard_top():
 	if draw_pile.size() != 0:
 		var discarded_card : CardInstance = draw_pile.pop_back()
+		discarded_card.do_on_discard_effects(deck_owner)
 		discard_pile.push_back(discarded_card)
 		EventBus.character_deck_updated.emit(deck_owner)
+
+func discard_draw_pile():
+	for c in draw_pile:
+		c.do_on_discard_effects(deck_owner)
+	discard_pile.append_array(draw_pile)
+	draw_pile.clear()
+	EventBus.character_deck_updated.emit(deck_owner)
+
+func invert_piles():
+	for c in draw_pile:
+		c.do_on_discard_effects(deck_owner)
+	var tmp := draw_pile
+	draw_pile = discard_pile
+	discard_pile = tmp
+	EventBus.character_deck_updated.emit(deck_owner)
 
 func discard_all():
 	discard_primary()
 	discard_offhand()
-	discard_pile.append_array(draw_pile)
-	draw_pile.clear()
+	discard_draw_pile()
 	EventBus.character_deck_updated.emit(deck_owner)
 
 func reshuffle():
@@ -201,6 +220,9 @@ func insert_to_draw_randomly(card: CardInstance):
 func add_to_discard(card: CardInstance):
 	discard_pile.push_back(card)
 
+func append_to_discard(cards: Array[CardInstance]) -> void:
+	discard_pile.append_array(cards)
+
 func exhaust_ethereal():
 	if primary != null and primary.is_ethereal:
 		exhaust_primary()
@@ -223,6 +245,14 @@ func find_card(card_name: String):
 	if ind == -1:
 		return null
 	return cards[ind]
+
+func find_all_cards(card_name: String) -> Array[CardInstance]:
+	var cards := get_all_card_instances()
+	var res : Array[CardInstance] = []
+	for c in cards:
+		if c.card_name == card_name:
+			res.push_back(c)
+	return res
 
 func index_card_discard(card_name: String) -> int:
 	var cards := discard_pile

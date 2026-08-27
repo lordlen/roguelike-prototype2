@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bxrdmckld3gdu"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_fws7t"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_vyi5b"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ymma3"]
+[ext_resource type="Script" uid="uid://d4ll3uhcvf1yu" path="res://cards/effects/mana/imbue.gd" id="3_cxybf"]
+
+[sub_resource type="Resource" id="Resource_csdqc"]
+script = ExtResource("2_vyi5b")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_wh8sb"]
+script = ExtResource("3_cxybf")
+metadata/_custom_type_script = "uid://d4ll3uhcvf1yu"
+
+[resource]
+script = ExtResource("2_ymma3")
+name = "Imbue Mana"
+rarity = 2
+attack = 7
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_fws7t")]([SubResource("Resource_csdqc"), SubResource("Resource_wh8sb")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -35,8 +35,10 @@ func build_floor():
 	ground_positions.shuffle()
 	
 	var num_card_rewards := 2
-	var card_item := load("res://items/card_item/card_reward_item.tres")
 	for cell in ground_positions.slice(0, num_card_rewards):
+		# get the rarity according to the card reward generator
+		var rarity := card_reward_generator.generate_rarity()
+		var card_item := load(CardRewardItem.resource_mapping[rarity])
 		ItemManager.add_item_to_overworld(card_item, cell)
 	
 	for cell in ground_positions.slice(num_card_rewards):
@@ -78,7 +80,8 @@ func build_floor():
 	var potion := floor_description.item_pool.get_random_item()
 	ActorManager.spawn_initial_characters(floor_description.initial_spawns, num_potions, [potion])
 	ActorManager.spawn_initial_characters(floor_description.initial_spawns, floor_description.num_initial_spawns - num_gold - num_potions)
-	ActorManager.spawn_initial_characters(floor_description.elite_spawns,floor_description.num_elite_spawns, [CardRewardItem.new()], true)
+	var elite_card_reward := load(CardRewardItem.resource_mapping[card_reward_generator.generate_rarity()])
+	ActorManager.spawn_initial_characters(floor_description.elite_spawns,floor_description.num_elite_spawns, [elite_card_reward], true)
 	ActorManager.configure_spawning(floor_description.initial_spawns, floor_description.turns_per_spawn)
 
 	# generate any special rooms. Avoid characters from spawning here.

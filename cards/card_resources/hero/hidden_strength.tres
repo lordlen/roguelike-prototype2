@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dltiwinorw0en"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_8j2la"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_pgrg0"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_phg61"]
+[ext_resource type="Script" uid="uid://4nwrww3derrf" path="res://cards/effects/increment_stats/all_tmp_atk_up.gd" id="3_0ibao"]
+
+[sub_resource type="Resource" id="Resource_x1xoc"]
+script = ExtResource("2_pgrg0")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_6nmj0"]
+script = ExtResource("3_0ibao")
+atk_value = 2
+metadata/_custom_type_script = "uid://4nwrww3derrf"
+
+[resource]
+script = ExtResource("2_phg61")
+name = "Hidden Strength"
+rarity = 1
+attack = 8
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_8j2la")]([SubResource("Resource_x1xoc")])
+on_discard_effects = Array[ExtResource("1_8j2la")]([SubResource("Resource_6nmj0")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

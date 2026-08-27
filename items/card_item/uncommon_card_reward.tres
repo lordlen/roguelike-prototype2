@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardRewardItem" load_steps=4 format=3 uid="uid://ddaabdbsbbbsh"]
+
+[ext_resource type="Script" uid="uid://dpfkben5mfmtm" path="res://items/card_item/card_reward_item.gd" id="1_eueue"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_8qcgo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x13ca"]
+atlas = ExtResource("2_8qcgo")
+region = Rect2(48, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_eueue")
+rarity = 1
+item_name = "Uncommon Card Reward"
+texture = SubResource("AtlasTexture_x13ca")
+color = Color(0, 0.5411765, 1, 1)
+item_actions = null
+metadata/_custom_type_script = "uid://dpfkben5mfmtm"

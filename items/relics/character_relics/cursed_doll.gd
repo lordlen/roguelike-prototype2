@@ -1,7 +1,6 @@
 extends Relic
 
 func on_took_damage(actor: Char):
-	print('s')
 	# get all adjacent opposing characters
 	var adj_positions := DijkstraMap._get_adjacent_edges(actor.grid_position)
 	for char in ActorManager.get_actors_in_positions(adj_positions):

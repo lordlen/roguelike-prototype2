@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=15 format=3 uid="uid://bqrj3bxo4xipg"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_2owdy"]
+[ext_resource type="Resource" uid="uid://cce380uqk4r2n" path="res://cards/card_resources/infected_bite.tres" id="2_r0gge"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_vh6eb"]
+[ext_resource type="Resource" uid="uid://bgpk6dwusd2py" path="res://cards/card_resources/affliction.tres" id="3_4bvic"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_vgy5p"]
+[ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="4_yifjx"]
+[ext_resource type="Resource" uid="uid://k0m0lr74q6ap" path="res://cards/card_resources/defenseless.tres" id="5_4bvic"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="7_185m2"]
+[ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="8_0hs8q"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="9_yifjx"]
+
+[sub_resource type="Resource" id="Resource_ly8mp"]
+script = ExtResource("4_yifjx")
+metadata/_custom_type_script = "uid://bytwv002xet0b"
+
+[sub_resource type="Resource" id="Resource_xne0a"]
+script = ExtResource("7_185m2")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_185m2"]
+atlas = ExtResource("9_yifjx")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="Resource" id="Resource_fjbiy"]
+script = ExtResource("8_0hs8q")
+metadata/_custom_type_script = "uid://cwayprpkdikls"
+
+[resource]
+script = ExtResource("3_vgy5p")
+texture = SubResource("AtlasTexture_185m2")
+character_name = "Zombie"
+alignment = 1
+color = Color(0.3529412, 0.3529412, 0.5176471, 1)
+min_hp = 9
+max_hp = 13
+sleeping = SubResource("Resource_xne0a")
+wandering = SubResource("Resource_fjbiy")
+hunting = SubResource("Resource_ly8mp")
+cards = Array[ExtResource("1_2owdy")]([ExtResource("2_r0gge"), ExtResource("3_4bvic"), ExtResource("3_4bvic")])
+innate_cards = Array[ExtResource("1_2owdy")]([ExtResource("5_4bvic")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

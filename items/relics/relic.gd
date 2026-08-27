@@ -9,10 +9,10 @@ func get_description() -> String:
 func on_wait(owner):
 	pass
 
-func on_next_floor(owner):
+func on_next_floor(owner: Char):
 	pass
 
-func on_self_pickup(owner):
+func on_self_pickup(owner: Char):
 	pass
 
 func on_relic_added(owner: Char):

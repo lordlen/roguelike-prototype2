@@ -1,24 +1,31 @@
 class_name Backslide
 extends CardEffect
 
+@export var distance: int = 1
+
 func get_identifier() -> String:
 	return "backslide"
 	
 func get_description() -> String:
-	return 'Move back 1 tile.'
+	return 'Move back n tile(s).'
+
+func get_numeric() -> String:
+	return "n"
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# subtract the target and actor location
-	var difference := actor.grid_position - target_char.grid_position
-	var new_position := actor.grid_position + difference
-	
-	# make a line to the new position
-	var pf := Pathfinder.new()
-	var backslide_path := pf.get_straight_path_actor(actor.grid_position, new_position, actor.traversal)
-	var dest := backslide_path[len(backslide_path) - 1]
-	
-	if dest != actor.grid_position:
-		actor.char_move_effect.emit()
-	
-	actor.move_to(dest)
+	# push the target back x amount of tiles.
+	var line_iterator:= BresenhamIterator.new(target_char.grid_position, actor.grid_position, distance)
+	var curr_pos := actor.grid_position
+	for pos in line_iterator:
+		# check if position is occupied by a wall or char
+		if ActorManager.get_actor_in_position(pos) != null\
+		or Globals.floor_map.get_tile(pos).get_pf_cost(actor.traversal) == INF:
+			break
+		
+		curr_pos = pos
+	actor.move_to(curr_pos)
 	card_effect_finished.emit()
+
+func get_shortform(card: CardInstance) -> String:
+	return "%d %s" % [distance, super.get_shortform(card)]

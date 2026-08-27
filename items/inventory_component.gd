@@ -6,13 +6,14 @@ var items: Array[Item]
 var relics: Array[Relic]
 var item_limit: int
 var gold: int
-var card_rewards: int
+var card_rewards2: Array[CardRewardItem]
+var keys: int
 
 func _init(owner: Char, item_limit: int) -> void:
 	self.items = []
 	self.relics = []
 	self.gold = 0
-	self.card_rewards = 0
+	self.card_rewards2 = []
 	self.owner = owner
 	self.item_limit = item_limit
 	owner.char_card_added.connect(on_card_added)
@@ -33,7 +34,7 @@ func on_next_floor():
 		relic.on_next_floor(owner)
 
 func has_droppable_item() -> bool:
-	return len(items) > 0 or gold > 0 or card_rewards > 0
+	return len(items) > 0 or gold > 0 or len(card_rewards2) > 0
 
 func on_relic_added():
 	for relic in relics:
@@ -108,13 +109,17 @@ func add_gold(value: int) -> void:
 	gold += value
 	EventBus.update_gold.emit(owner)
 
-func add_card_reward() -> void:
-	card_rewards += 1
+func add_card_reward(item: CardRewardItem) -> void:
+	card_rewards2.push_back(item)
 	EventBus.inventory_updated.emit(owner)
 
-func claim_card_rewards() -> int:
-	var val := card_rewards
-	card_rewards = 0
+func add_key(value: int) -> void:
+	keys += value
+	EventBus.inventory_updated.emit(owner)
+
+func claim_card_rewards() -> Array[CardRewardItem]:
+	var val := card_rewards2
+	card_rewards2 = []
 	EventBus.inventory_updated.emit(owner)
 	return val
 
@@ -125,11 +130,14 @@ func drop_all_items() -> void:
 		item.amount = gold
 		ItemManager.add_item_to_overworld(item, owner.grid_position)
 	# card reward
-	for i in range(card_rewards):
-		var card_item: Item = load("res://items/card_item/card_reward_item.tres")
+	for card_item in card_rewards2:
 		ItemManager.add_item_to_overworld(card_item, owner.grid_position)
 	# potions
 	for item in items:
 		ItemManager.add_item_to_overworld(item, owner.grid_position)
+	
+	for k in keys:
+		var key_item: Item = load("res://items/key/key.tres")
+		ItemManager.add_item_to_overworld(key_item, owner.grid_position)
 	
 	# do not drop relics. Enemy relics are not meant to be dropped

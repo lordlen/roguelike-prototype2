@@ -1,14 +1,21 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://1n6f5bqctxyw"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=13 format=3 uid="uid://1n6f5bqctxyw"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_wowfb"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ksxxg"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_sj6nj"]
 [ext_resource type="Script" uid="uid://de3hrn6re45yh" path="res://cards/effects/add_card/shiv.gd" id="3_sj6nj"]
+[ext_resource type="Script" uid="uid://c56tu66yr0yqq" path="res://cards/effects/discard/disarm.gd" id="3_y8t13"]
 [ext_resource type="Script" uid="uid://bi5tu5pg2y40b" path="res://cards/effects/relocate/backslide.gd" id="4_sj6nj"]
+[ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="5_51g8d"]
 
 [sub_resource type="Resource" id="Resource_51g8d"]
 script = ExtResource("2_sj6nj")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_ihu2s"]
+script = ExtResource("3_y8t13")
+target = 1
+metadata/_custom_type_script = "uid://c56tu66yr0yqq"
 
 [sub_resource type="Resource" id="Resource_sj6nj"]
 script = ExtResource("3_sj6nj")
@@ -19,12 +26,18 @@ metadata/_custom_type_script = "uid://de3hrn6re45yh"
 script = ExtResource("4_sj6nj")
 metadata/_custom_type_script = "uid://bi5tu5pg2y40b"
 
+[sub_resource type="Resource" id="Resource_bolj7"]
+script = ExtResource("5_51g8d")
+metadata/_custom_type_script = "uid://befkr8rvi0mwo"
+
 [resource]
 script = ExtResource("2_ksxxg")
 name = "Backflip"
+rarity = 1
 attack = 1
 defense = 4
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_wowfb")]([SubResource("Resource_51g8d"), SubResource("Resource_sj6nj"), SubResource("Resource_y8t13")])
+attack_effects = Array[ExtResource("1_wowfb")]([SubResource("Resource_51g8d"), SubResource("Resource_ihu2s"), SubResource("Resource_sj6nj"), SubResource("Resource_y8t13")])
+defense_effects = Array[ExtResource("1_wowfb")]([SubResource("Resource_bolj7")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

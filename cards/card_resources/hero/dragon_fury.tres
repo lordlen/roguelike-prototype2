@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=11 format=3 uid="uid://bv58crncy0mn"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_wryms"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_d1k2n"]
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="3_smd6l"]
+[ext_resource type="Script" uid="uid://c5qmcf2qwwdp8" path="res://cards/effects/push/push.gd" id="4_r2rrm"]
+[ext_resource type="Script" uid="uid://bed7bneb05ba3" path="res://cards/effects/do_damage/splash.gd" id="5_6aghb"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="6_re0vl"]
+
+[sub_resource type="Resource" id="Resource_wmg6t"]
+script = ExtResource("2_d1k2n")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_ihpm2"]
+script = ExtResource("3_smd6l")
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
+
+[sub_resource type="Resource" id="Resource_3gaav"]
+script = ExtResource("4_r2rrm")
+metadata/_custom_type_script = "uid://c5qmcf2qwwdp8"
+
+[sub_resource type="Resource" id="Resource_1cy6q"]
+script = ExtResource("5_6aghb")
+atk_value = 3
+metadata/_custom_type_script = "uid://bed7bneb05ba3"
+
+[resource]
+script = ExtResource("6_re0vl")
+name = "Dragon's Fury"
+rarity = 2
+attack = 6
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_wryms")]([SubResource("Resource_wmg6t"), SubResource("Resource_ihpm2"), SubResource("Resource_3gaav"), SubResource("Resource_1cy6q")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

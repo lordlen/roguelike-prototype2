@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://wg8aqo1nrgdo"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_jq05p"]
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="2_6brp3"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_cbblq"]
+
+[sub_resource type="Resource" id="Resource_ife4m"]
+script = ExtResource("2_6brp3")
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
+
+[resource]
+script = ExtResource("2_cbblq")
+name = "Burn"
+rarity = 3
+on_draw_effects = Array[ExtResource("1_jq05p")]([SubResource("Resource_ife4m")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="KeyResource" load_steps=4 format=3 uid="uid://btnw0qi2yom56"]
+
+[ext_resource type="Script" uid="uid://rcu1aghwfeus" path="res://items/key/key.gd" id="1_cpugk"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_5lfk1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gqeb"]
+atlas = ExtResource("2_5lfk1")
+region = Rect2(160, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_cpugk")
+item_name = "Key"
+texture = SubResource("AtlasTexture_6gqeb")
+item_actions = null
+metadata/_custom_type_script = "uid://rcu1aghwfeus"
