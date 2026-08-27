@@ -185,3 +185,27 @@ func decay_defense():
 
 func reset_defense_decay():
 	defense_decay = 0
+
+func duplicate() -> CardInstance:
+	var dupe := CardResource.new()
+	dupe.rarity = rarity
+	dupe.texture = texture
+	dupe.card_name = card_name
+	dupe.attack = attack
+	dupe.defense = defense
+	dupe.num_hits = num_hits
+	dupe.atk_range = atk_range
+	dupe.is_dodge = is_dodge
+	dupe.exhausts = exhausts
+	dupe.is_innate = is_innate
+	dupe.is_ethereal = is_ethereal
+	dupe.is_instant = is_instant
+	dupe.attack_effects = attack_effects.duplicate(true)
+	dupe.defense_effects = defense_effects.duplicate(true)
+	dupe.on_use_effects = on_use_effects.duplicate(true)
+	dupe.on_hit_effects = on_hit_effects.duplicate(true)
+	dupe.on_took_damage_effects = on_took_damage_effects.duplicate(true)
+	dupe.on_move_effects = on_move_effects.duplicate(true)
+	dupe.on_discard_effects = on_discard_effects.duplicate(true)
+	dupe.on_draw_effects = on_draw_effects.duplicate(true)
+	return CardInstance.new(dupe)

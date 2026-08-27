@@ -11,11 +11,7 @@ func _ready() -> void:
 	EventBus.new_actor_added.connect(on_new_actor_added)
 	EventBus.new_item_added.connect(on_new_item_added)
 	
-	var hero := Char.new(load(Char.stats_resources["hero"]), Vector2i(0,0))
-	var card_list : Array[CardInstance] = []
-	for card_resource in hero.deck.deck_list:
-		var card_instance := CardInstance.new(card_resource)
-		card_list.push_back(card_instance)
+	var hero := ActorManager.spawn_character(load(Char.stats_resources["hero"]))
 	for region in region_descriptions:
 		region.initalize()
 	build_floor()

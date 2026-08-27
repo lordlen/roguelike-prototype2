@@ -28,6 +28,7 @@ script = ExtResource("2_gu3nu")
 name = "Breakthrough"
 rarity = 1
 attack = 7
+defense = 3
 num_hits = 1
 range = 1
 attack_effects = Array[ExtResource("1_fkv76")]([SubResource("Resource_pfmmy"), SubResource("Resource_li0x2"), SubResource("Resource_q5kav")])

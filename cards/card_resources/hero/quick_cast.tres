@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://b7wmbfmfq5kh6"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://b7wmbfmfq5kh6"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_05738"]
 [ext_resource type="Script" uid="uid://rrn2acqulw8a" path="res://cards/effects/mana/mana.gd" id="2_iaaw0"]
@@ -14,16 +14,10 @@ metadata/_custom_type_script = "uid://8j480ywki30u"
 script = ExtResource("3_iaaw0")
 metadata/_custom_type_script = "uid://bx2prjokb07oq"
 
-[sub_resource type="Resource" id="Resource_iaaw0"]
-script = ExtResource("2_iaaw0")
-value = 4
-metadata/_custom_type_script = "uid://rrn2acqulw8a"
-
 [resource]
 script = ExtResource("2_l0ssx")
 name = "Quick Cast"
 rarity = 1
 defense = 4
 defense_effects = Array[ExtResource("1_05738")]([SubResource("Resource_ycp1d"), SubResource("Resource_wt4iy")])
-on_discard_effects = Array[ExtResource("1_05738")]([SubResource("Resource_iaaw0")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

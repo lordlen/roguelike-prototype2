@@ -1,18 +1,26 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://dmabv4uunp722"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dmabv4uunp722"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_4f1tx"]
-[ext_resource type="Script" uid="uid://4nwrww3derrf" path="res://cards/effects/increment_stats/all_tmp_atk_up.gd" id="2_b731b"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_b731b"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_eldrt"]
+[ext_resource type="Script" uid="uid://pfxy8agsakrm" path="res://cards/effects/increment_stats/tmp_atk_up.gd" id="3_ow3wi"]
 
-[sub_resource type="Resource" id="Resource_ow3wi"]
+[sub_resource type="Resource" id="Resource_e4d87"]
 script = ExtResource("2_b731b")
-atk_value = 1
-metadata/_custom_type_script = "uid://4nwrww3derrf"
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_1wx0y"]
+script = ExtResource("3_ow3wi")
+atk_value = 3
+metadata/_custom_type_script = "uid://pfxy8agsakrm"
 
 [resource]
 script = ExtResource("2_eldrt")
 name = "Bide"
 rarity = 1
-defense = 5
-on_hit_effects = Array[ExtResource("1_4f1tx")]([SubResource("Resource_ow3wi")])
+attack = 6
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_4f1tx")]([SubResource("Resource_e4d87")])
+on_took_damage_effects = Array[ExtResource("1_4f1tx")]([SubResource("Resource_1wx0y")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

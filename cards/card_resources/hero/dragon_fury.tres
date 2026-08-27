@@ -29,6 +29,7 @@ script = ExtResource("6_re0vl")
 name = "Dragon's Fury"
 rarity = 2
 attack = 6
+defense = 2
 num_hits = 1
 range = 1
 attack_effects = Array[ExtResource("1_wryms")]([SubResource("Resource_wmg6t"), SubResource("Resource_ihpm2"), SubResource("Resource_3gaav"), SubResource("Resource_1cy6q")])

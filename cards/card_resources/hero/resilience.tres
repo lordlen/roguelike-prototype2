@@ -1,33 +1,24 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://c1plw8p66m36"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://c1plw8p66m36"]
 
-[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_cd8kr"]
-[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_dr31h"]
-[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_igiyn"]
-[ext_resource type="Script" uid="uid://cqxp32k8xbrdw" path="res://cards/effects/increment_stats/atk_up.gd" id="3_65k1a"]
-[ext_resource type="Script" uid="uid://bd5s40bqjr3fy" path="res://cards/effects/increment_stats/tmp_def_up.gd" id="4_igiyn"]
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_a3y7w"]
+[ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="2_igiyn"]
+[ext_resource type="Script" uid="uid://bd5s40bqjr3fy" path="res://cards/effects/increment_stats/tmp_def_up.gd" id="3_65k1a"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="4_tehl2"]
 
 [sub_resource type="Resource" id="Resource_la6n8"]
 script = ExtResource("2_igiyn")
-metadata/_custom_type_script = "uid://bht5j60htrmv2"
-
-[sub_resource type="Resource" id="Resource_l7u54"]
-script = ExtResource("3_65k1a")
-atk_value = 1
-metadata/_custom_type_script = "uid://cqxp32k8xbrdw"
+metadata/_custom_type_script = "uid://befkr8rvi0mwo"
 
 [sub_resource type="Resource" id="Resource_65k1a"]
-script = ExtResource("4_igiyn")
+script = ExtResource("3_65k1a")
 def_value = 1
 metadata/_custom_type_script = "uid://bd5s40bqjr3fy"
 
 [resource]
-script = ExtResource("2_dr31h")
+script = ExtResource("4_tehl2")
 name = "Resilience"
 rarity = 1
-attack = 4
 defense = 4
-num_hits = 1
-range = 1
-attack_effects = Array[ExtResource("1_cd8kr")]([SubResource("Resource_la6n8")])
-on_took_damage_effects = Array[ExtResource("1_cd8kr")]([SubResource("Resource_l7u54"), SubResource("Resource_65k1a")])
+defense_effects = Array[ExtResource("1_a3y7w")]([SubResource("Resource_la6n8")])
+on_took_damage_effects = Array[ExtResource("1_a3y7w")]([SubResource("Resource_65k1a")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

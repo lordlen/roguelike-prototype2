@@ -21,7 +21,8 @@ func on_hit(actor: Char, attacker: Char):
 	
 	for i in range(min(num_dupes, len(valid_adjacent))):
 		var rand_adjacent := valid_adjacent[i]
-		var ch := Char.new(actor.char_stats, rand_adjacent)
+		var ch := ActorManager.spawn_character(actor.char_stats)
+		ch.move_to(rand_adjacent)
 		ch.set_hp(actor.curr_hp)
 		ch.max_hp = actor.curr_hp
 		# remove / disable the relic

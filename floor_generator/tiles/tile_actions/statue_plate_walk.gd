@@ -12,6 +12,7 @@ func use(owner: Char, pos: Vector2i) -> bool:
 				if tile.terrain_id == TileResource.Terrains.STATUE:
 					Globals.floor_map.update_tile(cell, ground)
 					if tile.hidden_char != null:
-						var char := Char.new(tile.hidden_char, cell)
+						var char := ActorManager.spawn_character(tile.hidden_char)
+						char.move_to(cell)
 						char.wander()
 	return true

@@ -1,16 +1,16 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://co3e7ef0tqd6v"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_qi5uf"]
-[ext_resource type="Script" uid="uid://cair0novr58q7" path="res://cards/effects/discard/exchange.gd" id="2_qi5uf"]
+[ext_resource type="Script" uid="uid://kl4l4tv7xhwc" path="res://cards/effects/card_manip/dredge.gd" id="2_qi5uf"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="3_w4ine"]
 
 [sub_resource type="Resource" id="Resource_pwd7p"]
 script = ExtResource("2_qi5uf")
-metadata/_custom_type_script = "uid://cair0novr58q7"
+metadata/_custom_type_script = "uid://kl4l4tv7xhwc"
 
 [resource]
 script = ExtResource("3_w4ine")
 name = "Hold Fast"
-defense = 6
+defense = 5
 defense_effects = Array[ExtResource("1_qi5uf")]([SubResource("Resource_pwd7p")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

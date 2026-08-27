@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dr7w77sr62e1t"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_518k0"]
+[ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="2_je1md"]
+[ext_resource type="Script" uid="uid://kl4l4tv7xhwc" path="res://cards/effects/card_manip/dredge.gd" id="3_7uxq2"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="4_2ruyf"]
+
+[sub_resource type="Resource" id="Resource_8022l"]
+script = ExtResource("2_je1md")
+metadata/_custom_type_script = "uid://befkr8rvi0mwo"
+
+[sub_resource type="Resource" id="Resource_b1wkb"]
+script = ExtResource("3_7uxq2")
+metadata/_custom_type_script = "uid://kl4l4tv7xhwc"
+
+[resource]
+script = ExtResource("4_2ruyf")
+name = "Shield Boomerang"
+rarity = 2
+defense = 6
+defense_effects = Array[ExtResource("1_518k0")]([SubResource("Resource_8022l")])
+on_discard_effects = Array[ExtResource("1_518k0")]([SubResource("Resource_b1wkb")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

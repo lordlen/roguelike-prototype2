@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 	await do_actor_turns()
 
 func do_actor_turns():
+	print("do turns")
 	block_process = true
 	# get the user controlled actors
 	for ch: Char in get_user_controlled_chars():
@@ -104,7 +105,8 @@ func random_spawn_character(spawn_group: SpawnGroup, items: Array[Item], is_awak
 		print('no valid spawn tiles')
 	else:
 		var pos : Vector2i = unoccupied_tiles.pick_random()
-		var leader := Char.new(ch_stats, pos)
+		var leader := spawn_character(ch_stats)
+		leader.move_to(pos)
 		for item in items:
 			item.on_pick_up(leader.inventory)
 		var f_ind := 0
@@ -117,11 +119,19 @@ func random_spawn_character(spawn_group: SpawnGroup, items: Array[Item], is_awak
 					continue
 				if new_pos in unoccupied_tiles:
 					var f_stats := followers[f_ind]
-					var follower := Char.new(f_stats, new_pos)
+					var follower := spawn_character(f_stats)
+					follower.move_to(new_pos)
 					follower.follow(leader)
 					f_ind += 1
 		if is_awake:
 			leader.wander()
+
+func spawn_character(stats: CharacterStats) -> Char:
+	print("spawn character: %s" % stats.character_name)
+	var char_scene: PackedScene = load("res://char/char_scene.tscn")
+	var ch : Char = char_scene.instantiate()
+	ch.set_char_stats(stats)
+	return ch
 
 func spawn_initial_characters(spawn_description: SpawnDescription, num_spawns: int, items: Array[Item] = [], is_elite: bool = false):
 	for i in range(num_spawns):

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=15 format=3 uid="uid://dml01l2m3lt4o"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=13 format=3 uid="uid://dml01l2m3lt4o"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_s4lag"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_6nqgi"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://bdoy3ecys57f8" path="res://cards/effects/mana/barrier.gd" id="3_6nqgi"]
 [ext_resource type="Script" uid="uid://c4lgqkjr206si" path="res://cards/effects/mana/mana_thirst.gd" id="3_r010l"]
 [ext_resource type="Script" uid="uid://c56tu66yr0yqq" path="res://cards/effects/discard/disarm.gd" id="4_6nqgi"]
-[ext_resource type="Script" uid="uid://dmjsrjjubgf5c" path="res://cards/effects/discard/break.gd" id="6_kwkam"]
 
 [sub_resource type="Resource" id="Resource_ce6lx"]
 script = ExtResource("2_6nqgi")
@@ -27,10 +26,6 @@ metadata/_custom_type_script = "uid://bdoy3ecys57f8"
 script = ExtResource("3_r010l")
 metadata/_custom_type_script = "uid://c4lgqkjr206si"
 
-[sub_resource type="Resource" id="Resource_l1bjw"]
-script = ExtResource("6_kwkam")
-metadata/_custom_type_script = "uid://dmjsrjjubgf5c"
-
 [sub_resource type="Resource" id="Resource_e3gm7"]
 script = ExtResource("4_6nqgi")
 metadata/_custom_type_script = "uid://c56tu66yr0yqq"
@@ -43,6 +38,6 @@ attack = 7
 defense = 4
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_s4lag")]([SubResource("Resource_ce6lx"), SubResource("Resource_kwkam"), SubResource("Resource_ucqwo"), SubResource("Resource_8xx74"), SubResource("Resource_l1bjw")])
+attack_effects = Array[ExtResource("1_s4lag")]([SubResource("Resource_ce6lx"), SubResource("Resource_kwkam"), SubResource("Resource_ucqwo"), SubResource("Resource_8xx74")])
 defense_effects = Array[ExtResource("1_s4lag")]([SubResource("Resource_kwkam"), SubResource("Resource_ucqwo"), SubResource("Resource_8xx74"), SubResource("Resource_e3gm7")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

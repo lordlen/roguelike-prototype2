@@ -21,7 +21,8 @@ func on_reshuffle(actor: Char):
 
 		var rand_adjacent : Vector2i = valid_adjacent.pick_random()
 
-		var char := Char.new(slime, rand_adjacent)
+		var char := ActorManager.spawn_character(slime)
+		char.move_to(rand_adjacent)
 
 		# force discard all to prevent attacking on summon
 		char.deck.discard_all()

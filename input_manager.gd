@@ -33,6 +33,7 @@ func _ready() -> void:
 	EventBus.defend_button_pressed.connect(on_defend_pressed)
 
 func on_user_input_requested(actor: Char):
+	print("user input requested")
 	listening_user_input = true
 	self.actor = actor
 	
@@ -100,6 +101,7 @@ func end_turn():
 	EventBus.turn_ended.emit()
 
 func _unhandled_input(event: InputEvent):
+	print("unhandled input")
 	if listening_user_input and !Globals.camera_move_state:
 		character_controller(event)
 	camera_handler(event)

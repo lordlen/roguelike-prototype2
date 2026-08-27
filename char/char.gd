@@ -70,7 +70,6 @@ var is_hit: bool = false
 
 var leader: Char
 var followers: Array[Char]
-var is_elite := false
 
 var flow_map: DijkstraMap
 var target_flow_map: DijkstraMap
@@ -94,28 +93,19 @@ var discard_particle_scene: PackedScene = load("res://indicators/discard_particl
 var indicator_particle_scene: PackedScene = load("res://indicators/indicator_particle.tscn")
 var damage_particle_scene: PackedScene = load("res://indicators/damage_particle.tscn")
 
-func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
-	char_stats = stats
+func _ready() -> void:
 	self.char_id = _curr_char_id
 	_curr_char_id += 1
-	self.is_elite = is_elite
-	#self.texture = stats.texture
-	#centered = false
-	sprite = Sprite2D.new()
-	sprite.texture = stats.texture
-	sprite.self_modulate = stats.color
-	sprite.centered = false
-	add_child(sprite)
-	var collision := CollisionShape2D.new()
-	collision.position = Vector2(Consts.TILE_SIZE / 2, Consts.TILE_SIZE / 2)
-	var rect := RectangleShape2D.new()
-	rect.size = Vector2(16,16)
-	collision.shape = rect
-	add_child(collision)
-	self.grid_position = position
+	self.grid_position = Vector2i(-1, -1)
 	self.position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
 	self.new_pos = self.position
+
+func set_char_stats(stats: CharacterStats):
 	self.character_name = stats.character_name
+	
+	$Sprite2D.texture = stats.texture
+	$Sprite2D.self_modulate = stats.color
+	
 	self.max_hp = randi_range(stats.min_hp, stats.max_hp)
 	self.curr_hp = self.max_hp
 
@@ -147,11 +137,61 @@ func _init(stats: CharacterStats, position: Vector2i, is_elite := false):
 	moved_last_turn = false
 	if alignment == Alignment.EVIL:
 		visible = false
+	
+	EventBus.new_actor_added.emit(self)
 
-	EventBus.emit_signal("new_actor_added", self)
-
-func set_elite():
-	self.is_elite = true
+#func _init(stats: CharacterStats, position: Vector2i):
+	#char_stats = stats
+	#self.char_id = _curr_char_id
+	#_curr_char_id += 1
+	#sprite = Sprite2D.new()
+	#sprite.texture = stats.texture
+	#sprite.self_modulate = stats.color
+	#sprite.centered = false
+	#add_child(sprite)
+	#var collision := CollisionShape2D.new()
+	#collision.position = Vector2(Consts.TILE_SIZE / 2, Consts.TILE_SIZE / 2)
+	#var rect := RectangleShape2D.new()
+	#rect.size = Vector2(16,16)
+	#collision.shape = rect
+	#add_child(collision)
+	#self.grid_position = position
+	#self.position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
+	#self.new_pos = self.position
+	#self.character_name = stats.character_name
+	#self.max_hp = randi_range(stats.min_hp, stats.max_hp)
+	#self.curr_hp = self.max_hp
+#
+	#self.deck = Deck.new(self, stats.cards, stats.innate_cards)
+	#self.deck.initialize()
+	#
+	## AI
+	#self.wandering_state = stats.wandering
+	#self.sleeping_state = stats.sleeping
+	#self.hunting_state = stats.hunting
+	#self.curr_state = sleeping_state
+	#
+	#self.alignment = stats.alignment
+	#self.traversal = stats.traversal
+	#self.user_controlled = stats.user_controlled
+	#self.is_cautious = stats.is_cautious
+	#
+	#self.vision_range = stats.vision_range
+	#self.scent_range = stats.scent_range
+	#
+	#self.leader = self
+	#self.followers = []
+	#
+	#self.inventory = InventoryComponent.new(self, 3)
+	#
+	#for item in stats.items:
+		#item.duplicate(true).on_pick_up(self.inventory)
+	#
+	#moved_last_turn = false
+	#if alignment == Alignment.EVIL:
+		#visible = false
+#
+	#EventBus.emit_signal("new_actor_added", self)
 
 func _physics_process(delta: float) -> void:
 	if is_moving:
@@ -163,16 +203,16 @@ func _physics_process(delta: float) -> void:
 	if is_attacking:
 		# move offset to the target
 		if is_returning:
-			if sprite.offset.is_equal_approx(Vector2.ZERO):
+			if $Sprite2D.offset.is_equal_approx(Vector2.ZERO):
 				is_attacking = false
 				char_finished_attacking.emit()
 			else:
-				sprite.offset = sprite.offset.move_toward(Vector2.ZERO, attack_speed * delta)
+				$Sprite2D.offset = $Sprite2D.offset.move_toward(Vector2.ZERO, attack_speed * delta)
 		else:
-			if sprite.offset.is_equal_approx(offset_target):
+			if $Sprite2D.offset.is_equal_approx(offset_target):
 				is_returning = true
 			else:
-				sprite.offset = sprite.offset.move_toward(offset_target, attack_speed * delta)
+				$Sprite2D.offset = $Sprite2D.offset.move_toward(offset_target, attack_speed * delta)
 
 func spawn_discard_particle(texture: Texture):
 	var discard_particle : Sprite2D = discard_particle_scene.instantiate()
@@ -321,6 +361,7 @@ func is_asleep():
 
 # control the character using user input. 
 func act_player():
+	print("act player")
 	turn_start()
 	if action_queue.is_empty():
 		EventBus.user_input_requested.emit(self)

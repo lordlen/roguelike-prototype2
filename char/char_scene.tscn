@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctwp1i3vys6d6"]
+
+[ext_resource type="Script" uid="uid://cbrdvanj5e5yn" path="res://char/char.gd" id="1_jcf3h"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="1_xaedg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsvpe"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcf3h"]
+atlas = ExtResource("1_xaedg")
+region = Rect2(0, 0, 16, 16)
+
+[node name="CharScene" type="Area2D"]
+script = ExtResource("1_jcf3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_gsvpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_jcf3h")
+centered = false

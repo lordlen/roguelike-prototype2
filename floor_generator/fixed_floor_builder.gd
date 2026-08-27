@@ -46,7 +46,8 @@ func build_floor():
 		var pos := positions[i]
 		
 		for char_stats in spawn_group.group:
-			Char.new(char_stats, pos)
+			var c := ActorManager.spawn_character(char_stats)
+			c.move_to(pos)
 	
 	# find all the "pedestals" and place 
 	var p_positions := Globals.floor_map.get_type_positions([TileResource.Terrains.PEDESTAL])

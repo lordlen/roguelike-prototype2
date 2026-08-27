@@ -22,7 +22,8 @@ func use(owner: Char, pos: Vector2i) -> bool:
 
 		var rand_adjacent : Vector2i = valid_adjacent.pick_random()
 
-		var char := Char.new(enemy.char_stats, rand_adjacent)
+		var char := ActorManager.spawn_character(enemy.char_stats)
+		char.move_to(rand_adjacent)
 		char.set_hp(final_hp)
 		# force discard all to prevent attacking on summon
 		char.deck.discard_all()

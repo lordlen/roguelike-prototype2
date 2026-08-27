@@ -25,6 +25,7 @@ name = "Bloodlust"
 rarity = 2
 num_hits = 1
 range = 1
+exhausts = true
 attack_effects = Array[ExtResource("1_6uxxu")]([SubResource("Resource_svybr"), SubResource("Resource_bgidp")])
 on_took_damage_effects = Array[ExtResource("1_6uxxu")]([SubResource("Resource_1h8ww")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"
