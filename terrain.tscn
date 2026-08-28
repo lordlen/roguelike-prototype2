@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=48 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dxrnkoy1jieuy" path="res://UI/card_reward_dialog.tscn" id="5_xo2vs"]
 [ext_resource type="Script" uid="uid://28bomu2s107p" path="res://UI/gold_amount.gd" id="6_0i68f"]
 [ext_resource type="Script" uid="uid://djehyyein7u8h" path="res://UI/potion_container.gd" id="6_lg7om"]
+[ext_resource type="PackedScene" uid="uid://bnlsf1yf60gbl" path="res://UI/char_info2.tscn" id="6_lj33d"]
 [ext_resource type="Script" uid="uid://dt5vt4jmthp7r" path="res://UI/card_reward_container.gd" id="10_agy8s"]
 [ext_resource type="PackedScene" uid="uid://w70rvwim7l6d" path="res://UI/card_selector.tscn" id="10_q6cs3"]
 [ext_resource type="Script" uid="uid://ba8qij3w3lqqm" path="res://UI/event_dialog.gd" id="11_pgrna"]
@@ -1981,10 +1982,10 @@ region_descriptions = Array[ExtResource("2_agy8s")]([ExtResource("3_lj33d"), Ext
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="CharInfoContainer" type="Panel" parent="UILayer"]
+visible = false
 custom_minimum_size = Vector2(150, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 42.0
 offset_right = 150.0
 offset_bottom = -1.0
 grow_vertical = 2
@@ -2004,6 +2005,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
 
+[node name="HeroInfo" parent="UILayer" instance=ExtResource("6_lj33d")]
+scale = Vector2(1, 1)
+
+[node name="TargetInfo" parent="UILayer" instance=ExtResource("6_lj33d")]
+visible = false
+offset_top = 114.0
+offset_bottom = 228.0
+scale = Vector2(1, 1)
+
 [node name="StairsDialog" type="ConfirmationDialog" parent="UILayer"]
 oversampling_override = 1.0
 mode = 3
@@ -2019,6 +2029,7 @@ visible = false
 [node name="TopPanel" type="Panel" parent="UILayer"]
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = 151.0
 offset_bottom = 42.0
 grow_horizontal = 2
 
@@ -2070,9 +2081,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -101.0
+offset_left = -66.5
 offset_top = -18.0
-offset_right = 171.0
+offset_right = 133.5
 offset_bottom = 31.333336
 grow_horizontal = 2
 grow_vertical = 2
@@ -2087,20 +2098,13 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -165.0
+offset_left = -142.0
 offset_top = -14.0
 offset_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 2
 columns = 6
 script = ExtResource("10_agy8s")
-
-[node name="CardListSelector" parent="UILayer" instance=ExtResource("10_q6cs3")]
-visible = false
-offset_left = -129.0
-offset_top = -112.0
-offset_right = 186.0
-offset_bottom = 207.0
 
 [node name="EventDialog" type="Panel" parent="UILayer"]
 visible = false
@@ -2226,10 +2230,19 @@ theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 script = ExtResource("15_nsrdk")
 
-[node name="CardDescription" parent="UILayer" instance=ExtResource("16_mrt7q")]
-visible = false
-
 [node name="CharInfoDetailed" parent="UILayer" instance=ExtResource("17_lhepi")]
+visible = false
+z_index = 1
+
+[node name="CardListSelector" parent="UILayer" instance=ExtResource("10_q6cs3")]
+visible = false
+z_index = 50
+offset_left = -129.0
+offset_top = -112.0
+offset_right = 186.0
+offset_bottom = 207.0
+
+[node name="CardDescription" parent="UILayer" instance=ExtResource("16_mrt7q")]
 visible = false
 
 [node name="ItemDescription" parent="UILayer" instance=ExtResource("20_lj33d")]

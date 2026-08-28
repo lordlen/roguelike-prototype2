@@ -101,6 +101,7 @@ func _ready() -> void:
 	self.new_pos = self.position
 
 func set_char_stats(stats: CharacterStats):
+	self.char_stats = stats
 	self.character_name = stats.character_name
 	
 	$Sprite2D.texture = stats.texture
@@ -108,6 +109,10 @@ func set_char_stats(stats: CharacterStats):
 	
 	self.max_hp = randi_range(stats.min_hp, stats.max_hp)
 	self.curr_hp = self.max_hp
+	
+	$HealthBar.min_value = 0
+	$HealthBar.max_value = max_hp
+	$HealthBar.value = curr_hp
 
 	self.deck = Deck.new(self, stats.cards, stats.innate_cards)
 	self.deck.initialize()
@@ -137,6 +142,9 @@ func set_char_stats(stats: CharacterStats):
 	moved_last_turn = false
 	if alignment == Alignment.EVIL:
 		visible = false
+	
+	$CharInfo.set_character(self)
+	$CharInfo.update(self)
 	
 	EventBus.new_actor_added.emit(self)
 
@@ -361,7 +369,6 @@ func is_asleep():
 
 # control the character using user input. 
 func act_player():
-	print("act player")
 	turn_start()
 	if action_queue.is_empty():
 		EventBus.user_input_requested.emit(self)
@@ -402,6 +409,7 @@ func take_damage(damage: int) -> void:
 	self.curr_hp = clamp(curr_hp, 0, max_hp)
 	if damage > 0:
 		self.char_took_damage.emit()
+	$HealthBar.value = curr_hp
 	EventBus.character_hp_updated.emit(self)
 	if self.curr_hp <= 0:
 		die()
@@ -473,3 +481,15 @@ func follow(ch: Char):
 	target_flow_map = leader.target_flow_map
 	if ch != self:
 		ch.followers.push_back(self)
+
+
+func _on_mouse_entered() -> void:
+	if !user_controlled:
+		$CharInfo.show()
+
+func _on_mouse_exited() -> void:
+	$CharInfo.hide()
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_released("secondary_click"):
+		EventBus.character_info_requested.emit(self)

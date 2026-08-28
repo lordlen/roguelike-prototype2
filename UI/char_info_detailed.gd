@@ -8,19 +8,20 @@ func _on_character_info_requested(ch: Char):
 	get_parent().show()
 
 func set_char(char: Char):
-	$CharName.text = char.character_name
+	$CharInfo.set_character(char)
+	$CharInfo.update(char)
 	$TraversalLabel/TraversalType.text = Char.Traversal.find_key(char.traversal)
 	$ScentRangeLabel/ScentRangeValue.text = str(char.scent_range)
 	$GoldLabel/GoldAmount.text = str(char.inventory.gold)
-	
+
 	for child in $ItemLabel/GridContainer.get_children():
 		remove_child(child)
 		child.queue_free()
-	
+
 	for item: Item in char.inventory.items + char.inventory.card_rewards2:
 		var texture := item.texture
 		var description := item.get_description()
-		
+
 		var item_texture := TextureRect.new()
 		item_texture.texture = texture
 		item_texture.self_modulate = item.color

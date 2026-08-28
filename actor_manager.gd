@@ -45,7 +45,6 @@ func _process(delta: float) -> void:
 	await do_actor_turns()
 
 func do_actor_turns():
-	print("do turns")
 	block_process = true
 	# get the user controlled actors
 	for ch: Char in get_user_controlled_chars():
@@ -127,7 +126,6 @@ func random_spawn_character(spawn_group: SpawnGroup, items: Array[Item], is_awak
 			leader.wander()
 
 func spawn_character(stats: CharacterStats) -> Char:
-	print("spawn character: %s" % stats.character_name)
 	var char_scene: PackedScene = load("res://char/char_scene.tscn")
 	var ch : Char = char_scene.instantiate()
 	ch.set_char_stats(stats)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bys5excwfjlap"]
+[gd_scene load_steps=6 format=3 uid="uid://bys5excwfjlap"]
 
 [ext_resource type="Script" uid="uid://covumddkcgw37" path="res://UI/char_info_detailed.gd" id="1_3cqj8"]
 [ext_resource type="Script" uid="uid://cgo0sftjgc5u8" path="res://UI/popup_control.gd" id="1_8q1pe"]
 [ext_resource type="Texture2D" uid="uid://c03ikb6kqulof" path="res://resources/relics.png" id="1_12wfd"]
+[ext_resource type="PackedScene" uid="uid://bnlsf1yf60gbl" path="res://UI/char_info2.tscn" id="4_fe6ie"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cqj8"]
 atlas = ExtResource("1_12wfd")
@@ -21,88 +22,86 @@ script = ExtResource("1_8q1pe")
 layout_mode = 0
 offset_left = 158.0
 offset_top = 61.0
-offset_right = 530.0
-offset_bottom = 325.0
+offset_right = 469.0
+offset_bottom = 242.0
 script = ExtResource("1_3cqj8")
-
-[node name="CharName" type="Label" parent="Panel"]
-layout_mode = 0
-offset_right = 168.0
-offset_bottom = 27.916666
-theme_override_font_sizes/font_size = 20
-text = "Character name"
 
 [node name="TraversalLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_top = 32.0
-offset_right = 78.0
-offset_bottom = 55.0
+offset_left = 168.0
+offset_top = 11.0
+offset_right = 246.0
+offset_bottom = 34.0
 tooltip_text = "How the character traverses."
 mouse_filter = 0
+theme_override_font_sizes/font_size = 12
 text = "Traversal:"
 
 [node name="TraversalType" type="Label" parent="Panel/TraversalLabel"]
 layout_mode = 0
-offset_left = 180.0
-offset_top = 1.0
-offset_right = 265.0
-offset_bottom = 24.0
+offset_left = 74.0
+offset_right = 142.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 12
 text = "Grounded"
 
 [node name="ScentRangeLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_top = 66.0
-offset_right = 78.0
-offset_bottom = 89.0
+offset_left = 168.0
+offset_top = 43.0
+offset_right = 267.0
+offset_bottom = 66.0
 tooltip_text = "While hunting, the range enemies can detect you without vision."
 mouse_filter = 0
+theme_override_font_sizes/font_size = 12
 text = "Scent Range:"
 
 [node name="ScentRangeValue" type="Label" parent="Panel/ScentRangeLabel"]
 layout_mode = 0
-offset_left = 180.0
-offset_top = 1.0
-offset_right = 265.0
-offset_bottom = 24.0
+offset_left = 81.0
+offset_right = 121.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 12
 text = "1"
 
 [node name="GoldLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_top = 99.0
-offset_right = 41.0
-offset_bottom = 122.0
+offset_left = 170.0
+offset_top = 77.0
+offset_right = 211.0
+offset_bottom = 100.0
 tooltip_text = "Used to buy from the shop.
 Dropped upon death."
 mouse_filter = 0
+theme_override_font_sizes/font_size = 12
 text = "Gold:"
 
 [node name="GoldAmount" type="Label" parent="Panel/GoldLabel"]
 layout_mode = 0
-offset_left = 179.0
-offset_top = 2.0
-offset_right = 219.0
-offset_bottom = 25.0
+offset_left = 49.0
+offset_right = 89.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 12
 text = "100"
 
 [node name="ItemLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 138.0
-offset_right = 59.0
-offset_bottom = 161.0
+offset_left = 1.0
+offset_top = 126.0
+offset_right = 57.0
+offset_bottom = 149.0
 tooltip_text = "Potions and card rewards.
 Dropped upon death."
 mouse_filter = 0
+theme_override_font_sizes/font_size = 12
 text = "Items:"
 
 [node name="GridContainer" type="GridContainer" parent="Panel/ItemLabel"]
 layout_mode = 0
-offset_left = 74.0
-offset_top = -3.0
-offset_right = 217.5
-offset_bottom = 16.0
-scale = Vector2(2, 2)
-columns = 7
+offset_left = 53.0
+offset_right = 310.0
+offset_bottom = 19.0
+columns = 10
 
 [node name="TextureButton" type="TextureRect" parent="Panel/ItemLabel/GridContainer"]
 layout_mode = 2
@@ -117,21 +116,20 @@ texture = SubResource("AtlasTexture_3cqj8")
 [node name="RelicLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 185.0
-offset_right = 60.0
-offset_bottom = 208.0
+offset_top = 152.0
+offset_right = 48.0
+offset_bottom = 175.0
 tooltip_text = "Relics that provide passive effects.
 Does NOT drop upon death."
 mouse_filter = 0
+theme_override_font_sizes/font_size = 12
 text = "Relics:"
 
 [node name="GridContainer" type="GridContainer" parent="Panel/RelicLabel"]
 layout_mode = 0
 offset_left = 53.0
-offset_top = -4.0
-offset_right = 205.5
-offset_bottom = 31.5
-scale = Vector2(2, 2)
+offset_right = 307.0
+offset_bottom = 16.0
 columns = 10
 
 [node name="TextureButton" type="TextureRect" parent="Panel/RelicLabel/GridContainer"]
@@ -143,3 +141,9 @@ texture = SubResource("AtlasTexture_3cqj8")
 layout_mode = 2
 tooltip_text = "Summon a slime every 2 reshuffles."
 texture = SubResource("AtlasTexture_3cqj8")
+
+[node name="CharInfo" parent="Panel" instance=ExtResource("4_fe6ie")]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 160.0
+scale = Vector2(1, 1)

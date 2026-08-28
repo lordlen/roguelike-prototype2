@@ -12,8 +12,6 @@ func _ready() -> void:
 var character: Char
 func set_character(ch: Char):
 	character = ch
-	character.mouse_entered.connect(_on_mouse_entered)
-	character.mouse_exited.connect(_on_mouse_exited)
 
 func delete_self(ch: Char):
 	if ch == character:
@@ -61,12 +59,3 @@ func _on_gui_input(event: InputEvent) -> void:
 			EventBus.camera_move_requested.emit(pos)
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			EventBus.character_info_requested.emit(character)
-
-
-func _on_mouse_entered() -> void:
-	self.self_modulate = Color.BLACK
-	character.modulate = Color.YELLOW
-
-func _on_mouse_exited() -> void:
-	self.self_modulate = Color.WHITE
-	character.modulate = Color.WHITE

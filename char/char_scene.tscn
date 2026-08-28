@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctwp1i3vys6d6"]
+[gd_scene load_steps=7 format=3 uid="uid://ctwp1i3vys6d6"]
 
 [ext_resource type="Script" uid="uid://cbrdvanj5e5yn" path="res://char/char.gd" id="1_jcf3h"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="1_xaedg"]
+[ext_resource type="Texture2D" uid="uid://buvo8ycn8vw3t" path="res://resources/solid_white.png" id="3_e7iy7"]
+[ext_resource type="PackedScene" uid="uid://bnlsf1yf60gbl" path="res://UI/char_info2.tscn" id="4_codke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsvpe"]
 size = Vector2(16, 16)
@@ -20,3 +22,33 @@ shape = SubResource("RectangleShape2D_gsvpe")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_jcf3h")
 centered = false
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_top = 15.0
+offset_right = 16.0
+offset_bottom = 16.0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_e7iy7")
+texture_over = ExtResource("3_e7iy7")
+texture_progress = ExtResource("3_e7iy7")
+tint_under = Color(1, 0, 0, 1)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="CharInfo" parent="." instance=ExtResource("4_codke")]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = -87.0
+offset_right = 101.0
+offset_bottom = 27.0
+grow_horizontal = 2
+scale = Vector2(0.75, 0.75)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

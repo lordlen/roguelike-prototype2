@@ -23,6 +23,7 @@ atlas = ExtResource("1_ypd0o")
 region = Rect2(26, 9, 4, 4)
 
 [node name="Control" type="ColorRect"]
+z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,6 +33,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("1_tm1gv")
 
 [node name="CardDescription" type="Panel" parent="."]
+z_index = 100
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
