@@ -11,14 +11,14 @@
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="8_di1c1"]
 [ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="9_41m32"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="10_klshn"]
-[ext_resource type="Resource" uid="uid://7mpefh2wkpvp" path="res://patterns/region2/1_row.tres" id="11_sr7df"]
-[ext_resource type="Resource" uid="uid://c7ntiudon2k2w" path="res://patterns/region2/2_rows.tres" id="12_r7rtf"]
-[ext_resource type="Resource" uid="uid://cersor6om4npq" path="res://patterns/region2/cross.tres" id="13_ytqj7"]
-[ext_resource type="Resource" uid="uid://cgo67d2pivf4b" path="res://patterns/region2/fountain.tres" id="14_d02ft"]
-[ext_resource type="Resource" uid="uid://b8ifuv5rqlpp7" path="res://patterns/region2/small_hut.tres" id="15_ee4am"]
-[ext_resource type="Resource" uid="uid://v1no3o1350pb" path="res://patterns/region2/small_square.tres" id="16_gpdy7"]
-[ext_resource type="Resource" uid="uid://ca1yx3lh7viyr" path="res://patterns/region2/square.tres" id="17_qjdma"]
+[ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="12_0b6pp"]
+[ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="13_dklym"]
+[ext_resource type="Resource" uid="uid://ctmdd8rcov4kq" path="res://patterns/hut.tres" id="14_hvl8t"]
+[ext_resource type="Resource" uid="uid://cdw5yrf7nn8il" path="res://patterns/lake.tres" id="15_1u0vh"]
+[ext_resource type="Resource" uid="uid://bxtdio0jocibu" path="res://patterns/long_corridor.tres" id="16_5pd4n"]
+[ext_resource type="Resource" uid="uid://btljq16rqurqj" path="res://patterns/pillar.tres" id="17_led7c"]
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="18_50ktj"]
+[ext_resource type="Resource" uid="uid://brcq5wokjhj4b" path="res://patterns/river.tres" id="18_di1c1"]
 [ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="19_gpki4"]
 [ext_resource type="Resource" uid="uid://c3t3lfgr5qogl" path="res://patterns/room_patterns/special_features/rat_den.tres" id="20_y3fsd"]
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="21_v7ig6"]
@@ -37,7 +37,7 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_3aogm"]
 script = ExtResource("18_50ktj")
-room_patterns = Array[ExtResource("10_klshn")]([ExtResource("11_sr7df"), ExtResource("12_r7rtf"), ExtResource("13_ytqj7"), ExtResource("14_d02ft"), ExtResource("15_ee4am"), ExtResource("16_gpdy7"), ExtResource("17_qjdma")])
+room_patterns = Array[ExtResource("10_klshn")]([ExtResource("12_0b6pp"), ExtResource("13_dklym"), ExtResource("14_hvl8t"), ExtResource("15_1u0vh"), ExtResource("16_5pd4n"), ExtResource("17_led7c"), ExtResource("18_di1c1")])
 special_patterns = Array[ExtResource("10_klshn")]([ExtResource("20_y3fsd")])
 item_pool = ExtResource("8_di1c1")
 relic_pool = ExtResource("9_41m32")

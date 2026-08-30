@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://b147660eyg6mw"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=15 format=3 uid="uid://b147660eyg6mw"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_8f0pr"]
 [ext_resource type="Resource" uid="uid://dmaquougpt3rj" path="res://cards/card_resources/crude_spear.tres" id="2_46plf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="5_4jhaj"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="5_46plf"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="6_46plf"]
+[ext_resource type="Resource" uid="uid://b4pqfnx7u2v4u" path="res://items/relics/tactical/tactical.tres" id="6_e3uq1"]
 
 [sub_resource type="Resource" id="Resource_e3uq1"]
 script = ExtResource("2_aasnl")
@@ -32,11 +33,12 @@ texture = SubResource("AtlasTexture_v81qj")
 character_name = "Goblin"
 alignment = 1
 color = Color(7.2196127e-07, 0.4493385, 4.813075e-07, 1)
-min_hp = 12
+min_hp = 15
 max_hp = 20
 sleeping = SubResource("Resource_ndiag")
 wandering = SubResource("Resource_obac3")
 hunting = SubResource("Resource_e3uq1")
 cards = Array[ExtResource("1_8f0pr")]([ExtResource("2_46plf"), ExtResource("2_46plf"), ExtResource("2_46plf")])
 innate_cards = Array[ExtResource("1_8f0pr")]([ExtResource("4_46plf")])
+items = Array[ExtResource("5_46plf")]([ExtResource("6_e3uq1")])
 metadata/_custom_type_script = "uid://btuk5gl5wcri7"

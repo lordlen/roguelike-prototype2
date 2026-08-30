@@ -3,13 +3,26 @@ extends Panel
 @export var card_reward_generator: CardRewardGenerator
 var cards: Array[CardResource] = []
 
+func _ready() -> void:
+	EventBus.card_reward_cheated.connect(generate_card_rewards)
+
 func generate_card_rewards():
+	var count : Array[int] = [0,0,0]
+	for i in range(3):
+		count[card_reward_generator.generate_rarity()] += 1
+	cards = card_reward_generator.generate_rarity_cards(count)
+	display_cards(cards)
+
+func claim_card_rewards():
 	var card_rewards := ActorManager.get_user_controlled_chars()[0].inventory.claim_card_rewards()
 	var count : Array[int] = [0, 0, 0]
 	for card in card_rewards:
 		count[card.rarity] += 1
 	cards = card_reward_generator.generate_rarity_cards(count)
-	
+
+	display_cards(cards)
+
+func display_cards(cards: Array[CardResource]):
 	# remove all old children
 	for child in $HBoxContainer.get_children():
 		$HBoxContainer.remove_child(child)

@@ -31,3 +31,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 			c.do_on_discard_effects(actor)
 		actor.deck.append_to_discard(card_options)
 	card_effect_finished.emit()
+
+
+func get_shortform(card: CardInstance) -> String:
+	return "%s %s" % [num_cards, super.get_shortform(card)]

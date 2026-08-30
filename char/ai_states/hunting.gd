@@ -4,15 +4,7 @@ extends AiState
 func get_state_name() -> String:
 	return "Hunting"
 
-func act(actor: Char) -> Array[Action]:
-	# if the prey is dead, change prey or swap to wander
-	if !is_instance_valid(actor.target_ch):
-		# TODO: switch target if necessary
-		actor.wander()
-		return actor.curr_state.act(actor)
-	var ret : Array[Action] = []
-	
-	# swap if necessary
+func should_swap(actor: Char) -> bool:
 	var primary_atk := 0
 	var primary_def := 0
 	var primary_range := 0
@@ -36,14 +28,30 @@ func act(actor: Char) -> Array[Action]:
 		abs(actor.grid_position.x - actor.target_ch.grid_position.x),\
 		abs(actor.grid_position.y - actor.target_ch.grid_position.y)) <= 1
 
-	if (primary_atk + offhand_def < offhand_atk + primary_def and is_close) or offhand_range > primary_range:
+	return (primary_atk + offhand_def < offhand_atk + primary_def and is_close) or offhand_range > primary_range
+
+func should_reshuffle(actor: Char):
+	var primary_atk = 0 if actor.deck.primary == null else actor.deck.primary.attack
+	var offhand_atk = 0 if actor.deck.offhand == null else actor.deck.offhand.attack
+	return ((actor.deck.primary == null or actor.deck.offhand == null) and primary_atk + offhand_atk == 0)\
+	or (actor.is_cautious and len(actor.deck.discard_pile) >= 1 and\
+	Pathfinder.chebychev_dist(actor.grid_position, actor.target_ch.grid_position) > 1) and\
+	Globals.floor_map.get_tile(actor.grid_position).terrain_id != 3
+
+func act(actor: Char) -> Array[Action]:
+	# if the prey is dead, change prey or swap to wander
+	if !is_instance_valid(actor.target_ch):
+		# TODO: switch target if necessary
+		actor.wander()
+		return actor.curr_state.act(actor)
+
+	var ret : Array[Action] = []
+
+	if should_swap(actor):
 		actor.deck.swap()
 	
 	# if reshuffle is necessary
-	if ((actor.deck.primary == null or actor.deck.offhand == null) and primary_atk + offhand_atk == 0)\
-	or (actor.is_cautious and len(actor.deck.discard_pile) >= 1 and\
-	Pathfinder.chebychev_dist(actor.grid_position, actor.target_ch.grid_position) > 1) and\
-	Globals.floor_map.get_tile(actor.grid_position).terrain_id != 3:
+	if should_reshuffle(actor):
 		return [ReshuffleAction.new(actor)]
 
 	# can see the target

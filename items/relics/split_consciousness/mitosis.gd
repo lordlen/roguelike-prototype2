@@ -5,7 +5,7 @@ var used := false
 var num_dupes := 1
 
 func on_hit(actor: Char, attacker: Char):
-	if used or actor.curr_hp >= actor.max_hp / 2:
+	if used or actor.curr_hp > actor.max_hp / 2:
 		return true
 	
 	# spawn a random enemy with some hp

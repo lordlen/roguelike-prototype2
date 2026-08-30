@@ -27,5 +27,5 @@ func execute() -> bool:
 		actor.char_used_item.emit()
 		actor.inventory.remove_item(item)
 
-	action_finished.emit()
+	action_finished.emit(item_action.uses_turn)
 	return item_action.uses_turn

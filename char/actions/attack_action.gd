@@ -11,7 +11,7 @@ func _init(attacker: Char, defender: Char):
 
 func execute() -> bool:
 	if attacker.deck.primary == null:
-		action_finished.emit()
+		action_finished.emit(false)
 		return false
 	var pf = Pathfinder.new()
 	var dist = Pathfinder.chebychev_dist(attacker.grid_position, defender.grid_position)
@@ -27,7 +27,7 @@ func execute() -> bool:
 			if !attacker.is_dead():
 				attacker.deck.dispose_primary()
 				attacker.deck.draw_empty()
-			action_finished.emit()
+			action_finished.emit(!card.is_instant)
 			return !card.is_instant
-	action_finished.emit()
+	action_finished.emit(false)
 	return false

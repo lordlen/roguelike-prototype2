@@ -33,6 +33,8 @@ signal card_selector_requested
 signal cards_selected
 signal card_info_requested
 
+signal card_reward_cheated
+
 signal event_requested
 signal event_concluded
 

@@ -7,7 +7,7 @@ func _init(actor: Char):
 
 func execute() -> bool:
 	if actor.deck.offhand == null:
-		action_finished.emit()
+		action_finished.emit(false)
 		return false
 
 	#actor.deck.offhand.do_defend(actor)
@@ -17,5 +17,5 @@ func execute() -> bool:
 	var defend_indicator := load("res://indicators/defend_indicator.tres")
 	actor.spawn_discard_particle(defend_indicator)
 	await actor.get_tree().create_timer(0.5).timeout
-	action_finished.emit()
+	action_finished.emit(true)
 	return true

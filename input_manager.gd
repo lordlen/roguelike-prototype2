@@ -65,6 +65,8 @@ func character_controller(event: InputEvent):
 			actor.visible = true
 		for item in ItemManager.get_all_items():
 			item.visible = true
+	elif event.is_action_pressed("generate_card_reward"):
+		EventBus.card_reward_cheated.emit()
 	elif event.is_action_pressed("wait"):
 		turn_passed = await WaitAction.new(self.actor).execute()
 	elif event.is_action_pressed("swap"):

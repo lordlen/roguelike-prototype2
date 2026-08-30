@@ -60,7 +60,9 @@ func do_actor_turns():
 		var actions := ch.act_ai()
 		for action in actions:
 			action.execute.call_deferred()
-			await action.action_finished
+			var turn_passed : bool= await action.action_finished
+			if turn_passed:
+				break
 		ch.pass_turn()
 	
 	spawn_turn_count += 1

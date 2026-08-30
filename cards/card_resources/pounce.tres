@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://dusjykpiy21fl"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_cd0mc"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_e8u7y"]
+[ext_resource type="Script" uid="uid://byio008ouqqsn" path="res://cards/effects/relocate/relocate.gd" id="2_fdb4h"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="3_lfm8g"]
+[ext_resource type="Script" uid="uid://c56tu66yr0yqq" path="res://cards/effects/discard/disarm.gd" id="4_lfm8g"]
+
+[sub_resource type="Resource" id="Resource_x1kks"]
+script = ExtResource("2_fdb4h")
+metadata/_custom_type_script = "uid://byio008ouqqsn"
+
+[sub_resource type="Resource" id="Resource_f6pw2"]
+script = ExtResource("3_lfm8g")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_nlofl"]
+script = ExtResource("4_lfm8g")
+target = 1
+metadata/_custom_type_script = "uid://c56tu66yr0yqq"
+
+[resource]
+script = ExtResource("2_e8u7y")
+name = "Pounce"
+rarity = 3
+attack = 6
+num_hits = 1
+range = 3
+attack_effects = Array[ExtResource("1_cd0mc")]([SubResource("Resource_x1kks"), SubResource("Resource_f6pw2"), SubResource("Resource_nlofl")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

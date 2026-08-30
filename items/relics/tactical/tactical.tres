@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tactical" load_steps=4 format=3 uid="uid://b4pqfnx7u2v4u"]
+
+[ext_resource type="Script" uid="uid://cxv5n0a30lq60" path="res://items/relics/tactical/tactical.gd" id="1_nukit"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_nukit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n68yk"]
+atlas = ExtResource("2_nukit")
+region = Rect2(64, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_nukit")
+description = "Whenever you reshuffle, reset the defense decay."
+item_name = "Tactical"
+texture = SubResource("AtlasTexture_n68yk")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

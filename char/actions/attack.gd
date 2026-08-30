@@ -11,9 +11,9 @@ func _init(attacker: Char, defender: Char):
 
 func execute() -> bool:
 	if await AttackOnlyAction.new(attacker, defender).execute():
-		action_finished.emit()
+		action_finished.emit(true)
 		return true
 	# if defender cannot be reached, just walk to the target.
 	var result := await GoCloserAction.new(attacker).execute()
-	action_finished.emit()
+	action_finished.emit(result)
 	return result

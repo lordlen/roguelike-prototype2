@@ -4,7 +4,7 @@ extends Panel
 func _ready() -> void:
 	EventBus.character_deck_updated.connect(update_deck)
 	EventBus.character_hp_updated.connect(update_hp)
-	EventBus.character_died.connect(delete_self)
+	#EventBus.character_died.connect(delete_self)
 	EventBus.character_state_changed.connect(change_state_label)
 	EventBus.inventory_updated.connect(update)
 	EventBus.update_gold.connect(update)

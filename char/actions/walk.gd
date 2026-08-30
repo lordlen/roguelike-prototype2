@@ -19,7 +19,7 @@ func execute() -> bool:
 		Globals.floor_map.update_tile(dest, ground)
 	
 	if !actor.can_traverse(dest) or (blocking_actor != null and blocking_actor.alignment != actor.alignment):
-		action_finished.emit()
+		action_finished.emit(false)
 		return false
 	
 	# prioritize who can swap places to prevent infinite blocking
@@ -28,9 +28,9 @@ func execute() -> bool:
 		if actor.char_id < blocking_actor.char_id:
 			blocking_actor.move_to(actor.grid_position)
 		else:
-			action_finished.emit()
+			action_finished.emit(false)
 			return false
 
 	actor.move_to(dest, walk_speed)
-	action_finished.emit()
+	action_finished.emit(true)
 	return true

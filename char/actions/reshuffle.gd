@@ -10,5 +10,5 @@ func execute() -> bool:
 		return true
 	actor.deck.reshuffle()
 	actor.char_reshuffled.emit()
-	action_finished.emit()
+	action_finished.emit(true)
 	return true

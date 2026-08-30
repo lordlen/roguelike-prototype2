@@ -89,3 +89,8 @@ func build_floor():
 			healing_tile, p_positions[p_ind], healing_cost)
 
 		p_ind += 1
+	
+	var spawn_desc := SpawnDescription.new()
+	spawn_desc.weights = [1.0]
+	spawn_desc.pool = [load("res://floor_generator/floor_description/spawn_groups/single_crab.tres")]
+	ActorManager.configure_spawning(spawn_desc, 1000000)

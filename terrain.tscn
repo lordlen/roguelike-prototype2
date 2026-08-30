@@ -1,10 +1,9 @@
-[gd_scene load_steps=48 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=47 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
 [ext_resource type="Script" uid="uid://bssxptdtqb6x4" path="res://floor_generator/region_description.gd" id="2_agy8s"]
 [ext_resource type="Texture2D" uid="uid://d8c1shexwyt8" path="res://resources/autotile.png" id="2_avahw"]
-[ext_resource type="Script" uid="uid://cmwn0g84amk8m" path="res://UI/char_info_container.gd" id="2_h2lqh"]
 [ext_resource type="Resource" uid="uid://bnojxifccxnv2" path="res://floor_generator/region_description/region2.tres" id="3_4spss"]
 [ext_resource type="Resource" uid="uid://dd7bng7p6048e" path="res://floor_generator/region_description/region1.tres" id="3_lj33d"]
 [ext_resource type="Script" uid="uid://dwuhxx6l7dx8l" path="res://terrain.gd" id="3_n7k1k"]
@@ -1980,30 +1979,6 @@ script = ExtResource("1_3shck")
 region_descriptions = Array[ExtResource("2_agy8s")]([ExtResource("3_lj33d"), ExtResource("3_4spss")])
 
 [node name="UILayer" type="CanvasLayer" parent="."]
-
-[node name="CharInfoContainer" type="Panel" parent="UILayer"]
-visible = false
-custom_minimum_size = Vector2(150, 0)
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 150.0
-offset_bottom = -1.0
-grow_vertical = 2
-script = ExtResource("2_h2lqh")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UILayer/CharInfoContainer"]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CharInfoList" type="VBoxContainer" parent="UILayer/CharInfoContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 2
 
 [node name="HeroInfo" parent="UILayer" instance=ExtResource("6_lj33d")]
 scale = Vector2(1, 1)
