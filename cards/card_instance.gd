@@ -27,6 +27,7 @@ var on_move_effects: Array[CardEffect]
 var on_discard_effects: Array[CardEffect]
 var on_draw_effects: Array[CardEffect]
 
+var curr_defense: int
 var bonus_defense := 0
 var defense_decay := 0
 var is_changed := false
@@ -38,6 +39,7 @@ func _init(r: CardResource):
 	
 	attack = r.attack
 	defense = r.defense
+	curr_defense = r.defense
 	num_hits = r.num_hits
 	atk_range = r.range
 	is_dodge = r.is_dodge
@@ -60,8 +62,7 @@ func do_attack(actor: Char, defender: Char) -> void:
 
 func do_defend(actor: Char) -> void:
 	actor.is_defending = true
-	@warning_ignore("integer_division")
-	add_bonus_defense((defense_decay + defense) / 2)
+	curr_defense = defense
 	do_effects(actor, actor, defense_effects)
 
 func do_on_hit(attacker: Char, defender: Char) -> void:
@@ -167,7 +168,7 @@ func get_defense_string() -> String:
 	return "∅" if is_dodge else str(get_defense())
 
 func get_defense() -> int:
-	return max(0, defense - defense_decay + bonus_defense)
+	return curr_defense
 
 func on_draw(owner: Char):
 	reset_defense_decay()
@@ -181,10 +182,10 @@ func reset_bonus_defense():
 	bonus_defense = 0
 
 func decay_defense():
-	defense_decay = min(defense_decay + 1, defense)
+	curr_defense /= 2
 
 func reset_defense_decay():
-	defense_decay = 0
+	curr_defense = defense
 
 func duplicate() -> CardInstance:
 	var dupe := CardResource.new()
