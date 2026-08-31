@@ -12,6 +12,6 @@ metadata/_custom_type_script = "uid://1mprtyt4kvcc"
 script = ExtResource("2_qopwx")
 name = "Leaf Blades"
 rarity = 1
-defense = 3
+defense = 4
 defense_effects = Array[ExtResource("1_bv2a3")]([SubResource("Resource_qopwx")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

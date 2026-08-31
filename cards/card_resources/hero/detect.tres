@@ -13,6 +13,6 @@ metadata/_custom_type_script = "uid://cbkcnehiantue"
 script = ExtResource("2_21ef3")
 name = "Detect"
 rarity = 1
-defense = 5
+defense = 7
 defense_effects = Array[ExtResource("1_e6w8d")]([SubResource("Resource_ijark")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

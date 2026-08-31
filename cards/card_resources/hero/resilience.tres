@@ -11,14 +11,14 @@ metadata/_custom_type_script = "uid://befkr8rvi0mwo"
 
 [sub_resource type="Resource" id="Resource_65k1a"]
 script = ExtResource("3_65k1a")
-def_value = 1
+def_value = 2
 metadata/_custom_type_script = "uid://bd5s40bqjr3fy"
 
 [resource]
 script = ExtResource("4_tehl2")
 name = "Resilience"
 rarity = 1
-defense = 4
+defense = 5
 defense_effects = Array[ExtResource("1_a3y7w")]([SubResource("Resource_la6n8")])
 on_took_damage_effects = Array[ExtResource("1_a3y7w")]([SubResource("Resource_65k1a")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

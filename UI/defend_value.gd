@@ -10,9 +10,7 @@ func _on_defense_update(ch: Char):
 	if ch.user_controlled:
 		var offhand := ch.deck.offhand
 		if offhand != null:
-			var bonus_def := (offhand.defense_decay + offhand.defense) / 2
-			var curr_def := offhand.defense - offhand.defense_decay
-			text = str(curr_def + bonus_def)
+			text = str(offhand.get_block_defense())
 		else:
 			text = ""
 			

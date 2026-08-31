@@ -1,18 +1,24 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://hqd2vvkc86jg"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://co7y5ohfh1xrv"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_825ua"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_h8i4h"]
-[ext_resource type="Script" uid="uid://dmkd06p7sh2j4" path="res://cards/effects/increment_stats/choose_tmp_atk_up.gd" id="2_s04ei"]
+[ext_resource type="Script" uid="uid://cbkcnehiantue" path="res://cards/effects/card_manip/scry.gd" id="2_s04ei"]
+[ext_resource type="Script" uid="uid://bu2u5d3er8ps2" path="res://cards/effects/increment_stats/choose_tmp_def_up.gd" id="2_yhaq4"]
 
 [sub_resource type="Resource" id="Resource_plv3x"]
 script = ExtResource("2_s04ei")
-value = 5
-metadata/_custom_type_script = "uid://dmkd06p7sh2j4"
+num_cards = 3
+metadata/_custom_type_script = "uid://cbkcnehiantue"
+
+[sub_resource type="Resource" id="Resource_h8i4h"]
+script = ExtResource("2_yhaq4")
+value = 3
+metadata/_custom_type_script = "uid://bu2u5d3er8ps2"
 
 [resource]
 script = ExtResource("2_h8i4h")
 name = "Preparation"
 rarity = 1
 range = 3
-attack_effects = Array[ExtResource("1_825ua")]([SubResource("Resource_plv3x")])
+attack_effects = Array[ExtResource("1_825ua")]([SubResource("Resource_plv3x"), SubResource("Resource_h8i4h")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

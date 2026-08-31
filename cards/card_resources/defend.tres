@@ -11,6 +11,6 @@ metadata/_custom_type_script = "uid://befkr8rvi0mwo"
 [resource]
 script = ExtResource("2_usxx4")
 name = "Defend"
-defense = 4
+defense = 5
 defense_effects = Array[ExtResource("1_u7m4w")]([SubResource("Resource_sfrmf")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

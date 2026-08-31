@@ -28,7 +28,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		
 		# trigger discard effects
 		for c in card_options:
-			c.do_on_discard_effects(actor)
+			await c.do_on_discard_effects(actor)
 		actor.deck.append_to_discard(card_options)
 	card_effect_finished.emit()
 

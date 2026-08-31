@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("2_fwu2o")
 name = "Thick Shell"
-defense = 5
+defense = 9
 metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -11,6 +11,6 @@ metadata/_custom_type_script = "uid://kl4l4tv7xhwc"
 [resource]
 script = ExtResource("3_w4ine")
 name = "Hold Fast"
-defense = 5
+defense = 6
 defense_effects = Array[ExtResource("1_qi5uf")]([SubResource("Resource_pwd7p")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

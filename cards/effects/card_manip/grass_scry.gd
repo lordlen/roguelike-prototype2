@@ -14,5 +14,5 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var num_cards := CardHelper.mow_grass(actor.grid_position)
 	var scry := Scry.new()
 	scry.num_cards = num_cards
-	scry.do(actor, target_char, card)
+	await scry.do(actor, target_char, card)
 	card_effect_finished.emit()

@@ -7,9 +7,15 @@ func get_identifier() -> String:
 	return "deplete" if target == Target.ENEMY else "self-deplete"
 
 func get_description() -> String:
-	return "Discard the draw pile."
+	return "Discard the draw pile and hand."
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var t := actor if target == Target.SELF else target_char
 	t.deck.discard_draw_pile()
+	var break_action := Break.new()
+	break_action.target = target
+	await break_action.do(actor, target_char, card)
+	var disarm_action := Disarm.new()
+	disarm_action.target = target
+	await disarm_action.do(actor, target_char, card)
 	card_effect_finished.emit()

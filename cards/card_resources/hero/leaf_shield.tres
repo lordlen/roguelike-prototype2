@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://dly02v1jvmmys"
 [resource]
 script = ExtResource("3_60qa6")
 name = "Leaf Shield"
-defense = 6
+defense = 8
 defense_effects = Array[ExtResource("1_hxauk")]([SubResource("Resource_0trtf")])
 on_hit_effects = Array[ExtResource("1_hxauk")]([SubResource("Resource_hxauk")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"
