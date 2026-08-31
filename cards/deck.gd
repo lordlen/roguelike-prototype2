@@ -42,7 +42,7 @@ func initialize():
 		instance.is_innate = true
 		deck_owner.char_card_added.emit(instance)
 		draw_pile.push_back(instance)
-	reshuffle()
+	reshuffle(false)
 
 func add_to_deck_list(card_resource: CardResource):
 	deck_list.push_back(card_resource)
@@ -52,24 +52,41 @@ func add_to_deck_list(card_resource: CardResource):
 
 func remove_from_deck_list(card_resource: CardResource):
 	deck_list.erase(card_resource)
-	initialize()
+	await initialize()
 
 # draw if primary or offhand is null. This should be used at the start of each
 # character's turn.
-func draw_empty():
+func draw_empty(do_effects: bool = true):
+	var primary_drawn := false
+	var offhand_drawn := false
+	
 	if primary == null:
 		var card : CardInstance = draw()
+		if card != null:
+			primary_drawn = true
 		primary = card
+		EventBus.character_deck_updated.emit(deck_owner)
+		
 	if offhand == null:
 		var card : CardInstance = draw()
+		if card != null:
+			offhand_drawn = true
 		offhand = card
-	EventBus.character_deck_updated.emit(deck_owner)
+		EventBus.character_deck_updated.emit(deck_owner)
+	
+	if do_effects:
+		if primary_drawn:
+			await primary.on_draw(deck_owner)
+		
+		if offhand_drawn:
+			await offhand.on_draw(deck_owner)
+	
+	print("draw_empty_end")
 
 func draw() -> CardInstance:
 	if draw_pile.is_empty():
 		return null
 	var c : CardInstance = draw_pile.pop_back()
-	c.on_draw(deck_owner)
 	return c
 
 func put_top(card: CardInstance) -> void:
@@ -77,9 +94,9 @@ func put_top(card: CardInstance) -> void:
 
 func discard_primary():
 	if primary != null:
-		discard_pile.push_back(primary)
+		add_to_discard(primary)
 		deck_owner.spawn_discard_particle(primary.texture)
-		
+
 		primary = null
 		EventBus.character_deck_updated.emit(deck_owner)
 
@@ -92,12 +109,13 @@ func dispose_primary():
 	if primary == null:
 		return
 	
-	primary.do_on_use_effects(deck_owner)
+	await primary.do_on_use_effects(deck_owner)
 	
 	if primary.exhausts:
 		exhaust_primary()
 	else:
 		discard_primary()
+	
 
 func exhaust_offhand():
 	if offhand != null:
@@ -107,7 +125,7 @@ func exhaust_offhand():
 func discard_offhand():
 	# remove temporary effects from the offhand
 	if offhand != null:
-		discard_pile.push_back(offhand)
+		add_to_discard(offhand)
 		deck_owner.spawn_discard_particle(offhand.texture)
 		offhand = null
 		EventBus.character_deck_updated.emit(deck_owner)
@@ -116,7 +134,7 @@ func dispose_offhand():
 	if offhand == null:
 		return
 
-	offhand.do_on_use_effects(deck_owner)
+	await offhand.do_on_use_effects(deck_owner)
 
 	if offhand.exhausts:
 		exhaust_offhand()
@@ -126,20 +144,20 @@ func dispose_offhand():
 func discard_top():
 	if draw_pile.size() != 0:
 		var discarded_card : CardInstance = draw_pile.pop_back()
-		discarded_card.do_on_discard_effects(deck_owner)
-		discard_pile.push_back(discarded_card)
+		await discarded_card.do_on_discard_effects(deck_owner)
+		add_to_discard(discarded_card)
 		EventBus.character_deck_updated.emit(deck_owner)
 
 func discard_draw_pile():
 	for c in draw_pile:
-		c.do_on_discard_effects(deck_owner)
+		await c.do_on_discard_effects(deck_owner)
 	discard_pile.append_array(draw_pile)
 	draw_pile.clear()
 	EventBus.character_deck_updated.emit(deck_owner)
 
 func invert_piles():
 	for c in draw_pile:
-		c.do_on_discard_effects(deck_owner)
+		await c.do_on_discard_effects(deck_owner)
 	var tmp := draw_pile
 	draw_pile = discard_pile
 	discard_pile = tmp
@@ -151,7 +169,7 @@ func discard_all():
 	discard_draw_pile()
 	EventBus.character_deck_updated.emit(deck_owner)
 
-func reshuffle():
+func reshuffle(do_effects: bool = true):
 	# discard hand
 	#discard_primary()
 	#discard_offhand()
@@ -185,7 +203,7 @@ func reshuffle():
 	# tmp.append_array(innate_cards)
 	
 	draw_pile = tmp
-	draw_empty()
+	draw_empty(do_effects)
 	var reshuffle_indicator := load("res://indicators/reshuffle_indicator.tres")
 	deck_owner.spawn_discard_particle(reshuffle_indicator)
 
@@ -218,6 +236,7 @@ func insert_to_draw_randomly(card: CardInstance):
 	draw_pile.insert(rand_ind, card)
 
 func add_to_discard(card: CardInstance):
+	card.on_discard()
 	discard_pile.push_back(card)
 
 func append_to_discard(cards: Array[CardInstance]) -> void:
@@ -277,23 +296,33 @@ func pop_card(card_name: String):
 		return card
 	return null
 
+func pop_all_cards(card_name: String) -> Array[CardInstance]:
+	var ret : Array[CardInstance] = []
+	while true:
+		var card : CardInstance= pop_card(card_name)
+		if card == null:
+			break
+		else:
+			ret.push_back(card)
+	return ret
+
 func on_attack(defender: Char):
 	if deck_owner.deck.primary != null:
-		deck_owner.deck.primary.do_attack(deck_owner, defender)
+		await deck_owner.deck.primary.do_attack(deck_owner, defender)
 
 func on_defend(actor: Char):
 	if offhand != null:
-		actor.deck.offhand.do_defend(actor)
+		await actor.deck.offhand.do_defend(actor)
 
 func on_hit(actor: Char, attacker: Char):
 	if offhand != null:
-		offhand.do_on_hit(attacker, actor)
+		await offhand.do_on_hit(attacker, actor)
 
 func on_took_damage():
 	# all cards with on_took_damage use their effects
 	for card in get_all_card_instances():
-		card.do_on_took_damage(deck_owner)
+		await card.do_on_took_damage(deck_owner)
 
 func on_move_effect():
 	for card in get_all_card_instances():
-		card.do_on_move_effects(deck_owner)
+		await card.do_on_move_effects(deck_owner)

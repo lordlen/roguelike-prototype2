@@ -11,7 +11,7 @@ func _ready() -> void:
 	EventBus.new_actor_added.connect(on_new_actor_added)
 	EventBus.new_item_added.connect(on_new_item_added)
 	
-	var hero := ActorManager.spawn_character(load(Char.stats_resources["hero"]))
+	var hero := ActorManager.spawn_character(load("res://char/stats/hero.tres"))
 	$UILayer/HeroInfo.set_character(hero)
 	$UILayer/HeroInfo.update(hero)
 	for region in region_descriptions:

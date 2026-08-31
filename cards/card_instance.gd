@@ -27,9 +27,8 @@ var on_move_effects: Array[CardEffect]
 var on_discard_effects: Array[CardEffect]
 var on_draw_effects: Array[CardEffect]
 
-var curr_defense: int
+var decay_exponent: int = 0
 var bonus_defense := 0
-var defense_decay := 0
 var is_changed := false
 
 func _init(r: CardResource):
@@ -39,7 +38,6 @@ func _init(r: CardResource):
 	
 	attack = r.attack
 	defense = r.defense
-	curr_defense = r.defense
 	num_hits = r.num_hits
 	atk_range = r.range
 	is_dodge = r.is_dodge
@@ -58,30 +56,33 @@ func _init(r: CardResource):
 	on_draw_effects = r.on_draw_effects.duplicate(true)
 
 func do_attack(actor: Char, defender: Char) -> void:
-	do_effects(actor, defender, attack_effects)
+	await do_effects(actor, defender, attack_effects)
 
 func do_defend(actor: Char) -> void:
 	actor.is_defending = true
-	curr_defense = defense
-	do_effects(actor, actor, defense_effects)
+	if decay_exponent == 0:
+		add_bonus_defense(defense / 2)
+	else:
+		decay_exponent = 0
+	await do_effects(actor, actor, defense_effects)
 
 func do_on_hit(attacker: Char, defender: Char) -> void:
-	do_effects(defender, attacker, on_hit_effects)
+	await do_effects(defender, attacker, on_hit_effects)
 
 func do_on_took_damage(actor: Char) -> void:
-	do_effects(actor, actor, on_took_damage_effects)
+	await do_effects(actor, actor, on_took_damage_effects)
 
 func do_on_move_effects(actor: Char) -> void:
-	do_effects(actor, actor, on_move_effects)
+	await do_effects(actor, actor, on_move_effects)
 
 func do_on_discard_effects(actor: Char) -> void:
-	do_effects(actor, actor, on_discard_effects)
+	await do_effects(actor, actor, on_discard_effects)
 
 func do_on_draw_effects(actor: Char) -> void:
-	do_effects(actor, actor, on_draw_effects)
+	await do_effects(actor, actor, on_draw_effects)
 
 func do_on_use_effects(actor: Char) -> void:
-	do_effects(actor, actor, on_use_effects)
+	await do_effects(actor, actor, on_use_effects)
 
 func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 	for e in effects:
@@ -168,12 +169,22 @@ func get_defense_string() -> String:
 	return "∅" if is_dodge else str(get_defense())
 
 func get_defense() -> int:
-	return curr_defense
+	return (defense >> decay_exponent) + bonus_defense
+
+func get_block_defense() -> int:
+	if decay_exponent == 0:
+		return defense + bonus_defense
+	else:
+		return get_defense() + bonus_defense
 
 func on_draw(owner: Char):
 	reset_defense_decay()
 	reset_bonus_defense()
-	do_on_draw_effects(owner)
+	await do_on_draw_effects(owner)
+
+func on_discard():
+	reset_defense_decay()
+	reset_bonus_defense()
 
 func add_bonus_defense(val: int):
 	bonus_defense += val
@@ -182,10 +193,10 @@ func reset_bonus_defense():
 	bonus_defense = 0
 
 func decay_defense():
-	curr_defense /= 2
+	decay_exponent += 1
 
 func reset_defense_decay():
-	curr_defense = defense
+	decay_exponent = 0
 
 func duplicate() -> CardInstance:
 	var dupe := CardResource.new()
