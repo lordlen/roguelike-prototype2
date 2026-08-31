@@ -14,6 +14,6 @@ func execute() -> bool:
 		action_finished.emit(true)
 		return true
 	# if defender cannot be reached, just walk to the target.
-	var result := await GoCloserAction.new(attacker).execute()
+	var result := GoCloserAction.new(attacker).execute()
 	action_finished.emit(result)
 	return result

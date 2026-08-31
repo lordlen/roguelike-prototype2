@@ -27,6 +27,8 @@ func _init(owner: Char, deck_list: Array[CardResource], innate_list: Array[CardR
 # initialize should be called every time the player goes to another floor, removing
 # statuses and any kind of card scaling
 func initialize():
+	if deck_owner.user_controlled:
+		print("initialize")
 	draw_pile.clear()
 	discard_pile.clear()
 	primary = null
@@ -42,7 +44,7 @@ func initialize():
 		instance.is_innate = true
 		deck_owner.char_card_added.emit(instance)
 		draw_pile.push_back(instance)
-	reshuffle(false)
+	shuffle()
 
 func add_to_deck_list(card_resource: CardResource):
 	deck_list.push_back(card_resource)
@@ -80,8 +82,6 @@ func draw_empty(do_effects: bool = true):
 		
 		if offhand_drawn:
 			await offhand.on_draw(deck_owner)
-	
-	print("draw_empty_end")
 
 func draw() -> CardInstance:
 	if draw_pile.is_empty():
@@ -169,10 +169,7 @@ func discard_all():
 	discard_draw_pile()
 	EventBus.character_deck_updated.emit(deck_owner)
 
-func reshuffle(do_effects: bool = true):
-	# discard hand
-	#discard_primary()
-	#discard_offhand()
+func shuffle():
 	# put all the cards in the discard pile onto the draw pile
 	draw_pile.append_array(discard_pile)
 	discard_pile.clear()
@@ -203,6 +200,9 @@ func reshuffle(do_effects: bool = true):
 	# tmp.append_array(innate_cards)
 	
 	draw_pile = tmp
+
+func reshuffle(do_effects: bool = true):
+	shuffle()
 	draw_empty(do_effects)
 	var reshuffle_indicator := load("res://indicators/reshuffle_indicator.tres")
 	deck_owner.spawn_discard_particle(reshuffle_indicator)

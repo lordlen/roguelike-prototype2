@@ -272,7 +272,7 @@ func turn_start():
 	# if offhand has defense effects, also dispose
 	if is_defending and (is_hit or (deck.offhand != null and\
 	!deck.offhand.defense_effects.is_empty())):
-		deck.dispose_offhand()
+		await deck.dispose_offhand()
 
 	deck.draw_empty()
 
