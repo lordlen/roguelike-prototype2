@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://ci11r7k6ogpkv"
 [resource]
 script = ExtResource("2_s3bjj")
 name = "Blade Storm"
-rarity = 2
+rarity = 1
 attack = 6
 num_hits = 1
 range = 2

@@ -107,6 +107,7 @@ func remove_at(ind: int) -> void:
 
 func add_gold(value: int) -> void:
 	gold += value
+	gold = max(0, gold)
 	EventBus.update_gold.emit(owner)
 
 func add_card_reward(item: CardRewardItem) -> void:

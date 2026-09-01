@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://d1jx23htgo4bn"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_c7t68"]
+[ext_resource type="Script" uid="uid://e5x0ijdekx1m" path="res://cards/effects/gold/gain_gold.gd" id="2_3ylxw"]
+[ext_resource type="Script" uid="uid://b2wfok58odc2e" path="res://cards/effects/increment_stats/shiv_up.gd" id="3_0nqvg"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="3_43702"]
+
+[sub_resource type="Resource" id="Resource_xsg28"]
+script = ExtResource("2_3ylxw")
+value = -2
+metadata/_custom_type_script = "uid://e5x0ijdekx1m"
+
+[sub_resource type="Resource" id="Resource_n34pc"]
+script = ExtResource("3_0nqvg")
+atk_value = 2
+metadata/_custom_type_script = "uid://b2wfok58odc2e"
+
+[resource]
+script = ExtResource("3_43702")
+name = "Courier - Raccoon"
+rarity = 3
+range = 3
+attack_effects = Array[ExtResource("1_c7t68")]([SubResource("Resource_xsg28"), SubResource("Resource_n34pc")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

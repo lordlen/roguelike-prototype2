@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://kjccnipigvjo"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_karlt"]
+[ext_resource type="Script" uid="uid://e5x0ijdekx1m" path="res://cards/effects/gold/gain_gold.gd" id="2_4htam"]
+[ext_resource type="Script" uid="uid://de3hrn6re45yh" path="res://cards/effects/add_card/shiv.gd" id="2_pvrhi"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="3_4htam"]
+[ext_resource type="Script" uid="uid://ci11r7k6ogpkv" path="res://cards/effects/card_manip/recall.gd" id="4_nabwi"]
+
+[sub_resource type="Resource" id="Resource_86bya"]
+script = ExtResource("2_4htam")
+value = -1
+metadata/_custom_type_script = "uid://e5x0ijdekx1m"
+
+[sub_resource type="Resource" id="Resource_pxwqh"]
+script = ExtResource("2_pvrhi")
+num_cards = 2
+metadata/_custom_type_script = "uid://de3hrn6re45yh"
+
+[sub_resource type="Resource" id="Resource_1bdis"]
+script = ExtResource("4_nabwi")
+card_name = "Shiv"
+metadata/_custom_type_script = "uid://ci11r7k6ogpkv"
+
+[resource]
+script = ExtResource("3_4htam")
+name = "Courier - Mouse"
+rarity = 3
+range = 3
+attack_effects = Array[ExtResource("1_karlt")]([SubResource("Resource_86bya"), SubResource("Resource_pxwqh"), SubResource("Resource_1bdis")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

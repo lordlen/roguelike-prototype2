@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://cvojmgk216qdp"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_qh1bo"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_mqpak"]
+[ext_resource type="Script" uid="uid://rrn2acqulw8a" path="res://cards/effects/mana/mana.gd" id="2_wsa13"]
+[ext_resource type="Script" uid="uid://bdoy3ecys57f8" path="res://cards/effects/mana/barrier.gd" id="3_cvrw2"]
+[ext_resource type="Script" uid="uid://b5xhnc3wd0uym" path="res://cards/effects/mana/freeze.gd" id="4_augl7"]
+
+[sub_resource type="Resource" id="Resource_ahbs7"]
+script = ExtResource("2_wsa13")
+value = 2
+metadata/_custom_type_script = "uid://rrn2acqulw8a"
+
+[sub_resource type="Resource" id="Resource_rrt5l"]
+script = ExtResource("3_cvrw2")
+value = 2
+metadata/_custom_type_script = "uid://bdoy3ecys57f8"
+
+[sub_resource type="Resource" id="Resource_40lsg"]
+script = ExtResource("4_augl7")
+value = 2
+metadata/_custom_type_script = "uid://b5xhnc3wd0uym"
+
+[resource]
+script = ExtResource("2_mqpak")
+name = "Ice Barrier"
+rarity = 1
+defense = 6
+defense_effects = Array[ExtResource("1_qh1bo")]([SubResource("Resource_ahbs7"), SubResource("Resource_rrt5l"), SubResource("Resource_40lsg")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

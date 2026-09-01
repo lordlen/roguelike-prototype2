@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://f68uf0sy4ol0"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_sr3ny"]
+[ext_resource type="Script" uid="uid://e5x0ijdekx1m" path="res://cards/effects/gold/gain_gold.gd" id="2_4mblq"]
+[ext_resource type="Script" uid="uid://de3hrn6re45yh" path="res://cards/effects/add_card/shiv.gd" id="2_thku8"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="3_4mblq"]
+
+[sub_resource type="Resource" id="Resource_d16ko"]
+script = ExtResource("2_4mblq")
+value = -3
+metadata/_custom_type_script = "uid://e5x0ijdekx1m"
+
+[sub_resource type="Resource" id="Resource_pxwqh"]
+script = ExtResource("2_thku8")
+num_cards = 6
+metadata/_custom_type_script = "uid://de3hrn6re45yh"
+
+[resource]
+script = ExtResource("3_4mblq")
+name = "Courier - Fox"
+rarity = 3
+range = 3
+attack_effects = Array[ExtResource("1_sr3ny")]([SubResource("Resource_d16ko"), SubResource("Resource_pxwqh")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

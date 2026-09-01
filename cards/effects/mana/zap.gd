@@ -1,14 +1,11 @@
-class_name ManaThirst
+class_name Zap
 extends CardEffect
 
 func get_identifier() -> String:
-	return "mana_thirst"
+	return "zap"
 	
 func get_description() -> String:
-	return 'Add the "Invert" effect to "Cast Spell"'
-
-func get_all_nested_card_effects() -> Array[CardEffect]:
-	return [self, Invert.new()]
+	return 'Add "Instant" to "Cast Spell"'
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# check if "cast spell" is in the deck.
@@ -20,6 +17,5 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		actor.char_card_added.emit(cs)
 		actor.deck.add_to_discard(cs)
 
-	# increase cs atk by value
-	CardEffect.combine_effects(cs.attack_effects, [Invert.new()])
+	cs.is_instant = true
 	card_effect_finished.emit()

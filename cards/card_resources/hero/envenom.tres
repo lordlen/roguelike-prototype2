@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://blldccnptesun"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_bcsq6"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_0gm3x"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_o5ylw"]
+[ext_resource type="Script" uid="uid://ctqbve2qdm207" path="res://cards/effects/increment_stats/shiv_weak.gd" id="3_ipa8g"]
+
+[sub_resource type="Resource" id="Resource_82ba0"]
+script = ExtResource("2_0gm3x")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_4k3ti"]
+script = ExtResource("3_ipa8g")
+value = 1
+metadata/_custom_type_script = "uid://ctqbve2qdm207"
+
+[resource]
+script = ExtResource("2_o5ylw")
+name = "Envenom"
+rarity = 1
+attack = 9
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_bcsq6")]([SubResource("Resource_82ba0"), SubResource("Resource_4k3ti")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

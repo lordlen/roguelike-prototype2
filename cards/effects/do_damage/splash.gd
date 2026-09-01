@@ -18,5 +18,14 @@ func do(attacker: Char, defender: Char, card: CardInstance) -> void:
 	CardHelper.deal_aoe_damage(atk_value, 1, attacker, defender.grid_position, atk_range)
 	card_effect_finished.emit()
 
+
+func combine_effect(other_effect: CardEffect) -> CardEffect:
+	if !self.is_same_effect(other_effect):
+		return self
+	
+	atk_value += (other_effect as Splash).atk_value
+	radius = max((other_effect as Splash).radius, radius)
+	return self
+
 func get_shortform(card: CardInstance) -> String:
 	return "%s %d %s" % [atk_value, radius, super.get_shortform(card)]

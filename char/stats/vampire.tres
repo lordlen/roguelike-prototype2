@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_pw7t5"]
 [ext_resource type="Resource" uid="uid://dnh488icy1kuv" path="res://cards/card_resources/mind_control.tres" id="2_82ks0"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_gf8og"]
-[ext_resource type="Resource" uid="uid://cb28du6a5qtbg" path="res://cards/card_resources/hero/drain_soul.tres" id="3_fnwnk"]
+[ext_resource type="Resource" uid="uid://cb28du6a5qtbg" path="res://cards/card_resources/hero/air_blast.tres" id="3_fnwnk"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_wapu8"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="4_gf8og"]
 [ext_resource type="Resource" uid="uid://d1s7gyjlx0t8j" path="res://cards/card_resources/offering.tres" id="4_s6r6j"]

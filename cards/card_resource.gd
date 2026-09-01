@@ -42,6 +42,7 @@ const max_stats = 100
 @export var on_move_effects: Array[CardEffect]
 @export var on_discard_effects: Array[CardEffect]
 @export var on_draw_effects: Array[CardEffect]
+@export var on_any_attack_effects: Array[CardEffect]
 
 func combine(other_card: CardResource) -> CardResource:
 	# create a completely new card resource
@@ -68,4 +69,5 @@ func combine(other_card: CardResource) -> CardResource:
 	new_card.on_took_damage_effects = CardEffect.combine_effects(new_card.on_took_damage_effects, other_card.on_took_damage_effects)
 	new_card.discard_effects = CardEffect.combine_effects(new_card.discard_effects, other_card.discard_effects)
 	new_card.on_draw_effects = CardEffect.combine_effects(new_card.on_draw_effects, other_card.on_draw_effects)
+	new_card.on_any_attack_effects = CardEffect.combine_effects(new_card.on_any_attack_effects, other_card.on_any_attack_effects)
 	return new_card

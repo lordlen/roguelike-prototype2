@@ -26,6 +26,7 @@ var on_took_damage_effects: Array[CardEffect]
 var on_move_effects: Array[CardEffect]
 var on_discard_effects: Array[CardEffect]
 var on_draw_effects: Array[CardEffect]
+var on_any_attack_effects: Array[CardEffect]
 
 var decay_exponent: int = 0
 var bonus_defense := 0
@@ -54,6 +55,7 @@ func _init(r: CardResource):
 	on_move_effects = r.on_move_effects.duplicate(true)
 	on_discard_effects = r.on_discard_effects.duplicate(true)
 	on_draw_effects = r.on_draw_effects.duplicate(true)
+	on_any_attack_effects = r.on_any_attack_effects.duplicate(true)
 
 func do_attack(actor: Char, defender: Char) -> void:
 	await do_effects(actor, defender, attack_effects)
@@ -84,6 +86,9 @@ func do_on_draw_effects(actor: Char) -> void:
 func do_on_use_effects(actor: Char) -> void:
 	await do_effects(actor, actor, on_use_effects)
 
+func do_on_any_attack_effects(actor: Char) -> void:
+	await do_effects(actor, actor, on_any_attack_effects)
+
 func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 	for e in effects:
 		e.do.call_deferred(actor, target, self)
@@ -94,6 +99,7 @@ func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 		if e.is_temp:
 			effects.remove_at(i)
 	EventBus.character_deck_updated.emit(actor)
+	EventBus.character_deck_updated.emit(target)
 	card_action_finished.emit()
 
 func effect_is_changed():
@@ -156,6 +162,12 @@ func get_description() -> String:
 	
 	if len(on_use_effects) > 0:
 		result += RichTextHelper.text_with_tooltip("On Use: \n", "Trigger effects when you use this card.")
+		for e in on_use_effects:
+			result += '\t' + e.get_shortform(self)
+			result += '\n'
+	
+	if len(on_use_effects) > 0:
+		result += RichTextHelper.text_with_tooltip("On Any Attack: \n", "Trigger effects when you attack with any card.")
 		for e in on_use_effects:
 			result += '\t' + e.get_shortform(self)
 			result += '\n'

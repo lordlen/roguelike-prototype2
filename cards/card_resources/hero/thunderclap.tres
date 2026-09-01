@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://dx1drwrfeeqjk"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_tw8lr"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_1nx72"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_60a18"]
+[ext_resource type="Script" uid="uid://rrn2acqulw8a" path="res://cards/effects/mana/mana.gd" id="3_yhtid"]
+[ext_resource type="Script" uid="uid://dlwi1mdd4yg86" path="res://cards/effects/mana/zap.gd" id="4_yhtid"]
+
+[sub_resource type="Resource" id="Resource_0otne"]
+script = ExtResource("2_60a18")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_2jmv7"]
+script = ExtResource("3_yhtid")
+value = 3
+metadata/_custom_type_script = "uid://rrn2acqulw8a"
+
+[sub_resource type="Resource" id="Resource_oyeqc"]
+script = ExtResource("4_yhtid")
+metadata/_custom_type_script = "uid://dlwi1mdd4yg86"
+
+[resource]
+script = ExtResource("2_1nx72")
+name = "Thunderclap"
+rarity = 1
+attack = 6
+num_hits = 1
+range = 2
+attack_effects = Array[ExtResource("1_tw8lr")]([SubResource("Resource_0otne"), SubResource("Resource_2jmv7"), SubResource("Resource_oyeqc")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

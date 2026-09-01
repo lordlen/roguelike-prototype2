@@ -309,6 +309,9 @@ func pop_all_cards(card_name: String) -> Array[CardInstance]:
 func on_attack(defender: Char):
 	if deck_owner.deck.primary != null:
 		await deck_owner.deck.primary.do_attack(deck_owner, defender)
+	
+	for c in get_all_card_instances():
+		await c.do_on_any_attack_effects(deck_owner)
 
 func on_defend(actor: Char):
 	if offhand != null:
