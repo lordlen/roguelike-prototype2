@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=48 format=3 uid="uid://bm7jexowpywcw"]
+[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=49 format=3 uid="uid://bm7jexowpywcw"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_mt40e"]
 [ext_resource type="Script" uid="uid://cmd7omwhxqjw8" path="res://cards/card_reward_generator.gd" id="2_ehu0x"]
@@ -24,7 +24,6 @@
 [ext_resource type="Resource" uid="uid://blllsfvpy8ejd" path="res://cards/card_resources/hero/grass_walk.tres" id="21_2tm4g"]
 [ext_resource type="Resource" uid="uid://bqbd7h3blkn1" path="res://cards/card_resources/hero/haymaker.tres" id="22_lx048"]
 [ext_resource type="Resource" uid="uid://c8ygn5t3qrtii" path="res://cards/card_resources/hero/hemokinesis.tres" id="23_e3r6g"]
-[ext_resource type="Resource" uid="uid://co3e7ef0tqd6v" path="res://cards/card_resources/hero/hold_fast.tres" id="24_lxsog"]
 [ext_resource type="Resource" uid="uid://di101am50umer" path="res://cards/card_resources/hero/hone.tres" id="25_8nuwd"]
 [ext_resource type="Resource" uid="uid://bxrdmckld3gdu" path="res://cards/card_resources/hero/imbue_mana.tres" id="26_mv24u"]
 [ext_resource type="Resource" uid="uid://bgu7bj8kndnat" path="res://cards/card_resources/hero/immolate.tres" id="27_28fgn"]
@@ -43,14 +42,16 @@
 [ext_resource type="Resource" uid="uid://f434krghwv0s" path="res://cards/card_resources/hero/shadow_clone.tres" id="40_u3p54"]
 [ext_resource type="Resource" uid="uid://cpmrxei642i1q" path="res://cards/card_resources/hero/shadow_shuriken.tres" id="41_le2br"]
 [ext_resource type="Resource" uid="uid://dr7w77sr62e1t" path="res://cards/card_resources/hero/shield_boomerang.tres" id="42_2kx0k"]
+[ext_resource type="Resource" uid="uid://jfolhig4wghx" path="res://cards/card_resources/hero/spinning_deflection.tres" id="42_em7bc"]
 [ext_resource type="Resource" uid="uid://bj4or60banjt0" path="res://cards/card_resources/hero/substitution.tres" id="43_fn7ox"]
 [ext_resource type="Resource" uid="uid://ndido6grhne3" path="res://cards/card_resources/hero/triple_attack.tres" id="44_ve7gc"]
 [ext_resource type="Resource" uid="uid://dml01l2m3lt4o" path="res://cards/card_resources/hero/unstable_spell.tres" id="45_0gxov"]
+[ext_resource type="Resource" uid="uid://b4x1s8q8xmnx7" path="res://cards/card_resources/hero/warding_talisman.tres" id="46_6vnne"]
 [ext_resource type="Resource" uid="uid://r0xmcf3pni07" path="res://cards/card_resources/hero/whirl.tres" id="46_v1d2r"]
 
 [resource]
 script = ExtResource("2_ehu0x")
-card_resources = Array[ExtResource("1_mt40e")]([ExtResource("2_tsyqv"), ExtResource("3_em7bc"), ExtResource("4_6vnne"), ExtResource("5_juvpo"), ExtResource("6_ohuqa"), ExtResource("7_ec6ll"), ExtResource("8_vdl3l"), ExtResource("9_26rsa"), ExtResource("10_xvrcq"), ExtResource("11_m0teb"), ExtResource("12_7jv5w"), ExtResource("13_8k8pu"), ExtResource("14_2q5jd"), ExtResource("15_ip6dt"), ExtResource("16_0tp30"), ExtResource("17_sjlrk"), ExtResource("18_yhys1"), ExtResource("19_dxpc5"), ExtResource("20_v0xf5"), ExtResource("21_2tm4g"), ExtResource("22_lx048"), ExtResource("23_e3r6g"), ExtResource("24_lxsog"), ExtResource("25_8nuwd"), ExtResource("26_mv24u"), ExtResource("27_28fgn"), ExtResource("28_eiptj"), ExtResource("29_ktpn2"), ExtResource("30_ask8w"), ExtResource("31_oxrgr"), ExtResource("32_thday"), ExtResource("33_g5cdp"), ExtResource("34_xcyd7"), ExtResource("35_jbt38"), ExtResource("36_ihigt"), ExtResource("37_k2pqf"), ExtResource("38_auq2w"), ExtResource("39_vkm5e"), ExtResource("40_u3p54"), ExtResource("41_le2br"), ExtResource("42_2kx0k"), ExtResource("43_fn7ox"), ExtResource("44_ve7gc"), ExtResource("45_0gxov"), ExtResource("46_v1d2r")])
+card_resources = Array[ExtResource("1_mt40e")]([ExtResource("2_tsyqv"), ExtResource("3_em7bc"), ExtResource("4_6vnne"), ExtResource("5_juvpo"), ExtResource("6_ohuqa"), ExtResource("7_ec6ll"), ExtResource("8_vdl3l"), ExtResource("9_26rsa"), ExtResource("10_xvrcq"), ExtResource("11_m0teb"), ExtResource("12_7jv5w"), ExtResource("13_8k8pu"), ExtResource("14_2q5jd"), ExtResource("15_ip6dt"), ExtResource("16_0tp30"), ExtResource("17_sjlrk"), ExtResource("18_yhys1"), ExtResource("19_dxpc5"), ExtResource("20_v0xf5"), ExtResource("21_2tm4g"), ExtResource("22_lx048"), ExtResource("23_e3r6g"), ExtResource("25_8nuwd"), ExtResource("26_mv24u"), ExtResource("27_28fgn"), ExtResource("28_eiptj"), ExtResource("29_ktpn2"), ExtResource("30_ask8w"), ExtResource("31_oxrgr"), ExtResource("32_thday"), ExtResource("33_g5cdp"), ExtResource("34_xcyd7"), ExtResource("35_jbt38"), ExtResource("36_ihigt"), ExtResource("37_k2pqf"), ExtResource("38_auq2w"), ExtResource("39_vkm5e"), ExtResource("40_u3p54"), ExtResource("41_le2br"), ExtResource("42_2kx0k"), ExtResource("42_em7bc"), ExtResource("43_fn7ox"), ExtResource("44_ve7gc"), ExtResource("45_0gxov"), ExtResource("46_6vnne"), ExtResource("46_v1d2r")])
 common_weight = 0
 uncommon_weight = 0
 rare_weight = 100

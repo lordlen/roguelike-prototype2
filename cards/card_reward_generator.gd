@@ -16,6 +16,7 @@ var rare: Array[CardResource]
 var is_instantiated: bool = false
 
 func instantiate():
+	is_instantiated = true
 	for c in card_resources:
 		match c.rarity:
 			CardResource.Rarity.COMMON:
@@ -44,7 +45,6 @@ func generate_rarity_cards(counts: Array[int]) -> Array[CardResource]:
 		# random ind list
 		var inds := range(len(grouped_cards[i]))
 		inds.shuffle()
-		
 		for ind in inds.slice(0, counts[i]):
 			ret.push_back(grouped_cards[i][ind])
 	

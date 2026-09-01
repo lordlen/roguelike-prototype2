@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://jfolhig4wghx"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_ntjnc"]
+[ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="2_fboxa"]
+[ext_resource type="Script" uid="uid://b2r1ah4t6rfvn" path="res://cards/effects/increment_stats/shiv_def.gd" id="2_g0n84"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_qbtl7"]
+
+[sub_resource type="Resource" id="Resource_3aa1o"]
+script = ExtResource("2_fboxa")
+metadata/_custom_type_script = "uid://befkr8rvi0mwo"
+
+[sub_resource type="Resource" id="Resource_meffj"]
+script = ExtResource("2_g0n84")
+metadata/_custom_type_script = "uid://b2r1ah4t6rfvn"
+
+[resource]
+script = ExtResource("2_qbtl7")
+name = "Spinning Deflection"
+rarity = 1
+defense = 5
+defense_effects = Array[ExtResource("1_ntjnc")]([SubResource("Resource_3aa1o")])
+on_draw_effects = Array[ExtResource("1_ntjnc")]([SubResource("Resource_meffj")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

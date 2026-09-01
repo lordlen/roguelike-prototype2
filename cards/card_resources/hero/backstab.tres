@@ -16,7 +16,6 @@ metadata/_custom_type_script = "uid://bht5j60htrmv2"
 [resource]
 script = ExtResource("2_d17qk")
 name = "Backstab"
-rarity = 1
 attack = 10
 num_hits = 1
 range = 2
