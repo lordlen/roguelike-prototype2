@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_2jmv7"]
 script = ExtResource("3_yhtid")
-value = 3
+value = 2
 metadata/_custom_type_script = "uid://rrn2acqulw8a"
 
 [sub_resource type="Resource" id="Resource_oyeqc"]
@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://dlwi1mdd4yg86"
 script = ExtResource("2_1nx72")
 name = "Thunderclap"
 rarity = 1
-attack = 6
+attack = 5
 num_hits = 1
 range = 2
 attack_effects = Array[ExtResource("1_tw8lr")]([SubResource("Resource_0otne"), SubResource("Resource_2jmv7"), SubResource("Resource_oyeqc")])

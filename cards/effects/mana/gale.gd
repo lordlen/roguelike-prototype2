@@ -13,8 +13,7 @@ func get_numeric() -> String:
 	return "n"
 
 func get_all_nested_card_effects() -> Array[CardEffect]:
-	var effect := AllTmpAtkUp.new()
-	effect.target = Target.ENEMY
+	var effect := PushAoe.new()
 	return [self, effect]
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
