@@ -1,18 +1,26 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://bwgvikd2v1n1a"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://bwgvikd2v1n1a"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_0gjyt"]
 [ext_resource type="Script" uid="uid://cfevl6g0dspkc" path="res://cards/command/beckon_aoe.gd" id="2_52pps"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_x0w32"]
+[ext_resource type="Resource" uid="uid://bqrj3bxo4xipg" path="res://char/stats/zombie.tres" id="3_xgdxs"]
+[ext_resource type="Script" uid="uid://b8xc6asei4xbv" path="res://cards/effects/summon/summon.gd" id="4_02htq"]
 
 [sub_resource type="Resource" id="Resource_xgdxs"]
 script = ExtResource("2_52pps")
 radius = 8
 metadata/_custom_type_script = "uid://cfevl6g0dspkc"
 
+[sub_resource type="Resource" id="Resource_h3bh6"]
+script = ExtResource("4_02htq")
+num_summons = 1
+char_resource = ExtResource("3_xgdxs")
+metadata/_custom_type_script = "uid://b8xc6asei4xbv"
+
 [resource]
 script = ExtResource("2_x0w32")
 name = "Coffin Bell"
 range = 2
 exhausts = true
-attack_effects = Array[ExtResource("1_0gjyt")]([SubResource("Resource_xgdxs")])
+attack_effects = Array[ExtResource("1_0gjyt")]([SubResource("Resource_xgdxs"), SubResource("Resource_h3bh6")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"
