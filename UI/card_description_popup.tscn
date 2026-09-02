@@ -40,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -109.0
-offset_top = -175.0
-offset_right = 122.0
-offset_bottom = -4.75
+offset_left = -158.0
+offset_top = -141.0
+offset_right = 73.0
+offset_bottom = 29.25
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d5hb2")
@@ -99,8 +99,8 @@ anchor_right = 1.0
 anchor_bottom = 0.007
 offset_left = 5.5
 offset_top = 0.05824995
-offset_right = 130.5
-offset_bottom = 168.05824
+offset_right = 237.0
+offset_bottom = 34.05825
 
 [node name="Panel" parent="CardDescription/VBoxContainer" instance=ExtResource("5_tm1gv")]
 layout_mode = 2

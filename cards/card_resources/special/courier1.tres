@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://ci11r7k6ogpkv"
 
 [resource]
 script = ExtResource("3_4htam")
-name = "Courier - Mouse"
+name = "Mouse"
 rarity = 3
 range = 3
 attack_effects = Array[ExtResource("1_karlt")]([SubResource("Resource_86bya"), SubResource("Resource_pxwqh"), SubResource("Resource_1bdis")])

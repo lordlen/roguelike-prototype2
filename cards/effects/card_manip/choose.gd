@@ -1,21 +1,26 @@
-class_name ChooseCourier
+class_name Choose
 extends CardEffect
 
-var choices : Array[CardResource] = [
-	load("res://cards/card_resources/special/courier1.tres"),
-	load("res://cards/card_resources/special/courier2.tres"),
-	load("res://cards/card_resources/special/courier3.tres"),
-]
+@export var choices : Array[CardResource]
 
 func get_identifier() -> String:
-	return "courier"
+	return "choose"
 
 func get_description() -> String:
-	var description :='''Choose:
--1 gold. 2 shiv. Recall "Shiv."
--2 gold. 2 shiv_up.
--3 gold. 6 shiv.'''
+	var description := "Choose:\n"
+	for c in choices:
+		description += "____________________\n"
+		var card := CardInstance.new(c)
+		description += card.get_description()
 	return description
+
+func get_all_nested_card_effects() -> Array[CardEffect]:
+	var effects : Array[CardEffect] = [self]
+	for c in choices:
+		var card := CardInstance.new(c)
+		for e in card.get_all_effects():
+			effects += e.get_all_nested_card_effects()
+	return effects
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var card_instances : Array[CardInstance] = []
@@ -27,3 +32,9 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var selected_card : CardInstance = card_instances[selected_ind]
 	await selected_card.do_attack(actor, target_char)
 	card_effect_finished.emit()
+
+func get_shortform(card: CardInstance) -> String:
+	var desc := "[color=orange]%s[/color]" % [get_identifier()]
+	for c in choices:
+		desc += " %s" % c.name
+	return desc

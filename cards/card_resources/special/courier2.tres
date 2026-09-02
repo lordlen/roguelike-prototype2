@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://b2wfok58odc2e"
 
 [resource]
 script = ExtResource("3_43702")
-name = "Courier - Raccoon"
+name = "Raccoon"
 rarity = 3
 range = 3
 attack_effects = Array[ExtResource("1_c7t68")]([SubResource("Resource_xsg28"), SubResource("Resource_n34pc")])

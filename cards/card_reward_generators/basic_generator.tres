@@ -48,7 +48,7 @@
 [ext_resource type="Resource" uid="uid://c1plw8p66m36" path="res://cards/card_resources/hero/resilience.tres" id="37_5s010"]
 [ext_resource type="Resource" uid="uid://bcvgmmg1t5jb6" path="res://cards/card_resources/hero/second_wind.tres" id="38_d1l8s"]
 [ext_resource type="Resource" uid="uid://c8dqfy41bklt1" path="res://cards/card_resources/hero/read.tres" id="38_f35hh"]
-[ext_resource type="Resource" uid="uid://4kdf0lw56gfd" path="res://cards/card_resources/hero/resupply.tres" id="40_0uqcs"]
+[ext_resource type="Resource" uid="uid://4kdf0lw56gfd" path="res://cards/card_resources/hero/courier.tres" id="40_0uqcs"]
 [ext_resource type="Resource" uid="uid://f434krghwv0s" path="res://cards/card_resources/hero/shadow_clone.tres" id="40_4wobo"]
 [ext_resource type="Resource" uid="uid://jfolhig4wghx" path="res://cards/card_resources/hero/spinning_deflection.tres" id="42_d1l8s"]
 [ext_resource type="Resource" uid="uid://bj4or60banjt0" path="res://cards/card_resources/hero/substitution.tres" id="43_he7mw"]

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://4kdf0lw56gfd"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_qekq5"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_mve4j"]
+[ext_resource type="Resource" uid="uid://kjccnipigvjo" path="res://cards/card_resources/special/courier1.tres" id="3_1pk17"]
+[ext_resource type="Resource" uid="uid://d1jx23htgo4bn" path="res://cards/card_resources/special/courier2.tres" id="4_dvsr5"]
+[ext_resource type="Resource" uid="uid://f68uf0sy4ol0" path="res://cards/card_resources/special/courier3.tres" id="5_dah4p"]
+[ext_resource type="Script" uid="uid://cbad6dcsbgpe1" path="res://cards/effects/card_manip/choose.gd" id="6_1u8ir"]
+
+[sub_resource type="Resource" id="Resource_num0g"]
+script = ExtResource("6_1u8ir")
+choices = Array[ExtResource("2_mve4j")]([ExtResource("3_1pk17"), ExtResource("4_dvsr5"), ExtResource("5_dah4p")])
+metadata/_custom_type_script = "uid://cbad6dcsbgpe1"
+
+[resource]
+script = ExtResource("2_mve4j")
+name = "Courier"
+rarity = 2
+range = 3
+attack_effects = Array[ExtResource("1_qekq5")]([SubResource("Resource_num0g")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"
