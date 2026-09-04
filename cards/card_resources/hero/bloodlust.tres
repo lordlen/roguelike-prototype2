@@ -23,6 +23,7 @@ metadata/_custom_type_script = "uid://pfxy8agsakrm"
 script = ExtResource("2_htpsh")
 name = "Bloodlust"
 rarity = 2
+attack = 3
 num_hits = 1
 range = 1
 exhausts = true

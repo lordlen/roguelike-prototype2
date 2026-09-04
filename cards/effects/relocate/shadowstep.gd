@@ -17,8 +17,9 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	# check if "behind" is occupied.
 	var occupying_actor := ActorManager.get_actor_in_position(behind)
 	if occupying_actor != null or Globals.floor_map.get_tile(behind).get_pf_cost(actor.traversal) == INF:
-		# do nothing
-		pass
+		# relocate instead
+		var relocate := Relocate.new()
+		relocate.do(actor, target_char, card)
 	else:
 		actor.char_move_effect.emit()
 		# get the last 

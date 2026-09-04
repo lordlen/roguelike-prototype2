@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=24 format=3 uid="uid://bwv71kpvp3b1b"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=26 format=3 uid="uid://bwv71kpvp3b1b"]
 
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_aa0y6"]
 [ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_jdb56"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="4_2dd70"]
 [ext_resource type="Resource" uid="uid://pfwemucjaw4j" path="res://floor_generator/floor_description/spawn_groups/single_zombie.tres" id="4_aa0y6"]
 [ext_resource type="Resource" uid="uid://bqracyhwv401b" path="res://floor_generator/floor_description/spawn_groups/double_zombie.tres" id="4_ipe85"]
-[ext_resource type="Resource" uid="uid://c1tf5pab7q3oo" path="res://floor_generator/floor_description/spawn_groups/single_ghost.tres" id="5_aa0y6"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="5_mltmi"]
+[ext_resource type="Resource" uid="uid://cs2fhx0qh5rur" path="res://floor_generator/floor_description/spawn_groups/single_spirit_wolf.tres" id="6_m7xqd"]
 [ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="6_oji3x"]
+[ext_resource type="Resource" uid="uid://bfl70ibh5j5x8" path="res://floor_generator/floor_description/spawn_groups/single_slime.tres" id="7_jdb56"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="7_nuvs6"]
+[ext_resource type="Resource" uid="uid://c4vhtc68mjw5l" path="res://floor_generator/floor_description/spawn_groups/single_skeleton_archer.tres" id="8_2dd70"]
 [ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="10_aa0y6"]
 [ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="11_jdb56"]
 [ext_resource type="Resource" uid="uid://ctmdd8rcov4kq" path="res://patterns/hut.tres" id="12_m7xqd"]
@@ -29,8 +31,8 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_ev3rf"]
 script = ExtResource("4_2dd70")
-pool = Array[ExtResource("1_aa0y6")]([ExtResource("4_aa0y6"), ExtResource("5_aa0y6")])
-weights = Array[float]([1.0, 1.0])
+pool = Array[ExtResource("1_aa0y6")]([ExtResource("4_aa0y6"), ExtResource("6_m7xqd"), ExtResource("7_jdb56"), ExtResource("8_2dd70")])
+weights = Array[float]([3.0, 1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_3aogm"]

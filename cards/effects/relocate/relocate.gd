@@ -20,6 +20,6 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	
 	actor.char_move_effect.emit()
 	# get the last 
-	actor.move_to(path[len(path) - 1])
+	actor.move_to(path[- 1])
 	# await actor.char_finished_moving
 	card_effect_finished.emit()

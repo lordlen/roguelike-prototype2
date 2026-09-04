@@ -18,5 +18,6 @@ metadata/_custom_type_script = "uid://c56tu66yr0yqq"
 script = ExtResource("2_4o4xx")
 name = "Ethereal Chains"
 range = 3
+exhausts = true
 attack_effects = Array[ExtResource("1_fdsr5")]([SubResource("Resource_nos7c"), SubResource("Resource_kfpra")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

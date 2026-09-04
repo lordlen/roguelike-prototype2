@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_6looy"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_wg0l4"]
 [ext_resource type="Script" uid="uid://b66pa00t5sed" path="res://cards/effects/increment_stats/increment_all_attack.gd" id="3_wa0lv"]
-[ext_resource type="Script" uid="uid://4q5v6t4c1adn" path="res://cards/effects/exhaust/exhaust_off.gd" id="4_wa0lv"]
+[ext_resource type="Script" uid="uid://ck34vd2711gt1" path="res://cards/effects/exhaust/exhaust.gd" id="4_wa0lv"]
 
 [sub_resource type="Resource" id="Resource_n0i5r"]
 script = ExtResource("2_6looy")
@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://b66pa00t5sed"
 
 [sub_resource type="Resource" id="Resource_bi7p2"]
 script = ExtResource("4_wa0lv")
-metadata/_custom_type_script = "uid://4q5v6t4c1adn"
+metadata/_custom_type_script = "uid://ck34vd2711gt1"
 
 [resource]
 script = ExtResource("2_wg0l4")

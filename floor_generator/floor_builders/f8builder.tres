@@ -5,11 +5,11 @@
 [ext_resource type="Resource" uid="uid://ccytgfl1kira4" path="res://floor_generator/floor_description/spawn_groups/triple_zombie.tres" id="2_0b6pp"]
 [ext_resource type="Resource" uid="uid://biy8dyhir3qa2" path="res://floor_generator/floor_description/spawn_groups/single_vampire.tres" id="3_k5a1d"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="4_hvl8t"]
-[ext_resource type="Resource" uid="uid://bqracyhwv401b" path="res://floor_generator/floor_description/spawn_groups/double_zombie.tres" id="5_0b6pp"]
-[ext_resource type="Resource" uid="uid://c6g3jctoctm54" path="res://floor_generator/floor_description/spawn_groups/single_cultist.tres" id="6_5pd4n"]
+[ext_resource type="Resource" uid="uid://xidsgcfwogfn" path="res://floor_generator/floor_description/spawn_groups/double_spirit_wolf.tres" id="7_0b6pp"]
 [ext_resource type="Resource" uid="uid://dtkivaldy4pf6" path="res://floor_generator/floor_description/spawn_groups/single_warden.tres" id="7_led7c"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="8_di1c1"]
 [ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="9_41m32"]
+[ext_resource type="Resource" uid="uid://dwssxtmf2cj02" path="res://floor_generator/floor_description/spawn_groups/zombie_skeleton.tres" id="9_dklym"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="10_klshn"]
 [ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="12_0b6pp"]
 [ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="13_dklym"]
@@ -31,8 +31,8 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_ev3rf"]
 script = ExtResource("4_hvl8t")
-pool = Array[ExtResource("1_k5a1d")]([ExtResource("5_0b6pp"), ExtResource("6_5pd4n"), ExtResource("7_led7c"), ExtResource("3_k5a1d")])
-weights = Array[float]([2.0, 2.0, 1.0, 1.0])
+pool = Array[ExtResource("1_k5a1d")]([ExtResource("9_dklym"), ExtResource("7_0b6pp"), ExtResource("7_led7c"), ExtResource("3_k5a1d")])
+weights = Array[float]([2.0, 1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_3aogm"]
@@ -49,6 +49,6 @@ metadata/_custom_type_script = "uid://cihmjv6v0inos"
 [resource]
 script = ExtResource("21_v7ig6")
 floor_description = SubResource("Resource_3aogm")
-floor_name = "F6"
+floor_name = "F8"
 card_reward_generator = ExtResource("1_0b6pp")
 metadata/_custom_type_script = "uid://bo2wewg8np8bl"

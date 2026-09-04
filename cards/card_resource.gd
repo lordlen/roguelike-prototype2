@@ -33,6 +33,7 @@ const max_stats = 100
 @export var is_innate: bool
 @export var is_ethereal: bool
 @export var is_instant: bool
+@export var is_lob: bool = false
 
 @export var attack_effects: Array[CardEffect]
 @export var defense_effects: Array[CardEffect]

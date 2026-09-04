@@ -23,7 +23,7 @@
 [ext_resource type="Resource" uid="uid://cwx7hllxmtx30" path="res://cards/card_resources/hero/force_field.tres" id="20_v0xf5"]
 [ext_resource type="Resource" uid="uid://blllsfvpy8ejd" path="res://cards/card_resources/hero/grass_walk.tres" id="21_2tm4g"]
 [ext_resource type="Resource" uid="uid://bqbd7h3blkn1" path="res://cards/card_resources/hero/haymaker.tres" id="22_lx048"]
-[ext_resource type="Resource" uid="uid://c8ygn5t3qrtii" path="res://cards/card_resources/hero/hemokinesis.tres" id="23_e3r6g"]
+[ext_resource type="Resource" uid="uid://c8ygn5t3qrtii" path="res://cards/card_resources/hemokinesis.tres" id="23_e3r6g"]
 [ext_resource type="Resource" uid="uid://di101am50umer" path="res://cards/card_resources/hero/hone.tres" id="25_8nuwd"]
 [ext_resource type="Resource" uid="uid://bxrdmckld3gdu" path="res://cards/card_resources/hero/mana storm.tres" id="26_mv24u"]
 [ext_resource type="Resource" uid="uid://bgu7bj8kndnat" path="res://cards/card_resources/hero/immolate.tres" id="27_28fgn"]

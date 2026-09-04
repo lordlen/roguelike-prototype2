@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpawnGroup" load_steps=4 format=3 uid="uid://cs2fhx0qh5rur"]
+
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_dg3tv"]
+[ext_resource type="Resource" uid="uid://bm4uv1ff5vey1" path="res://char/stats/spirit_wolf.tres" id="2_rv1x8"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="3_7y3jq"]
+
+[resource]
+script = ExtResource("3_7y3jq")
+group = Array[ExtResource("1_dg3tv")]([ExtResource("2_rv1x8")])
+metadata/_custom_type_script = "uid://cgbukm4afxlvj"

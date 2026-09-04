@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://cm0p7fj43cd6o"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_pe416"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_3irdn"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_gmqm7"]
+[ext_resource type="Script" uid="uid://bjmf81tidcb18" path="res://cards/effects/discard/deduce.gd" id="3_hf1m1"]
+
+[sub_resource type="Resource" id="Resource_rt5qn"]
+script = ExtResource("2_gmqm7")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_exwvr"]
+script = ExtResource("3_hf1m1")
+metadata/_custom_type_script = "uid://bjmf81tidcb18"
+
+[resource]
+script = ExtResource("2_3irdn")
+name = "Disciplined"
+attack = 11
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_pe416")]([SubResource("Resource_rt5qn"), SubResource("Resource_exwvr")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

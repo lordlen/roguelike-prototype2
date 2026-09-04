@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawnGroup" load_steps=5 format=3 uid="uid://dwssxtmf2cj02"]
+
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_gmit5"]
+[ext_resource type="Resource" uid="uid://bqrj3bxo4xipg" path="res://char/stats/zombie.tres" id="2_8s048"]
+[ext_resource type="Resource" uid="uid://co4mhgx1yck1a" path="res://char/stats/skeleton_archer.tres" id="3_nnuly"]
+[ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="4_vh83l"]
+
+[resource]
+script = ExtResource("4_vh83l")
+group = Array[ExtResource("1_gmit5")]([ExtResource("2_8s048"), ExtResource("3_nnuly")])
+metadata/_custom_type_script = "uid://cgbukm4afxlvj"

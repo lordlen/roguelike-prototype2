@@ -8,7 +8,6 @@ enum Target {
 	ENEMY
 }
 
-@export var nested_effects: Array[CardEffect]
 @export var is_temp: bool
 
 func do(actor: Char, target_char: Char, card: CardInstance) -> void:

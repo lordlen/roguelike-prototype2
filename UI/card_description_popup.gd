@@ -31,6 +31,9 @@ func set_card(card: CardInstance) -> void:
 	if card.is_instant:
 		add_effect_desc(CardDescriptionHelper.orange_text("instant"),
 		"Attacking with this card will not use your turn.")
+	if card.is_lob:
+		add_effect_desc(CardDescriptionHelper.orange_text("lob"),
+		"Ignore obstructions when attacking an enemy.")
 	for e in card.get_all_effects():
 		for effect in e.get_all_nested_card_effects():
 			if effect.get_identifier() in unique_keywords or !effect.get_description():

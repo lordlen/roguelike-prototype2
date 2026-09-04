@@ -17,6 +17,7 @@ var exhausts: bool
 var is_innate: bool
 var is_ethereal: bool
 var is_instant: bool
+var is_lob: bool
 
 var attack_effects: Array[CardEffect]
 var defense_effects: Array[CardEffect]
@@ -46,6 +47,7 @@ func _init(r: CardResource):
 	is_innate = r.is_innate
 	is_ethereal = r.is_ethereal
 	is_instant = r.is_instant
+	is_lob = r.is_lob
 	
 	attack_effects = r.attack_effects.duplicate(true)
 	defense_effects = r.defense_effects.duplicate(true)
@@ -119,6 +121,9 @@ func get_description() -> String:
 	if is_instant:
 		result += CardDescriptionHelper.orange_text("Instant")
 		result += ".\n"
+	if is_lob:
+		result += CardDescriptionHelper.orange_text("Lob")
+		result += ".\n"
 	
 	for e in self.attack_effects:
 		result += e.get_shortform(self)
@@ -166,9 +171,9 @@ func get_description() -> String:
 			result += '\t' + e.get_shortform(self)
 			result += '\n'
 	
-	if len(on_use_effects) > 0:
+	if len(on_any_attack_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Any Attack: \n", "Trigger effects when you attack with any card.")
-		for e in on_use_effects:
+		for e in on_any_attack_effects:
 			result += '\t' + e.get_shortform(self)
 			result += '\n'
 
@@ -224,6 +229,7 @@ func duplicate() -> CardInstance:
 	dupe.is_innate = is_innate
 	dupe.is_ethereal = is_ethereal
 	dupe.is_instant = is_instant
+	dupe.is_lob = is_lob
 	dupe.attack_effects = attack_effects.duplicate(true)
 	dupe.defense_effects = defense_effects.duplicate(true)
 	dupe.on_use_effects = on_use_effects.duplicate(true)

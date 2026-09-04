@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://bi5tu5pg2y40b"
 
 [sub_resource type="Resource" id="Resource_4i0l4"]
 script = ExtResource("4_ptpwy")
-num_cards = 2
+num_cards = 3
 metadata/_custom_type_script = "uid://cbkcnehiantue"
 
 [sub_resource type="Resource" id="Resource_s5ulk"]
@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://befkr8rvi0mwo"
 [resource]
 script = ExtResource("2_pgp6p")
 name = "Acrobatics"
+rarity = 1
 attack = 1
 defense = 5
 num_hits = 1

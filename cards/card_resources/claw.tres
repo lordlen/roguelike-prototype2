@@ -1,18 +1,24 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://cmpnxvgbs7n4"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://cmpnxvgbs7n4"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_5ft6t"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_qbmk6"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_w7sqm"]
+[ext_resource type="Script" uid="uid://785c7kec6the" path="res://cards/effects/increment_stats/all_atk_up.gd" id="3_w7sqm"]
 
 [sub_resource type="Resource" id="Resource_8wx2k"]
 script = ExtResource("2_w7sqm")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
+[sub_resource type="Resource" id="Resource_jkft3"]
+script = ExtResource("3_w7sqm")
+atk_value = 1
+metadata/_custom_type_script = "uid://785c7kec6the"
+
 [resource]
 script = ExtResource("2_qbmk6")
 name = "Claw"
-attack = 6
+attack = 5
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_5ft6t")]([SubResource("Resource_8wx2k")])
+attack_effects = Array[ExtResource("1_5ft6t")]([SubResource("Resource_8wx2k"), SubResource("Resource_jkft3")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

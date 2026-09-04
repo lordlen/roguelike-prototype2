@@ -27,8 +27,6 @@ func _init(owner: Char, deck_list: Array[CardResource], innate_list: Array[CardR
 # initialize should be called every time the player goes to another floor, removing
 # statuses and any kind of card scaling
 func initialize():
-	if deck_owner.user_controlled:
-		print("initialize")
 	draw_pile.clear()
 	discard_pile.clear()
 	primary = null
@@ -159,6 +157,7 @@ func invert_piles():
 	for c in draw_pile:
 		await c.do_on_discard_effects(deck_owner)
 	var tmp := draw_pile
+	discard_pile.shuffle()
 	draw_pile = discard_pile
 	discard_pile = tmp
 	EventBus.character_deck_updated.emit(deck_owner)

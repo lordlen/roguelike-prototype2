@@ -1981,6 +1981,7 @@ region_descriptions = Array[ExtResource("2_agy8s")]([ExtResource("3_lj33d"), Ext
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="HeroInfo" parent="UILayer" instance=ExtResource("6_lj33d")]
+z_index = 1000
 scale = Vector2(1, 1)
 
 [node name="TargetInfo" parent="UILayer" instance=ExtResource("6_lj33d")]
