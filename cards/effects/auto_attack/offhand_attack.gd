@@ -11,6 +11,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	var offhand := actor.deck.offhand
 	
 	if offhand == null:
+		card_effect_finished.emit()
 		return
 	
 	offhand.do_attack.call_deferred(actor, target_char)

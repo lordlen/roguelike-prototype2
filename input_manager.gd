@@ -79,9 +79,15 @@ func character_controller(event: InputEvent):
 		var grid_position : Vector2i= floor(get_global_mouse_position() / Consts.TILE_SIZE)
 		# restrict input if the target has not yet been explored
 		if !is_aiming:
+			print(self.actor.explored_set.has(grid_position))
 			if self.actor.explored_set.has(grid_position):
 				# check if an evil character is in the location
-				var target_char_ind := self.actor.visible_actors.find_custom(func(ch: Char): return ch.grid_position == grid_position)
+				var target_char_ind := -1
+				for i in range(len(self.actor.visible_actors)):
+					var ch := self.actor.visible_actors[i]
+					if is_instance_valid(ch) and ch.grid_position == grid_position:
+						target_char_ind = i
+						break
 				if target_char_ind != -1:
 					var target_char = self.actor.visible_actors[target_char_ind]
 					if target_char.alignment != self.actor.alignment:
