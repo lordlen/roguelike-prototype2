@@ -24,6 +24,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 			break
 		
 		curr_pos = pos
+	actor.char_move_effect.emit()
 	actor.move_to(curr_pos)
 	card_effect_finished.emit()
 
