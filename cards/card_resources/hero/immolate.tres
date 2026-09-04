@@ -1,25 +1,32 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bgu7bj8kndnat"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://bgu7bj8kndnat"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_hvl6m"]
 [ext_resource type="Script" uid="uid://7xri5doqhxue" path="res://cards/effects/do_damage/damage_aoe.gd" id="2_hlnls"]
-[ext_resource type="Script" uid="uid://c28afwqtlabki" path="res://cards/effects/add_card/burn.gd" id="3_onjp8"]
+[ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="3_hvl6m"]
+[ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="4_hlnls"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="4_ka8ln"]
 
 [sub_resource type="Resource" id="Resource_t140c"]
 script = ExtResource("2_hlnls")
 metadata/_custom_type_script = "uid://7xri5doqhxue"
 
-[sub_resource type="Resource" id="Resource_uj4lh"]
-script = ExtResource("3_onjp8")
-num_cards = 1
-metadata/_custom_type_script = "uid://c28afwqtlabki"
+[sub_resource type="Resource" id="Resource_hlnls"]
+script = ExtResource("3_hvl6m")
+value = 2
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
+
+[sub_resource type="Resource" id="Resource_onjp8"]
+script = ExtResource("4_hlnls")
+metadata/_custom_type_script = "uid://befkr8rvi0mwo"
 
 [resource]
 script = ExtResource("4_ka8ln")
 name = "Immolate"
 rarity = 2
 attack = 15
+defense = 3
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_hvl6m")]([SubResource("Resource_t140c"), SubResource("Resource_uj4lh")])
+attack_effects = Array[ExtResource("1_hvl6m")]([SubResource("Resource_t140c"), SubResource("Resource_hlnls")])
+defense_effects = Array[ExtResource("1_hvl6m")]([SubResource("Resource_onjp8")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bshe6hw340i3u"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_qd0vu"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_td8l1"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_vqoym"]
+[ext_resource type="Script" uid="uid://dp1glj5lcbs1l" path="res://cards/effects/lose_hp/feed.gd" id="3_vnbrc"]
+
+[sub_resource type="Resource" id="Resource_6548b"]
+script = ExtResource("2_vqoym")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_k0wrl"]
+script = ExtResource("3_vnbrc")
+metadata/_custom_type_script = "uid://dp1glj5lcbs1l"
+
+[resource]
+script = ExtResource("2_td8l1")
+name = "Test"
+attack = 4
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_qd0vu")]([SubResource("Resource_6548b"), SubResource("Resource_k0wrl")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

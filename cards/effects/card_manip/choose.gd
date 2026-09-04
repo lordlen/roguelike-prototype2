@@ -7,11 +7,7 @@ func get_identifier() -> String:
 	return "choose"
 
 func get_description() -> String:
-	var description := "Choose:\n"
-	for c in choices:
-		description += "____________________\n"
-		var card := CardInstance.new(c)
-		description += card.get_description()
+	var description := "Choose among the options."
 	return description
 
 func get_all_nested_card_effects() -> Array[CardEffect]:
@@ -34,7 +30,9 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	card_effect_finished.emit()
 
 func get_shortform(card: CardInstance) -> String:
-	var desc := "[color=orange]%s[/color]" % [get_identifier()]
+	var desc := "[color=orange]%s[/color]\n" % [get_identifier()]
 	for c in choices:
-		desc += " %s" % c.name
+		desc += "____________________\n"
+		var c_instance := CardInstance.new(c)
+		desc += c_instance.get_description()
 	return desc
