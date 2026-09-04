@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://rsvs28kow4q6"]
+
+[ext_resource type="Script" uid="uid://bmysfp4ul7k2" path="res://UI/relic_bar.gd" id="1_ybbwt"]
+[ext_resource type="PackedScene" uid="uid://bun6vb2rcougy" path="res://UI/relic_bar_item.tscn" id="2_8vc5p"]
+
+[node name="RelicBar" type="Panel"]
+anchors_preset = -1
+anchor_top = 0.106000006
+anchor_right = 0.998
+anchor_bottom = 0.172
+offset_left = 151.0
+offset_top = -0.16000366
+offset_right = 0.27996826
+offset_bottom = 0.07999802
+script = ExtResource("1_ybbwt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 488.0
+offset_bottom = 22.0
+
+[node name="TextureRect" parent="HBoxContainer" instance=ExtResource("2_8vc5p")]
+layout_mode = 2

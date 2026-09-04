@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bescv7w77aue4"]
+
+[ext_resource type="Script" uid="uid://b8xkpcrxmtv1q" path="res://items/relics/character_relics/clay.gd" id="1_pbrw1"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_oig5q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mckd4"]
+atlas = ExtResource("2_oig5q")
+region = Rect2(64, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_pbrw1")
+description = "When taking damage, gain 3 temporary defense."
+item_name = "Clay"
+texture = SubResource("AtlasTexture_mckd4")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

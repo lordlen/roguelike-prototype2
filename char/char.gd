@@ -16,6 +16,7 @@ signal char_move_effect
 signal char_card_added
 signal char_next_floor
 signal char_waited
+signal char_walked
 
 const stats_resources := {
 	hero = "res://char/stats/hero.tres",
@@ -388,6 +389,7 @@ func take_hit(attacker: Char, damage: int):
 		EventBus.character_deck_updated.emit(self)
 		return
 
+	char_is_hit.emit(self, attacker)
 	var offhand_def := 0
 	var offhand := deck.offhand
 	if offhand != null:
@@ -399,7 +401,6 @@ func take_hit(attacker: Char, damage: int):
 	if offhand != null:
 		if !self.is_defending:
 			self.deck.offhand.decay_defense()
-	char_is_hit.emit(self, attacker)
 	action_queue.clear()
 	EventBus.character_deck_updated.emit(self)
 

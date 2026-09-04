@@ -1,5 +1,4 @@
 extends Relic
-var value := 4
 var counter := 0
 
 func get_string_value() -> String:
@@ -8,7 +7,9 @@ func get_string_value() -> String:
 func on_attack(actor: Char, defender: Char):
 	counter += 1
 	if counter >= 3:
-		if actor.deck.offhand:
-			actor.deck.offhand.add_bonus_defense(value)
+		for card in actor.deck.get_all_card_instances():
+			var tmp_def_up := TmpDefUp.new()
+			tmp_def_up.def_value = 1
+			tmp_def_up.do(actor, defender, card)
 		counter = 0
 	number_updated.emit()

@@ -9,7 +9,7 @@ region = Rect2(64, 64, 16, 16)
 
 [resource]
 script = ExtResource("1_tgmhx")
-description = "When taking damage, deal 1 damage to all adjacent enemies."
+description = "When taking damage, deal 2 damage to all adjacent enemies."
 item_name = "Cursed Doll"
 texture = SubResource("AtlasTexture_4nhps")
 item_actions = null

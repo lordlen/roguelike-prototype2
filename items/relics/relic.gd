@@ -1,10 +1,15 @@
 class_name Relic
 extends Item
 
+signal number_updated
+
 @export var description: String
 
 func get_description() -> String:
 	return description
+
+func get_string_value() -> String:
+	return ""
 
 func on_wait(owner):
 	pass
@@ -36,7 +41,13 @@ func on_hit(actor: Char, attacker: Char):
 func on_took_damage(actor: Char):
 	pass
 
+func on_move_effect(actor: Char):
+	pass
+
 func on_item_used(actor: Char):
+	pass
+
+func on_walk_effect(actor: Char):
 	pass
 
 func on_pick_up(inventory: InventoryComponent) -> bool:

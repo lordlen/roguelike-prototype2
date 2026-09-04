@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://d2ymcc2iywfp0"]
+
+[ext_resource type="Script" uid="uid://dmab0tjjlmg8r" path="res://items/relics/character_relics/omamori.gd" id="1_e5rxa"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_22ppf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yls8s"]
+atlas = ExtResource("2_22ppf")
+region = Rect2(64, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_e5rxa")
+description = "\"Cast Spell\" gains 6 defense."
+item_name = "Omamori"
+texture = SubResource("AtlasTexture_yls8s")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

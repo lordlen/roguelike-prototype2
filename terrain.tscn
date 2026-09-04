@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=48 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://d0vje1rxysrni" path="res://UI/defend_value.gd" id="15_nsrdk"]
 [ext_resource type="PackedScene" uid="uid://6f5d45fu8cv0" path="res://UI/card_description_popup.tscn" id="16_mrt7q"]
 [ext_resource type="PackedScene" uid="uid://bys5excwfjlap" path="res://char_info_detailed.tscn" id="17_lhepi"]
+[ext_resource type="PackedScene" uid="uid://rsvs28kow4q6" path="res://UI/relic_bar.tscn" id="20_4spss"]
 [ext_resource type="PackedScene" uid="uid://bq32evy5ojloo" path="res://UI/item_description.tscn" id="20_lj33d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6k1t"]
@@ -2006,7 +2007,7 @@ visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 151.0
-offset_bottom = 42.0
+offset_bottom = 36.0
 grow_horizontal = 2
 
 [node name="FloorNumber" type="Label" parent="UILayer/TopPanel"]
@@ -2082,6 +2083,8 @@ grow_vertical = 2
 columns = 6
 script = ExtResource("10_agy8s")
 
+[node name="RelicBar" parent="UILayer" instance=ExtResource("20_4spss")]
+
 [node name="EventDialog" type="Panel" parent="UILayer"]
 visible = false
 anchors_preset = 8
@@ -2134,7 +2137,7 @@ layout_mode = 2
 text = "Some description"
 autowrap_mode = 2
 
-[node name="Panel" type="Panel" parent="UILayer"]
+[node name="Buttons" type="Panel" parent="UILayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -2147,7 +2150,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("13_nsrdk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/Buttons"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2156,7 +2159,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="WaitButton" type="TextureButton" parent="UILayer/Panel/HBoxContainer"]
+[node name="WaitButton" type="TextureButton" parent="UILayer/Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Wait (space)
@@ -2164,7 +2167,7 @@ Pass your turn"
 texture_normal = SubResource("AtlasTexture_k6k1t")
 stretch_mode = 4
 
-[node name="SwapButton" type="TextureButton" parent="UILayer/Panel/HBoxContainer"]
+[node name="SwapButton" type="TextureButton" parent="UILayer/Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Swap (z)
@@ -2172,7 +2175,7 @@ Swap your primary and offhand."
 texture_normal = SubResource("AtlasTexture_nsrdk")
 stretch_mode = 4
 
-[node name="ReshuffleButton" type="TextureButton" parent="UILayer/Panel/HBoxContainer"]
+[node name="ReshuffleButton" type="TextureButton" parent="UILayer/Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Reshuffle (x)
@@ -2180,7 +2183,7 @@ Put the discard pile into the draw pile then shuffle your draw pile."
 texture_normal = SubResource("AtlasTexture_lhepi")
 stretch_mode = 4
 
-[node name="DefendButton" type="TextureButton" parent="UILayer/Panel/HBoxContainer"]
+[node name="DefendButton" type="TextureButton" parent="UILayer/Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Block (c)
@@ -2189,7 +2192,7 @@ The defense is discarded at the end of the turn when blocking successfully."
 texture_normal = SubResource("AtlasTexture_agy8s")
 stretch_mode = 4
 
-[node name="DefendValue" type="Label" parent="UILayer/Panel/HBoxContainer/DefendButton"]
+[node name="DefendValue" type="Label" parent="UILayer/Buttons/HBoxContainer/DefendButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2247,7 +2250,7 @@ script = ExtResource("5_iqhxt")
 [node name="ItemList" type="Node2D" parent="."]
 
 [connection signal="confirmed" from="UILayer/StairsDialog" to="." method="on_stairs_entered"]
-[connection signal="pressed" from="UILayer/Panel/HBoxContainer/WaitButton" to="UILayer/Panel" method="_on_wait_button_pressed"]
-[connection signal="pressed" from="UILayer/Panel/HBoxContainer/SwapButton" to="UILayer/Panel" method="_on_swap_button_pressed"]
-[connection signal="pressed" from="UILayer/Panel/HBoxContainer/ReshuffleButton" to="UILayer/Panel" method="_on_reshuffle_button_pressed"]
-[connection signal="pressed" from="UILayer/Panel/HBoxContainer/DefendButton" to="UILayer/Panel" method="_on_defend_button_pressed"]
+[connection signal="pressed" from="UILayer/Buttons/HBoxContainer/WaitButton" to="UILayer/Buttons" method="_on_wait_button_pressed"]
+[connection signal="pressed" from="UILayer/Buttons/HBoxContainer/SwapButton" to="UILayer/Buttons" method="_on_swap_button_pressed"]
+[connection signal="pressed" from="UILayer/Buttons/HBoxContainer/ReshuffleButton" to="UILayer/Buttons" method="_on_reshuffle_button_pressed"]
+[connection signal="pressed" from="UILayer/Buttons/HBoxContainer/DefendButton" to="UILayer/Buttons" method="_on_defend_button_pressed"]

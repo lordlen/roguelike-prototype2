@@ -11,7 +11,7 @@ func execute() -> bool:
 		return false
 
 	#actor.deck.offhand.do_defend(actor)
-	actor.char_defended.emit(actor)
+	actor.char_defended.emit()
 	await actor.deck.offhand.card_action_finished
 	EventBus.character_deck_updated.emit(actor)
 	var defend_indicator := load("res://indicators/defend_indicator.tres")

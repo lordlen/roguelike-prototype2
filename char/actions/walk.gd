@@ -31,6 +31,7 @@ func execute() -> bool:
 			action_finished.emit(false)
 			return false
 
+	actor.char_walked.emit()
 	actor.move_to(dest, walk_speed)
 	action_finished.emit(true)
 	return true

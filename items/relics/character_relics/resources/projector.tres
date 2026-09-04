@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dk2c71nwfb631"]
+
+[ext_resource type="Script" uid="uid://bdtuee7bp45jc" path="res://items/relics/character_relics/projector.gd" id="1_b2s38"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_b2s38"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g65ti"]
+atlas = ExtResource("2_b2s38")
+region = Rect2(64, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_b2s38")
+description = "When moving with a card effect, all cards gain 1 temporary defense."
+item_name = "Projector"
+texture = SubResource("AtlasTexture_g65ti")
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

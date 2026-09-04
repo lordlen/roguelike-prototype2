@@ -43,6 +43,7 @@ func initialize():
 		deck_owner.char_card_added.emit(instance)
 		draw_pile.push_back(instance)
 	shuffle()
+	EventBus.character_deck_updated.emit(deck_owner)
 
 func add_to_deck_list(card_resource: CardResource):
 	deck_list.push_back(card_resource)
@@ -312,9 +313,9 @@ func on_attack(defender: Char):
 	for c in get_all_card_instances():
 		await c.do_on_any_attack_effects(deck_owner)
 
-func on_defend(actor: Char):
+func on_defend():
 	if offhand != null:
-		await actor.deck.offhand.do_defend(actor)
+		await deck_owner.deck.offhand.do_defend(deck_owner)
 
 func on_hit(actor: Char, attacker: Char):
 	if offhand != null:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bbyrdteityhn8"]
+
+[ext_resource type="Script" uid="uid://bxmy31cd8aw0w" path="res://items/relics/character_relics/ballet_shoes.gd" id="1_b7hrl"]
+
+[resource]
+script = ExtResource("1_b7hrl")
+description = "When walking, gain 3 bonus defense."
+item_name = "Ballet Shoes"
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

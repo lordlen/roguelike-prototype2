@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d4buua450ns2j"]
+
+[ext_resource type="Script" uid="uid://c6q36toe3sbew" path="res://items/relics/character_relics/anvil.gd" id="1_ue031"]
+
+[resource]
+script = ExtResource("1_ue031")
+description = "Choose 2 cards to increase defense by 3"
+item_name = "Anvil"
+item_actions = null
+metadata/_custom_type_script = "uid://bjmfeovut25cw"

@@ -24,6 +24,16 @@ func _init(owner: Char, item_limit: int) -> void:
 	owner.char_took_damage.connect(on_took_damage)
 	owner.char_next_floor.connect(on_next_floor)
 	owner.char_waited.connect(on_wait)
+	owner.char_move_effect.connect(on_move_effect)
+	owner.char_walked.connect(on_walk_effect)
+
+func on_walk_effect():
+	for relic in relics:
+		relic.on_walk_effect(owner)
+
+func on_move_effect():
+	for relic in relics:
+		relic.on_move_effect(owner)
 
 func on_wait():
 	for relic in relics:
