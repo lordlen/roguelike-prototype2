@@ -169,6 +169,15 @@ func discard_all():
 	discard_draw_pile()
 	EventBus.character_deck_updated.emit(deck_owner)
 
+func pop_at(ind) -> CardInstance:
+	var card : CardInstance = draw_pile.pop_at(ind)
+	return card
+
+func discard_at(ind) -> CardInstance:
+	var card := pop_at(ind)
+	add_to_discard(card)
+	return card
+
 func shuffle():
 	# put all the cards in the discard pile onto the draw pile
 	draw_pile.append_array(discard_pile)

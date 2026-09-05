@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_e6w8d"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_21ef3"]
-[ext_resource type="Script" uid="uid://cbkcnehiantue" path="res://cards/effects/card_manip/scry.gd" id="2_lx38m"]
+[ext_resource type="Script" uid="uid://d02x25aopntbh" path="res://cards/effects/card_manip/scry.gd" id="2_lx38m"]
 
-[sub_resource type="Resource" id="Resource_ijark"]
+[sub_resource type="Resource" id="Resource_21ef3"]
 script = ExtResource("2_lx38m")
 num_cards = 3
-metadata/_custom_type_script = "uid://cbkcnehiantue"
+metadata/_custom_type_script = "uid://d02x25aopntbh"
 
 [resource]
 script = ExtResource("2_21ef3")
 name = "Detect"
 rarity = 1
 defense = 7
-defense_effects = Array[ExtResource("1_e6w8d")]([SubResource("Resource_ijark")])
+defense_effects = Array[ExtResource("1_e6w8d")]([SubResource("Resource_21ef3")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

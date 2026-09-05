@@ -44,7 +44,7 @@ func _on_icon_toggled(toggle: bool):
 	else:
 		num_selections -= 1
 
-	if num_selections == target_selections:
+	if num_selections == target_selections or target_selections == 0:
 		$ConfirmButton.disabled = false
 	else:
 		$ConfirmButton.disabled = true
