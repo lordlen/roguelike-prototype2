@@ -8,10 +8,21 @@ var card_name: String
 var description: String
 var rarity: CardResource.Rarity
 
-var attack: int
-var defense: int
-var num_hits: int
-var atk_range: int
+const max_stats := 99
+
+var attack: int:
+	set(value):
+		attack = clamp(value, 0, max_stats)
+var defense: int:
+	set(value):
+		defense = clamp(value, 0, max_stats)
+var num_hits: int:
+	set(value):
+		num_hits = clamp(value, 0, max_stats)
+var atk_range: int:
+	set(value):
+		atk_range = clamp(value, 0, max_stats)
+
 var is_dodge: bool
 var exhausts: bool
 var is_innate: bool

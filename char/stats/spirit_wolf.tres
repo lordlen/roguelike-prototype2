@@ -35,6 +35,7 @@ alignment = 1
 is_cautious = true
 min_hp = 16
 max_hp = 21
+scent_range = 2
 sleeping = SubResource("Resource_k3awp")
 wandering = SubResource("Resource_3qqoo")
 hunting = SubResource("Resource_eg1lt")
