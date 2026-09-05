@@ -53,13 +53,12 @@ theme_override_font_sizes/font_size = 12
 text = "10"
 horizontal_alignment = 1
 
-[node name="AltText" type="Label" parent="."]
+[node name="AltText" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 88.0
-offset_bottom = 40.0
-theme_override_font_sizes/font_size = 12
+offset_right = 65.0
+offset_bottom = 47.0
+theme_override_font_sizes/normal_font_size = 12
+scroll_active = false
 
 [connection signal="card_icon_pressed" from="." to="." method="_on_card_icon_pressed"]
 [connection signal="gui_input" from="." to="." method="_on_button_gui_input"]

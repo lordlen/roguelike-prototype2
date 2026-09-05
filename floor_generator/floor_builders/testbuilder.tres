@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cw1hglm5kal3c" path="res://floor_generator/floor_description/spawn_groups/single_ogre.tres" id="2_2yyv0"]
 [ext_resource type="Script" uid="uid://cwled7fqlcl6g" path="res://floor_generator/floor_description/spawn_description.gd" id="3_ct0gs"]
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="4_lft3q"]
-[ext_resource type="Resource" uid="uid://f3wn6yu6t30d" path="res://floor_generator/floor_description/spawn_groups/single_goblin.tres" id="5_ct0gs"]
+[ext_resource type="Resource" uid="uid://dtkivaldy4pf6" path="res://floor_generator/floor_description/spawn_groups/single_warden.tres" id="5_ct0gs"]
 [ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="5_wjul0"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="6_aay64"]
 [ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="7_vdx7s"]

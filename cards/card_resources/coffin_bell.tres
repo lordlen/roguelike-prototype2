@@ -22,5 +22,6 @@ script = ExtResource("2_x0w32")
 name = "Coffin Bell"
 range = 2
 exhausts = true
+is_lob = true
 attack_effects = Array[ExtResource("1_0gjyt")]([SubResource("Resource_xgdxs"), SubResource("Resource_h3bh6")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

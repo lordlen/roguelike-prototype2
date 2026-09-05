@@ -15,7 +15,7 @@ func _on_inventory_updated(ch: Char):
 		return
 
 	for child in $HBoxContainer.get_children():
-		remove_child(child)
+		$HBoxContainer.remove_child(child)
 		child.queue_free()
 	var relic_item_scene: PackedScene = load("res://UI/relic_bar_item.tscn")
 	for relic in character.inventory.relics:

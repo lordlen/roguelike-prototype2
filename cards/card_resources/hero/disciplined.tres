@@ -16,7 +16,8 @@ metadata/_custom_type_script = "uid://bjmf81tidcb18"
 [resource]
 script = ExtResource("2_3irdn")
 name = "Disciplined"
-attack = 11
+attack = 10
+defense = 3
 num_hits = 1
 range = 1
 attack_effects = Array[ExtResource("1_pe416")]([SubResource("Resource_rt5qn"), SubResource("Resource_exwvr")])

@@ -31,6 +31,7 @@ rarity = 2
 defense = 6
 range = 3
 is_instant = true
+is_lob = true
 attack_effects = Array[ExtResource("1_gux1a")]([SubResource("Resource_wnalq"), SubResource("Resource_pacmx"), SubResource("Resource_2cnqq")])
 defense_effects = Array[ExtResource("1_gux1a")]([SubResource("Resource_buexo")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

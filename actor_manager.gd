@@ -57,18 +57,19 @@ func do_actor_turns():
 	for ch: Char in get_ai_controlled_chars():
 		if ch.is_dead():
 			continue
+		if ch.is_moving:
+			await ch.char_finished_moving
 		var actions := ch.act_ai()
 		for action in actions:
 			action.execute.call_deferred()
-			var turn_passed : bool= await action.action_finished
+			var turn_passed : bool = await action.action_finished
 			if turn_passed:
 				break
-		ch.pass_turn()
+		if is_instance_valid(ch) or ch.is_dead():
+			ch.pass_turn()
 	
 	spawn_turn_count += 1
-	
 	if spawn_turn_count == num_turns_to_spawn:
-		
 		spawn_turn_count = 0
 		var spawn_group := subsequent_spawns.get_random_spawn_group()
 		random_spawn_character(spawn_group, [], true)
