@@ -65,7 +65,7 @@ func do_actor_turns():
 			var turn_passed : bool = await action.action_finished
 			if turn_passed:
 				break
-		if is_instance_valid(ch) or ch.is_dead():
+		if is_instance_valid(ch) and !ch.is_dead():
 			ch.pass_turn()
 	
 	spawn_turn_count += 1

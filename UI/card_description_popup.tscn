@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://6f5d45fu8cv0"]
+[gd_scene load_steps=11 format=3 uid="uid://6f5d45fu8cv0"]
 
 [ext_resource type="Script" uid="uid://caa15a8iotm2d" path="res://UI/card_description_popup.gd" id="1_d5hb2"]
 [ext_resource type="Script" uid="uid://cgo0sftjgc5u8" path="res://UI/popup_control.gd" id="1_tm1gv"]
 [ext_resource type="Texture2D" uid="uid://bualaqlc7wosp" path="res://resources/char_info.png" id="1_ypd0o"]
 [ext_resource type="Script" uid="uid://cmt70k0rg11j5" path="res://UI/card_description_item_list.gd" id="2_d5hb2"]
 [ext_resource type="PackedScene" uid="uid://bq3d7iuixo2ty" path="res://UI/effect_description.tscn" id="5_tm1gv"]
+[ext_resource type="Script" uid="uid://x52mac0payci" path="res://UI/card_description_description.gd" id="5_v1pm2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmsyl"]
 atlas = ExtResource("1_ypd0o")
@@ -89,6 +90,7 @@ theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "6 damage
 2 [color=orange]shiv[/color]"
+script = ExtResource("5_v1pm2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CardDescription"]
 layout_mode = 1

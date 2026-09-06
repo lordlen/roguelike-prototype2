@@ -105,7 +105,7 @@ func do_on_any_attack_effects(actor: Char) -> void:
 func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 	var target_pos := target.grid_position
 	for e in effects:
-		if !is_instance_valid(actor):
+		if !is_instance_valid(actor) or actor.is_dead():
 			break
 		if is_instance_valid(target):
 			target_pos = target.grid_position

@@ -12,6 +12,7 @@ metadata/_custom_type_script = "uid://bdoy3ecys57f8"
 [resource]
 script = ExtResource("2_3xf75")
 name = "Force Field"
+rarity = 1
 defense = 7
 defense_effects = Array[ExtResource("1_ujivj")]([SubResource("Resource_pnoqc")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"
