@@ -10,14 +10,14 @@
 script = ExtResource("2_6looy")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
+[sub_resource type="Resource" id="Resource_bi7p2"]
+script = ExtResource("4_wa0lv")
+metadata/_custom_type_script = "uid://ck34vd2711gt1"
+
 [sub_resource type="Resource" id="Resource_dsop8"]
 script = ExtResource("3_wa0lv")
 atk_value = 2
 metadata/_custom_type_script = "uid://b66pa00t5sed"
-
-[sub_resource type="Resource" id="Resource_bi7p2"]
-script = ExtResource("4_wa0lv")
-metadata/_custom_type_script = "uid://ck34vd2711gt1"
 
 [resource]
 script = ExtResource("2_wg0l4")
@@ -26,5 +26,5 @@ rarity = 2
 attack = 9
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_jbgo5")]([SubResource("Resource_n0i5r"), SubResource("Resource_dsop8"), SubResource("Resource_bi7p2")])
+attack_effects = Array[ExtResource("1_jbgo5")]([SubResource("Resource_n0i5r"), SubResource("Resource_bi7p2"), SubResource("Resource_dsop8")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

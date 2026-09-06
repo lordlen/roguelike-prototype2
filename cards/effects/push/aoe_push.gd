@@ -12,7 +12,7 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var position := Globals.floor_map.get_area(actor.grid_position, card.atk_range)
 	var chars := ActorManager.get_actors_in_positions(position)
 

@@ -12,9 +12,9 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	# get adjacent characters to the target
-	var positions := Globals.floor_map.get_area(target_char.grid_position, 1)
+	var positions := Globals.floor_map.get_area(target_pos, 1)
 	var chars := ActorManager.get_actors_in_positions(positions)
 	# exclude self in this number
 	var num_hostile := -1
@@ -23,7 +23,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 			num_hostile += 1
 	var atk_up := TmpAtkUp.new()
 	atk_up.atk_value = num_hostile * atk_value
-	atk_up.do(actor, target_char, card)
+	atk_up.do(actor, target_pos, card)
 	card_effect_finished.emit()
 
 func combine_effect(other_effect: CardEffect) -> CardEffect:

@@ -10,7 +10,7 @@ func get_description() -> String:
 func get_all_nested_card_effects() -> Array[CardEffect]:
 	return [self, HealAttack.new()]
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	# check if "cast spell" is in the deck.
 	var cs = actor.deck.find_card("Cast Spell")
 	if cs == null:

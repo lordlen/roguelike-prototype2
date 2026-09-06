@@ -10,7 +10,7 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return 'Spawn "x" n times in a random adjacent tile.'
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var valid_adjacent := Globals.floor_map.get_valid_adjacent(actor.grid_position)
 	valid_adjacent.shuffle()
 	for i in range(min(num_summons, len(valid_adjacent))):

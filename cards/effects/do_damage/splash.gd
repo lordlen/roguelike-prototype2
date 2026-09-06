@@ -13,9 +13,8 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n m"
 
-func do(attacker: Char, defender: Char, card: CardInstance) -> void:
-	var atk_range := card.atk_range
-	CardHelper.deal_aoe_damage(atk_value, 1, attacker, defender.grid_position, atk_range)
+func do(attacker: Char, target_pos: Vector2i, card: CardInstance) -> void:
+	CardHelper.deal_aoe_damage(atk_value, 1, attacker, target_pos, radius)
 	card_effect_finished.emit()
 
 

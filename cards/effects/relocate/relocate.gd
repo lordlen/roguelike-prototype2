@@ -7,11 +7,11 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return 'Relocate to the target.'
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	# assume that this only gets called if the attacker is in range
 	# get the path in a straight line
 	var pf := Pathfinder.new()
-	var path := pf.get_straight_path_actor(actor.grid_position, target_char.grid_position, actor.traversal)
+	var path := pf.get_straight_path_actor(actor.grid_position, target_pos, actor.traversal)
 	
 	# no need to move if the target is 1 tile away
 	if len(path) < 2:

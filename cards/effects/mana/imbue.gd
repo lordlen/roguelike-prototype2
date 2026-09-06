@@ -15,7 +15,7 @@ func get_numeric() -> String:
 func get_all_nested_card_effects() -> Array[CardEffect]:
 	return [self, Mana.new()]
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	for c in actor.deck.draw_pile:
 		var mana := Mana.new()
 		mana.value = value

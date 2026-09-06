@@ -7,19 +7,19 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return 'Relocate behind the target.'
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	# assume that this only gets called if the attacker is in range
 	# get the path in a straight line
 	var pf := Pathfinder.new()
-	var path := pf.get_straight_path(actor.grid_position, target_char.grid_position, actor.traversal)
+	var path := pf.get_straight_path(actor.grid_position, target_pos, actor.traversal)
 
-	var behind := target_char.grid_position + path[1] - path[0]
+	var behind := target_pos + path[1] - path[0]
 	# check if "behind" is occupied.
 	var occupying_actor := ActorManager.get_actor_in_position(behind)
 	if occupying_actor != null or Globals.floor_map.get_tile(behind).get_pf_cost(actor.traversal) == INF:
 		# relocate instead
 		var relocate := Relocate.new()
-		relocate.do(actor, target_char, card)
+		relocate.do(actor, target_pos, card)
 	else:
 		actor.char_move_effect.emit()
 		# get the last 

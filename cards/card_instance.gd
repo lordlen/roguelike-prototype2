@@ -103,16 +103,23 @@ func do_on_any_attack_effects(actor: Char) -> void:
 	await do_effects(actor, actor, on_any_attack_effects)
 
 func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
+	var target_pos := target.grid_position
 	for e in effects:
-		e.do.call_deferred(actor, target, self)
+		if !is_instance_valid(actor):
+			break
+		if is_instance_valid(target):
+			target_pos = target.grid_position
+		e.do.call_deferred(actor, target_pos, self)
 		await e.card_effect_finished
 	# remove tmp effects from the array
 	for i in range(len(effects) - 1, -1, -1):
 		var e := effects[i]
 		if e.is_temp:
 			effects.remove_at(i)
-	EventBus.character_deck_updated.emit(actor)
-	EventBus.character_deck_updated.emit(target)
+	if is_instance_valid(actor):
+		EventBus.character_deck_updated.emit(actor)
+	if is_instance_valid(target):
+		EventBus.character_deck_updated.emit(target)
 	card_action_finished.emit()
 
 func effect_is_changed():

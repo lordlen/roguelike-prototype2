@@ -4,12 +4,12 @@ extends CardEffect
 @export var num_cards: int
 @export var target: Target
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var add_card_effect := AddCard.new()
 	add_card_effect.card_resource = load("res://cards/card_resources/special/burn.tres")
 	add_card_effect.target = target
 	add_card_effect.num_cards = num_cards
-	add_card_effect.do(actor, target_char, card)
+	add_card_effect.do(actor, target_pos, card)
 	card_effect_finished.emit()
 
 func get_identifier() -> String:

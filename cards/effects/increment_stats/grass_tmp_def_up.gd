@@ -10,11 +10,11 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Destroy adjacent grass. Temporarily increase defense of this card by the number of grass tiles destroyed."
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var num_grass := CardHelper.mow_grass(actor.grid_position)
 	var tmp_def := TmpDefUp.new()
 	tmp_def.def_value = num_grass
-	tmp_def.do(actor, target_char, card)
+	tmp_def.do(actor, target_pos, card)
 	
 	card_effect_finished.emit()
 

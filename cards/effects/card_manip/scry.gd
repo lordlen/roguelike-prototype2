@@ -12,7 +12,7 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var num_selections : int = min(len(actor.deck.draw_pile), num_cards)
 	if num_selections > 0:
 		var card_options: Array[CardInstance] = actor.deck.draw_pile.slice(-num_cards, len(actor.deck.draw_pile))

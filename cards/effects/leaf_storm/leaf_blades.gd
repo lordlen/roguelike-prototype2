@@ -7,7 +7,7 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Destroy adjacent grass tiles. Add as many shivs to the discard pile as grass destroyed."
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var num_grass := CardHelper.mow_grass(actor.grid_position)
 	var card_resource := load("res://cards/card_resources/special/shiv.tres")
 	for i in range(num_grass):

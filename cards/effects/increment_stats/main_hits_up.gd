@@ -12,11 +12,11 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	if actor.deck.primary:
 		var hits_up := HitsUp.new()
 		hits_up.value = value
-		hits_up.do(actor, target_char, actor.deck.primary)
+		hits_up.do(actor, target_pos, actor.deck.primary)
 	card_effect_finished.emit()
 
 func combine_effect(other_effect: CardEffect) -> CardEffect:

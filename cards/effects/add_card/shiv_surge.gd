@@ -1,12 +1,12 @@
 class_name ShivSurge
 extends CardEffect
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var add_card_effect := AddCard.new()
 	add_card_effect.card_resource = load("res://cards/card_resources/special/shiv.tres")
 	add_card_effect.target = Target.SELF
 	add_card_effect.num_cards = len(actor.deck.discard_pile)
-	add_card_effect.do(actor, target_char, card)
+	add_card_effect.do(actor, target_pos, card)
 	card_effect_finished.emit()
 
 func get_identifier() -> String:

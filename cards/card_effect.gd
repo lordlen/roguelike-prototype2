@@ -10,7 +10,7 @@ enum Target {
 
 @export var is_temp: bool
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	card_effect_finished.emit()
 
 func get_identifier() -> String:

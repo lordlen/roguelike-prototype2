@@ -28,8 +28,8 @@ static func deal_damage(attack_val: int, num_hits, actor: Char, target_char: Cha
 		if target_char.is_dead():
 			break
 		actor.attack_animation.call_deferred(target_char.grid_position)
-		await actor.char_finished_attacking
 		await target_char.take_hit(actor, attack_val)
+		await actor.char_finished_attacking
 
 static func deal_aoe_damage(attack_val: int, num_hits: int, attacker: Char, target_pos: Vector2i, atk_range: int):
 	for x in range(target_pos.x - atk_range, target_pos.x + atk_range + 1):

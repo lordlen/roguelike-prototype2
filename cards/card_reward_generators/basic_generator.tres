@@ -27,7 +27,7 @@
 [ext_resource type="Resource" uid="uid://bmgy1esvrljtd" path="res://cards/card_resources/hero/detect.tres" id="16_2865y"]
 [ext_resource type="Resource" uid="uid://c1bbp72yl453i" path="res://cards/card_resources/hero/caltrops.tres" id="16_i1qxy"]
 [ext_resource type="Resource" uid="uid://cgnd2016ybejg" path="res://cards/card_resources/hero/burning_fist.tres" id="17_f64np"]
-[ext_resource type="Resource" uid="uid://do8uvnls68gv2" path="res://cards/card_resources/hero/impact.tres" id="17_n5anw"]
+[ext_resource type="Resource" uid="uid://do8uvnls68gv2" path="res://cards/card_resources/hero/momentum.tres" id="17_n5anw"]
 [ext_resource type="Resource" uid="uid://4kdf0lw56gfd" path="res://cards/card_resources/hero/courier.tres" id="19_bvlqi"]
 [ext_resource type="Resource" uid="uid://blldccnptesun" path="res://cards/card_resources/hero/envenom.tres" id="21_bvlqi"]
 [ext_resource type="Resource" uid="uid://cm0p7fj43cd6o" path="res://cards/card_resources/hero/disciplined.tres" id="21_f64np"]

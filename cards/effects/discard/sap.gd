@@ -9,7 +9,8 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Discard target top draw pile"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
-	var t := actor if target == Target.SELF else target_char
-	t.deck.discard_top()
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
+	var t := actor if target == Target.SELF else ActorManager.get_actor_in_position(target_pos)
+	if is_instance_valid(t):
+		t.deck.discard_top()
 	card_effect_finished.emit()

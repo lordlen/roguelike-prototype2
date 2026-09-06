@@ -13,12 +13,12 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
-	var t := actor if target == Target.SELF else target_char
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
+	var t := actor if target == Target.SELF else ActorManager.get_actor_in_position(target_pos)
 	var atk_up := AtkUp.new()
 	atk_up.atk_value = atk_value
 	for c in t.deck.get_all_card_instances():
-		atk_up.do(t, target_char, c)
+		atk_up.do(t, target_pos, c)
 	card_effect_finished.emit()
 
 func combine_effect(other_effect: CardEffect) -> CardEffect:

@@ -13,6 +13,6 @@ metadata/_custom_type_script = "uid://b2wfok58odc2e"
 script = ExtResource("3_feqnq")
 name = "Hone"
 rarity = 1
-defense = 6
+defense = 7
 defense_effects = Array[ExtResource("1_al10k")]([SubResource("Resource_vd67p")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

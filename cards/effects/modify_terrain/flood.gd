@@ -16,7 +16,7 @@ func get_numeric() -> String:
 func get_shortform(card: CardInstance) -> String:
 	return "%d %s" % [num_gen, super.get_shortform(card)]
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var generator := GenerateRandomTile.new()
 	generator.num_gen = num_gen
 	generator.radius = 1
@@ -27,5 +27,5 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		TileResource.Terrains.TRAMPLED_GRASS,
 		TileResource.Terrains.GRASS,
 	]
-	generator.do(actor, target_char, card)
+	generator.do(actor, target_pos, card)
 	card_effect_finished.emit()

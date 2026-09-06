@@ -18,7 +18,8 @@ func get_all_nested_card_effects() -> Array[CardEffect]:
 			effects += e.get_all_nested_card_effects()
 	return effects
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
+	var target_char := ActorManager.get_actor_in_position(target_pos)
 	var card_instances : Array[CardInstance] = []
 	for c in choices:
 		card_instances.push_back(CardInstance.new(c))

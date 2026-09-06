@@ -12,11 +12,11 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	if len(actor.deck.draw_pile) > 0:
 		var tmp_atk_up := TmpAtkUp.new()
 		tmp_atk_up.atk_value = value
-		tmp_atk_up.do(actor, target_char, actor.deck.draw_pile[-1])
+		tmp_atk_up.do(actor, target_pos, actor.deck.draw_pile[-1])
 	card_effect_finished.emit()
 
 func get_shortform(card: CardInstance) -> String:

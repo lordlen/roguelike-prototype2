@@ -14,13 +14,17 @@ func execute() -> bool:
 	if can_attack(attacker.grid_position, defender.grid_position, attacker.deck.primary):
 		var card := attacker.deck.primary
 		attacker.char_attacked.emit(defender)
-		await attacker.deck.primary.card_action_finished
-		await attacker.get_tree().create_timer(0.5).timeout
-		if is_instance_valid(attacker) and !attacker.is_dead():
-			await attacker.deck.dispose_primary()
-			await attacker.deck.draw_empty()
-		action_finished.emit(!card.is_instant)
-		return !card.is_instant
+		await card.card_action_finished
+		if is_instance_valid(attacker):
+			await attacker.get_tree().create_timer(0.5).timeout
+			if is_instance_valid(attacker) and !attacker.is_dead():
+				await attacker.deck.dispose_primary()
+				await attacker.deck.draw_empty()
+			action_finished.emit(!card.is_instant)
+			return !card.is_instant
+		else:
+			action_finished.emit(true)
+			return true
 	action_finished.emit(false)
 	return false
 

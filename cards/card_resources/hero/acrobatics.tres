@@ -11,14 +11,14 @@
 script = ExtResource("2_ptpwy")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
-[sub_resource type="Resource" id="Resource_incn8"]
-script = ExtResource("3_4i0l4")
-metadata/_custom_type_script = "uid://bi5tu5pg2y40b"
-
 [sub_resource type="Resource" id="Resource_ptpwy"]
 script = ExtResource("4_ptpwy")
 num_cards = 3
 metadata/_custom_type_script = "uid://d02x25aopntbh"
+
+[sub_resource type="Resource" id="Resource_incn8"]
+script = ExtResource("3_4i0l4")
+metadata/_custom_type_script = "uid://bi5tu5pg2y40b"
 
 [sub_resource type="Resource" id="Resource_s5ulk"]
 script = ExtResource("5_ix575")
@@ -32,6 +32,6 @@ attack = 1
 defense = 5
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_58m56")]([SubResource("Resource_wo0vj"), SubResource("Resource_incn8"), SubResource("Resource_ptpwy")])
+attack_effects = Array[ExtResource("1_58m56")]([SubResource("Resource_wo0vj"), SubResource("Resource_ptpwy"), SubResource("Resource_incn8")])
 defense_effects = Array[ExtResource("1_58m56")]([SubResource("Resource_s5ulk")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

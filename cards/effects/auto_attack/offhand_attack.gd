@@ -7,14 +7,11 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Attack target with the defense."
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var offhand := actor.deck.offhand
-	
-	if offhand == null:
-		card_effect_finished.emit()
-		return
-	
-	offhand.do_attack.call_deferred(actor, target_char)
-	await offhand.card_action_finished
-	actor.deck.discard_offhand()
+	var target_char := ActorManager.get_actor_in_position(target_pos)
+	if offhand != null and is_instance_valid(target_char):
+		offhand.do_attack.call_deferred(actor, target_char)
+		await offhand.card_action_finished
+		actor.deck.discard_offhand()
 	card_effect_finished.emit()

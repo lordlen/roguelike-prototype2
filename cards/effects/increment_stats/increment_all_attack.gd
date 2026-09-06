@@ -12,7 +12,7 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var increment_item_action = IncrementAllAttack.new()
 	increment_item_action.value = atk_value
 	increment_item_action.use(actor, actor.grid_position)

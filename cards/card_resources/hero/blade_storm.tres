@@ -6,10 +6,6 @@
 [ext_resource type="Script" uid="uid://dy1w2rchia6dk" path="res://cards/effects/add_card/shiv_surge.gd" id="3_ldyxn"]
 [ext_resource type="Script" uid="uid://pau40yq5yb1c" path="res://cards/effects/card_manip/invert.gd" id="4_ykg2k"]
 
-[sub_resource type="Resource" id="Resource_1oegy"]
-script = ExtResource("2_ykg2k")
-metadata/_custom_type_script = "uid://7xri5doqhxue"
-
 [sub_resource type="Resource" id="Resource_r6sj6"]
 script = ExtResource("3_ldyxn")
 metadata/_custom_type_script = "uid://dy1w2rchia6dk"
@@ -17,6 +13,10 @@ metadata/_custom_type_script = "uid://dy1w2rchia6dk"
 [sub_resource type="Resource" id="Resource_ldyxn"]
 script = ExtResource("4_ykg2k")
 metadata/_custom_type_script = "uid://pau40yq5yb1c"
+
+[sub_resource type="Resource" id="Resource_1oegy"]
+script = ExtResource("2_ykg2k")
+metadata/_custom_type_script = "uid://7xri5doqhxue"
 
 [resource]
 script = ExtResource("2_s3bjj")
@@ -26,5 +26,5 @@ attack = 6
 defense = 3
 num_hits = 1
 range = 2
-attack_effects = Array[ExtResource("1_rh61c")]([SubResource("Resource_1oegy"), SubResource("Resource_r6sj6"), SubResource("Resource_ldyxn")])
+attack_effects = Array[ExtResource("1_rh61c")]([SubResource("Resource_r6sj6"), SubResource("Resource_ldyxn"), SubResource("Resource_1oegy")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -12,8 +12,11 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
+	var target_char := ActorManager.get_actor_in_position(target_pos)
 	for i in range(card.num_hits):
+		if !is_instance_valid(target_char):
+			break
 		target_char.take_damage(atk_value)
 	card_effect_finished.emit()
 

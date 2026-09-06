@@ -7,7 +7,7 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Pick a card from the discard pile and put it on top of the draw pile."
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	if len(actor.deck.discard_pile) > 0:
 		EventBus.card_selector_requested.emit(actor.deck.discard_pile, 1, "Select a card to put on the draw pile.")
 		var indices : Array[int] = await EventBus.cards_selected

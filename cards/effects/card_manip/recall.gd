@@ -9,7 +9,7 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return 'Put all "x" on top of the draw pile.'
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var cs = actor.deck.pop_all_cards(card_name)
 	for c in cs:
 		actor.deck.add_to_top_draw(c)

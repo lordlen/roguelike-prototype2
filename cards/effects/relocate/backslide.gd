@@ -12,10 +12,10 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	# subtract the target and actor location
 	# push the target back x amount of tiles.
-	var line_iterator:= BresenhamIterator.new(target_char.grid_position, actor.grid_position, distance)
+	var line_iterator:= BresenhamIterator.new(target_pos, actor.grid_position, distance)
 	var curr_pos := actor.grid_position
 	for pos in line_iterator:
 		# check if position is occupied by a wall or char

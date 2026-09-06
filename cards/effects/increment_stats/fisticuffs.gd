@@ -7,9 +7,9 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Temporarily increase defense of the offhand by the attack value of this card."
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	if actor.deck.offhand:
 		var tmp_def_up := TmpDefUp.new()
 		tmp_def_up.def_value = card.attack
-		tmp_def_up.do(actor, target_char, actor.deck.offhand)
+		tmp_def_up.do(actor, target_pos, actor.deck.offhand)
 	card_effect_finished.emit()

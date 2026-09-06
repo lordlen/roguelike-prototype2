@@ -27,7 +27,7 @@
 [ext_resource type="Resource" uid="uid://di101am50umer" path="res://cards/card_resources/hero/hone.tres" id="25_8nuwd"]
 [ext_resource type="Resource" uid="uid://bxrdmckld3gdu" path="res://cards/card_resources/hero/mana storm.tres" id="26_mv24u"]
 [ext_resource type="Resource" uid="uid://bgu7bj8kndnat" path="res://cards/card_resources/hero/immolate.tres" id="27_28fgn"]
-[ext_resource type="Resource" uid="uid://do8uvnls68gv2" path="res://cards/card_resources/hero/impact.tres" id="28_eiptj"]
+[ext_resource type="Resource" uid="uid://do8uvnls68gv2" path="res://cards/card_resources/hero/momentum.tres" id="28_eiptj"]
 [ext_resource type="Resource" uid="uid://dpdv0xcs1tlet" path="res://cards/card_resources/hero/swirling_petals.tres" id="29_ktpn2"]
 [ext_resource type="Resource" uid="uid://bqkukg27xxc4f" path="res://cards/card_resources/hero/leaf_shield.tres" id="30_ask8w"]
 [ext_resource type="Resource" uid="uid://cgnd2016ybejg" path="res://cards/card_resources/hero/burning_fist.tres" id="31_oxrgr"]

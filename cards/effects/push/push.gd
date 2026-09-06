@@ -12,18 +12,19 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	# push the target back x amount of tiles.
-	var line_iterator:= BresenhamIterator.new(actor.grid_position, target_char.grid_position, push_amount)
-	var curr_pos := target_char.grid_position
-	for pos in line_iterator:
-		# check if position is occupied by a wall or char
-		if ActorManager.get_actor_in_position(pos) != null\
-		or Globals.floor_map.get_tile(pos).get_pf_cost(target_char.traversal) == INF:
-			break
-		
-		curr_pos = pos
-	target_char.move_to(curr_pos)
+	var target_char := ActorManager.get_actor_in_position(target_pos)
+	if is_instance_valid(target_char):
+		var line_iterator:= BresenhamIterator.new(actor.grid_position, target_pos, push_amount)
+		var curr_pos := target_pos
+		for pos in line_iterator:
+			# check if position is occupied by a wall or char
+			if ActorManager.get_actor_in_position(pos) != null\
+			or Globals.floor_map.get_tile(pos).get_pf_cost(target_char.traversal) == INF:
+				break
+			curr_pos = pos
+		target_char.move_to(curr_pos)
 	card_effect_finished.emit()
 			
 

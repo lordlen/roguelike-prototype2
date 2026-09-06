@@ -12,11 +12,6 @@ script = ExtResource("2_f0gsx")
 target = 1
 metadata/_custom_type_script = "uid://c56tu66yr0yqq"
 
-[sub_resource type="Resource" id="Resource_bai6b"]
-script = ExtResource("3_v88y5")
-push_amount = 1
-metadata/_custom_type_script = "uid://c5qmcf2qwwdp8"
-
 [sub_resource type="Resource" id="Resource_scl4o"]
 script = ExtResource("2_hf3a1")
 value = 2
@@ -27,10 +22,15 @@ script = ExtResource("3_f0gsx")
 value = 2
 metadata/_custom_type_script = "uid://bvvdnihvyhnak"
 
+[sub_resource type="Resource" id="Resource_bai6b"]
+script = ExtResource("3_v88y5")
+push_amount = 1
+metadata/_custom_type_script = "uid://c5qmcf2qwwdp8"
+
 [resource]
 script = ExtResource("4_v88y5")
 name = "Air Blast"
 rarity = 1
 range = 2
-attack_effects = Array[ExtResource("1_6hled")]([SubResource("Resource_v88y5"), SubResource("Resource_bai6b"), SubResource("Resource_scl4o"), SubResource("Resource_hygcc")])
+attack_effects = Array[ExtResource("1_6hled")]([SubResource("Resource_v88y5"), SubResource("Resource_scl4o"), SubResource("Resource_hygcc"), SubResource("Resource_bai6b")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

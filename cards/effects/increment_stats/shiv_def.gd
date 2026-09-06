@@ -7,7 +7,7 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Temporarily increase this card's defense by how many shivs are in the deck."
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var shiv_count := 0
 	for c in actor.deck.get_all_card_instances():
 		if c.card_name == "Shiv":
@@ -15,5 +15,5 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 	
 	var def_up := TmpDefUp.new()
 	def_up.value = shiv_count
-	def_up.do(actor, target_char, card)
+	def_up.do(actor, target_pos, card)
 	card_effect_finished.emit()

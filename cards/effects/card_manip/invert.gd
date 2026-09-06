@@ -9,7 +9,8 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Swap the draw and discard pile."
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
-	var t := actor if target == Target.SELF else target_char
-	t.deck.invert_piles()
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
+	var t := actor if target == Target.SELF else ActorManager.get_actor_in_position(target_pos)
+	if is_instance_valid(t):
+		t.deck.invert_piles()
 	card_effect_finished.emit()

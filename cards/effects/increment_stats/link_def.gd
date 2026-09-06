@@ -7,7 +7,7 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Pick a card from the draw pile. Discard it and add its defense to this card"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	if len(actor.deck.draw_pile) > 0:
 		var draw_pile := actor.deck.draw_pile.duplicate()
 		draw_pile.sort_custom(func (a,b): return a.card_name < b.card_name)
@@ -17,7 +17,7 @@ func do(actor: Char, target_char: Char, card: CardInstance) -> void:
 		var selected_card : CardInstance = draw_pile[selected_ind]
 		var tmp_def_up := TmpDefUp.new()
 		tmp_def_up.def_value = selected_card.defense
-		tmp_def_up.do(actor, target_char, card)
+		tmp_def_up.do(actor, target_pos, card)
 		actor.deck.draw_pile.erase(selected_card)
 		await selected_card.do_on_discard_effects(actor)
 		actor.deck.add_to_discard(selected_card)

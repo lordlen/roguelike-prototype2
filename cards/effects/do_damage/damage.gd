@@ -9,7 +9,8 @@ func get_identifier() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
+	var target_char := ActorManager.get_actor_in_position(target_pos)
 	var num_hits := card.num_hits
 	var attack_val := card.attack + bonus_damage
 	await CardHelper.deal_damage(attack_val, num_hits, actor, target_char)

@@ -7,7 +7,7 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "Switch the top of the discard and the main-hand."
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var discard_card : CardInstance = actor.deck.discard_pile.pop_back()
 	await actor.deck.primary.do_on_discard_effects(actor)
 	actor.deck.discard_primary()

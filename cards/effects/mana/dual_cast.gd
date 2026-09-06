@@ -7,7 +7,7 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return 'Duplicate "Cast Spell". Halve the attack and defense values of "Cast Spell".'
 
-func do(actor: Char, target_char: Char, card: CardInstance) -> void:
+func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	# check if "cast spell" is in the deck.
 	var cs = actor.deck.find_card("Cast Spell")
 	# duplicates are the same instance.
