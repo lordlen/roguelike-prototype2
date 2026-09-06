@@ -6,21 +6,21 @@
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_uvs08"]
 [ext_resource type="Script" uid="uid://b8xc6asei4xbv" path="res://cards/effects/summon/summon.gd" id="3_525sm"]
 
-[sub_resource type="Resource" id="Resource_4a6pp"]
-script = ExtResource("2_525sm")
-value = 3
-metadata/_custom_type_script = "uid://nofu2tcs3vyh"
-
 [sub_resource type="Resource" id="Resource_ctcmc"]
 script = ExtResource("3_525sm")
 num_summons = 2
 char_resource = ExtResource("2_pr0a4")
 metadata/_custom_type_script = "uid://b8xc6asei4xbv"
 
+[sub_resource type="Resource" id="Resource_4a6pp"]
+script = ExtResource("2_525sm")
+value = 3
+metadata/_custom_type_script = "uid://nofu2tcs3vyh"
+
 [resource]
 script = ExtResource("2_uvs08")
 name = "Call Familiars"
 range = 3
 is_lob = true
-attack_effects = Array[ExtResource("1_21n8l")]([SubResource("Resource_4a6pp"), SubResource("Resource_ctcmc")])
+attack_effects = Array[ExtResource("1_21n8l")]([SubResource("Resource_ctcmc"), SubResource("Resource_4a6pp")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

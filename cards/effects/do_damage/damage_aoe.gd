@@ -10,6 +10,9 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
+func get_attack_value(card: CardInstance) -> int:
+	return card.attack
+
 func do(attacker: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var num_hits := card.num_hits
 	var attack_val := card.attack

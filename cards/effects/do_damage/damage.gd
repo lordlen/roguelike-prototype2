@@ -9,6 +9,9 @@ func get_identifier() -> String:
 func get_numeric() -> String:
 	return "n"
 
+func get_attack_value(card: CardInstance) -> int:
+	return card.attack
+
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var target_char := ActorManager.get_actor_in_position(target_pos)
 	var num_hits := card.num_hits

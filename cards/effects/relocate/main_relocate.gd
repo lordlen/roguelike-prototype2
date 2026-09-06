@@ -10,5 +10,6 @@ func get_description() -> String:
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	if actor.deck.primary:
 		var relocate := Relocate.new()
+		relocate.is_temp = true
 		CardEffect.combine_effects(actor.deck.primary.attack_effects, [relocate])
 	card_effect_finished.emit()

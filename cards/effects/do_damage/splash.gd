@@ -17,7 +17,6 @@ func do(attacker: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	CardHelper.deal_aoe_damage(atk_value, 1, attacker, target_pos, radius)
 	card_effect_finished.emit()
 
-
 func combine_effect(other_effect: CardEffect) -> CardEffect:
 	if !self.is_same_effect(other_effect):
 		return self

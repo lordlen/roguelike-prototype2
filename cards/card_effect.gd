@@ -19,6 +19,9 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return ""
 
+func get_attack_value(card: CardInstance) -> int:
+	return 0
+
 func get_numeric() -> String:
 	return ""
 
