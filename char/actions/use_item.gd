@@ -13,6 +13,7 @@ func _init(actor: Char, item: Item, item_action: ItemAction, pos: Vector2i):
 	self.pos = pos
 
 func execute() -> bool:
+	EventBus.aim_mode_canceled.emit()
 	# get the path
 	var pf :=  Pathfinder.new()
 	# flying so ignore any kind of terrain except walls

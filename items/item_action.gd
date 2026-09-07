@@ -14,7 +14,7 @@ enum Target {
 @export var num_uses: int = 100
 
 func use(owner: Char, pos: Vector2i) -> bool:
-	return true
+	return Pathfinder.chebychev_dist(owner.grid_position, pos) <= effect_range
 
 func get_description() -> String:
 	return ""

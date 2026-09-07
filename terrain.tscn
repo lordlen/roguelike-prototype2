@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=49 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bys5excwfjlap" path="res://char_info_detailed.tscn" id="17_lhepi"]
 [ext_resource type="PackedScene" uid="uid://rsvs28kow4q6" path="res://UI/relic_bar.tscn" id="20_4spss"]
 [ext_resource type="PackedScene" uid="uid://bq32evy5ojloo" path="res://UI/item_description.tscn" id="20_lj33d"]
+[ext_resource type="PackedScene" uid="uid://cj18bf3mbxkfi" path="res://UI/aim_mode.tscn" id="21_4spss"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6k1t"]
 atlas = ExtResource("13_qofig")
@@ -2228,6 +2229,11 @@ visible = false
 visible = false
 offset_top = -3.0
 offset_bottom = 3.0
+
+[node name="AimMode" parent="UILayer" instance=ExtResource("21_4spss")]
+visible = false
+offset_top = -85.0
+offset_bottom = -52.0
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_avahw")
