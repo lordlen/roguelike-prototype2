@@ -11,6 +11,7 @@ enum Target {
 @export var effect_range: int = 3
 @export var effect_radius: int = 0
 @export var uses_turn: bool = false
+@export var num_uses: int = 100
 
 func use(owner: Char, pos: Vector2i) -> bool:
 	return true

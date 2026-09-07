@@ -2003,6 +2003,8 @@ script = ExtResource("4_hl62s")
 [node name="CardRewardDialog" parent="UILayer" instance=ExtResource("5_xo2vs")]
 visible = false
 
+[node name="RelicBar" parent="UILayer" instance=ExtResource("20_4spss")]
+
 [node name="TopPanel" type="Panel" parent="UILayer"]
 anchors_preset = 10
 anchor_right = 1.0
@@ -2082,8 +2084,6 @@ grow_horizontal = 0
 grow_vertical = 2
 columns = 6
 script = ExtResource("10_agy8s")
-
-[node name="RelicBar" parent="UILayer" instance=ExtResource("20_4spss")]
 
 [node name="EventDialog" type="Panel" parent="UILayer"]
 visible = false

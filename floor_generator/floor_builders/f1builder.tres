@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=25 format=3 uid="uid://bjtjavkgkjgen"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=24 format=3 uid="uid://bjtjavkgkjgen"]
 
 [ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_ipnwp"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_np8sq"]
@@ -19,7 +19,6 @@
 [ext_resource type="Resource" uid="uid://btljq16rqurqj" path="res://patterns/pillar.tres" id="14_8ff72"]
 [ext_resource type="Resource" uid="uid://brcq5wokjhj4b" path="res://patterns/river.tres" id="15_k2yuw"]
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="16_ar0nc"]
-[ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="17_pofh4"]
 [ext_resource type="Resource" uid="uid://c3t3lfgr5qogl" path="res://patterns/room_patterns/special_features/rat_den.tres" id="21_k0m1f"]
 
 [sub_resource type="Resource" id="Resource_k253u"]
@@ -40,7 +39,6 @@ room_patterns = Array[ExtResource("6_5nywl")]([ExtResource("7_kog2a"), ExtResour
 special_patterns = Array[ExtResource("6_5nywl")]([ExtResource("21_k0m1f")])
 item_pool = ExtResource("5_tnbuw")
 relic_pool = ExtResource("6_ipnwp")
-shrine_pool = ExtResource("17_pofh4")
 initial_spawns = SubResource("Resource_ev3rf")
 elite_spawns = SubResource("Resource_k253u")
 metadata/_custom_type_script = "uid://cihmjv6v0inos"

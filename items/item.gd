@@ -6,6 +6,7 @@ extends Resource
 @export var color: Color = Color.WHITE
 @export var item_actions: Array[ItemAction] = [ItemAction.new()]
 @export var display_description_on_hover: bool = true
+@export var num_uses := 1
 
 func get_description() -> String:
 	var ret := item_name

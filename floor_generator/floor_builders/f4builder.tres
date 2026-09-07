@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=29 format=3 uid="uid://b1v86iegr1jxw"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=28 format=3 uid="uid://b1v86iegr1jxw"]
 
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_2ng6m"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_14ulr"]
@@ -21,7 +21,6 @@
 [ext_resource type="Resource" uid="uid://btljq16rqurqj" path="res://patterns/pillar.tres" id="14_x5faf"]
 [ext_resource type="Resource" uid="uid://brcq5wokjhj4b" path="res://patterns/river.tres" id="15_o7r0w"]
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="16_xtnre"]
-[ext_resource type="Resource" uid="uid://lgw2kpy3kx2f" path="res://items/descriptions/default_shrine.tres" id="17_3yiw6"]
 [ext_resource type="Resource" uid="uid://cu06btq57vfu3" path="res://patterns/room_patterns/special_features/slime_den.tres" id="22_0tba4"]
 [ext_resource type="Resource" uid="uid://cau3mgws2ax0c" path="res://patterns/room_patterns/special_features/goblin_den.tres" id="23_16ib7"]
 [ext_resource type="Resource" uid="uid://bfl70ibh5j5x8" path="res://floor_generator/floor_description/spawn_groups/single_slime.tres" id="24_f2nak"]
@@ -44,7 +43,6 @@ room_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("7_vlb78"), ExtResour
 special_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("22_0tba4"), ExtResource("23_16ib7")])
 item_pool = ExtResource("5_3mqf4")
 relic_pool = ExtResource("9_d1ji6")
-shrine_pool = ExtResource("17_3yiw6")
 initial_spawns = SubResource("Resource_qil1r")
 elite_spawns = SubResource("Resource_47kvl")
 metadata/_custom_type_script = "uid://cihmjv6v0inos"

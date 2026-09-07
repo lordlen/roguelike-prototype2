@@ -19,15 +19,9 @@ func build_floor():
 	var map := Floor.new(Terrain.width, Terrain.height)
 	map = simple_builder.build(map)
 	
-	var special_patterns : Array[RoomPattern]= []
-	
-	for pattern_resource in floor_description.special_patterns:
-		special_patterns.push_back(RoomPattern.new(pattern_resource))
-	
 	# determine how many rooms there are
 	var num_potions := get_random_number(floor_description.potion_ratio)
 	var num_gold := get_random_number(floor_description.gold_ratio)
-	var num_shrine := get_random_number(floor_description.shrine_ratio)
 	
 	# place 2 cards randomly
 	# get floor tiles
@@ -77,7 +71,7 @@ func build_floor():
 	var gold : Gold = load("res://items/gold/gold.tres")
 	gold.amount = randi_range(15, 45)
 	ActorManager.spawn_initial_characters(floor_description.initial_spawns, num_gold, [gold])
-	var potion := floor_description.item_pool.get_random_item()
+	var potion := floor_description.item_pool.get_item()
 	ActorManager.spawn_initial_characters(floor_description.initial_spawns, num_potions, [potion])
 	ActorManager.spawn_initial_characters(floor_description.initial_spawns, floor_description.num_initial_spawns - num_gold - num_potions)
 	var elite_card_reward := load(CardRewardItem.resource_mapping[card_reward_generator.generate_rarity()])
@@ -97,14 +91,14 @@ func build_floor():
 		.construct()
 	Globals.floor_map = special_builder.build(Globals.floor_map)
 	
-	# put a relic in the pressure plate
-	var pressure_plate_positions := map.get_type_positions([
-		TileResource.Terrains.PEDESTAL
-	])
-	for pos in pressure_plate_positions:
-		# get relic without replacement
-		var item := floor_description.relic_pool.get_random_item_no_replacement()
-		ItemManager.add_item_to_overworld(item, pos)
+	## put a relic in the pressure plate
+	#var pressure_plate_positions := map.get_type_positions([
+		#TileResource.Terrains.PEDESTAL
+	#])
+	#for pos in pressure_plate_positions:
+		## get relic without replacement
+		#var item := floor_description.relic_pool.get_item()
+		#ItemManager.add_item_to_overworld(item, pos)
 	
 func get_random_number(val: float) -> int:
 	var num : int = floor(val)

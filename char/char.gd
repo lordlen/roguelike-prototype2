@@ -18,14 +18,6 @@ signal char_next_floor
 signal char_waited
 signal char_walked
 
-const stats_resources := {
-	hero = "res://char/stats/hero.tres",
-	jackal = "res://char/stats/jackal.tres",
-	toad = "res://char/stats/toad.tres",
-	rat = "res://char/stats/rat.tres",
-	slime = "res://char/stats/slime.tres"
-}
-
 enum Alignment {
 	GOOD,
 	EVIL

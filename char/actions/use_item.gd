@@ -24,8 +24,8 @@ func execute() -> bool:
 	var is_successful := await item_action.use(actor, dest)
 
 	if is_successful:
+		actor.inventory.remove_item(item, item_action.num_uses)
 		actor.char_used_item.emit()
-		actor.inventory.remove_item(item)
 
 	action_finished.emit(item_action.uses_turn)
 	return item_action.uses_turn

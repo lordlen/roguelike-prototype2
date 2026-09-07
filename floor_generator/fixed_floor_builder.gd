@@ -55,7 +55,7 @@ func build_floor():
 	for i in range(num_potions):
 		if p_ind >= len(p_positions):
 			break
-		var item := potion_pool.get_random_item()
+		var item := potion_pool.get_item()
 		
 		ItemManager.add_item_to_overworld(item, p_positions[p_ind], potion_cost)
 		
@@ -64,7 +64,7 @@ func build_floor():
 	for i in range(num_relics):
 		if p_ind >= len(p_positions):
 			break
-		var item := relic_pool.get_random_item_no_replacement()
+		var item := relic_pool.get_item()
 		
 		ItemManager.add_item_to_overworld(item, p_positions[p_ind], relic_cost)
 		

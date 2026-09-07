@@ -23,4 +23,5 @@
 script = ExtResource("2_rqcsj")
 item_pool = Array[ExtResource("1_w3vif")]([ExtResource("2_4koj3"), ExtResource("3_fpsj8"), ExtResource("4_1khen"), ExtResource("5_et7pu"), ExtResource("6_r1ufi"), ExtResource("7_wky17"), ExtResource("9_prawf"), ExtResource("11_84rj0"), ExtResource("12_qo6lb"), ExtResource("13_208e8"), ExtResource("14_8l4nb"), ExtResource("15_ubias"), ExtResource("16_vlbii"), ExtResource("17_geqhs"), ExtResource("18_m1ids"), ExtResource("19_ubt1b")])
 weights = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+with_replacement = false
 metadata/_custom_type_script = "uid://dlmiqas8og0ae"
