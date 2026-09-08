@@ -15,7 +15,7 @@ static var TILE_TYPE_MAP := {
 }
 
 static var ITEM_TYPE_MAP := {
-	Color.BLACK: load("res://items/card_item_generator.gd"),
+	Color.BLACK: load("res://items/descriptions/default_card_pool.tres"),
 	Color.WHITE: load("res://items/descriptions/default_item_pool.tres"),
 	Color.YELLOW: load("res://items/descriptions/default_relic_pool.tres"),
 	Color.BLUE: load("res://items/descriptions/default_money_pool.tres"),

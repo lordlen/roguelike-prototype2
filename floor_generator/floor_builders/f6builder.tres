@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=30 format=3 uid="uid://c44c12ean0snx"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=31 format=3 uid="uid://c44c12ean0snx"]
 
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_ceonn"]
 [ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_xy2wx"]
@@ -26,6 +26,7 @@
 [ext_resource type="Resource" uid="uid://bes6p6gha121t" path="res://patterns/room_patterns/special_features/singular1.tres" id="23_bb0ki"]
 [ext_resource type="Resource" uid="uid://d1fbvlkcmme8g" path="res://patterns/room_patterns/special_features/singular2.tres" id="24_wxgrd"]
 [ext_resource type="Resource" uid="uid://25wc1y4a3qna" path="res://patterns/room_patterns/special_features/singular3.tres" id="25_ieiav"]
+[ext_resource type="Resource" uid="uid://clyyru60i41c1" path="res://patterns/room_patterns/special_features/three_choice.tres" id="26_cptl1"]
 
 [sub_resource type="Resource" id="Resource_k253u"]
 script = ExtResource("3_xy2wx")
@@ -42,7 +43,7 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 [sub_resource type="Resource" id="Resource_3aogm"]
 script = ExtResource("16_g78nc")
 room_patterns = Array[ExtResource("8_qb2nb")]([ExtResource("11_hc2ld"), ExtResource("12_p0f3o"), ExtResource("13_nlodp"), ExtResource("14_w6371"), ExtResource("15_qb2nb"), ExtResource("16_cptl1"), ExtResource("17_fm3g0")])
-special_patterns = Array[ExtResource("8_qb2nb")]([ExtResource("20_qb2nb"), ExtResource("21_cptl1"), ExtResource("22_fm3g0"), ExtResource("23_bb0ki"), ExtResource("24_wxgrd"), ExtResource("25_ieiav")])
+special_patterns = Array[ExtResource("8_qb2nb")]([ExtResource("20_qb2nb"), ExtResource("21_cptl1"), ExtResource("22_fm3g0"), ExtResource("23_bb0ki"), ExtResource("24_wxgrd"), ExtResource("25_ieiav"), ExtResource("26_cptl1")])
 item_pool = ExtResource("6_nlodp")
 relic_pool = ExtResource("7_w6371")
 initial_spawns = SubResource("Resource_ev3rf")

@@ -61,7 +61,7 @@ func act(actor: Char) -> Array[Action]:
 		
 		ret.push_back(AttackAction.new(actor, actor.target_ch))
 	else:
-		if actor.target_flow_map.destination_reached(actor.grid_position) or !actor.moved_last_turn:
+		if actor.target_flow_map.destination_reached(actor.grid_position):
 			# if actor is within scent range, request a new target location
 			var dist := Pathfinder.chebychev_dist(actor.grid_position, actor.target_ch.grid_position)
 			

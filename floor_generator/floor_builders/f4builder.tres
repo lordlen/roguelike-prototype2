@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=34 format=3 uid="uid://b1v86iegr1jxw"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=35 format=3 uid="uid://b1v86iegr1jxw"]
 
 [ext_resource type="Script" uid="uid://bo2wewg8np8bl" path="res://floor_generator/standard_floor_builder.gd" id="1_2ng6m"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_14ulr"]
@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://bes6p6gha121t" path="res://patterns/room_patterns/special_features/singular1.tres" id="25_xxsri"]
 [ext_resource type="Resource" uid="uid://d1fbvlkcmme8g" path="res://patterns/room_patterns/special_features/singular2.tres" id="26_27slx"]
 [ext_resource type="Resource" uid="uid://25wc1y4a3qna" path="res://patterns/room_patterns/special_features/singular3.tres" id="27_653wp"]
+[ext_resource type="Resource" uid="uid://clyyru60i41c1" path="res://patterns/room_patterns/special_features/three_choice.tres" id="30_nx4dv"]
 
 [sub_resource type="Resource" id="Resource_47kvl"]
 script = ExtResource("3_jalfh")
@@ -46,7 +47,7 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 [sub_resource type="Resource" id="Resource_ggcuy"]
 script = ExtResource("16_xtnre")
 room_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("7_vlb78"), ExtResource("8_h2it4"), ExtResource("9_vdcyu"), ExtResource("10_83vna"), ExtResource("11_0e5hf"), ExtResource("12_67dxa"), ExtResource("13_tmq0w"), ExtResource("14_x5faf"), ExtResource("15_o7r0w")])
-special_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("22_4b3xx"), ExtResource("23_nx4dv"), ExtResource("24_2344g"), ExtResource("25_xxsri"), ExtResource("26_27slx"), ExtResource("27_653wp"), ExtResource("22_0tba4"), ExtResource("23_16ib7")])
+special_patterns = Array[ExtResource("6_f4p5v")]([ExtResource("22_4b3xx"), ExtResource("23_nx4dv"), ExtResource("24_2344g"), ExtResource("25_xxsri"), ExtResource("26_27slx"), ExtResource("27_653wp"), ExtResource("22_0tba4"), ExtResource("23_16ib7"), ExtResource("30_nx4dv")])
 item_pool = ExtResource("5_3mqf4")
 relic_pool = ExtResource("9_d1ji6")
 initial_spawns = SubResource("Resource_qil1r")

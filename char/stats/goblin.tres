@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=15 format=3 uid="uid://b147660eyg6mw"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_8f0pr"]
-[ext_resource type="Resource" uid="uid://dmaquougpt3rj" path="res://cards/card_resources/crude_spear.tres" id="2_46plf"]
+[ext_resource type="Resource" uid="uid://dmaquougpt3rj" path="res://cards/card_resources/enemy/crude_spear.tres" id="2_46plf"]
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="2_aasnl"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="2_jrcgf"]
-[ext_resource type="Resource" uid="uid://drbqppl75ad1j" path="res://cards/card_resources/wood_shield.tres" id="4_46plf"]
+[ext_resource type="Resource" uid="uid://drbqppl75ad1j" path="res://cards/card_resources/enemy/wood_shield.tres" id="4_46plf"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="4_lwnf1"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="5_4jhaj"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="5_46plf"]

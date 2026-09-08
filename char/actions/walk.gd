@@ -17,6 +17,7 @@ func execute() -> bool:
 	and actor.inventory.keys > 0:
 		var ground := load("res://floor_generator/tiles/ground.tres")
 		Globals.floor_map.update_tile(dest, ground)
+		actor.inventory.add_key(-1)
 	
 	if !actor.can_traverse(dest) or (blocking_actor != null and blocking_actor.alignment != actor.alignment):
 		action_finished.emit(false)

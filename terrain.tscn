@@ -2064,6 +2064,7 @@ vertical_alignment = 1
 script = ExtResource("6_0i68f")
 
 [node name="Key" type="TextureRect" parent="UILayer/TopPanel"]
+visible = false
 layout_mode = 0
 offset_left = 149.0
 offset_top = 2.0
