@@ -118,7 +118,7 @@ func _unhandled_input(event: InputEvent):
 func on_item_used(item: Item, item_action: ItemAction):
 	if listening_user_input:
 		if item_action.target == ItemAction.Target.GROUND:
-			EventBus.aim_mode_requested.emit()
+			EventBus.aim_mode_requested.emit(item_action.effect_range)
 			is_aiming = true
 			stored_action = item_action
 			stored_item = item

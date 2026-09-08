@@ -1,19 +1,24 @@
-[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=12 format=3 uid="uid://phrla2nuhpao"]
+[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=17 format=3 uid="uid://phrla2nuhpao"]
 
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="1_g5qq8"]
-[ext_resource type="Resource" uid="uid://c8agp6gqqgpb7" path="res://items/potions/healing_potion.tres" id="2_dlf1f"]
+[ext_resource type="Resource" uid="uid://cdmisy2itbvre" path="res://items/wands/blink_wand.tres" id="2_a6lun"]
 [ext_resource type="Script" uid="uid://dlmiqas8og0ae" path="res://items/item_pool_description.gd" id="2_qpe4u"]
+[ext_resource type="Resource" uid="uid://w5vmo3sue5x2" path="res://items/wands/disarm_wand.tres" id="3_a7men"]
 [ext_resource type="Resource" uid="uid://c1w5ivm41maa2" path="res://items/potions/explosive_potion.tres" id="3_i2i5h"]
 [ext_resource type="Resource" uid="uid://djm0goopfhqum" path="res://items/potions/strength_potion.tres" id="4_i2i5h"]
+[ext_resource type="Resource" uid="uid://vxyfj28swm3r" path="res://items/wands/fire_wand.tres" id="4_n4uax"]
 [ext_resource type="Resource" uid="uid://d4cow5kuhisqa" path="res://items/potions/binding_potion.tres" id="5_8vklx"]
-[ext_resource type="Resource" uid="uid://bvpv62p75f0mx" path="res://items/potions/clairvoyance_potion.tres" id="6_gx0dk"]
-[ext_resource type="Resource" uid="uid://ckalve6ugggfg" path="res://items/potions/cleanse_potion.tres" id="7_nnnxw"]
+[ext_resource type="Resource" uid="uid://dceku268itg33" path="res://items/wands/swap_wand.tres" id="5_qf3sy"]
+[ext_resource type="Resource" uid="uid://dmkp3l0do5ja8" path="res://items/wands/warp_wand.tres" id="6_slubj"]
+[ext_resource type="Resource" uid="uid://dnrtj0g2pasyh" path="res://items/wands/wind_wand.tres" id="7_6dwvy"]
 [ext_resource type="Resource" uid="uid://dfaptvjmd1aur" path="res://items/potions/defense_potion.tres" id="8_upqmr"]
-[ext_resource type="Resource" uid="uid://csottp6xf70wh" path="res://items/potions/exhaust_potion.tres" id="9_7pasi"]
 [ext_resource type="Resource" uid="uid://gqntyx7aho65" path="res://items/potions/teleport_potion.tres" id="10_a6lun"]
+[ext_resource type="Resource" uid="uid://bh0vp12niv4uu" path="res://items/potions/foresight_potion.tres" id="11_la56a"]
+[ext_resource type="Resource" uid="uid://by5st1177vmjm" path="res://items/potions/sanctuary_potion.tres" id="12_151he"]
+[ext_resource type="Resource" uid="uid://cwqgyscveyb2y" path="res://items/potions/wish_potion.tres" id="15_3pjvm"]
 
 [resource]
 script = ExtResource("2_qpe4u")
-item_pool = Array[ExtResource("1_g5qq8")]([ExtResource("2_dlf1f"), ExtResource("3_i2i5h"), ExtResource("4_i2i5h"), ExtResource("5_8vklx"), ExtResource("6_gx0dk"), ExtResource("7_nnnxw"), ExtResource("8_upqmr"), ExtResource("9_7pasi"), ExtResource("4_i2i5h"), ExtResource("10_a6lun")])
-weights = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+item_pool = Array[ExtResource("1_g5qq8")]([ExtResource("2_a6lun"), ExtResource("3_a7men"), ExtResource("4_n4uax"), ExtResource("5_qf3sy"), ExtResource("6_slubj"), ExtResource("7_6dwvy"), ExtResource("5_8vklx"), ExtResource("8_upqmr"), ExtResource("3_i2i5h"), ExtResource("11_la56a"), ExtResource("12_151he"), ExtResource("4_i2i5h"), ExtResource("10_a6lun"), ExtResource("15_3pjvm")])
+weights = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://dlmiqas8og0ae"

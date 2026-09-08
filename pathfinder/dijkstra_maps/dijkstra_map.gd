@@ -33,19 +33,6 @@ func set_traversal(t: Char.Traversal):
 func set_chars(chars: Array[Char]):
 	self.chars = chars
 
-#func roll_down(pos: Vector2i, char_impassable: bool = false) -> Vector2i:
-	#var best_pos := pos
-	#var best_dist := map[get_ind(pos)]
-	#
-	#for v in _get_adjacent_edges(pos):
-		#var char_in_location := false if char_impassable else chars.any(func(ch: Char): return ch.grid_position == v)
-		#if is_within_bounds(v) and !char_in_location:
-			#var curr_dist := map[get_ind(v)]
-			#if best_dist > curr_dist or (char_impassable and best_dist == curr_dist):
-				#best_dist = curr_dist
-				#best_pos = v
-	#return best_pos
-
 func roll_down(pos: Vector2i, char_impassable: bool = false) -> Vector2i:
 	var pq := PriorityQueue.new()
 	for v in _get_adjacent_edges(pos):
@@ -59,6 +46,8 @@ func roll_down(pos: Vector2i, char_impassable: bool = false) -> Vector2i:
 	var best_pos := pos
 	while !pq.is_empty():
 		var top = pq.pop()
+		if top.z == INF:
+			return best_pos
 		var v: Vector2i = Vector2i(top.x, top.y)
 		if v not in char_dict:
 			return v

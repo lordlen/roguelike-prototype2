@@ -18,11 +18,13 @@ static var ITEM_TYPE_MAP := {
 	Color.BLACK: load("res://items/card_item_generator.gd"),
 	Color.WHITE: load("res://items/descriptions/default_item_pool.tres"),
 	Color.YELLOW: load("res://items/descriptions/default_relic_pool.tres"),
+	Color.BLUE: load("res://items/descriptions/default_money_pool.tres"),
+	Color.GREEN: load("res://items/descriptions/healing_tile.tres")
 }
 
 var used_cells: Array[Vector2i]
 var used_cells_types: Array[TileResource]
-var item_generators: Array[ItemPoolDescription]
+var item_generators: Array[ItemGenerator]
 var item_cells: Array[Vector2i]
 
 func _init(pattern_image: PatternResource):

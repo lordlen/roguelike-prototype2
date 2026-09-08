@@ -14,12 +14,11 @@ stretch_mode = 4
 script = ExtResource("2_vokiv")
 
 [node name="DescriptionContainer" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 40.0
 offset_top = 42.0
-offset_right = 788.0
-offset_bottom = 97.0
+offset_right = 372.0
+offset_bottom = 78.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Description" type="RichTextLabel" parent="DescriptionContainer"]

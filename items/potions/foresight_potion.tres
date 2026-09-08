@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://bh0vp12niv4uu"]
+
+[ext_resource type="Script" uid="uid://b6ntax5yjf1xc" path="res://items/item_actions/scry.gd" id="1_pyeer"]
+[ext_resource type="Script" uid="uid://c0kydti45bp0m" path="res://items/item_action.gd" id="2_s6251"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="3_sd7ig"]
+[ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="4_bwbhe"]
+
+[sub_resource type="Resource" id="Resource_vtvxn"]
+script = ExtResource("1_pyeer")
+action_name = "Drink"
+metadata/_custom_type_script = "uid://b6ntax5yjf1xc"
+
+[sub_resource type="Resource" id="Resource_yfgug"]
+script = ExtResource("2_s6251")
+metadata/_custom_type_script = "uid://c0kydti45bp0m"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2dtf"]
+atlas = ExtResource("4_bwbhe")
+region = Rect2(160, 0, 16, 16)
+
+[resource]
+script = ExtResource("3_sd7ig")
+item_name = "Scry Potion"
+texture = SubResource("AtlasTexture_b2dtf")
+item_actions = Array[Object]([SubResource("Resource_vtvxn"), SubResource("Resource_yfgug")])
+metadata/_custom_type_script = "uid://ca2r30i5gni7m"

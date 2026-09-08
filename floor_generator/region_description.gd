@@ -17,10 +17,6 @@ func initalize() -> void:
 	curr_floor = 0
 	floor_list = normal_floors.duplicate()
 	
-	if len(special_room_floors) > 0:
-		var special_room_index : int = special_room_floors.pick_random()
-		(floor_list[special_room_index] as StandardFloorBuilder).floor_description.num_special_rooms += 1
-	
 	# insert shop floor somewhere in the list
 	if len(shop_insertions) > 0:
 		var shop_ind : int = shop_insertions.pick_random()

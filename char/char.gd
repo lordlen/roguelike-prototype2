@@ -54,6 +54,7 @@ var explored_set : Dictionary[Vector2i, bool] = {}
 var visible_actors: Array[Char] = []
 var vision_range: int
 var scent_range: int
+var all_seeing: bool = false
 
 var action_queue: Array[Action] = []
 
@@ -349,9 +350,10 @@ func pass_turn():
 	self.deck.draw_empty()
 	EventBus.character_deck_updated.emit(self)
 
-func can_traverse(pos: Vector2i):
+func can_traverse(pos: Vector2i) -> bool:
 	var tile := Globals.floor_map.get_tile(pos)
-	
+	if tile.terrain_id == TileResource.Terrains.SANCTUARY and alignment == Alignment.GOOD:
+		return true
 	return tile.get_pf_cost(traversal) != INF
 
 func is_user_controlled():

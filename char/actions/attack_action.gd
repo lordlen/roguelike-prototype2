@@ -33,7 +33,7 @@ func can_attack(start_pos: Vector2i, target_pos: Vector2i, card: CardInstance):
 	var pf = Pathfinder.new()
 	var dist = Pathfinder.chebychev_dist(attacker.grid_position, defender.grid_position)
 	if dist <= atk_range:
-		var path := pf.get_straight_path(start_pos, target_pos, Char.Traversal.GROUNDED)
+		var path := pf.get_straight_path(start_pos, target_pos, Char.Traversal.FLYING)
 		if card.is_lob or len(path) - 1 >=  dist:
 			return true
 	return false

@@ -35,7 +35,12 @@ func build_floor():
 		var card_item := load(CardRewardItem.resource_mapping[rarity])
 		ItemManager.add_item_to_overworld(card_item, cell)
 	
-	for cell in ground_positions.slice(num_card_rewards):
+	# key
+	for cell in ground_positions.slice(num_card_rewards, num_card_rewards + floor_description.num_special_rooms):
+		var key_item : Item = load("res://items/key/key.tres")
+		ItemManager.add_item_to_overworld(key_item, cell)
+	
+	for cell in ground_positions.slice(num_card_rewards + floor_description.num_special_rooms):
 		var valid_tiles := [
 			TileResource.Terrains.GROUND,
 			TileResource.Terrains.TRAMPLED_GRASS,

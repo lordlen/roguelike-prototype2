@@ -9,6 +9,7 @@
 script = ExtResource("2_i1onv")
 damage = 10
 target = 1
+affects = 1
 action_name = "Throw"
 effect_radius = 2
 metadata/_custom_type_script = "uid://dk8e13cpebadb"

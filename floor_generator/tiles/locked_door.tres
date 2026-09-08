@@ -5,7 +5,6 @@
 [resource]
 script = ExtResource("1_he5dn")
 terrain_id = 7
-is_opaque = true
 grounded_cost = inf
 aquatic_cost = inf
 flying_cost = inf

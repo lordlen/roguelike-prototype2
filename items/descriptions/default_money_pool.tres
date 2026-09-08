@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MoneyGenerator" load_steps=2 format=3 uid="uid://beefw3c5pf6gb"]
+
+[ext_resource type="Script" uid="uid://vb8g68of5ssi" path="res://items/gold_generator.gd" id="1_w58hc"]
+
+[resource]
+script = ExtResource("1_w58hc")
+low = 15
+high = 45
+metadata/_custom_type_script = "uid://vb8g68of5ssi"

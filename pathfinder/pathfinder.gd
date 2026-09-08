@@ -14,7 +14,12 @@ func find_path(traversability: Char.Traversal, from: Vector2i, to: Vector2i, cha
 		astar.set_char_cost(INF)
 	else:
 		astar.set_char_cost(4.0)
-	var path := astar.get_id_path(from, to)
+	var path := astar.get_id_path(from, to, true)
+	# check if path has any impassable
+	for cell in path.slice(0, len(path) - 1):
+		var tile := Globals.floor_map.get_tile(cell)
+		if tile.get_pf_cost(traversability) == INF:
+			return []
 	return path
 
 func get_straight_path(from: Vector2i, to: Vector2i, traversibility: Char.Traversal) -> Array[Vector2i]:
@@ -23,7 +28,7 @@ func get_straight_path(from: Vector2i, to: Vector2i, traversibility: Char.Traver
 	
 	# loop, removing the start and end points
 	var size := 1
-	for pos in path.slice(1, len(path) - 1):
+	for pos in path.slice(1, len(path)):
 		var tile := Globals.floor_map.get_tile(pos)
 		var is_traversible := tile.get_pf_cost(traversibility) != INF
 		if !is_traversible:

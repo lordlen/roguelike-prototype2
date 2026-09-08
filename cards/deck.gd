@@ -196,12 +196,14 @@ func shuffle():
 		if primary != null:
 			tmp.push_back(primary)
 		primary = innate_cards.pop_back()
+		primary.on_draw(deck_owner)
 
 	if !innate_cards.is_empty():
 		# if primary not nothing
 		if offhand != null:
 			tmp.push_back(offhand)
 		offhand = innate_cards.pop_back()
+		offhand.on_draw(deck_owner)
 		
 	tmp.shuffle()
 	# add the rest of the innate cards at the top

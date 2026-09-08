@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=52 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
@@ -15,7 +15,9 @@
 [ext_resource type="Script" uid="uid://djehyyein7u8h" path="res://UI/potion_container.gd" id="6_lg7om"]
 [ext_resource type="PackedScene" uid="uid://bnlsf1yf60gbl" path="res://UI/char_info2.tscn" id="6_lj33d"]
 [ext_resource type="Script" uid="uid://dt5vt4jmthp7r" path="res://UI/card_reward_container.gd" id="10_agy8s"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="10_kfw2k"]
 [ext_resource type="PackedScene" uid="uid://w70rvwim7l6d" path="res://UI/card_selector.tscn" id="10_q6cs3"]
+[ext_resource type="Script" uid="uid://ch1lnbcl5f630" path="res://UI/KeyUI.gd" id="11_ick23"]
 [ext_resource type="Script" uid="uid://ba8qij3w3lqqm" path="res://UI/event_dialog.gd" id="11_pgrna"]
 [ext_resource type="PackedScene" uid="uid://dxf37wpyk66y4" path="res://UI/options_button.tscn" id="12_pgrna"]
 [ext_resource type="Script" uid="uid://yb5tlb7u883" path="res://ui_button_panel.gd" id="13_nsrdk"]
@@ -26,6 +28,10 @@
 [ext_resource type="PackedScene" uid="uid://rsvs28kow4q6" path="res://UI/relic_bar.tscn" id="20_4spss"]
 [ext_resource type="PackedScene" uid="uid://bq32evy5ojloo" path="res://UI/item_description.tscn" id="20_lj33d"]
 [ext_resource type="PackedScene" uid="uid://cj18bf3mbxkfi" path="res://UI/aim_mode.tscn" id="21_4spss"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnxal"]
+atlas = ExtResource("10_kfw2k")
+region = Rect2(160, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6k1t"]
 atlas = ExtResource("13_qofig")
@@ -150,6 +156,8 @@ texture = ExtResource("1_206su")
 23:1/0 = 0
 24:1/0 = 0
 25:1/0 = 0
+25:1/0/terrain_set = 0
+25:1/0/terrain = 9
 26:1/0 = 0
 27:1/0 = 0
 28:1/0 = 0
@@ -1377,6 +1385,8 @@ terrain_set_0/terrain_7/name = "locked_door"
 terrain_set_0/terrain_7/color = Color(0.25, 0.5, 0.5, 1)
 terrain_set_0/terrain_8/name = "statue"
 terrain_set_0/terrain_8/color = Color(0.25, 0.40625, 0.5, 1)
+terrain_set_0/terrain_9/name = "sanctuary"
+terrain_set_0/terrain_9/color = Color(0.25, 0.3125, 0.5, 1)
 sources/0 = SubResource("TileSetAtlasSource_0u6kl")
 sources/1 = SubResource("TileSetAtlasSource_3shck")
 sources/3 = SubResource("TileSetAtlasSource_e1kr5")
@@ -2018,10 +2028,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 30.0
-offset_top = -14.0
-offset_right = 83.0
-offset_bottom = 14.0
+offset_left = 6.0
+offset_top = -15.0
+offset_right = 59.0
+offset_bottom = 13.0
 grow_vertical = 2
 text = "F1"
 vertical_alignment = 1
@@ -2031,10 +2041,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = -11.5
-offset_right = 144.0
-offset_bottom = 11.5
+offset_left = 66.0
+offset_top = -12.0
+offset_right = 110.0
+offset_bottom = 11.0
 grow_vertical = 2
 text = "Gold:"
 vertical_alignment = 1
@@ -2044,14 +2054,24 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 150.0
-offset_top = -11.5
-offset_right = 190.0
-offset_bottom = 11.5
+offset_left = 110.0
+offset_top = -12.0
+offset_right = 150.0
+offset_bottom = 11.0
 grow_vertical = 2
 text = "0"
 vertical_alignment = 1
 script = ExtResource("6_0i68f")
+
+[node name="Key" type="TextureRect" parent="UILayer/TopPanel"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 2.0
+offset_right = 181.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_nnxal")
+stretch_mode = 4
+script = ExtResource("11_ick23")
 
 [node name="PotionContainer" type="GridContainer" parent="UILayer/TopPanel"]
 custom_minimum_size = Vector2(48, 48)
@@ -2061,9 +2081,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -66.5
+offset_left = -47.5
 offset_top = -18.0
-offset_right = 133.5
+offset_right = 152.5
 offset_bottom = 31.333336
 grow_horizontal = 2
 grow_vertical = 2

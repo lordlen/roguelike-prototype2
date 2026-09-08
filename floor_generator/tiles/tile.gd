@@ -18,7 +18,8 @@ enum Terrains {
 	TRAMPLED_GRASS = 5,
 	STAIRS = 6,
 	LOCKED_DOOR = 7,
-	STATUE = 8
+	STATUE = 8,
+	SANCTUARY = 9,
 }
 
 # return the grounded cost by default

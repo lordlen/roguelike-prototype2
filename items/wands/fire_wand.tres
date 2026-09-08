@@ -9,6 +9,7 @@
 script = ExtResource("1_gie3c")
 damage = 6
 target = 1
+affects = 1
 action_name = "Zap"
 uses_turn = true
 num_uses = 1
