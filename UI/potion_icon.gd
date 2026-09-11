@@ -36,8 +36,7 @@ func _on_popup_menu_index_pressed(index: int) -> void:
 	EventBus.item_used.emit(item, item.item_actions[index])
 
 func _on_mouse_entered() -> void:
-	$DescriptionContainer.visible = true
-
+	$DescriptionContainer.show()
 
 func _on_mouse_exited() -> void:
-	$DescriptionContainer.visible = false
+	$DescriptionContainer.hide()

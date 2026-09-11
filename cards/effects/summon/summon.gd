@@ -3,6 +3,7 @@ extends CardEffect
 
 @export var num_summons: int
 @export var char_resource: CharacterStats
+var follow_leader: bool = true
 
 func get_identifier() -> String:
 	return "summon"
@@ -17,7 +18,8 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 		var cell := valid_adjacent[i]
 		var new_char := ActorManager.spawn_character(char_resource)
 		new_char.move_to(cell)
-		new_char.follow(actor)
+		if follow_leader:
+			new_char.follow(actor)
 		new_char.deck.discard_all()
 	card_effect_finished.emit()
 

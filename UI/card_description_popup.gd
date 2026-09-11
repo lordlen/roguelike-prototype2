@@ -17,7 +17,6 @@ func set_card(card: CardInstance) -> void:
 	
 	# clear the vboxcontainer
 	for child in $VBoxContainer.get_children():
-			remove_child(child)
 			child.queue_free()
 
 	var unique_keywords : Dictionary[String, bool] = {}
@@ -28,6 +27,9 @@ func set_card(card: CardInstance) -> void:
 	if card.is_innate:
 		add_effect_desc(CardDescriptionHelper.orange_text("Innate"),
 		"Always starts in the hand when reshuffling the deck.")
+	if card.is_final:
+		add_effect_desc(CardDescriptionHelper.orange_text("Final"),
+		"Always starts at the bottom of the draw when shuffling the deck.")
 	if card.is_instant:
 		add_effect_desc(CardDescriptionHelper.orange_text("instant"),
 		"Attacking with this card will not use your turn.")

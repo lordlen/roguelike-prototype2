@@ -25,22 +25,22 @@ static func drain_water(pos: Vector2i) -> int:
 
 static func deal_damage(attack_val: int, num_hits, actor: Char, target_char: Char):
 	for _i in num_hits:
-		if target_char.is_dead():
+		if !is_instance_valid(target_char) or target_char.is_dead():
 			break
 		actor.attack_animation.call_deferred(target_char.grid_position)
 		await target_char.take_hit(actor, attack_val)
 		await actor.char_finished_attacking
 
-static func deal_aoe_damage(attack_val: int, num_hits: int, attacker: Char, target_pos: Vector2i, atk_range: int):
+static func deal_aoe_damage(attack_val: int, num_hits: int, attacker: Char, target_pos: Vector2i, atk_range: int, friendly_fire := false):
 	for x in range(target_pos.x - atk_range, target_pos.x + atk_range + 1):
 		for y in range(target_pos.y - atk_range, target_pos.y + atk_range + 1):
 			var pos := Vector2i(x,y)
 			var char := ActorManager.get_actor_in_position(pos)
-			if char == null or char.alignment == attacker.alignment:
+			if char == null or (!friendly_fire and char.alignment == attacker.alignment):
 				continue
 			
 			for _i in num_hits:
-				if char.is_dead():
+				if !is_instance_valid(char) or char.is_dead():
 					break
 				char.take_hit(attacker, attack_val)
 

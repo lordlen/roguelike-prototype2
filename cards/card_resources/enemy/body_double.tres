@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=10 format=3 uid="uid://d03fo1rnsygrg"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_74x2e"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_mws0e"]
+[ext_resource type="Script" uid="uid://bi5tu5pg2y40b" path="res://cards/effects/relocate/backslide.gd" id="3_1cbhe"]
+[ext_resource type="Resource" uid="uid://dwuhwtyowgj52" path="res://char/stats/zombie.tres" id="4_74x2e"]
+[ext_resource type="Script" uid="uid://ck7aavfdac127" path="res://cards/effects/summon/summon_line.gd" id="5_7plte"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="6_kotte"]
+
+[sub_resource type="Resource" id="Resource_115db"]
+script = ExtResource("2_mws0e")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_majky"]
+script = ExtResource("3_1cbhe")
+metadata/_custom_type_script = "uid://bi5tu5pg2y40b"
+
+[sub_resource type="Resource" id="Resource_ddnvy"]
+script = ExtResource("5_7plte")
+char_resource = ExtResource("4_74x2e")
+metadata/_custom_type_script = "uid://ck7aavfdac127"
+
+[resource]
+script = ExtResource("6_kotte")
+name = "Arise"
+rarity = 3
+attack = 6
+range = 1
+attack_effects = Array[ExtResource("1_74x2e")]([SubResource("Resource_115db"), SubResource("Resource_majky"), SubResource("Resource_ddnvy")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

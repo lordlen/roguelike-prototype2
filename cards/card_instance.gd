@@ -26,6 +26,7 @@ var atk_range: int:
 var is_dodge: bool
 var exhausts: bool
 var is_innate: bool
+var is_final: bool
 var is_ethereal: bool
 var is_instant: bool
 var is_lob: bool
@@ -56,6 +57,7 @@ func _init(r: CardResource):
 	is_dodge = r.is_dodge
 	exhausts = r.exhausts
 	is_innate = r.is_innate
+	is_final = r.is_final
 	is_ethereal = r.is_ethereal
 	is_instant = r.is_instant
 	is_lob = r.is_lob
@@ -105,7 +107,7 @@ func do_on_any_attack_effects(actor: Char) -> void:
 func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 	var target_pos := target.grid_position
 	for e in effects:
-		if !is_instance_valid(actor) or actor.is_dead():
+		if !is_instance_valid(actor):
 			break
 		if is_instance_valid(target):
 			target_pos = target.grid_position
@@ -138,6 +140,9 @@ func get_description() -> String:
 		result += ".\n"
 	if is_innate:
 		result += CardDescriptionHelper.orange_text("Innate")
+		result += ".\n"
+	if is_final:
+		result += CardDescriptionHelper.orange_text("Final")
 		result += ".\n"
 	if is_instant:
 		result += CardDescriptionHelper.orange_text("Instant")

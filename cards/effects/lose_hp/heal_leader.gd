@@ -14,9 +14,9 @@ func get_numeric() -> String:
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var target_char := ActorManager.get_actor_in_position(target_pos)
-	if is_instance_valid(target_char):
-		var target_def := 0 if target_char.deck.offhand == null\
-		else target_char.deck.offhand.get_defense()
-		var heal_amount : int = max(0, heal_value - target_def)
-		actor.leader.take_damage(-heal_amount)
+	var target_def := 0
+	if is_instance_valid(target_char) and target_char.deck.offhand:
+		target_def = target_char.deck.offhand.get_defense()
+	var heal_amount : int = max(0, heal_value - target_def)
+	actor.leader.take_damage(-heal_amount)
 	card_effect_finished.emit()

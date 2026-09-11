@@ -35,9 +35,13 @@ func _remove_actor(ch: Char):
 
 func move_actor(ch: Char, target_position: Vector2i):
 	var old_position := ch.grid_position
-	char_dict.erase(old_position)
+	if char_dict.get(old_position) == ch:
+		char_dict.erase(old_position)
 	char_dict[target_position] = ch
 	ch.grid_position = target_position
+
+func actor_is_dead(ch: Char):
+	return !is_instance_valid(ch) or ch.is_dead()
 
 func _process(delta: float) -> void:
 	if block_process:
@@ -55,7 +59,7 @@ func do_actor_turns():
 		ch.pass_turn()
 
 	for ch: Char in get_ai_controlled_chars():
-		if ch.is_dead():
+		if !is_instance_valid(ch) or ch.is_dead():
 			continue
 		if ch.is_moving:
 			await ch.char_finished_moving
@@ -65,7 +69,7 @@ func do_actor_turns():
 			var turn_passed : bool = await action.action_finished
 			if turn_passed:
 				break
-		if is_instance_valid(ch) and !ch.is_dead():
+		if is_instance_valid(ch):
 			ch.pass_turn()
 	
 	spawn_turn_count += 1

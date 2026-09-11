@@ -40,7 +40,7 @@ func should_reshuffle(actor: Char):
 
 func act(actor: Char) -> Array[Action]:
 	# if the prey is dead, change prey or swap to wander
-	if !is_instance_valid(actor.target_ch):
+	if !is_instance_valid(actor.target_ch) or actor.target_ch.is_dead():
 		# TODO: switch target if necessary
 		actor.wander()
 		return actor.curr_state.act(actor)

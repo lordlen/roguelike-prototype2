@@ -23,5 +23,6 @@ extends Resource
 
 @export var cards: Array[CardResource]
 @export var innate_cards: Array[CardResource]
+@export var final_cards: Array[CardResource]
 
 @export var items: Array[Item]

@@ -17,7 +17,7 @@ func execute() -> bool:
 		await card.card_action_finished
 		if is_instance_valid(attacker):
 			await attacker.get_tree().create_timer(0.5).timeout
-			if is_instance_valid(attacker) and !attacker.is_dead():
+			if is_instance_valid(attacker):
 				await attacker.deck.dispose_primary()
 				await attacker.deck.draw_empty()
 			action_finished.emit(!card.is_instant)

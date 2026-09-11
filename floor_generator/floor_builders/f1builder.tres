@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=30 format=3 uid="uid://bjtjavkgkjgen"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=28 format=3 uid="uid://bjtjavkgkjgen"]
 
 [ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_ipnwp"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_np8sq"]
@@ -21,10 +21,8 @@
 [ext_resource type="Script" uid="uid://cihmjv6v0inos" path="res://floor_generator/floor_description/floor_description.gd" id="16_ar0nc"]
 [ext_resource type="Resource" uid="uid://lsvn1u2h1ysb" path="res://patterns/room_patterns/special_features/choice1.tres" id="19_vwjr2"]
 [ext_resource type="Resource" uid="uid://dquyrre8nrgo1" path="res://patterns/room_patterns/special_features/choice2.tres" id="20_vwjr2"]
-[ext_resource type="Resource" uid="uid://bugtluie28imv" path="res://patterns/room_patterns/special_features/choice3.tres" id="21_no1o3"]
 [ext_resource type="Resource" uid="uid://bes6p6gha121t" path="res://patterns/room_patterns/special_features/singular1.tres" id="22_fg57n"]
 [ext_resource type="Resource" uid="uid://d1fbvlkcmme8g" path="res://patterns/room_patterns/special_features/singular2.tres" id="23_7kw8c"]
-[ext_resource type="Resource" uid="uid://25wc1y4a3qna" path="res://patterns/room_patterns/special_features/singular3.tres" id="24_mw00c"]
 [ext_resource type="Resource" uid="uid://clyyru60i41c1" path="res://patterns/room_patterns/special_features/three_choice.tres" id="25_no1o3"]
 
 [sub_resource type="Resource" id="Resource_k253u"]
@@ -42,7 +40,7 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 [sub_resource type="Resource" id="Resource_3aogm"]
 script = ExtResource("16_ar0nc")
 room_patterns = Array[ExtResource("6_5nywl")]([ExtResource("7_kog2a"), ExtResource("8_vhi5e"), ExtResource("9_8jewq"), ExtResource("10_deku5"), ExtResource("11_ts2kh"), ExtResource("12_vdh0n"), ExtResource("13_jtd78"), ExtResource("14_8ff72"), ExtResource("15_k2yuw")])
-special_patterns = Array[ExtResource("6_5nywl")]([ExtResource("19_vwjr2"), ExtResource("20_vwjr2"), ExtResource("21_no1o3"), ExtResource("22_fg57n"), ExtResource("23_7kw8c"), ExtResource("24_mw00c"), ExtResource("25_no1o3")])
+special_patterns = Array[ExtResource("6_5nywl")]([ExtResource("19_vwjr2"), ExtResource("20_vwjr2"), ExtResource("22_fg57n"), ExtResource("23_7kw8c"), ExtResource("25_no1o3")])
 item_pool = ExtResource("5_tnbuw")
 relic_pool = ExtResource("6_ipnwp")
 initial_spawns = SubResource("Resource_ev3rf")

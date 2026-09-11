@@ -3,6 +3,7 @@ class_name Deck
 var deck_owner: Char
 var deck_list: Array[CardResource] = []
 var innate_list: Array[CardResource] = []
+var final_list: Array[CardResource] = []
 var draw_pile: Array[CardInstance] = []
 var discard_pile: Array[CardInstance] = []
 var primary: CardInstance = null
@@ -10,7 +11,7 @@ var offhand: CardInstance = null
 
 static var reshuffle_texture := preload("res://indicators/reshuffle_indicator.tres")
 
-func _init(owner: Char, deck_list: Array[CardResource], innate_list: Array[CardResource]):
+func _init(owner: Char, deck_list: Array[CardResource], innate_cards: Array[CardResource], final_cards: Array[CardResource]):
 	deck_owner = owner
 	
 	owner.char_attacked.connect(on_attack)
@@ -21,8 +22,10 @@ func _init(owner: Char, deck_list: Array[CardResource], innate_list: Array[CardR
 	
 	for card in deck_list:
 		self.deck_list.push_back(card.duplicate(true))
-	for card in innate_list:
+	for card in innate_cards:
 		self.innate_list.push_back(card.duplicate(true))
+	for card in final_cards:
+		self.final_list.push_back(card.duplicate(true))
 
 # initialize should be called every time the player goes to another floor, removing
 # statuses and any kind of card scaling
@@ -42,6 +45,13 @@ func initialize():
 		instance.is_innate = true
 		deck_owner.char_card_added.emit(instance)
 		draw_pile.push_back(instance)
+		
+	for card_resource in final_list:
+		var instance := CardInstance.new(card_resource)
+		instance.is_final = true
+		deck_owner.char_card_added.emit(instance)
+		draw_pile.push_back(instance)
+
 	shuffle()
 	EventBus.character_deck_updated.emit(deck_owner)
 
@@ -61,13 +71,6 @@ func draw_empty(do_effects: bool = true):
 	var primary_drawn := false
 	var offhand_drawn := false
 	
-	if primary == null:
-		var card : CardInstance = draw()
-		if card != null:
-			primary_drawn = true
-		primary = card
-		EventBus.character_deck_updated.emit(deck_owner)
-		
 	if offhand == null:
 		var card : CardInstance = draw()
 		if card != null:
@@ -75,12 +78,19 @@ func draw_empty(do_effects: bool = true):
 		offhand = card
 		EventBus.character_deck_updated.emit(deck_owner)
 	
+	if primary == null:
+		var card : CardInstance = draw()
+		if card != null:
+			primary_drawn = true
+		primary = card
+		EventBus.character_deck_updated.emit(deck_owner)
+
 	if do_effects:
-		if primary_drawn:
-			await primary.on_draw(deck_owner)
-		
 		if offhand_drawn:
 			await offhand.on_draw(deck_owner)
+
+		if primary_drawn:
+			await primary.on_draw(deck_owner)
 
 func draw() -> CardInstance:
 	if draw_pile.is_empty():
@@ -141,8 +151,15 @@ func dispose_offhand():
 		discard_offhand()
 
 func discard_top():
-	if draw_pile.size() != 0:
+	if draw_pile.size() > 0:
 		var discarded_card : CardInstance = draw_pile.pop_back()
+		await discarded_card.do_on_discard_effects(deck_owner)
+		add_to_discard(discarded_card)
+		EventBus.character_deck_updated.emit(deck_owner)
+
+func discard_bottom():
+	if draw_pile.size() > 0:
+		var discarded_card : CardInstance = draw_pile.pop_front()
 		await discarded_card.do_on_discard_effects(deck_owner)
 		add_to_discard(discarded_card)
 		EventBus.character_deck_updated.emit(deck_owner)
@@ -184,33 +201,36 @@ func shuffle():
 	discard_pile.clear()
 
 	var innate_cards: Array[CardInstance] = []
+	var final_cards: Array[CardInstance] = []
 	var tmp : Array[CardInstance] = []
 	for card in draw_pile:
 		if card.is_innate:
 			innate_cards.append(card)
+		elif card.is_final:
+			final_cards.append(card)
 		else:
 			tmp.append(card)
-	# try to put innate cards on the primary
-	if !innate_cards.is_empty():
-		# if primary not nothing
-		if primary != null:
-			tmp.push_back(primary)
-		primary = innate_cards.pop_back()
-		primary.on_draw(deck_owner)
-
+	
+	innate_cards.shuffle()
+	tmp.shuffle()
+	final_cards.shuffle()
+	
+	# most innate cards  are defensive so prioritize offhand
 	if !innate_cards.is_empty():
 		# if primary not nothing
 		if offhand != null:
 			tmp.push_back(offhand)
 		offhand = innate_cards.pop_back()
 		offhand.on_draw(deck_owner)
-		
-	tmp.shuffle()
-	# add the rest of the innate cards at the top
-	tmp.append_array(innate_cards)
-	# tmp.append_array(innate_cards)
 	
-	draw_pile = tmp
+	if !innate_cards.is_empty():
+		# if primary not nothing
+		if primary != null:
+			tmp.push_back(primary)
+		primary = innate_cards.pop_back()
+		primary.on_draw(deck_owner)
+	
+	draw_pile = final_cards + tmp + innate_cards
 
 func reshuffle(do_effects: bool = true):
 	shuffle()

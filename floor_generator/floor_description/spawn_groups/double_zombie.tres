@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_v5xd5"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="2_dvb04"]
-[ext_resource type="Resource" uid="uid://bqrj3bxo4xipg" path="res://char/stats/zombie.tres" id="2_g4mia"]
+[ext_resource type="Resource" uid="uid://bqrj3bxo4xipg" path="res://char/stats/ghoul.tres" id="2_g4mia"]
 
 [resource]
 script = ExtResource("2_dvb04")

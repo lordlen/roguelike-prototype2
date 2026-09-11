@@ -31,7 +31,6 @@ func set_char(char: Char):
 	# loop each relic
 	# clear children
 	for child in $RelicLabel/GridContainer.get_children():
-		remove_child(child)
 		child.queue_free()
 
 	for relic in char.inventory.relics:

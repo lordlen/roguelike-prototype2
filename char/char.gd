@@ -108,7 +108,7 @@ func set_char_stats(stats: CharacterStats):
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = curr_hp
 
-	self.deck = Deck.new(self, stats.cards, stats.innate_cards)
+	self.deck = Deck.new(self, stats.cards, stats.innate_cards, stats.final_cards)
 	self.deck.initialize()
 	
 	# AI
@@ -141,59 +141,6 @@ func set_char_stats(stats: CharacterStats):
 	$CharInfo.update(self)
 	
 	EventBus.new_actor_added.emit(self)
-
-#func _init(stats: CharacterStats, position: Vector2i):
-	#char_stats = stats
-	#self.char_id = _curr_char_id
-	#_curr_char_id += 1
-	#sprite = Sprite2D.new()
-	#sprite.texture = stats.texture
-	#sprite.self_modulate = stats.color
-	#sprite.centered = false
-	#add_child(sprite)
-	#var collision := CollisionShape2D.new()
-	#collision.position = Vector2(Consts.TILE_SIZE / 2, Consts.TILE_SIZE / 2)
-	#var rect := RectangleShape2D.new()
-	#rect.size = Vector2(16,16)
-	#collision.shape = rect
-	#add_child(collision)
-	#self.grid_position = position
-	#self.position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
-	#self.new_pos = self.position
-	#self.character_name = stats.character_name
-	#self.max_hp = randi_range(stats.min_hp, stats.max_hp)
-	#self.curr_hp = self.max_hp
-#
-	#self.deck = Deck.new(self, stats.cards, stats.innate_cards)
-	#self.deck.initialize()
-	#
-	## AI
-	#self.wandering_state = stats.wandering
-	#self.sleeping_state = stats.sleeping
-	#self.hunting_state = stats.hunting
-	#self.curr_state = sleeping_state
-	#
-	#self.alignment = stats.alignment
-	#self.traversal = stats.traversal
-	#self.user_controlled = stats.user_controlled
-	#self.is_cautious = stats.is_cautious
-	#
-	#self.vision_range = stats.vision_range
-	#self.scent_range = stats.scent_range
-	#
-	#self.leader = self
-	#self.followers = []
-	#
-	#self.inventory = InventoryComponent.new(self, 3)
-	#
-	#for item in stats.items:
-		#item.duplicate(true).on_pick_up(self.inventory)
-	#
-	#moved_last_turn = false
-	#if alignment == Alignment.EVIL:
-		#visible = false
-#
-	#EventBus.emit_signal("new_actor_added", self)
 
 func _physics_process(delta: float) -> void:
 	if is_moving:

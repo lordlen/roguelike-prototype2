@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_qev62"]
 script = ExtResource("1_gie3c")
-damage = 6
+damage = 10
 target = 1
 affects = 1
 action_name = "Zap"

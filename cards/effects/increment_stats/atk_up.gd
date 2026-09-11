@@ -13,7 +13,8 @@ func get_numeric() -> String:
 	return "n"
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
-	card.attack += atk_value
+	if is_instance_valid(actor):
+		card.attack += atk_value
 	card_effect_finished.emit()
 
 func combine_effect(other_effect: CardEffect) -> CardEffect:
