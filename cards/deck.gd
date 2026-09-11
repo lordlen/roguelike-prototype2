@@ -216,14 +216,13 @@ func shuffle():
 	final_cards.shuffle()
 	
 	# most innate cards  are defensive so prioritize offhand
-	if !innate_cards.is_empty():
-		# if primary not nothing
+	if !innate_cards.is_empty() and (offhand == null or !offhand.is_innate):
 		if offhand != null:
 			tmp.push_back(offhand)
 		offhand = innate_cards.pop_back()
 		offhand.on_draw(deck_owner)
 	
-	if !innate_cards.is_empty():
+	if !innate_cards.is_empty() and (primary == null or !primary.is_innate):
 		# if primary not nothing
 		if primary != null:
 			tmp.push_back(primary)

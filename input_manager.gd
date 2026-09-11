@@ -14,7 +14,7 @@ var stored_action: ItemAction
 var actor: Char
 
 var target_pos: Vector2
-var target_speed: float = 10
+var target_speed: float = 5
 var is_targeting := false
 
 func _physics_process(delta: float) -> void:

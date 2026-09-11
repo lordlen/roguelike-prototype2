@@ -2,7 +2,7 @@ class_name SeekAction
 extends ItemAction
 
 func get_description() -> String:
-	return "Choose a card from the draw pile to replace your main hand." % [get_radius_desc()]
+	return "Choose a card from the draw pile to replace your main hand."
 
 func use(owner: Char, pos: Vector2i) -> bool:
 	if !super.use(owner, pos):
