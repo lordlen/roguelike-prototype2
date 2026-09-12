@@ -20,6 +20,7 @@ extends FloorBuilder
 @export_subgroup("Cost")
 @export var potion_cost: int
 @export var card_cost: int
+@export var card_variance: int
 @export var relic_cost: int
 @export var healing_cost: int
 
@@ -77,7 +78,17 @@ func build_floor():
 		var item := CardItem.new()
 		item.set_card(card)
 		
-		ItemManager.add_item_to_overworld(item, p_positions[p_ind], card_cost)
+		var cost := card_cost
+		
+		match card.rarity:
+			CardResource.Rarity.COMMON:
+				cost = cost - card_variance
+			CardResource.Rarity.RARE:
+				cost = cost + card_variance
+			_:
+				pass
+		
+		ItemManager.add_item_to_overworld(item, p_positions[p_ind], cost)
 		
 		p_ind += 1
 	

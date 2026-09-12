@@ -12,6 +12,9 @@ static var TILE_TYPE_MAP := {
 	Color.CYAN: load("res://floor_generator/tiles/goblin_statue.tres"),
 	Color8(0,255,255,254): load("res://floor_generator/tiles/slime_statue.tres"),
 	Color8(0,255,255,253): load("res://floor_generator/tiles/rat_statue.tres"),
+	Color8(0,255,255,252): load("res://floor_generator/tiles/vampire_statue.tres"),
+	Color8(0,255,255,251): load("res://floor_generator/tiles/ghoul_statue.tres"),
+	Color8(0,255,255,250): load("res://floor_generator/tiles/wolf_statue.tres"),
 }
 
 static var ITEM_TYPE_MAP := {

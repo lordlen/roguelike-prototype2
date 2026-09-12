@@ -18,6 +18,7 @@ metadata/_custom_type_script = "uid://dmjsrjjubgf5c"
 [resource]
 script = ExtResource("2_4165s")
 name = "Mind Control"
+attack = 1
 range = 2
 is_lob = true
 attack_effects = Array[ExtResource("1_4mvxl")]([SubResource("Resource_tjs4k"), SubResource("Resource_o35ab")])

@@ -21,5 +21,6 @@ attack = 10
 num_hits = 1
 range = 99
 is_innate = true
+is_lob = true
 attack_effects = Array[ExtResource("1_3dgwm")]([SubResource("Resource_jb86b"), SubResource("Resource_j274m")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

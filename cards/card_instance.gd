@@ -206,10 +206,13 @@ func get_description() -> String:
 	return result
 
 func get_attack() -> String:
+	return "%dx%d" % [get_total_attack(), num_hits] if num_hits > 1 else str(get_total_attack())
+
+func get_total_attack() -> int:
 	var total_atk := 0
 	for e in attack_effects:
 		total_atk += e.get_attack_value(self)
-	return "%dx%d" % [total_atk, num_hits] if num_hits > 1 else str(total_atk)
+	return total_atk
 
 func get_defense_string() -> String:
 	return "∅" if is_dodge else str(get_defense())

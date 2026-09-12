@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://dlwi1mdd4yg86"
 [resource]
 script = ExtResource("2_1nx72")
 name = "Thunderclap"
-attack = 4
+attack = 5
 num_hits = 1
 range = 2
 is_lob = true

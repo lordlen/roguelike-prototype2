@@ -21,6 +21,7 @@ metadata/_custom_type_script = "uid://nofu2tcs3vyh"
 script = ExtResource("5_4hcas")
 name = "Call Familiars"
 rarity = 3
+attack = 100
 range = 3
 is_lob = true
 attack_effects = Array[ExtResource("1_8cnb3")]([SubResource("Resource_ctcmc"), SubResource("Resource_4a6pp")])

@@ -10,6 +10,7 @@ func set_item(item: Item):
 	$ItemSprite.self_modulate = item.color
 	if item.texture == null:
 		$AltText.text = item.item_name
+		$AltText.self_modulate = item.color
 
 func set_pos(grid_position: Vector2i):
 	position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)

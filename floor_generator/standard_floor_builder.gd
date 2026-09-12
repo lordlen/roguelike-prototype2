@@ -18,8 +18,7 @@ func build_floor():
 		.construct()
 	var map := Floor.new(Terrain.width, Terrain.height)
 	map = simple_builder.build(map)
-	
-	# determine how many rooms there are
+
 	var num_potions := get_random_number(floor_description.potion_ratio)
 	var num_gold := get_random_number(floor_description.gold_ratio)
 	
@@ -28,19 +27,22 @@ func build_floor():
 	var ground_positions := map.get_type_positions([TileResource.Terrains.GROUND])
 	ground_positions.shuffle()
 	
+	var start := 0
 	var num_card_rewards := 2
-	for cell in ground_positions.slice(0, num_card_rewards):
+	for cell in ground_positions.slice(start, num_card_rewards):
 		# get the rarity according to the card reward generator
 		var rarity := card_reward_generator.generate_rarity()
 		var card_item := load(CardRewardItem.resource_mapping[rarity])
 		ItemManager.add_item_to_overworld(card_item, cell)
 	
+	start += num_card_rewards
 	# key
-	for cell in ground_positions.slice(num_card_rewards, num_card_rewards + floor_description.num_special_rooms):
+	for cell in ground_positions.slice(start, start + floor_description.num_special_rooms):
 		var key_item : Item = load("res://items/key/key.tres")
 		ItemManager.add_item_to_overworld(key_item, cell)
 	
-	for cell in ground_positions.slice(num_card_rewards + floor_description.num_special_rooms):
+	start += floor_description.num_special_rooms
+	for cell in ground_positions.slice(start):
 		var valid_tiles := [
 			TileResource.Terrains.GROUND,
 			TileResource.Terrains.TRAMPLED_GRASS,

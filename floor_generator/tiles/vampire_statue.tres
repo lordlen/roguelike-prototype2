@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TileResource" load_steps=3 format=3 uid="uid://cgyiivlcu2jey"]
+
+[ext_resource type="Resource" uid="uid://b883c6tuexqjp" path="res://char/stats/vampire.tres" id="1_ejack"]
+[ext_resource type="Script" uid="uid://bfjog00ipfkcc" path="res://floor_generator/tiles/tile.gd" id="1_kt7hh"]
+
+[resource]
+script = ExtResource("1_kt7hh")
+terrain_id = 8
+grounded_cost = inf
+aquatic_cost = inf
+flying_cost = inf
+hidden_char = ExtResource("1_ejack")
+metadata/_custom_type_script = "uid://bfjog00ipfkcc"

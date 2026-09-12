@@ -14,7 +14,7 @@ extends Resource
 @export var relic_pool: ItemPoolDescription
 
 # items
-@export var potion_ratio: float = 0
+@export var potion_ratio: float = 0.25
 @export var gold_ratio: float = 0
 
 @export var initial_spawns: SpawnDescription

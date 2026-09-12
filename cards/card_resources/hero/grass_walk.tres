@@ -13,7 +13,6 @@ metadata/_custom_type_script = "uid://dmjsrjjubgf5c"
 
 [sub_resource type="Resource" id="Resource_obn11"]
 script = ExtResource("3_pasxk")
-radius = 2
 metadata/_custom_type_script = "uid://cokbd4u64uqil"
 
 [sub_resource type="Resource" id="Resource_rh01a"]

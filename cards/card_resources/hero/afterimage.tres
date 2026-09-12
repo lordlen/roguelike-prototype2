@@ -3,22 +3,22 @@
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_j05py"]
 [ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="2_eodj3"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ly1s6"]
-[ext_resource type="Script" uid="uid://dr7bemqp0ybxa" path="res://cards/effects/increment_stats/all_tmp_def_up.gd" id="2_urcik"]
+[ext_resource type="Script" uid="uid://bd5s40bqjr3fy" path="res://cards/effects/increment_stats/tmp_def_up.gd" id="3_urcik"]
 
 [sub_resource type="Resource" id="Resource_q5igr"]
 script = ExtResource("2_eodj3")
 metadata/_custom_type_script = "uid://befkr8rvi0mwo"
 
 [sub_resource type="Resource" id="Resource_eodj3"]
-script = ExtResource("2_urcik")
-value = 1
-metadata/_custom_type_script = "uid://dr7bemqp0ybxa"
+script = ExtResource("3_urcik")
+def_value = 3
+metadata/_custom_type_script = "uid://bd5s40bqjr3fy"
 
 [resource]
 script = ExtResource("2_ly1s6")
 name = "Afterimage"
-rarity = 2
-defense = 5
+rarity = 1
+defense = 6
 defense_effects = Array[ExtResource("1_j05py")]([SubResource("Resource_q5igr")])
 on_move_effects = Array[ExtResource("1_j05py")]([SubResource("Resource_eodj3")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

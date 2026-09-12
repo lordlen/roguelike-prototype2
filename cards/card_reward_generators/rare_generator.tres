@@ -33,7 +33,7 @@
 [ext_resource type="Resource" uid="uid://cgnd2016ybejg" path="res://cards/card_resources/hero/burning_fist.tres" id="31_oxrgr"]
 [ext_resource type="Resource" uid="uid://c7onti12nawxv" path="res://cards/card_resources/hero/parry.tres" id="32_thday"]
 [ext_resource type="Resource" uid="uid://dgpt3shdk3347" path="res://cards/card_resources/hero/phalanx.tres" id="33_g5cdp"]
-[ext_resource type="Resource" uid="uid://co7y5ohfh1xrv" path="res://cards/card_resources/hero/preparation.tres" id="34_xcyd7"]
+[ext_resource type="Resource" uid="uid://co7y5ohfh1xrv" path="res://cards/card_resources/unused/preparation.tres" id="34_xcyd7"]
 [ext_resource type="Resource" uid="uid://dxigk1ilkjhk4" path="res://cards/card_resources/hero/pummel.tres" id="35_jbt38"]
 [ext_resource type="Resource" uid="uid://b7wmbfmfq5kh6" path="res://cards/card_resources/hero/quick_cast.tres" id="36_ihigt"]
 [ext_resource type="Resource" uid="uid://c8dqfy41bklt1" path="res://cards/card_resources/hero/read.tres" id="37_k2pqf"]

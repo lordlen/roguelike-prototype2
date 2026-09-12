@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=31 format=3 uid="uid://c44c12ean0snx"]
+[gd_resource type="Resource" script_class="StandardFloorBuilder" load_steps=30 format=3 uid="uid://c44c12ean0snx"]
 
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="1_ceonn"]
 [ext_resource type="Resource" uid="uid://cshojnbtmbulc" path="res://cards/card_reward_generators/basic_generator.tres" id="1_xy2wx"]
@@ -9,7 +9,6 @@
 [ext_resource type="Resource" uid="uid://phrla2nuhpao" path="res://items/descriptions/default_item_pool.tres" id="6_nlodp"]
 [ext_resource type="Resource" uid="uid://dtkivaldy4pf6" path="res://floor_generator/floor_description/spawn_groups/single_warden.tres" id="6_xy2wx"]
 [ext_resource type="Resource" uid="uid://5d0ctqh33a8i" path="res://items/descriptions/default_relic_pool.tres" id="7_w6371"]
-[ext_resource type="Resource" uid="uid://c4vhtc68mjw5l" path="res://floor_generator/floor_description/spawn_groups/single_skeleton_archer.tres" id="8_p0f3o"]
 [ext_resource type="Script" uid="uid://u281p1f1m7k" path="res://patterns/pattern_resource.gd" id="8_qb2nb"]
 [ext_resource type="Resource" uid="uid://ctaes6t6hlv6r" path="res://patterns/checker_grass.tres" id="11_hc2ld"]
 [ext_resource type="Resource" uid="uid://0tqeqddo3oe3" path="res://patterns/diamond.tres" id="12_p0f3o"]
@@ -36,8 +35,8 @@ metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_ev3rf"]
 script = ExtResource("3_xy2wx")
-pool = Array[ExtResource("1_ceonn")]([ExtResource("4_hc2ld"), ExtResource("6_hc2ld"), ExtResource("6_xy2wx"), ExtResource("8_p0f3o")])
-weights = Array[float]([3.0, 1.0, 1.0, 1.0])
+pool = Array[ExtResource("1_ceonn")]([ExtResource("4_hc2ld"), ExtResource("6_hc2ld"), ExtResource("6_xy2wx")])
+weights = Array[float]([3.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://cwled7fqlcl6g"
 
 [sub_resource type="Resource" id="Resource_3aogm"]

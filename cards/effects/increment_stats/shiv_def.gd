@@ -14,6 +14,6 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 			shiv_count += 1
 
 	var def_up := TmpDefUp.new()
-	def_up.value = shiv_count
+	def_up.def_value = shiv_count
 	def_up.do(actor, target_pos, card)
 	card_effect_finished.emit()

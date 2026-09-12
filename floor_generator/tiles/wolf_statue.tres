@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TileResource" load_steps=3 format=3 uid="uid://r8pp5312j0sq"]
+
+[ext_resource type="Resource" uid="uid://bm4uv1ff5vey1" path="res://char/stats/spirit_wolf.tres" id="1_0npo8"]
+[ext_resource type="Script" uid="uid://bfjog00ipfkcc" path="res://floor_generator/tiles/tile.gd" id="2_ei422"]
+
+[resource]
+script = ExtResource("2_ei422")
+terrain_id = 8
+grounded_cost = inf
+aquatic_cost = inf
+flying_cost = inf
+hidden_char = ExtResource("1_0npo8")
+metadata/_custom_type_script = "uid://bfjog00ipfkcc"

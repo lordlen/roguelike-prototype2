@@ -23,3 +23,6 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 		actor.char_move_effect.emit()
 		actor.move_to(valid_positions.pick_random())
 	card_effect_finished.emit()
+
+func get_shortform(card: CardInstance) -> String:
+	return "%d %s" % [radius, super.get_shortform(card)]
