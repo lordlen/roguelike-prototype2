@@ -16,5 +16,6 @@ script = ExtResource("2_nb3u4")
 name = "Scream"
 rarity = 3
 range = 3
+is_lob = true
 attack_effects = Array[ExtResource("1_fw2ur")]([SubResource("Resource_ybi64")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"
