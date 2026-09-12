@@ -71,7 +71,7 @@ var moved_last_turn: bool
 var moved_this_turn: bool
 
 var sprite: Sprite2D
-var speed := 500
+var speed := 100
 var new_pos : Vector2
 var is_moving: bool
 
