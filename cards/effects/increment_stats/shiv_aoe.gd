@@ -7,9 +7,6 @@ func get_identifier() -> String:
 func get_description() -> String:
 	return "All shivs gain AOE"
 
-func get_numeric() -> String:
-	return "n"
-
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	for c in actor.deck.get_all_card_instances():
 		if c.card_name == "Shiv":
