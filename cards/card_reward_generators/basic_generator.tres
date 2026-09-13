@@ -44,7 +44,7 @@
 [ext_resource type="Resource" uid="uid://cvojmgk216qdp" path="res://cards/card_resources/hero/ice_barrier.tres" id="29_0uqcs"]
 [ext_resource type="Resource" uid="uid://b3abupeuchu88" path="res://cards/card_resources/hero/impact.tres" id="32_f64np"]
 [ext_resource type="Resource" uid="uid://dgpt3shdk3347" path="res://cards/card_resources/hero/phalanx.tres" id="33_d1l8s"]
-[ext_resource type="Resource" uid="uid://bxrdmckld3gdu" path="res://cards/card_resources/hero/mana storm.tres" id="34_0uqcs"]
+[ext_resource type="Resource" uid="uid://bxrdmckld3gdu" path="res://cards/card_resources/unused/mana storm.tres" id="34_0uqcs"]
 [ext_resource type="Resource" uid="uid://dxigk1ilkjhk4" path="res://cards/card_resources/hero/pummel.tres" id="36_lst1l"]
 [ext_resource type="Resource" uid="uid://c1plw8p66m36" path="res://cards/card_resources/hero/resilience.tres" id="37_5s010"]
 [ext_resource type="Resource" uid="uid://bcvgmmg1t5jb6" path="res://cards/card_resources/hero/second_wind.tres" id="38_d1l8s"]

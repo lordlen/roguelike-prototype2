@@ -18,7 +18,7 @@ func use(owner: Char, pos: Vector2i) -> bool:
 		# find a random, unoccupied location
 		
 		var rand_pos : Vector2i = positions.pick_random()
-		while ActorManager.get_actor_in_position(rand_pos):
+		while !valid_teleport(target_char.grid_position, rand_pos):
 			rand_pos = positions.pick_random()
 		
 		# now there are no actors in the selected position
@@ -26,3 +26,7 @@ func use(owner: Char, pos: Vector2i) -> bool:
 		target_char.move_to(rand_pos)
 		target_char.update_vision()
 	return true
+
+func valid_teleport(from: Vector2i, to: Vector2i) -> bool:
+	return (ActorManager.get_actor_in_position(to) == null)\
+	and len(Globals.floor_map.compute_path(from, to)) != 0

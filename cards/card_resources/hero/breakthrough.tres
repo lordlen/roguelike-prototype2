@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_fkv76"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_gu3nu"]
-[ext_resource type="Script" uid="uid://7xri5doqhxue" path="res://cards/effects/do_damage/damage_aoe.gd" id="2_xxvrk"]
 [ext_resource type="Script" uid="uid://nofu2tcs3vyh" path="res://cards/effects/lose_hp/lose_hp.gd" id="3_bmldj"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="3_pfmmy"]
 [ext_resource type="Script" uid="uid://c85xosutpbsmu" path="res://cards/effects/push/aoe_push.gd" id="4_bmldj"]
 [ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="5_pfmmy"]
 
@@ -11,9 +11,10 @@
 script = ExtResource("3_bmldj")
 metadata/_custom_type_script = "uid://nofu2tcs3vyh"
 
-[sub_resource type="Resource" id="Resource_pfmmy"]
-script = ExtResource("2_xxvrk")
-metadata/_custom_type_script = "uid://7xri5doqhxue"
+[sub_resource type="Resource" id="Resource_cgymg"]
+script = ExtResource("3_pfmmy")
+is_aoe = true
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_li0x2"]
 script = ExtResource("4_bmldj")
@@ -31,6 +32,6 @@ attack = 7
 defense = 3
 num_hits = 1
 range = 1
-attack_effects = Array[ExtResource("1_fkv76")]([SubResource("Resource_q5kav"), SubResource("Resource_pfmmy"), SubResource("Resource_li0x2")])
+attack_effects = Array[ExtResource("1_fkv76")]([SubResource("Resource_q5kav"), SubResource("Resource_cgymg"), SubResource("Resource_li0x2")])
 defense_effects = Array[ExtResource("1_fkv76")]([SubResource("Resource_hlgcq")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

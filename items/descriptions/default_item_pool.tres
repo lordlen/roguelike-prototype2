@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=17 format=3 uid="uid://phrla2nuhpao"]
+[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=16 format=3 uid="uid://phrla2nuhpao"]
 
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="1_g5qq8"]
 [ext_resource type="Resource" uid="uid://cdmisy2itbvre" path="res://items/wands/blink_wand.tres" id="2_a6lun"]
@@ -14,11 +14,10 @@
 [ext_resource type="Resource" uid="uid://dfaptvjmd1aur" path="res://items/potions/defense_potion.tres" id="8_upqmr"]
 [ext_resource type="Resource" uid="uid://gqntyx7aho65" path="res://items/potions/teleport_potion.tres" id="10_a6lun"]
 [ext_resource type="Resource" uid="uid://bh0vp12niv4uu" path="res://items/potions/foresight_potion.tres" id="11_la56a"]
-[ext_resource type="Resource" uid="uid://by5st1177vmjm" path="res://items/potions/sanctuary_potion.tres" id="12_151he"]
 [ext_resource type="Resource" uid="uid://cwqgyscveyb2y" path="res://items/potions/wish_potion.tres" id="15_3pjvm"]
 
 [resource]
 script = ExtResource("2_qpe4u")
-item_pool = Array[ExtResource("1_g5qq8")]([ExtResource("2_a6lun"), ExtResource("3_a7men"), ExtResource("4_n4uax"), ExtResource("5_qf3sy"), ExtResource("6_slubj"), ExtResource("7_6dwvy"), ExtResource("5_8vklx"), ExtResource("8_upqmr"), ExtResource("3_i2i5h"), ExtResource("11_la56a"), ExtResource("12_151he"), ExtResource("4_i2i5h"), ExtResource("10_a6lun"), ExtResource("15_3pjvm")])
-weights = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+item_pool = Array[ExtResource("1_g5qq8")]([ExtResource("2_a6lun"), ExtResource("3_a7men"), ExtResource("4_n4uax"), ExtResource("5_qf3sy"), ExtResource("6_slubj"), ExtResource("7_6dwvy"), ExtResource("5_8vklx"), ExtResource("8_upqmr"), ExtResource("3_i2i5h"), ExtResource("11_la56a"), ExtResource("4_i2i5h"), ExtResource("10_a6lun"), ExtResource("15_3pjvm")])
+weights = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://dlmiqas8og0ae"

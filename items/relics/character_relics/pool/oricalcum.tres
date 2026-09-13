@@ -9,7 +9,7 @@ region = Rect2(64, 64, 16, 16)
 
 [resource]
 script = ExtResource("1_2fupb")
-description = "When reshuffling, add 3 bonus defense."
+description = "When reshuffling, add 5 bonus defense."
 item_name = "Oricalcum"
 texture = SubResource("AtlasTexture_fxl0e")
 item_actions = null
