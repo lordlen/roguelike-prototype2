@@ -12,6 +12,7 @@ func _ready() -> void:
 var character: Char
 func set_character(ch: Char):
 	character = ch
+	update(ch)
 
 func delete_self(ch: Char):
 	if ch == character:

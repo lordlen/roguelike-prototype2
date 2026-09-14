@@ -3,6 +3,8 @@ extends Node
 # prevents the _process from doing continuous loops
 var block_process := false
 
+var target_char : Char
+
 var rng = RandomNumberGenerator.new()
 
 var char_dict : Dictionary[Vector2i, Char] = {}

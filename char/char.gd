@@ -17,6 +17,7 @@ signal char_card_added
 signal char_next_floor
 signal char_waited
 signal char_walked
+signal char_died
 
 enum Alignment {
 	GOOD,
@@ -136,9 +137,6 @@ func set_char_stats(stats: CharacterStats):
 	moved_last_turn = false
 	if alignment == Alignment.EVIL:
 		visible = false
-	
-	$CharInfo.set_character(self)
-	$CharInfo.update(self)
 	
 	EventBus.new_actor_added.emit(self)
 
@@ -270,7 +268,7 @@ func update_vision():
 	FoV.new(Globals.floor_map, vision_set, explored_set).compute_fov(self.grid_position, vision_range)
 
 	var prev_visible_actors := self.visible_actors
-	var new_visible_actors : Array[Char]= []
+	var new_visible_actors : Array[Char] = []
 	
 	var new_actor_in_vision := false
 	for actor in ActorManager.get_chars():
@@ -290,7 +288,11 @@ func update_vision():
 		var items_in_vision := ItemManager.get_items_in_area(vision_set.keys())
 		for item in items_in_vision:
 			item.visible = true
-	EventBus.emit_signal("character_fov_updated", self)
+	EventBus.character_fov_updated.emit(self)
+
+func set_visibility(is_visible: bool):
+	self.visible = is_visible
+	
 
 func pass_turn():
 	self.deck.exhaust_ethereal()
@@ -374,6 +376,7 @@ func die():
 
 	inventory.drop_all_items()
 	EventBus.character_died.emit(self)
+	char_died.emit()
 
 func is_dead():
 	return curr_hp <= 0
@@ -427,10 +430,10 @@ func follow(ch: Char):
 
 func _on_mouse_entered() -> void:
 	if !user_controlled:
-		$CharInfo.show()
+		EventBus.character_hovered.emit(self)
 
-func _on_mouse_exited() -> void:
-	$CharInfo.hide()
+#func _on_mouse_exited() -> void:
+	#$CharInfo.hide()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_released("secondary_click"):

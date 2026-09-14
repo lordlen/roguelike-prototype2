@@ -13,7 +13,6 @@ func _ready() -> void:
 	
 	var hero := ActorManager.spawn_character(load("res://char/stats/hero.tres"))
 	$UILayer/HeroInfo.set_character(hero)
-	$UILayer/HeroInfo.update(hero)
 	$UILayer/RelicBar.set_char(hero)
 	for region in region_descriptions:
 		region.initalize()
