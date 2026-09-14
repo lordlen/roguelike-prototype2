@@ -34,7 +34,6 @@ func find_different_char():
 		var next_char := visible_enemies[ind]
 		if is_instance_valid(next_char) and !next_char.is_dead():
 			set_character(next_char)
-			EventBus.camera_move_requested.emit(next_char.grid_position)
 			next_char.spawn_indicator_particle()
 			show()
 			return

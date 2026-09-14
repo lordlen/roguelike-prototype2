@@ -1,7 +1,7 @@
 class_name Walk
 extends Action
 
-const walk_speed := 300
+const walk_speed := 200
 
 var actor: Char
 var dest: Vector2i

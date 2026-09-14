@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://bpkebtvtc17cb" path="res://input_manager.gd" id="5_iqhxt"]
 [ext_resource type="PackedScene" uid="uid://dxrnkoy1jieuy" path="res://UI/card_reward_dialog.tscn" id="5_xo2vs"]
 [ext_resource type="Script" uid="uid://28bomu2s107p" path="res://UI/gold_amount.gd" id="6_0i68f"]
-[ext_resource type="Script" uid="uid://dwty0w8otmdgl" path="res://UI/target_info.gd" id="6_ick23"]
+[ext_resource type="Script" uid="uid://cv3jgps5feyx3" path="res://UI/target_info.gd" id="6_ick23"]
 [ext_resource type="Script" uid="uid://djehyyein7u8h" path="res://UI/potion_container.gd" id="6_lg7om"]
 [ext_resource type="PackedScene" uid="uid://bnlsf1yf60gbl" path="res://UI/char_info2.tscn" id="6_lj33d"]
 [ext_resource type="Script" uid="uid://dt5vt4jmthp7r" path="res://UI/card_reward_container.gd" id="10_agy8s"]
