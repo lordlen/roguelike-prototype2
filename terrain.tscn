@@ -2004,6 +2004,15 @@ offset_bottom = 228.0
 scale = Vector2(1, 1)
 script = ExtResource("6_ick23")
 
+[node name="SwitchButton" type="Button" parent="UILayer/TargetInfo"]
+layout_mode = 1
+offset_left = 529.0
+offset_top = -45.0
+offset_right = 638.0
+offset_bottom = -14.0
+tooltip_text = "Switch character info to another character."
+text = "switch target"
+
 [node name="StairsDialog" type="ConfirmationDialog" parent="UILayer"]
 oversampling_override = 1.0
 mode = 3
@@ -2278,6 +2287,7 @@ script = ExtResource("5_iqhxt")
 
 [node name="ItemList" type="Node2D" parent="."]
 
+[connection signal="button_up" from="UILayer/TargetInfo/SwitchButton" to="UILayer/TargetInfo" method="_on_switch_button_button_up"]
 [connection signal="confirmed" from="UILayer/StairsDialog" to="." method="on_stairs_entered"]
 [connection signal="pressed" from="UILayer/Buttons/HBoxContainer/WaitButton" to="UILayer/Buttons" method="_on_wait_button_pressed"]
 [connection signal="pressed" from="UILayer/Buttons/HBoxContainer/SwapButton" to="UILayer/Buttons" method="_on_swap_button_pressed"]

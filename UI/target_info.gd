@@ -13,10 +13,11 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("change_target"):
 		find_different_char()
+		EventBus.camera_move_requested.emit(character.grid_position)
 
 func turn_updated(ch: Char):
 	stale = true
-	if !visible or !character.visible:
+	if !is_instance_valid(character) or !visible or !character.visible:
 		find_evil_visible_actor()
 		find_different_char()
 
@@ -26,6 +27,8 @@ func set_character(ch: Char):
 	super.set_character(ch)
 	character.visibility_changed.connect(find_different_char)
 	character.char_died.connect(find_different_char)
+	character.char_next_floor.connect(find_different_char)
+	change_state_label(ch)
 
 func find_different_char():
 	find_evil_visible_actor()
@@ -50,3 +53,7 @@ func find_evil_visible_actor():
 			for visible_ch in ch.visible_actors:
 				if visible_ch.alignment == Char.Alignment.EVIL:
 					visible_enemies.push_back(visible_ch)
+
+func _on_switch_button_button_up() -> void:
+	find_different_char()
+	EventBus.camera_move_requested.emit(character.grid_position)
