@@ -14,7 +14,7 @@ var stored_action: ItemAction
 var actor: Char
 
 var target_pos: Vector2
-var target_speed: float = 10
+var target_speed: float = 5
 var is_targeting := false
 
 func _physics_process(delta: float) -> void:
@@ -31,11 +31,15 @@ func _ready() -> void:
 	EventBus.swap_button_pressed.connect(on_swap_pressed)
 	EventBus.reshuffle_button_pressed.connect(on_reshuffle_pressed)
 	EventBus.defend_button_pressed.connect(on_defend_pressed)
+	EventBus.aim_mode_canceled.connect(cancel_aim_mode)
 
 func on_user_input_requested(actor: Char):
 	listening_user_input = true
 	self.actor = actor
-	
+
+func cancel_aim_mode():
+	is_aiming = false
+
 func camera_handler(event: InputEvent):
 	# camera functionality
 	if event.is_action_pressed("zoom_in"):
@@ -114,6 +118,7 @@ func _unhandled_input(event: InputEvent):
 func on_item_used(item: Item, item_action: ItemAction):
 	if listening_user_input:
 		if item_action.target == ItemAction.Target.GROUND:
+			EventBus.aim_mode_requested.emit(item_action.effect_range)
 			is_aiming = true
 			stored_action = item_action
 			stored_item = item

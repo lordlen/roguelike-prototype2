@@ -81,14 +81,6 @@ func on_item_used():
 func is_full() -> bool:
 	return item_limit <= len(items)
 
-func use_item(item: Item, actions_ind: int, pos: Vector2i) -> void:
-	var action := item.item_actions[actions_ind]
-	var successful := action.use(owner, pos)
-	# discard the item after use
-	if successful:
-		remove_item(item)
-		on_item_used()
-
 func add_item(item: Item) -> bool:
 	if len(items) >= item_limit:
 		return false
@@ -107,8 +99,10 @@ func clear_relics() -> void:
 	relics.clear()
 	EventBus.inventory_updated.emit(owner)
 
-func remove_item(item: Item) -> void:
-	items.erase(item)
+func remove_item(item: Item, num_uses: int) -> void:
+	item.num_uses -= num_uses
+	if item.num_uses <= 0:
+		items.erase(item)
 	EventBus.inventory_updated.emit(owner)
 
 func remove_at(ind: int) -> void:

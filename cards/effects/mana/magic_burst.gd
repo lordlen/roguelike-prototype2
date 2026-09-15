@@ -16,6 +16,5 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 		cs = CardInstance.new(cs_resource)
 		actor.deck.add_to_discard(cs)
 	# replace "damage" to damage aoe
-	var damageAOE := DamageAoe.new()
-	cs.attack_effects[0] = damageAOE
+	(cs.attack_effects[0] as DoDamage).is_aoe = true
 	card_effect_finished.emit()

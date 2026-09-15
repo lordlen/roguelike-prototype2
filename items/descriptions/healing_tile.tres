@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=4 format=3 uid="uid://d3wld2c2lq218"]
+
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="1_kvlhs"]
+[ext_resource type="Resource" uid="uid://bqn1ehspdshfg" path="res://items/activation_tile/healing_tile.tres" id="2_2qgpn"]
+[ext_resource type="Script" uid="uid://dlmiqas8og0ae" path="res://items/item_pool_description.gd" id="3_5ptnb"]
+
+[resource]
+script = ExtResource("3_5ptnb")
+item_pool = Array[ExtResource("1_kvlhs")]([ExtResource("2_2qgpn")])
+weights = Array[float]([0.0])
+metadata/_custom_type_script = "uid://dlmiqas8og0ae"

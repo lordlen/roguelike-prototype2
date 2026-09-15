@@ -17,7 +17,7 @@ func execute() -> bool:
 		await card.card_action_finished
 		if is_instance_valid(attacker):
 			await attacker.get_tree().create_timer(0.5).timeout
-			if is_instance_valid(attacker) and !attacker.is_dead():
+			if is_instance_valid(attacker):
 				await attacker.deck.dispose_primary()
 				await attacker.deck.draw_empty()
 			action_finished.emit(!card.is_instant)
@@ -33,7 +33,7 @@ func can_attack(start_pos: Vector2i, target_pos: Vector2i, card: CardInstance):
 	var pf = Pathfinder.new()
 	var dist = Pathfinder.chebychev_dist(attacker.grid_position, defender.grid_position)
 	if dist <= atk_range:
-		var path := pf.get_straight_path(start_pos, target_pos, Char.Traversal.GROUNDED)
+		var path := pf.get_straight_path(start_pos, target_pos, Char.Traversal.FLYING)
 		if card.is_lob or len(path) - 1 >=  dist:
 			return true
 	return false

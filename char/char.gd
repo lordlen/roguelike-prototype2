@@ -17,14 +17,7 @@ signal char_card_added
 signal char_next_floor
 signal char_waited
 signal char_walked
-
-const stats_resources := {
-	hero = "res://char/stats/hero.tres",
-	jackal = "res://char/stats/jackal.tres",
-	toad = "res://char/stats/toad.tres",
-	rat = "res://char/stats/rat.tres",
-	slime = "res://char/stats/slime.tres"
-}
+signal char_died
 
 enum Alignment {
 	GOOD,
@@ -62,6 +55,7 @@ var explored_set : Dictionary[Vector2i, bool] = {}
 var visible_actors: Array[Char] = []
 var vision_range: int
 var scent_range: int
+var all_seeing: bool = false
 
 var action_queue: Array[Action] = []
 
@@ -78,7 +72,7 @@ var moved_last_turn: bool
 var moved_this_turn: bool
 
 var sprite: Sprite2D
-var speed := 500
+var speed := 100
 var new_pos : Vector2
 var is_moving: bool
 
@@ -115,7 +109,7 @@ func set_char_stats(stats: CharacterStats):
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = curr_hp
 
-	self.deck = Deck.new(self, stats.cards, stats.innate_cards)
+	self.deck = Deck.new(self, stats.cards, stats.innate_cards, stats.final_cards)
 	self.deck.initialize()
 	
 	# AI
@@ -144,63 +138,7 @@ func set_char_stats(stats: CharacterStats):
 	if alignment == Alignment.EVIL:
 		visible = false
 	
-	$CharInfo.set_character(self)
-	$CharInfo.update(self)
-	
 	EventBus.new_actor_added.emit(self)
-
-#func _init(stats: CharacterStats, position: Vector2i):
-	#char_stats = stats
-	#self.char_id = _curr_char_id
-	#_curr_char_id += 1
-	#sprite = Sprite2D.new()
-	#sprite.texture = stats.texture
-	#sprite.self_modulate = stats.color
-	#sprite.centered = false
-	#add_child(sprite)
-	#var collision := CollisionShape2D.new()
-	#collision.position = Vector2(Consts.TILE_SIZE / 2, Consts.TILE_SIZE / 2)
-	#var rect := RectangleShape2D.new()
-	#rect.size = Vector2(16,16)
-	#collision.shape = rect
-	#add_child(collision)
-	#self.grid_position = position
-	#self.position = Vector2(grid_position.x * Consts.TILE_SIZE, grid_position.y * Consts.TILE_SIZE)
-	#self.new_pos = self.position
-	#self.character_name = stats.character_name
-	#self.max_hp = randi_range(stats.min_hp, stats.max_hp)
-	#self.curr_hp = self.max_hp
-#
-	#self.deck = Deck.new(self, stats.cards, stats.innate_cards)
-	#self.deck.initialize()
-	#
-	## AI
-	#self.wandering_state = stats.wandering
-	#self.sleeping_state = stats.sleeping
-	#self.hunting_state = stats.hunting
-	#self.curr_state = sleeping_state
-	#
-	#self.alignment = stats.alignment
-	#self.traversal = stats.traversal
-	#self.user_controlled = stats.user_controlled
-	#self.is_cautious = stats.is_cautious
-	#
-	#self.vision_range = stats.vision_range
-	#self.scent_range = stats.scent_range
-	#
-	#self.leader = self
-	#self.followers = []
-	#
-	#self.inventory = InventoryComponent.new(self, 3)
-	#
-	#for item in stats.items:
-		#item.duplicate(true).on_pick_up(self.inventory)
-	#
-	#moved_last_turn = false
-	#if alignment == Alignment.EVIL:
-		#visible = false
-#
-	#EventBus.emit_signal("new_actor_added", self)
 
 func _physics_process(delta: float) -> void:
 	if is_moving:
@@ -330,7 +268,7 @@ func update_vision():
 	FoV.new(Globals.floor_map, vision_set, explored_set).compute_fov(self.grid_position, vision_range)
 
 	var prev_visible_actors := self.visible_actors
-	var new_visible_actors : Array[Char]= []
+	var new_visible_actors : Array[Char] = []
 	
 	var new_actor_in_vision := false
 	for actor in ActorManager.get_chars():
@@ -350,16 +288,21 @@ func update_vision():
 		var items_in_vision := ItemManager.get_items_in_area(vision_set.keys())
 		for item in items_in_vision:
 			item.visible = true
-	EventBus.emit_signal("character_fov_updated", self)
+	EventBus.character_fov_updated.emit(self)
+
+func set_visibility(is_visible: bool):
+	self.visible = is_visible
+	
 
 func pass_turn():
 	self.deck.exhaust_ethereal()
 	self.deck.draw_empty()
 	EventBus.character_deck_updated.emit(self)
 
-func can_traverse(pos: Vector2i):
+func can_traverse(pos: Vector2i) -> bool:
 	var tile := Globals.floor_map.get_tile(pos)
-	
+	if tile.terrain_id == TileResource.Terrains.SANCTUARY and alignment == Alignment.GOOD:
+		return true
 	return tile.get_pf_cost(traversal) != INF
 
 func is_user_controlled():
@@ -433,6 +376,7 @@ func die():
 
 	inventory.drop_all_items()
 	EventBus.character_died.emit(self)
+	char_died.emit()
 
 func is_dead():
 	return curr_hp <= 0
@@ -486,10 +430,10 @@ func follow(ch: Char):
 
 func _on_mouse_entered() -> void:
 	if !user_controlled:
-		$CharInfo.show()
+		EventBus.character_hovered.emit(self)
 
-func _on_mouse_exited() -> void:
-	$CharInfo.hide()
+#func _on_mouse_exited() -> void:
+	#$CharInfo.hide()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_released("secondary_click"):

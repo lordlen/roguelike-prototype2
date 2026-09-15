@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://ci0l3xjlq6p6"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_sogn7"]
+[ext_resource type="Script" uid="uid://cdtyg8bvjmfm6" path="res://cards/effects/increment_stats/bully.gd" id="2_3uhbj"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_d12dw"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="3_6wenv"]
+
+[sub_resource type="Resource" id="Resource_pb2r1"]
+script = ExtResource("2_3uhbj")
+value = 2
+metadata/_custom_type_script = "uid://cdtyg8bvjmfm6"
+
+[sub_resource type="Resource" id="Resource_b4a5c"]
+script = ExtResource("3_6wenv")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[resource]
+script = ExtResource("2_d12dw")
+name = "Overpower"
+rarity = 3
+attack = 4
+num_hits = 1
+range = 1
+attack_effects = Array[ExtResource("1_sogn7")]([SubResource("Resource_pb2r1"), SubResource("Resource_b4a5c")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

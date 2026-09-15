@@ -31,6 +31,7 @@ const max_stats = 100
 @export var is_dodge: bool
 @export var exhausts: bool
 @export var is_innate: bool
+@export var is_final: bool
 @export var is_ethereal: bool
 @export var is_instant: bool
 @export var is_lob: bool = false

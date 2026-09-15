@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_u0mwt"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="2_fegvw"]
-[ext_resource type="Resource" uid="uid://cpybq0frf2e4g" path="res://cards/card_resources/peck.tres" id="2_qyjro"]
-[ext_resource type="Resource" uid="uid://d20njqkckukoi" path="res://cards/card_resources/swoop.tres" id="3_1580j"]
-[ext_resource type="Resource" uid="uid://bl7ln6lrj33yn" path="res://cards/card_resources/flight.tres" id="4_6cek0"]
+[ext_resource type="Resource" uid="uid://cpybq0frf2e4g" path="res://cards/card_resources/enemy/peck.tres" id="2_qyjro"]
+[ext_resource type="Resource" uid="uid://d20njqkckukoi" path="res://cards/card_resources/enemy/swoop.tres" id="3_1580j"]
+[ext_resource type="Resource" uid="uid://bl7ln6lrj33yn" path="res://cards/card_resources/enemy/flight.tres" id="4_6cek0"]
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="5_a2kcb"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="6_1580j"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="7_60e4g"]

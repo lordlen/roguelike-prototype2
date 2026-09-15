@@ -56,12 +56,18 @@ func build(floor: Floor) -> Floor:
 			var first_pattern : RoomPattern = patterns.pick_random()
 			floor.append_back(first_pattern.get_used_cells(first_dir, mid), first_pattern.get_cell_types())
 			successful_room_placement += 1
+			var item_cells := first_pattern.get_item_cells(first_dir, mid)
+			var items := first_pattern.generate_items()
+			
+			for i in range(len(item_cells)):
+				var cell := item_cells[i]
+				var item := items[i]
+				
+				ItemManager.add_item_to_overworld(item, cell)
 			continue
 		
 		# from the floor, pick a random valid wall that 
 		var r_result = floor.get_random_wall()
-		
-		
 
 		var wall : Vector2i = r_result[0]
 		var dir : Vector2i = r_result[1]
@@ -75,6 +81,14 @@ func build(floor: Floor) -> Floor:
 			floor.add_dijkstra_map(points)
 			successful_room_placement += 1
 			failed_attempts = 0
+			var item_cells := pattern.get_item_cells(dir, wall)
+			var items := pattern.generate_items()
+			
+			for i in range(len(item_cells)):
+				var cell := item_cells[i]
+				var item := items[i]
+				
+				ItemManager.add_item_to_overworld(item, cell)
 		else:
 			failed_attempts += 1
 	
@@ -118,14 +132,6 @@ func build(floor: Floor) -> Floor:
 			var v := Vector2i(x,y)
 			if floor.get_tile(v).terrain_id in [0] and v in grass:
 				floor.set_tile(v, grass_resource)
-
-	## set water
-	#var water_generator := WaterGenerator.new(width, height)
-	#var water := water_generator.build()
-	#
-	#for cell in water:
-		#floor.set_tile(cell, RoomPattern.TileType.WATER)
-
 	# instantiate the dijkstra maps
 	floor.initialize_all_dijkstra_maps()
 	return floor

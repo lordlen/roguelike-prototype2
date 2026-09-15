@@ -18,8 +18,8 @@ visible = false
 layout_mode = 0
 offset_left = 40.0
 offset_top = 42.0
-offset_right = 788.0
-offset_bottom = 97.0
+offset_right = 372.0
+offset_bottom = 78.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Description" type="RichTextLabel" parent="DescriptionContainer"]
@@ -39,6 +39,14 @@ item_1/text = "Drink"
 item_1/id = 1
 item_2/text = "Discard"
 item_2/id = 2
+
+[node name="NumUses" type="Label" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = -2.0
+offset_right = 46.0
+offset_bottom = 21.0
+text = "1"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

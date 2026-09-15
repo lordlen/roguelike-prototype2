@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=13 format=3 uid="uid://dygdgkopd68fl"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_gpve3"]
+[ext_resource type="Resource" uid="uid://ddv2n1fhbv7q7" path="res://cards/card_resources/special/corpse_explosion.tres" id="2_0oibg"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_rr0wo"]
+[ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="3_j35qu"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_kberi"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="6_l30fa"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="7_j35qu"]
+[ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="7_mpg1y"]
+
+[sub_resource type="Resource" id="Resource_jn8eq"]
+script = ExtResource("3_j35qu")
+metadata/_custom_type_script = "uid://bytwv002xet0b"
+
+[sub_resource type="Resource" id="Resource_iv7xk"]
+script = ExtResource("6_l30fa")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l30fa"]
+atlas = ExtResource("7_j35qu")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="Resource" id="Resource_amjs2"]
+script = ExtResource("7_mpg1y")
+metadata/_custom_type_script = "uid://cwayprpkdikls"
+
+[resource]
+script = ExtResource("3_kberi")
+texture = SubResource("AtlasTexture_l30fa")
+character_name = "Bomb Corpse"
+alignment = 1
+min_hp = 100
+max_hp = 100
+sleeping = SubResource("Resource_iv7xk")
+wandering = SubResource("Resource_amjs2")
+hunting = SubResource("Resource_jn8eq")
+cards = Array[ExtResource("1_gpve3")]([ExtResource("2_0oibg"), ExtResource("2_0oibg"), ExtResource("2_0oibg")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

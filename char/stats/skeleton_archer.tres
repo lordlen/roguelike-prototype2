@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_yggog"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_he2kk"]
-[ext_resource type="Resource" uid="uid://dgn4p0n47lbio" path="res://cards/card_resources/snipe.tres" id="2_w80ln"]
+[ext_resource type="Resource" uid="uid://dgn4p0n47lbio" path="res://cards/card_resources/enemy/snipe.tres" id="2_w80ln"]
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="3_7adlr"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_hykip"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="6_q21y7"]
@@ -31,8 +31,8 @@ texture = SubResource("AtlasTexture_07q2b")
 character_name = "Skeleton Archer"
 alignment = 1
 is_cautious = true
-min_hp = 12
-max_hp = 18
+min_hp = 8
+max_hp = 12
 sleeping = SubResource("Resource_3a1cj")
 wandering = SubResource("Resource_7cgo7")
 hunting = SubResource("Resource_05afw")

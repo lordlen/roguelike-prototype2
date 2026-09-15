@@ -4,13 +4,24 @@ extends TextureButton
 var item: Item
 var actor: Char
 
+func _ready() -> void:
+	actor.char_used_item.connect(update_num_uses)
+
+func update_num_uses():
+	if item.num_uses > 1:
+		$NumUses.text = str(item.num_uses)
+	else:
+		$NumUses.text = ""
+
 func set_actor(actor: Char):
 	self.actor = actor
 
 func set_item(item: Item):
 	self.item = item
 	$PopupMenu.clear()
+	update_num_uses()
 	self.texture_normal = item.texture
+	self.self_modulate = item.color
 	for item_action in item.item_actions:
 		$PopupMenu.add_item(item_action.action_name)
 	
@@ -25,8 +36,7 @@ func _on_popup_menu_index_pressed(index: int) -> void:
 	EventBus.item_used.emit(item, item.item_actions[index])
 
 func _on_mouse_entered() -> void:
-	$DescriptionContainer.visible = true
-
+	$DescriptionContainer.show()
 
 func _on_mouse_exited() -> void:
-	$DescriptionContainer.visible = false
+	$DescriptionContainer.hide()

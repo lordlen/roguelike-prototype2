@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_p76jn"]
 script = ExtResource("2_uhben")
 target = 1
+affects = 1
 action_name = "Throw"
 metadata/_custom_type_script = "uid://c2y3uj16oakps"
 

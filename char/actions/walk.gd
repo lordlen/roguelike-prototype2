@@ -1,7 +1,7 @@
 class_name Walk
 extends Action
 
-const walk_speed := 400
+const walk_speed := 200
 
 var actor: Char
 var dest: Vector2i
@@ -15,6 +15,11 @@ func execute() -> bool:
 	# locked door check
 	if Globals.floor_map.get_tile(dest).terrain_id == TileResource.Terrains.LOCKED_DOOR\
 	and actor.inventory.keys > 0:
+		var ground := load("res://floor_generator/tiles/ground.tres")
+		Globals.floor_map.update_tile(dest, ground)
+		actor.inventory.add_key(-1)
+	
+	if Globals.floor_map.get_tile(dest).terrain_id == TileResource.Terrains.SANCTUARY:
 		var ground := load("res://floor_generator/tiles/ground.tres")
 		Globals.floor_map.update_tile(dest, ground)
 	

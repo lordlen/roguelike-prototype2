@@ -26,6 +26,7 @@ var atk_range: int:
 var is_dodge: bool
 var exhausts: bool
 var is_innate: bool
+var is_final: bool
 var is_ethereal: bool
 var is_instant: bool
 var is_lob: bool
@@ -56,6 +57,7 @@ func _init(r: CardResource):
 	is_dodge = r.is_dodge
 	exhausts = r.exhausts
 	is_innate = r.is_innate
+	is_final = r.is_final
 	is_ethereal = r.is_ethereal
 	is_instant = r.is_instant
 	is_lob = r.is_lob
@@ -111,6 +113,7 @@ func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 			target_pos = target.grid_position
 		e.do.call_deferred(actor, target_pos, self)
 		await e.card_effect_finished
+		#await actor.get_tree().create_timer(0.5).timeout
 	# remove tmp effects from the array
 	for i in range(len(effects) - 1, -1, -1):
 		var e := effects[i]
@@ -126,7 +129,9 @@ func effect_is_changed():
 	return is_changed
 
 func get_all_effects():
-	return attack_effects + defense_effects + on_hit_effects + on_took_damage_effects + on_move_effects + on_discard_effects
+	return attack_effects + defense_effects + on_use_effects + on_hit_effects\
+	+ on_took_damage_effects + on_move_effects + on_discard_effects + on_draw_effects\
+	+ on_any_attack_effects
 
 func get_description() -> String:
 	var result := ""
@@ -135,6 +140,9 @@ func get_description() -> String:
 		result += ".\n"
 	if is_innate:
 		result += CardDescriptionHelper.orange_text("Innate")
+		result += ".\n"
+	if is_final:
+		result += CardDescriptionHelper.orange_text("Final")
 		result += ".\n"
 	if is_instant:
 		result += CardDescriptionHelper.orange_text("Instant")
@@ -198,7 +206,13 @@ func get_description() -> String:
 	return result
 
 func get_attack() -> String:
-	return "%dx%d" % [attack, num_hits] if num_hits > 1 else str(attack)
+	return "%dx%d" % [get_total_attack(), num_hits] if num_hits > 1 else str(get_total_attack())
+
+func get_total_attack() -> int:
+	var total_atk := 0
+	for e in attack_effects:
+		total_atk += e.get_attack_value(self)
+	return total_atk
 
 func get_defense_string() -> String:
 	return "∅" if is_dodge else str(get_defense())

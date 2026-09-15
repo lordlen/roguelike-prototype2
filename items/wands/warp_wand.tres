@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://dmkp3l0do5ja8"]
+
+[ext_resource type="Script" uid="uid://btlot15ewk5h0" path="res://items/item_actions/teleport_randomly.gd" id="1_2i7oj"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="1_labuw"]
+[ext_resource type="Script" uid="uid://c0kydti45bp0m" path="res://items/item_action.gd" id="2_ddfkq"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="4_387qh"]
+
+[sub_resource type="Resource" id="Resource_skpq0"]
+script = ExtResource("1_2i7oj")
+target = 1
+affects = 1
+action_name = "Zap"
+uses_turn = true
+num_uses = 1
+metadata/_custom_type_script = "uid://btlot15ewk5h0"
+
+[sub_resource type="Resource" id="Resource_3cbmi"]
+script = ExtResource("2_ddfkq")
+metadata/_custom_type_script = "uid://c0kydti45bp0m"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsfpo"]
+atlas = ExtResource("4_387qh")
+region = Rect2(32, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_labuw")
+item_name = "Warp Wand"
+texture = SubResource("AtlasTexture_wsfpo")
+color = Color(0, 1, 1, 1)
+item_actions = Array[Object]([SubResource("Resource_skpq0"), SubResource("Resource_3cbmi")])
+num_uses = 3
+metadata/_custom_type_script = "uid://ca2r30i5gni7m"

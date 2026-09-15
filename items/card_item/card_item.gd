@@ -6,6 +6,13 @@ func set_card(c: CardResource):
 	self.card = c
 	texture = c.texture
 	item_name = c.name
+	match c.rarity:
+		CardResource.Rarity.UNCOMMON:
+			color = Color.BLUE
+		CardResource.Rarity.RARE:
+			color = Color.YELLOW
+		_:
+			color = Color.WHITE
 	display_description_on_hover = false
 
 func on_pick_up(inventory: InventoryComponent) -> bool:

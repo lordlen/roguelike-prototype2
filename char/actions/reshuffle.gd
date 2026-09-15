@@ -7,6 +7,7 @@ func _init(actor: Char):
 
 func execute() -> bool:
 	if len(actor.deck.discard_pile) == 0:
+		action_finished.emit(true)
 		return true
 	actor.char_reshuffled.emit()
 	actor.deck.reshuffle()

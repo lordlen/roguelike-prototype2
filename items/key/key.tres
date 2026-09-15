@@ -11,5 +11,6 @@ region = Rect2(160, 64, 16, 16)
 script = ExtResource("1_cpugk")
 item_name = "Key"
 texture = SubResource("AtlasTexture_6gqeb")
+color = Color(0.8627451, 0.6117647, 0.23921569, 1)
 item_actions = null
 metadata/_custom_type_script = "uid://rcu1aghwfeus"

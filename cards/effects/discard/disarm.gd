@@ -12,7 +12,8 @@ func get_description() -> String:
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var t := actor if target == Target.SELF else ActorManager.get_actor_in_position(target_pos)
 	if is_instance_valid(t) and t.deck.primary:
-		await t.deck.primary.do_on_discard_effects(t)
-		await t.deck.primary.do_on_use_effects(t)
+		var primary := t.deck.primary
+		await primary.do_on_discard_effects(t)
+		await primary.do_on_use_effects(t)
 		t.deck.discard_primary()
 	card_effect_finished.emit()

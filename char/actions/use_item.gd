@@ -13,19 +13,23 @@ func _init(actor: Char, item: Item, item_action: ItemAction, pos: Vector2i):
 	self.pos = pos
 
 func execute() -> bool:
+	EventBus.aim_mode_canceled.emit()
 	# get the path
-	var pf :=  Pathfinder.new()
-	# flying so ignore any kind of terrain except walls
-	var path := pf.get_straight_path(actor.grid_position, pos, Char.Traversal.FLYING)
-	
-	# get the last element of the path
-	var dest := path[len(path) - 1]
+	if Pathfinder.chebychev_dist(actor.grid_position, pos) <= item_action.effect_range:
+		var pf :=  Pathfinder.new()
+		# flying so ignore any kind of terrain except walls
+		var path := pf.get_straight_path(actor.grid_position, pos, Char.Traversal.FLYING)
+		
+		# get the last element of the path
+		var dest := path[-1]
 
-	var is_successful := await item_action.use(actor, dest)
+		var is_successful := await item_action.use(actor, dest)
 
-	if is_successful:
-		actor.char_used_item.emit()
-		actor.inventory.remove_item(item)
+		if is_successful:
+			actor.inventory.remove_item(item, item_action.num_uses)
+			actor.char_used_item.emit()
 
-	action_finished.emit(item_action.uses_turn)
-	return item_action.uses_turn
+		action_finished.emit(item_action.uses_turn)
+		return item_action.uses_turn and is_successful
+	else:
+		return false

@@ -9,14 +9,16 @@ func use(owner: Char, pos: Vector2i) -> bool:
 	if !super.use(owner, pos):
 		return false
 
-	var target_chars := _get_target_chars(pos)
+	var target_chars := _get_target_chars(owner, pos)
+	if target_chars.is_empty():
+		return false
 
 	var positions : Array[Vector2i] = Globals.floor_map.get_type_positions([TileResource.Terrains.GROUND])
 	for target_char in target_chars:
 		# find a random, unoccupied location
 		
 		var rand_pos : Vector2i = positions.pick_random()
-		while ActorManager.get_actor_in_position(rand_pos):
+		while !valid_teleport(target_char.grid_position, rand_pos):
 			rand_pos = positions.pick_random()
 		
 		# now there are no actors in the selected position
@@ -24,3 +26,7 @@ func use(owner: Char, pos: Vector2i) -> bool:
 		target_char.move_to(rand_pos)
 		target_char.update_vision()
 	return true
+
+func valid_teleport(from: Vector2i, to: Vector2i) -> bool:
+	return (ActorManager.get_actor_in_position(to) == null)\
+	and len(Globals.floor_map.compute_path(from, to)) != 0

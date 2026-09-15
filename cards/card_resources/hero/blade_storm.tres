@@ -2,29 +2,30 @@
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_rh61c"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_s3bjj"]
-[ext_resource type="Script" uid="uid://7xri5doqhxue" path="res://cards/effects/do_damage/damage_aoe.gd" id="2_ykg2k"]
-[ext_resource type="Script" uid="uid://dy1w2rchia6dk" path="res://cards/effects/add_card/shiv_surge.gd" id="3_ldyxn"]
-[ext_resource type="Script" uid="uid://pau40yq5yb1c" path="res://cards/effects/card_manip/invert.gd" id="4_ykg2k"]
-
-[sub_resource type="Resource" id="Resource_r6sj6"]
-script = ExtResource("3_ldyxn")
-metadata/_custom_type_script = "uid://dy1w2rchia6dk"
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_ykg2k"]
+[ext_resource type="Script" uid="uid://de3hrn6re45yh" path="res://cards/effects/add_card/shiv.gd" id="3_ykg2k"]
+[ext_resource type="Script" uid="uid://ck7ywegjhk1b2" path="res://cards/effects/increment_stats/shiv_aoe.gd" id="4_ykg2k"]
 
 [sub_resource type="Resource" id="Resource_ldyxn"]
-script = ExtResource("4_ykg2k")
-metadata/_custom_type_script = "uid://pau40yq5yb1c"
+script = ExtResource("2_ykg2k")
+is_aoe = true
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_oto7w"]
+script = ExtResource("3_ykg2k")
+num_cards = 2
+metadata/_custom_type_script = "uid://de3hrn6re45yh"
 
 [sub_resource type="Resource" id="Resource_1oegy"]
-script = ExtResource("2_ykg2k")
-metadata/_custom_type_script = "uid://7xri5doqhxue"
+script = ExtResource("4_ykg2k")
+metadata/_custom_type_script = "uid://ck7ywegjhk1b2"
 
 [resource]
 script = ExtResource("2_s3bjj")
 name = "Blade Storm"
 rarity = 1
-attack = 6
-defense = 3
+attack = 7
 num_hits = 1
-range = 2
-attack_effects = Array[ExtResource("1_rh61c")]([SubResource("Resource_r6sj6"), SubResource("Resource_ldyxn"), SubResource("Resource_1oegy")])
+range = 1
+attack_effects = Array[ExtResource("1_rh61c")]([SubResource("Resource_ldyxn"), SubResource("Resource_oto7w"), SubResource("Resource_1oegy")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

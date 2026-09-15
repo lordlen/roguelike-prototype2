@@ -24,11 +24,11 @@ func should_swap(actor: Char) -> bool:
 		offhand_def = offhand.get_defense()
 		offhand_range = offhand.atk_range
 
-	var is_close: bool = max(\
-		abs(actor.grid_position.x - actor.target_ch.grid_position.x),\
-		abs(actor.grid_position.y - actor.target_ch.grid_position.y)) <= 1
+	#var is_close: bool = max(\
+		#abs(actor.grid_position.x - actor.target_ch.grid_position.x),\
+		#abs(actor.grid_position.y - actor.target_ch.grid_position.y)) <= 1
 
-	return (primary_atk + offhand_def < offhand_atk + primary_def and is_close) or offhand_range > primary_range
+	return (primary_atk + offhand_def < offhand_atk + primary_def)
 
 func should_reshuffle(actor: Char):
 	var primary_atk = 0 if actor.deck.primary == null else actor.deck.primary.attack
@@ -40,7 +40,7 @@ func should_reshuffle(actor: Char):
 
 func act(actor: Char) -> Array[Action]:
 	# if the prey is dead, change prey or swap to wander
-	if !is_instance_valid(actor.target_ch):
+	if !is_instance_valid(actor.target_ch) or actor.target_ch.is_dead():
 		# TODO: switch target if necessary
 		actor.wander()
 		return actor.curr_state.act(actor)
@@ -81,7 +81,15 @@ func enemy_can_attack(actor: Char, enemy: Char) -> bool:
 		target_max_range = max(target_max_range, enemy.deck.offhand.atk_range)
 	return Pathfinder.chebychev_dist(actor.grid_position, enemy.grid_position) > target_max_range
 
-func offhand_is_decayed_enough(actor: Char) -> bool:
-	if actor.deck.offhand == null:
-		return false
-	return actor.deck.offhand.defense_decay * 2 > actor.deck.offhand.defense
+func can_reach(actor: Char, target: Char, atk_range: int) -> bool:
+	return Pathfinder.chebychev_dist(actor.grid_position, target.grid_position) <= atk_range 
+
+func off_can_reach(actor: Char, target: Char) -> bool:
+	var main_atk_range := 0
+	if actor.deck.primary:
+		main_atk_range = actor.deck.primary.atk_range
+	var off_atk_range := 0
+	if actor.deck.offhand:
+		off_atk_range = actor.deck.offhand.atk_range
+	return can_reach(actor, target, off_atk_range)\
+	and !can_reach(actor, target, main_atk_range)

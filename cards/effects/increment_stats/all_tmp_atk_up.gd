@@ -15,10 +15,11 @@ func get_numeric() -> String:
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var t := actor if target == Target.SELF else ActorManager.get_actor_in_position(target_pos)
-	var tmp_atk_up := TmpAtkUp.new()
-	tmp_atk_up.atk_value = atk_value
-	for c in t.deck.get_all_card_instances():
-		tmp_atk_up.do(t, target_pos, c)
+	if is_instance_valid(t):
+		var tmp_atk_up := TmpAtkUp.new()
+		tmp_atk_up.atk_value = atk_value
+		for c in t.deck.get_all_card_instances():
+			tmp_atk_up.do(t, target_pos, c)
 	card_effect_finished.emit()
 
 func combine_effect(other_effect: CardEffect) -> CardEffect:

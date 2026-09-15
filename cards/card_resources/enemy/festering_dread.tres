@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://so84hg06c2jw"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_xsbq6"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_iigfx"]
+[ext_resource type="Script" uid="uid://rrn2acqulw8a" path="res://cards/effects/mana/mana.gd" id="3_srlrc"]
+[ext_resource type="Script" uid="uid://cmr5k7qt75pai" path="res://cards/effects/mana/dark_arts.gd" id="4_iigfx"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="4_plwal"]
+
+[sub_resource type="Resource" id="Resource_plwal"]
+script = ExtResource("2_iigfx")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
+
+[sub_resource type="Resource" id="Resource_l2lau"]
+script = ExtResource("3_srlrc")
+value = 2
+metadata/_custom_type_script = "uid://rrn2acqulw8a"
+
+[sub_resource type="Resource" id="Resource_srlrc"]
+script = ExtResource("4_iigfx")
+metadata/_custom_type_script = "uid://cmr5k7qt75pai"
+
+[resource]
+script = ExtResource("4_plwal")
+name = "Festering Dread"
+rarity = 3
+attack = 4
+num_hits = 1
+range = 2
+is_lob = true
+attack_effects = Array[ExtResource("1_xsbq6")]([SubResource("Resource_plwal"), SubResource("Resource_l2lau"), SubResource("Resource_srlrc")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

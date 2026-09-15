@@ -15,7 +15,7 @@ func get_numeric() -> String:
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var t := actor if target == Target.SELF else ActorManager.get_actor_in_position(target_pos)
-	if t.deck.primary:
+	if is_instance_valid(t) and t.deck.primary:
 		var tmp_range_up := TmpRangeUp.new()
 		tmp_range_up.value = value
 		tmp_range_up.do(actor, target_pos, t.deck.primary)

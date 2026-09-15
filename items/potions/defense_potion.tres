@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_m6l01"]
 script = ExtResource("2_lfnwl")
-value = 1
+value = 3
 action_name = "Drink"
 metadata/_custom_type_script = "uid://qxt144qe7l4f"
 

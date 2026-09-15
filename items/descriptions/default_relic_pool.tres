@@ -1,26 +1,26 @@
-[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=19 format=3 uid="uid://5d0ctqh33a8i"]
+[gd_resource type="Resource" script_class="ItemPoolDescription" load_steps=18 format=3 uid="uid://5d0ctqh33a8i"]
 
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="1_w3vif"]
-[ext_resource type="Resource" uid="uid://d4buua450ns2j" path="res://items/relics/character_relics/resources/anvil.tres" id="2_4koj3"]
+[ext_resource type="Resource" uid="uid://d4buua450ns2j" path="res://items/relics/character_relics/pool/anvil.tres" id="2_4koj3"]
 [ext_resource type="Script" uid="uid://dlmiqas8og0ae" path="res://items/item_pool_description.gd" id="2_rqcsj"]
-[ext_resource type="Resource" uid="uid://bbyrdteityhn8" path="res://items/relics/character_relics/resources/ballet_shoes.tres" id="3_fpsj8"]
-[ext_resource type="Resource" uid="uid://dydc27x2kr71" path="res://items/relics/character_relics/resources/bloodstone.tres" id="4_1khen"]
-[ext_resource type="Resource" uid="uid://dsvhd2qo8cpo6" path="res://items/relics/character_relics/resources/cane.tres" id="5_et7pu"]
-[ext_resource type="Resource" uid="uid://bescv7w77aue4" path="res://items/relics/character_relics/resources/clay.tres" id="6_r1ufi"]
-[ext_resource type="Resource" uid="uid://bxkattre6wovi" path="res://items/relics/character_relics/resources/cleanse_tag.tres" id="7_wky17"]
-[ext_resource type="Resource" uid="uid://dpd0iu1qnk75d" path="res://items/relics/character_relics/resources/fan.tres" id="9_prawf"]
-[ext_resource type="Resource" uid="uid://d00uwksyptm2a" path="res://items/relics/character_relics/resources/main_gauche.tres" id="11_84rj0"]
-[ext_resource type="Resource" uid="uid://d2ymcc2iywfp0" path="res://items/relics/character_relics/resources/omamori.tres" id="12_qo6lb"]
-[ext_resource type="Resource" uid="uid://bh3rdluxo37bj" path="res://items/relics/character_relics/resources/oricalcum.tres" id="13_208e8"]
-[ext_resource type="Resource" uid="uid://dk2c71nwfb631" path="res://items/relics/character_relics/resources/projector.tres" id="14_8l4nb"]
-[ext_resource type="Resource" uid="uid://c8paffamdioqe" path="res://items/relics/character_relics/resources/question_card.tres" id="15_ubias"]
-[ext_resource type="Resource" uid="uid://dc8i2f1hy8ei5" path="res://items/relics/character_relics/resources/smooth_stone.tres" id="16_vlbii"]
-[ext_resource type="Resource" uid="uid://dnta7ibkhdk64" path="res://items/relics/character_relics/resources/strike_dummy.tres" id="17_geqhs"]
-[ext_resource type="Resource" uid="uid://drkfyqdhrdtf8" path="res://items/relics/character_relics/resources/vajra.tres" id="18_m1ids"]
-[ext_resource type="Resource" uid="uid://s0vxy3c6umj8" path="res://items/relics/character_relics/resources/yew_bow.tres" id="19_ubt1b"]
+[ext_resource type="Resource" uid="uid://bbyrdteityhn8" path="res://items/relics/character_relics/pool/ballet_shoes.tres" id="3_fpsj8"]
+[ext_resource type="Resource" uid="uid://dsvhd2qo8cpo6" path="res://items/relics/character_relics/pool/cane.tres" id="5_et7pu"]
+[ext_resource type="Resource" uid="uid://bescv7w77aue4" path="res://items/relics/character_relics/pool/clay.tres" id="6_r1ufi"]
+[ext_resource type="Resource" uid="uid://bxkattre6wovi" path="res://items/relics/character_relics/pool/cleanse_tag.tres" id="7_wky17"]
+[ext_resource type="Resource" uid="uid://dpd0iu1qnk75d" path="res://items/relics/character_relics/pool/fan.tres" id="9_prawf"]
+[ext_resource type="Resource" uid="uid://d00uwksyptm2a" path="res://items/relics/character_relics/pool/main_gauche.tres" id="11_84rj0"]
+[ext_resource type="Resource" uid="uid://d2ymcc2iywfp0" path="res://items/relics/character_relics/pool/omamori.tres" id="12_qo6lb"]
+[ext_resource type="Resource" uid="uid://bh3rdluxo37bj" path="res://items/relics/character_relics/pool/oricalcum.tres" id="13_208e8"]
+[ext_resource type="Resource" uid="uid://dk2c71nwfb631" path="res://items/relics/character_relics/pool/projector.tres" id="14_8l4nb"]
+[ext_resource type="Resource" uid="uid://c8paffamdioqe" path="res://items/relics/character_relics/pool/question_card.tres" id="15_ubias"]
+[ext_resource type="Resource" uid="uid://dc8i2f1hy8ei5" path="res://items/relics/character_relics/pool/smooth_stone.tres" id="16_vlbii"]
+[ext_resource type="Resource" uid="uid://dnta7ibkhdk64" path="res://items/relics/character_relics/pool/strike_dummy.tres" id="17_geqhs"]
+[ext_resource type="Resource" uid="uid://drkfyqdhrdtf8" path="res://items/relics/character_relics/pool/vajra.tres" id="18_m1ids"]
+[ext_resource type="Resource" uid="uid://s0vxy3c6umj8" path="res://items/relics/character_relics/pool/yew_bow.tres" id="19_ubt1b"]
 
 [resource]
 script = ExtResource("2_rqcsj")
-item_pool = Array[ExtResource("1_w3vif")]([ExtResource("2_4koj3"), ExtResource("3_fpsj8"), ExtResource("4_1khen"), ExtResource("5_et7pu"), ExtResource("6_r1ufi"), ExtResource("7_wky17"), ExtResource("9_prawf"), ExtResource("11_84rj0"), ExtResource("12_qo6lb"), ExtResource("13_208e8"), ExtResource("14_8l4nb"), ExtResource("15_ubias"), ExtResource("16_vlbii"), ExtResource("17_geqhs"), ExtResource("18_m1ids"), ExtResource("19_ubt1b")])
-weights = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+item_pool = Array[ExtResource("1_w3vif")]([ExtResource("2_4koj3"), ExtResource("3_fpsj8"), ExtResource("5_et7pu"), ExtResource("6_r1ufi"), ExtResource("7_wky17"), ExtResource("9_prawf"), ExtResource("11_84rj0"), ExtResource("12_qo6lb"), ExtResource("13_208e8"), ExtResource("14_8l4nb"), ExtResource("15_ubias"), ExtResource("16_vlbii"), ExtResource("17_geqhs"), ExtResource("18_m1ids"), ExtResource("19_ubt1b")])
+weights = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+with_replacement = false
 metadata/_custom_type_script = "uid://dlmiqas8og0ae"

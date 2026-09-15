@@ -18,7 +18,6 @@ metadata/_custom_type_script = "uid://ci11r7k6ogpkv"
 [resource]
 script = ExtResource("2_l0ssx")
 name = "Quick Cast"
-rarity = 1
-defense = 5
+defense = 6
 defense_effects = Array[ExtResource("1_05738")]([SubResource("Resource_ycp1d"), SubResource("Resource_wt4iy")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

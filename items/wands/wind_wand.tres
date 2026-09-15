@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://dnrtj0g2pasyh"]
+
+[ext_resource type="Script" uid="uid://dxrigttqmwj3" path="res://items/item_actions/push.gd" id="1_7qpwv"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="1_cjm2s"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="2_40te2"]
+[ext_resource type="Script" uid="uid://c0kydti45bp0m" path="res://items/item_action.gd" id="2_3687p"]
+
+[sub_resource type="Resource" id="Resource_0ceik"]
+script = ExtResource("1_7qpwv")
+target = 1
+affects = 1
+action_name = "Zap"
+uses_turn = true
+num_uses = 1
+metadata/_custom_type_script = "uid://dxrigttqmwj3"
+
+[sub_resource type="Resource" id="Resource_kfrp0"]
+script = ExtResource("2_3687p")
+metadata/_custom_type_script = "uid://c0kydti45bp0m"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr0rk"]
+atlas = ExtResource("2_40te2")
+region = Rect2(32, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_cjm2s")
+item_name = "Wind Wand"
+texture = SubResource("AtlasTexture_dr0rk")
+item_actions = Array[Object]([SubResource("Resource_0ceik"), SubResource("Resource_kfrp0")])
+num_uses = 3
+metadata/_custom_type_script = "uid://ca2r30i5gni7m"

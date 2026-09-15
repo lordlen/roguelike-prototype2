@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=16 format=3 uid="uid://c4ehmnhrnu3i7"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_spinh"]
+[ext_resource type="Resource" uid="uid://d03fo1rnsygrg" path="res://cards/card_resources/enemy/body_double.tres" id="2_2pgky"]
+[ext_resource type="Resource" uid="uid://so84hg06c2jw" path="res://cards/card_resources/enemy/festering_dread.tres" id="2_iahqy"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_n4s5v"]
+[ext_resource type="Resource" uid="uid://btuext3getrag" path="res://cards/card_resources/special/cast_spell.tres" id="3_cqw64"]
+[ext_resource type="Resource" uid="uid://v0y4yhliks1u" path="res://cards/card_resources/enemy/scream.tres" id="3_iahqy"]
+[ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="3_jclx4"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_ktqum"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="6_icpep"]
+[ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="7_2pgky"]
+[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="7_jclx4"]
+
+[sub_resource type="Resource" id="Resource_iahqy"]
+script = ExtResource("3_jclx4")
+metadata/_custom_type_script = "uid://bytwv002xet0b"
+
+[sub_resource type="Resource" id="Resource_cqw64"]
+script = ExtResource("6_icpep")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icpep"]
+atlas = ExtResource("7_jclx4")
+region = Rect2(80, 112, 16, 16)
+
+[sub_resource type="Resource" id="Resource_avim8"]
+script = ExtResource("7_2pgky")
+metadata/_custom_type_script = "uid://cwayprpkdikls"
+
+[resource]
+script = ExtResource("3_ktqum")
+texture = SubResource("AtlasTexture_icpep")
+character_name = "Necromancer"
+alignment = 1
+min_hp = 75
+max_hp = 75
+vision_range = 99
+scent_range = 99
+sleeping = SubResource("Resource_cqw64")
+wandering = SubResource("Resource_avim8")
+hunting = SubResource("Resource_iahqy")
+cards = Array[ExtResource("1_spinh")]([ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("3_iahqy"), ExtResource("3_iahqy")])
+innate_cards = Array[ExtResource("1_spinh")]([ExtResource("2_2pgky")])
+final_cards = Array[ExtResource("1_spinh")]([ExtResource("3_cqw64")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

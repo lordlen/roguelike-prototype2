@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://dmjsrjjubgf5c"
 [resource]
 script = ExtResource("4_yotu4")
 name = "Haymaker"
-attack = 12
+attack = 13
 num_hits = 1
 range = 1
 attack_effects = Array[ExtResource("1_j721j")]([SubResource("Resource_ws07w"), SubResource("Resource_a0bou")])

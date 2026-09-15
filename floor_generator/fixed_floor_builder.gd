@@ -20,6 +20,7 @@ extends FloorBuilder
 @export_subgroup("Cost")
 @export var potion_cost: int
 @export var card_cost: int
+@export var card_variance: int
 @export var relic_cost: int
 @export var healing_cost: int
 
@@ -55,7 +56,7 @@ func build_floor():
 	for i in range(num_potions):
 		if p_ind >= len(p_positions):
 			break
-		var item := potion_pool.get_random_item()
+		var item := potion_pool.get_item()
 		
 		ItemManager.add_item_to_overworld(item, p_positions[p_ind], potion_cost)
 		
@@ -64,7 +65,7 @@ func build_floor():
 	for i in range(num_relics):
 		if p_ind >= len(p_positions):
 			break
-		var item := relic_pool.get_random_item_no_replacement()
+		var item := relic_pool.get_item()
 		
 		ItemManager.add_item_to_overworld(item, p_positions[p_ind], relic_cost)
 		
@@ -77,7 +78,17 @@ func build_floor():
 		var item := CardItem.new()
 		item.set_card(card)
 		
-		ItemManager.add_item_to_overworld(item, p_positions[p_ind], card_cost)
+		var cost := card_cost
+		
+		match card.rarity:
+			CardResource.Rarity.COMMON:
+				cost = cost - card_variance
+			CardResource.Rarity.RARE:
+				cost = cost + card_variance
+			_:
+				pass
+		
+		ItemManager.add_item_to_overworld(item, p_positions[p_ind], cost)
 		
 		p_ind += 1
 	

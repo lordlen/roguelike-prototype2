@@ -11,9 +11,5 @@ extends CardEffect
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var t := actor.grid_position if target == Target.SELF else target_pos
-	var adj_tiles := Globals.floor_map.get_area(t, radius)
-	var valid_tiles := Globals.floor_map.get_type_positions_in_area(valid_tile_types, adj_tiles)
-	valid_tiles.shuffle()
-	for i in range(min(num_gen, len(valid_tiles))):
-		Globals.floor_map.update_tile(valid_tiles[i], tile_type)
+	CardHelper.generate_terrain(t, tile_type, valid_tile_types, num_gen, radius)
 	card_effect_finished.emit()
