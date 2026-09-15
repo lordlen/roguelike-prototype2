@@ -45,6 +45,7 @@ func on_stairs_entered():
 	# activate on next floor effects
 	for chars in ActorManager.get_chars():
 		chars.char_next_floor.emit()
+	$UILayer/TargetInfo.hide()
 
 func on_new_actor_added(char: Char):
 	$ActorList.add_child(char)

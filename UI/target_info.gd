@@ -41,7 +41,6 @@ func find_different_char():
 			show()
 			return
 	hide()
-	
 
 func find_evil_visible_actor():
 	if stale:
