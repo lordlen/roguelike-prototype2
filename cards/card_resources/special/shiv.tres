@@ -21,7 +21,6 @@ attack = 3
 num_hits = 1
 range = 2
 exhausts = true
-is_innate = true
 is_instant = true
 attack_effects = Array[ExtResource("1_0yu5s")]([SubResource("Resource_6fvx3")])
 defense_effects = Array[ExtResource("1_0yu5s")]([SubResource("Resource_hwbvp")])

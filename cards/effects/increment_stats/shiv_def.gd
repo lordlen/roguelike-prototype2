@@ -1,11 +1,16 @@
 class_name ShivDef
 extends CardEffect
 
+@export var value := 2
+
 func get_identifier() -> String:
 	return "shiv_def"
 	
 func get_description() -> String:
-	return "Temporarily increase this card's defense by how many shivs are in the deck."
+	return "Temporarily increase this card's defense by how many shivs are in the deck times n."
+
+func get_numeric() -> String:
+	return "n"
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var shiv_count := 0
@@ -14,6 +19,9 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 			shiv_count += 1
 
 	var def_up := TmpDefUp.new()
-	def_up.def_value = shiv_count
+	def_up.def_value = shiv_count * value
 	def_up.do(actor, target_pos, card)
 	card_effect_finished.emit()
+
+func get_shortform(card: CardInstance) -> String:
+	return "%s %s" % [value, super.get_shortform(card)]

@@ -2010,7 +2010,7 @@ offset_left = 529.0
 offset_top = -45.0
 offset_right = 638.0
 offset_bottom = -14.0
-tooltip_text = "Switch character info to another character."
+tooltip_text = "(A) Switch character info to another character."
 text = "switch target"
 
 [node name="StairsDialog" type="ConfirmationDialog" parent="UILayer"]
