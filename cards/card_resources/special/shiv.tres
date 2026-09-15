@@ -18,6 +18,7 @@ script = ExtResource("2_ta5xm")
 name = "Shiv"
 rarity = 3
 attack = 3
+defense = 3
 num_hits = 1
 range = 2
 exhausts = true
