@@ -14,5 +14,4 @@ func act(actor: Char) -> Array[Action]:
 			break
 	if enemy_seen != actor:
 		actor.hunt_with_team(enemy_seen)
-		return actor.curr_state.act(actor)
 	return [WaitAction.new(actor)]

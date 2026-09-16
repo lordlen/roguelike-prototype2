@@ -27,7 +27,8 @@ enum Alignment {
 enum Traversal {
 	GROUNDED,
 	AQUATIC,
-	FLYING
+	FLYING,
+	IMMOVABLE
 }
 
 static var _curr_char_id := 0
@@ -39,7 +40,7 @@ var max_hp: int
 var curr_hp: int
 
 var wandering_state: AiState
-var hunting_state: HuntingState
+var hunting_state: AiState
 var sleeping_state: AiState
 var curr_state: AiState
 

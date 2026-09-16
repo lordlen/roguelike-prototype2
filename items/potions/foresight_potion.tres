@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_vtvxn"]
 script = ExtResource("1_pyeer")
 action_name = "Drink"
+num_uses = 1
 metadata/_custom_type_script = "uid://b6ntax5yjf1xc"
 
 [sub_resource type="Resource" id="Resource_yfgug"]
@@ -23,4 +24,5 @@ script = ExtResource("3_sd7ig")
 item_name = "Scry Potion"
 texture = SubResource("AtlasTexture_b2dtf")
 item_actions = Array[Object]([SubResource("Resource_vtvxn"), SubResource("Resource_yfgug")])
+num_uses = 2
 metadata/_custom_type_script = "uid://ca2r30i5gni7m"

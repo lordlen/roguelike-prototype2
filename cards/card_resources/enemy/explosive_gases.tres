@@ -1,18 +1,23 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://bo1jiq3lsif30"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bo1jiq3lsif30"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_ybsub"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_oqnjr"]
-[ext_resource type="Resource" uid="uid://dygdgkopd68fl" path="res://char/stats/bomb_corpse.tres" id="2_yixdb"]
-[ext_resource type="Script" uid="uid://bvk0keq1662sb" path="res://cards/effects/summon/death_summon.gd" id="3_m3mon"]
+[ext_resource type="Script" uid="uid://qmqketv233q5" path="res://cards/effects/do_damage/explode.gd" id="2_yixdb"]
+[ext_resource type="Script" uid="uid://c56tu66yr0yqq" path="res://cards/effects/discard/disarm.gd" id="3_yixdb"]
 
 [sub_resource type="Resource" id="Resource_m3mon"]
-script = ExtResource("3_m3mon")
-char_resource = ExtResource("2_yixdb")
-metadata/_custom_type_script = "uid://bvk0keq1662sb"
+script = ExtResource("2_yixdb")
+value = 6
+metadata/_custom_type_script = "uid://qmqketv233q5"
+
+[sub_resource type="Resource" id="Resource_sgprm"]
+script = ExtResource("3_yixdb")
+metadata/_custom_type_script = "uid://c56tu66yr0yqq"
 
 [resource]
 script = ExtResource("2_oqnjr")
-name = "Explosive Gases"
+name = "Decay"
 rarity = 3
-on_took_damage_effects = Array[ExtResource("1_ybsub")]([SubResource("Resource_m3mon")])
+on_hit_effects = Array[ExtResource("1_ybsub")]([SubResource("Resource_sgprm")])
+on_death_effects = Array[ExtResource("1_ybsub")]([SubResource("Resource_m3mon")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

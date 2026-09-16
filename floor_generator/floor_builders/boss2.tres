@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FixedFloorBuilder" load_steps=12 format=3 uid="uid://bmqhtut4j4qq1"]
+[gd_resource type="Resource" script_class="FixedFloorBuilder" load_steps=14 format=3 uid="uid://bmqhtut4j4qq1"]
 
 [ext_resource type="Resource" uid="uid://bm7jexowpywcw" path="res://cards/card_reward_generators/rare_generator.tres" id="1_y5n35"]
 [ext_resource type="Resource" uid="uid://ded37gp45f3mv" path="res://patterns/boss_patterns/boss2dijkstra.tres" id="2_y5n35"]
@@ -10,19 +10,25 @@
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="8_ytmjs"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="9_6ol62"]
 [ext_resource type="Resource" uid="uid://c4ehmnhrnu3i7" path="res://char/stats/boss/necromancer.tres" id="10_wb23p"]
+[ext_resource type="Resource" uid="uid://br0idfjks6j7e" path="res://char/stats/zombie_spawner.tres" id="11_2xk4r"]
 
 [sub_resource type="Resource" id="Resource_hmbkw"]
 script = ExtResource("8_ytmjs")
 group = Array[ExtResource("9_6ol62")]([ExtResource("10_wb23p")])
 metadata/_custom_type_script = "uid://cgbukm4afxlvj"
 
+[sub_resource type="Resource" id="Resource_wb23p"]
+script = ExtResource("8_ytmjs")
+group = Array[ExtResource("9_6ol62")]([ExtResource("11_2xk4r")])
+metadata/_custom_type_script = "uid://cgbukm4afxlvj"
+
 [resource]
 script = ExtResource("7_wq35b")
 floor_layout_resource = ExtResource("3_2xk4r")
 floor_layout_dijkstra = ExtResource("2_y5n35")
-hero_spawn_point = Vector2i(10, 15)
-spawn_groups = Array[ExtResource("8_ytmjs")]([SubResource("Resource_hmbkw")])
-positions = Array[Vector2i]([Vector2i(10, 4)])
+hero_spawn_point = Vector2i(13, 18)
+spawn_groups = Array[ExtResource("8_ytmjs")]([SubResource("Resource_hmbkw"), SubResource("Resource_wb23p"), SubResource("Resource_wb23p"), SubResource("Resource_wb23p")])
+positions = Array[Vector2i]([Vector2i(13, 11), Vector2i(6, 11), Vector2i(21, 11), Vector2i(13, 20)])
 potion_pool = ExtResource("5_etyr0")
 card_pool = ExtResource("1_y5n35")
 relic_pool = ExtResource("6_1bax8")

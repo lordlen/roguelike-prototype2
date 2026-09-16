@@ -1,6 +1,8 @@
 class_name Explode
 extends CardEffect
 
+@export var value := 1
+
 func get_identifier() -> String:
 	return "explode"
 
@@ -10,15 +12,11 @@ func get_description() -> String:
 func get_numeric() -> String:
 	return "n"
 
-func get_attack_value(card: CardInstance) -> int:
-	return card.attack
-
 func do(attacker: Char, target_pos: Vector2i, card: CardInstance) -> void:
-	var num_hits := card.num_hits
-	var attack_val := card.attack
-	var atk_range := 1
-	CardHelper.deal_aoe_damage(attack_val, num_hits, attacker, attacker.grid_position, atk_range, true)
+	var num_hits := 1
+	var attack_val := value
+	CardHelper.deal_aoe_damage(attack_val, num_hits, attacker, attacker.grid_position, 1, true)
 	card_effect_finished.emit()
 
 func get_shortform(card: CardInstance) -> String:
-	return "%s %s" % [card.get_attack(), super.get_shortform(card)]
+	return "%s %s" % [value, super.get_shortform(card)]

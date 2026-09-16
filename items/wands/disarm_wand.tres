@@ -10,6 +10,7 @@ script = ExtResource("1_4aa7g")
 target = 1
 affects = 1
 action_name = "Zap (Instant)"
+num_uses = 1
 metadata/_custom_type_script = "uid://c2y3uj16oakps"
 
 [sub_resource type="Resource" id="Resource_cfkac"]

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://b6osvd52luaq5"]
+
+[ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_7qjlv"]
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_f5ptd"]
+[ext_resource type="Script" uid="uid://82q27hfdyqk2" path="res://cards/effects/do_nothing/do_nothing.gd" id="2_mhde5"]
+
+[sub_resource type="Resource" id="Resource_4bs87"]
+script = ExtResource("2_mhde5")
+metadata/_custom_type_script = "uid://82q27hfdyqk2"
+
+[resource]
+script = ExtResource("2_f5ptd")
+name = "Pass"
+rarity = 3
+attack = 1
+range = 99
+is_lob = true
+attack_effects = Array[ExtResource("1_7qjlv")]([SubResource("Resource_4bs87")])
+metadata/_custom_type_script = "uid://crie0xoknuknq"

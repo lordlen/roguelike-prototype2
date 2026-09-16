@@ -19,6 +19,7 @@ func _init(owner: Char, deck_list: Array[CardResource], innate_cards: Array[Card
 	owner.char_is_hit.connect(on_hit)
 	owner.char_took_damage.connect(on_took_damage)
 	owner.char_move_effect.connect(on_move_effect)
+	owner.char_died.connect(on_death_effect)
 	
 	for card in deck_list:
 		self.deck_list.push_back(card.duplicate(true))
@@ -359,3 +360,7 @@ func on_took_damage():
 func on_move_effect():
 	for card in get_all_card_instances():
 		await card.do_on_move_effects(deck_owner)
+
+func on_death_effect():
+	if offhand != null:
+		await offhand.do_on_death_effects(deck_owner)

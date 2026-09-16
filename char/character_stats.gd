@@ -19,7 +19,7 @@ extends Resource
 # ai
 @export var sleeping: AiState = SleepingState.new()
 @export var wandering: AiState = WanderingState.new()
-@export var hunting: HuntingState = HuntingState.new()
+@export var hunting: AiState = HuntingState.new()
 
 @export var cards: Array[CardResource]
 @export var innate_cards: Array[CardResource]

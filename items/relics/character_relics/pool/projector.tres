@@ -9,7 +9,7 @@ region = Rect2(64, 64, 16, 16)
 
 [resource]
 script = ExtResource("1_b2s38")
-description = "When moving with a card effect, all cards gain 1 temporary defense."
+description = "When moving with a card effect, gain 3 temporary defense in the off hand."
 item_name = "Projector"
 texture = SubResource("AtlasTexture_g65ti")
 item_actions = null

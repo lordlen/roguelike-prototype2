@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=11 format=3 uid="uid://br0idfjks6j7e"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_ulf6x"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_kai8i"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_44tre"]
+[ext_resource type="Resource" uid="uid://bcfyfqd1p7rsm" path="res://items/relics/zombie_spawn/zombie_spawn.tres" id="4_yu72p"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="6_qqsjv"]
+[ext_resource type="Texture2D" uid="uid://boh6d81juboc3" path="res://resources/items_transparent.png" id="7_7jbvp"]
+
+[sub_resource type="Resource" id="Resource_44tre"]
+script = ExtResource("6_qqsjv")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="Resource" id="Resource_wsgu0"]
+script = ExtResource("6_qqsjv")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0l1c"]
+atlas = ExtResource("7_7jbvp")
+region = Rect2(144, 32, 16, 16)
+
+[sub_resource type="Resource" id="Resource_yu72p"]
+script = ExtResource("6_qqsjv")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[resource]
+script = ExtResource("3_44tre")
+texture = SubResource("AtlasTexture_l0l1c")
+character_name = "Grave"
+alignment = 1
+min_hp = 100
+max_hp = 100
+vision_range = 99
+sleeping = SubResource("Resource_wsgu0")
+wandering = SubResource("Resource_yu72p")
+hunting = SubResource("Resource_44tre")
+items = Array[ExtResource("2_kai8i")]([ExtResource("4_yu72p")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

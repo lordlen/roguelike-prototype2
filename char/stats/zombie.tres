@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://dwuhwtyowgj52"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_2owdy"]
-[ext_resource type="Resource" uid="uid://siwpm2by5u4s" path="res://cards/card_resources/enemy/strike.tres" id="2_4bvic"]
+[ext_resource type="Resource" uid="uid://bm42kayuvcaf6" path="res://cards/card_resources/enemy/inhuman_strength.tres" id="2_4bvic"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_vh6eb"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_vgy5p"]
 [ext_resource type="Resource" uid="uid://bo1jiq3lsif30" path="res://cards/card_resources/enemy/explosive_gases.tres" id="4_4bvic"]
@@ -32,11 +32,13 @@ texture = SubResource("AtlasTexture_185m2")
 character_name = "Zombie"
 alignment = 1
 color = Color(0, 0.65882355, 0, 1)
-min_hp = 11
-max_hp = 15
+min_hp = 9
+max_hp = 12
+vision_range = 99
+scent_range = 99
 sleeping = SubResource("Resource_yifjx")
 wandering = SubResource("Resource_0hs8q")
 hunting = SubResource("Resource_4bvic")
-cards = Array[ExtResource("1_2owdy")]([ExtResource("2_4bvic"), ExtResource("2_4bvic")])
+cards = Array[ExtResource("1_2owdy")]([ExtResource("2_4bvic")])
 innate_cards = Array[ExtResource("1_2owdy")]([ExtResource("4_4bvic")])
 metadata/_custom_type_script = "uid://btuk5gl5wcri7"

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=16 format=3 uid="uid://c4ehmnhrnu3i7"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=17 format=3 uid="uid://c4ehmnhrnu3i7"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_spinh"]
 [ext_resource type="Resource" uid="uid://d03fo1rnsygrg" path="res://cards/card_resources/enemy/body_double.tres" id="2_2pgky"]
 [ext_resource type="Resource" uid="uid://so84hg06c2jw" path="res://cards/card_resources/enemy/festering_dread.tres" id="2_iahqy"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_n4s5v"]
+[ext_resource type="Resource" uid="uid://bot55268a8am0" path="res://cards/card_resources/enemy/conductor.tres" id="3_avim8"]
 [ext_resource type="Resource" uid="uid://btuext3getrag" path="res://cards/card_resources/special/cast_spell.tres" id="3_cqw64"]
 [ext_resource type="Resource" uid="uid://v0y4yhliks1u" path="res://cards/card_resources/enemy/scream.tres" id="3_iahqy"]
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="3_jclx4"]
@@ -40,7 +41,7 @@ scent_range = 99
 sleeping = SubResource("Resource_cqw64")
 wandering = SubResource("Resource_avim8")
 hunting = SubResource("Resource_iahqy")
-cards = Array[ExtResource("1_spinh")]([ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("3_iahqy"), ExtResource("3_iahqy")])
+cards = Array[ExtResource("1_spinh")]([ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("3_avim8"), ExtResource("3_avim8"), ExtResource("3_avim8"), ExtResource("3_iahqy")])
 innate_cards = Array[ExtResource("1_spinh")]([ExtResource("2_2pgky")])
 final_cards = Array[ExtResource("1_spinh")]([ExtResource("3_cqw64")])
 metadata/_custom_type_script = "uid://btuk5gl5wcri7"

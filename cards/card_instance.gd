@@ -40,6 +40,7 @@ var on_move_effects: Array[CardEffect]
 var on_discard_effects: Array[CardEffect]
 var on_draw_effects: Array[CardEffect]
 var on_any_attack_effects: Array[CardEffect]
+var on_death_effects: Array[CardEffect]
 
 var decay_exponent: int = 0
 var bonus_defense := 0
@@ -71,6 +72,7 @@ func _init(r: CardResource):
 	on_discard_effects = r.on_discard_effects.duplicate(true)
 	on_draw_effects = r.on_draw_effects.duplicate(true)
 	on_any_attack_effects = r.on_any_attack_effects.duplicate(true)
+	on_death_effects = r.on_death_effects.duplicate(true)
 
 func do_attack(actor: Char, defender: Char) -> void:
 	await do_effects(actor, defender, attack_effects)
@@ -103,6 +105,9 @@ func do_on_use_effects(actor: Char) -> void:
 
 func do_on_any_attack_effects(actor: Char) -> void:
 	await do_effects(actor, actor, on_any_attack_effects)
+
+func do_on_death_effects(actor: Char) -> void:
+	await do_effects(actor, actor, on_death_effects)
 
 func do_effects(actor: Char, target: Char, effects: Array[CardEffect]):
 	var target_pos := target.grid_position

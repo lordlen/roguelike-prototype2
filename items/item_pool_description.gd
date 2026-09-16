@@ -15,7 +15,7 @@ func get_item() -> Item:
 
 func get_random_item() -> Item:
 	var ind = rng.rand_weighted(weights)
-	return item_pool[ind]
+	return item_pool[ind].duplicate(true)
 
 func get_random_item_no_replacement() -> Item:
 	if len(item_pool) == 0:
@@ -24,4 +24,4 @@ func get_random_item_no_replacement() -> Item:
 	var item = item_pool[ind]
 	item_pool.remove_at(ind)
 	weights.remove_at(ind)
-	return item
+	return item.duplicate(true)

@@ -32,11 +32,8 @@ func set_char(char: Char):
 	for child in $RelicLabel/GridContainer.get_children():
 		child.queue_free()
 
+	var relic_item_scene: PackedScene = load("res://UI/relic_bar_item.tscn")
 	for relic in char.inventory.relics:
-		var texture := relic.texture
-		var description := relic.get_description()
-		
-		var relic_texture := TextureRect.new()
-		relic_texture.texture = texture
-		relic_texture.tooltip_text = description
-		$RelicLabel/GridContainer.add_child(relic_texture)
+		var relic_item = relic_item_scene.instantiate()
+		relic_item.set_relic(relic)
+		$RelicLabel/GridContainer.add_child(relic_item)
