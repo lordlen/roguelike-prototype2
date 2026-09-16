@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=57 format=3 uid="uid://cshojnbtmbulc"]
+[gd_resource type="Resource" script_class="CardRewardGenerator" load_steps=58 format=3 uid="uid://cshojnbtmbulc"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_g7xp1"]
 [ext_resource type="Resource" uid="uid://v1l30idb4o63" path="res://cards/card_resources/hero/afterimage.tres" id="2_5s010"]
@@ -51,6 +51,7 @@
 [ext_resource type="Resource" uid="uid://c8dqfy41bklt1" path="res://cards/card_resources/hero/read.tres" id="38_f35hh"]
 [ext_resource type="Resource" uid="uid://bq8sie05cc1ko" path="res://cards/card_resources/hero/power_through.tres" id="38_f64np"]
 [ext_resource type="Resource" uid="uid://f434krghwv0s" path="res://cards/card_resources/hero/shadow_clone.tres" id="40_4wobo"]
+[ext_resource type="Resource" uid="uid://crwanoaixxksc" path="res://cards/card_resources/hero/refresh.tres" id="42_27wly"]
 [ext_resource type="Resource" uid="uid://jfolhig4wghx" path="res://cards/card_resources/hero/spinning_deflection.tres" id="42_d1l8s"]
 [ext_resource type="Resource" uid="uid://bj4or60banjt0" path="res://cards/card_resources/hero/substitution.tres" id="43_he7mw"]
 [ext_resource type="Resource" uid="uid://b4x1s8q8xmnx7" path="res://cards/card_resources/hero/warding_talisman.tres" id="46_dkiek"]
@@ -59,7 +60,7 @@
 
 [resource]
 script = ExtResource("2_khdtg")
-card_resources = Array[ExtResource("1_g7xp1")]([ExtResource("2_dkiek"), ExtResource("2_5s010"), ExtResource("4_bvlqi"), ExtResource("5_wxl55"), ExtResource("3_7s58c"), ExtResource("4_nbrjb"), ExtResource("6_d1l8s"), ExtResource("4_8goj0"), ExtResource("8_dkiek"), ExtResource("9_wxl55"), ExtResource("5_k22cd"), ExtResource("7_uhusx"), ExtResource("7_2le0l"), ExtResource("14_5s010"), ExtResource("9_otw2l"), ExtResource("17_f64np"), ExtResource("16_i1qxy"), ExtResource("19_bvlqi"), ExtResource("16_2865y"), ExtResource("21_f64np"), ExtResource("11_bf0yd"), ExtResource("13_x7r7f"), ExtResource("21_bvlqi"), ExtResource("22_f64np"), ExtResource("13_rcal4"), ExtResource("14_x7r7f"), ExtResource("28_0uqcs"), ExtResource("21_uedwq"), ExtResource("12_uhusx"), ExtResource("29_0uqcs"), ExtResource("27_0uqcs"), ExtResource("32_f64np"), ExtResource("11_4kgsb"), ExtResource("17_n5anw"), ExtResource("21_x7r7f"), ExtResource("33_d1l8s"), ExtResource("38_f64np"), ExtResource("36_lst1l"), ExtResource("22_otw2l"), ExtResource("38_f35hh"), ExtResource("37_5s010"), ExtResource("38_d1l8s"), ExtResource("40_4wobo"), ExtResource("26_oah2p"), ExtResource("27_uedwq"), ExtResource("47_27wly"), ExtResource("42_d1l8s"), ExtResource("43_he7mw"), ExtResource("13_13mtx"), ExtResource("49_27wly"), ExtResource("28_ri652"), ExtResource("27_gkrea"), ExtResource("46_dkiek"), ExtResource("23_bf0yd")])
+card_resources = Array[ExtResource("1_g7xp1")]([ExtResource("2_dkiek"), ExtResource("2_5s010"), ExtResource("4_bvlqi"), ExtResource("5_wxl55"), ExtResource("3_7s58c"), ExtResource("4_nbrjb"), ExtResource("6_d1l8s"), ExtResource("4_8goj0"), ExtResource("8_dkiek"), ExtResource("9_wxl55"), ExtResource("5_k22cd"), ExtResource("7_uhusx"), ExtResource("7_2le0l"), ExtResource("14_5s010"), ExtResource("9_otw2l"), ExtResource("17_f64np"), ExtResource("16_i1qxy"), ExtResource("19_bvlqi"), ExtResource("16_2865y"), ExtResource("21_f64np"), ExtResource("11_bf0yd"), ExtResource("13_x7r7f"), ExtResource("21_bvlqi"), ExtResource("22_f64np"), ExtResource("13_rcal4"), ExtResource("14_x7r7f"), ExtResource("28_0uqcs"), ExtResource("21_uedwq"), ExtResource("12_uhusx"), ExtResource("29_0uqcs"), ExtResource("27_0uqcs"), ExtResource("32_f64np"), ExtResource("11_4kgsb"), ExtResource("17_n5anw"), ExtResource("21_x7r7f"), ExtResource("33_d1l8s"), ExtResource("38_f64np"), ExtResource("36_lst1l"), ExtResource("22_otw2l"), ExtResource("38_f35hh"), ExtResource("42_27wly"), ExtResource("37_5s010"), ExtResource("38_d1l8s"), ExtResource("40_4wobo"), ExtResource("26_oah2p"), ExtResource("27_uedwq"), ExtResource("47_27wly"), ExtResource("42_d1l8s"), ExtResource("43_he7mw"), ExtResource("13_13mtx"), ExtResource("49_27wly"), ExtResource("28_ri652"), ExtResource("27_gkrea"), ExtResource("46_dkiek"), ExtResource("23_bf0yd")])
 common_weight = 60
 rare_weight = 5
 metadata/_custom_type_script = "uid://cmd7omwhxqjw8"
