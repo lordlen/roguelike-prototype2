@@ -56,3 +56,17 @@ func find_evil_visible_actor():
 func _on_switch_button_button_up() -> void:
 	find_different_char()
 	EventBus.camera_move_requested.emit(character.grid_position)
+
+func _on_attack_button_button_up() -> void:
+	if !Globals.listening_user_input or !is_instance_valid(character):
+		return
+	var user_controlled_actors := ActorManager.get_user_controlled_chars()
+	if user_controlled_actors.is_empty():
+		return
+	Globals.listening_user_input = false
+	var hero := user_controlled_actors[0]
+	var turn_passed := await AttackOnlyAction.new(hero, character).execute()
+	if turn_passed:
+		EventBus.turn_ended.emit()
+	else:
+		Globals.listening_user_input = true

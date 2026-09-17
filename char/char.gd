@@ -250,8 +250,8 @@ func get_flow_map(traversal: Char.Traversal, is_forced: bool = false) -> Dijkstr
 	flow_map.set_traversal(traversal)
 	flow_map.set_targets([grid_position])
 	flow_map.set_chars(Globals.actors)
-	# typical sight range is 8, so this depth should be enough, making it fast
-	flow_map.instantiate(16)
+	# typical sight range is 8
+	flow_map.instantiate()
 	return flow_map
 
 func act_ai() -> Array[Action]:
@@ -437,5 +437,5 @@ func _on_mouse_entered() -> void:
 	#$CharInfo.hide()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("secondary_click"):
+	if event.is_action_released("secondary_click"):
 		EventBus.character_info_requested.emit(self)

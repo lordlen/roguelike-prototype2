@@ -28,7 +28,7 @@ func set_item(item: Item):
 	$DescriptionContainer/Description.text = item.get_description()
 
 func _on_pressed() -> void:
-	$PopupMenu.visible = true
+	$PopupMenu.show()
 
 func _on_popup_menu_index_pressed(index: int) -> void:
 	# emit a signal up to show that an item is selected.

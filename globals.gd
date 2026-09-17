@@ -9,3 +9,5 @@ var user_controlled: Array[Char] = []
 var ai_controlled: Array[Char] = []
 
 var camera_move_state := false
+
+var listening_user_input := false
