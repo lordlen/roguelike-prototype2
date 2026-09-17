@@ -227,9 +227,9 @@ func get_defense() -> int:
 
 func get_block_defense() -> int:
 	if decay_exponent == 0:
-		return defense + bonus_defense
+		return defense + (defense / 2)
 	else:
-		return get_defense() + bonus_defense
+		return defense
 
 func on_draw(owner: Char):
 	reset_defense_decay()

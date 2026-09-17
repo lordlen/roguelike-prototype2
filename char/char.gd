@@ -437,5 +437,5 @@ func _on_mouse_entered() -> void:
 	#$CharInfo.hide()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_released("secondary_click"):
+	if event.is_action_pressed("secondary_click"):
 		EventBus.character_info_requested.emit(self)

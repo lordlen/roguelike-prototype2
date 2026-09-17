@@ -46,6 +46,8 @@ func camera_handler(event: InputEvent):
 		zoom = zoom + Vector2(1,1)
 	elif event.is_action_pressed("zoom_out"):
 		zoom = zoom - Vector2(1,1)
+	elif event is InputEventMagnifyGesture:
+		zoom = zoom * event.factor
 	elif event.is_action_pressed("primary_click"):
 		_previousPosition = event.position
 		_mouse_is_pressed = true

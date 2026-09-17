@@ -38,8 +38,7 @@ func _on_toggled(is_toggled: bool) -> void:
 		scale = Vector2(1.0, 1.0)
 
 func _on_button_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_released():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			card_icon_pressed.emit(get_index())
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			EventBus.card_info_requested.emit(card)
+	if event.is_action_pressed("primary_click"):
+		card_icon_pressed.emit(get_index())
+	elif event.is_action_pressed("secondary_click"):
+		EventBus.card_info_requested.emit(card)

@@ -5,7 +5,6 @@ extends Label
 func _ready() -> void:
 	EventBus.character_deck_updated.connect(_on_defense_update)
 
-
 func _on_defense_update(ch: Char):
 	if ch.user_controlled:
 		var offhand := ch.deck.offhand
@@ -13,4 +12,3 @@ func _on_defense_update(ch: Char):
 			text = str(offhand.get_block_defense())
 		else:
 			text = ""
-			

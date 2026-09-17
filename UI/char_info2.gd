@@ -53,10 +53,9 @@ func _on_camera_button_pressed() -> void:
 
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			var pos := character.grid_position
-			character.spawn_indicator_particle()
-			EventBus.camera_move_requested.emit(pos)
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			EventBus.character_info_requested.emit(character)
+	if event.is_action_pressed("primary_click"):
+		var pos := character.grid_position
+		character.spawn_indicator_particle()
+		EventBus.camera_move_requested.emit(pos)
+	elif event.is_action_pressed("secondary_click"):
+		EventBus.character_info_requested.emit(character)
