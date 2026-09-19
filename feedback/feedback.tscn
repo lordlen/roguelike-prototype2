@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5vnr5u10cpuk"]
+
+[ext_resource type="Script" uid="uid://csusu3p51o5w8" path="res://feedback/feedback.gd" id="1_nyre8"]
+
+[node name="Feedback" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nyre8")
+
+[node name="Feedback" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Write anonymous feedback to the developer about the game."
+
+[node name="SendButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -42.0
+offset_right = 176.0
+offset_bottom = -11.0
+grow_vertical = 0
+disabled = true
+text = "Send feedback"
+
+[node name="CancelButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -189.0
+offset_top = -42.0
+offset_right = -129.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Cancel"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="text_changed" from="Feedback" to="." method="_on_feedback_text_changed"]
+[connection signal="pressed" from="SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_cancel_button_pressed"]
