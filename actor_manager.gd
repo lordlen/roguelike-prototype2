@@ -55,9 +55,6 @@ func move_actor(ch: Char, target_position: Vector2i):
 	char_dict[target_position] = ch
 	ch.grid_position = target_position
 
-func actor_is_dead(ch: Char):
-	return !is_instance_valid(ch) or ch.is_dead()
-
 func _process(delta: float) -> void:
 	if block_process:
 		return
