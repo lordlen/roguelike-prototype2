@@ -2014,10 +2014,6 @@ script = ExtResource("5_iqhxt")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="HeroInfo" parent="UILayer" instance=ExtResource("6_lj33d")]
-z_index = 1000
-scale = Vector2(1, 1)
-
 [node name="TargetInfo" parent="UILayer" instance=ExtResource("6_lj33d")]
 offset_top = 114.0
 offset_bottom = 228.0
@@ -2275,6 +2271,10 @@ script = ExtResource("15_nsrdk")
 
 [node name="CardRewardDialog" parent="UILayer" instance=ExtResource("5_xo2vs")]
 visible = false
+
+[node name="HeroInfo" parent="UILayer" instance=ExtResource("6_lj33d")]
+z_index = 1000
+scale = Vector2(1, 1)
 
 [node name="CharInfoDetailed" parent="UILayer" instance=ExtResource("17_lhepi")]
 visible = false
