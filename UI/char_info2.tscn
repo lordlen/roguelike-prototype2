@@ -1,22 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnlsf1yf60gbl"]
+[gd_scene load_steps=9 format=3 uid="uid://bnlsf1yf60gbl"]
 
 [ext_resource type="Script" uid="uid://cghcv8kisipx6" path="res://UI/char_info2.gd" id="1_k2tqk"]
 [ext_resource type="Texture2D" uid="uid://buvo8ycn8vw3t" path="res://resources/solid_white.png" id="2_dthuv"]
 [ext_resource type="PackedScene" uid="uid://fra6rfb08bdm" path="res://UI/card_display.tscn" id="3_fng2v"]
+[ext_resource type="PackedScene" uid="uid://cra138ghcca7v" path="res://UI/mainhand_display.tscn" id="3_qa873"]
 [ext_resource type="Texture2D" uid="uid://bualaqlc7wosp" path="res://resources/char_info.png" id="4_k2tqk"]
 [ext_resource type="PackedScene" uid="uid://crn3ax80inynt" path="res://UI/card_pile_icon.tscn" id="5_3a3f5"]
 
 [sub_resource type="SystemFont" id="SystemFont_gymf7"]
 generate_mipmaps = true
 subpixel_positioning = 0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3a3f5"]
-atlas = ExtResource("4_k2tqk")
-region = Rect2(26, 4, 4, 4)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2tqk"]
-atlas = ExtResource("4_k2tqk")
-region = Rect2(26, 9, 3, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qa873"]
 atlas = ExtResource("4_k2tqk")
@@ -96,37 +89,19 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 12
 text = "100/100"
 
-[node name="Offense" parent="." instance=ExtResource("3_fng2v")]
+[node name="Offense" parent="." instance=ExtResource("3_qa873")]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 42.0
-offset_right = 60.0
-offset_bottom = 105.0
-
-[node name="OffenseIcon" type="TextureRect" parent="Offense"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 1.0
-offset_bottom = 1.0
-scale = Vector2(3, 3)
-texture = SubResource("AtlasTexture_3a3f5")
+offset_left = 3.0
+offset_top = 42.5
+offset_right = 57.0
+offset_bottom = 105.5
 
 [node name="Defense" parent="." instance=ExtResource("3_fng2v")]
 layout_mode = 0
-offset_left = 63.0
-offset_top = 42.0
-offset_right = 117.0
-offset_bottom = 105.0
-
-[node name="DefenseIcon" type="TextureRect" parent="Defense"]
-layout_mode = 0
-offset_left = -3.5
-offset_top = -3.0
-offset_right = -0.5
-offset_bottom = 1.0
-scale = Vector2(3, 3)
-texture = SubResource("AtlasTexture_k2tqk")
+offset_left = 65.5
+offset_top = 43.0
+offset_right = 119.5
+offset_bottom = 106.0
 
 [node name="DrawPile" parent="." instance=ExtResource("5_3a3f5")]
 layout_mode = 0
