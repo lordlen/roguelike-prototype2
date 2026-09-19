@@ -18,7 +18,3 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PanelContainer.hide()
-
-func _on_gui_input(event: InputEvent) -> void:
-	if !Globals.is_examining and event.is_action_released("primary_click"):
-		$PanelContainer.visible = !$PanelContainer.visible
