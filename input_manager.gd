@@ -42,7 +42,6 @@ func _ready() -> void:
 
 func on_timer_finish():
 	is_gesturing = false
-	print("timer finished")
 
 func on_user_input_requested(actor: Char):
 	Globals.listening_user_input = true
@@ -153,7 +152,7 @@ func move_camera_position(grid_position: Vector2i):
 	is_targeting = true
 
 func mouse_is_blocked() -> bool:
-	return Globals.camera_move_state or is_gesturing
+	return Globals.camera_move_state or is_gesturing or Globals.is_examining
 
 func on_wait_pressed():
 	if Globals.listening_user_input:

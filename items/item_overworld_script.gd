@@ -33,6 +33,7 @@ func _exit_tree() -> void:
 	EventBus.item_description_hidden.emit()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_released("secondary_click"):
+	if event.is_action_released("secondary_click")\
+	or (Globals.is_examining and event.is_action_released("primary_click")):
 		if !item_resource.display_description_on_hover:
 			EventBus.item_description_requested.emit(item_resource.get_description())

@@ -54,9 +54,10 @@ func _on_camera_button_pressed() -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_released():
-		if event.is_action_released("primary_click"):
+		if event.is_action_released("secondary_click")\
+		or (Globals.is_examining and event.is_action_released("primary_click")):
+			EventBus.character_info_requested.emit(character)
+		elif event.is_action_released("primary_click"):
 			var pos := character.grid_position
 			character.spawn_indicator_particle()
 			EventBus.camera_move_requested.emit(pos)
-		elif event.is_action_released("secondary_click"):
-			EventBus.character_info_requested.emit(character)

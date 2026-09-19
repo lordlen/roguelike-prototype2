@@ -39,7 +39,8 @@ func _on_toggled(is_toggled: bool) -> void:
 
 func _on_button_gui_input(event: InputEvent) -> void:
 	if event.is_released():
-		if event.is_action_released("primary_click"):
-			card_icon_pressed.emit(get_index())
-		elif event.is_action_released("secondary_click"):
+		if event.is_action_released("secondary_click")\
+		or (Globals.is_examining and event.is_action_released("primary_click")):
 			EventBus.card_info_requested.emit(card)
+		elif event.is_action_released("primary_click"):
+			card_icon_pressed.emit(get_index())
