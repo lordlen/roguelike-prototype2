@@ -27,7 +27,7 @@ func set_card_list(card_list: Array[CardInstance]):
 	var card_icon_scene : PackedScene = load("res://UI/card_display.tscn")
 	for card in card_list:
 		var card_icon: CardDisplay = card_icon_scene.instantiate()
-		card_icon.toggle_mode = target_selections > 0
+		card_icon.toggle_mode = true
 		card_icon.set_card_data(card)
 		card_icon.toggled.connect(_on_icon_toggled)
 		$ScrollContainer/GridContainer.add_child(card_icon)
