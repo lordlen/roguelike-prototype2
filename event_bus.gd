@@ -46,3 +46,5 @@ signal wait_button_pressed
 signal swap_button_pressed
 signal reshuffle_button_pressed
 signal defend_button_pressed
+
+signal reset_game_scene

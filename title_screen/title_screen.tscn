@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkrirv51m6x"]
+
+[ext_resource type="Script" uid="uid://jo06hdckr2lc" path="res://title_screen/title_screen.gd" id="1_dxpbd"]
+[ext_resource type="PackedScene" uid="uid://c8vtyojdab8db" path="res://main.tscn" id="2_2dq6q"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxpbd")
+game_scene = ExtResource("2_2dq6q")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 20.0
+offset_right = 23.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 50.0
+offset_right = 84.0
+offset_bottom = 73.0
+grow_horizontal = 2
+text = "Len's game prototype"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

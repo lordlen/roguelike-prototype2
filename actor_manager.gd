@@ -16,8 +16,20 @@ func _ready():
 	num_turns_to_spawn = -1
 	subsequent_spawns = null
 	rng.randomize()
-	EventBus.connect("new_actor_added", _add_actor)
-	EventBus.connect("character_died", _remove_actor)
+	EventBus.new_actor_added.connect(_add_actor)
+	EventBus.character_died.connect(_remove_actor)
+	EventBus.reset_game_scene.connect(_reset)
+
+func _reset():
+	spawn_turn_count = 0
+	num_turns_to_spawn = -1
+	subsequent_spawns = null
+	rng.randomize()
+	target_char = null
+	block_process = false
+	char_dict.clear()
+	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://death_screen/DeathScreen.tscn")
 
 func _add_actor(ch: Char):
 	if ch.user_controlled:
@@ -29,7 +41,8 @@ func _add_actor(ch: Char):
 
 func _remove_actor(ch: Char):
 	if ch.user_controlled:
-		Globals.user_controlled.erase(ch)
+		EventBus.reset_game_scene.emit()
+		#Globals.user_controlled.erase(ch)
 	else:
 		Globals.ai_controlled.erase(ch)
 	ch.queue_free()
@@ -175,4 +188,5 @@ func get_chars_dict() -> Dictionary[Vector2i, Char]:
 func clear_ai_controlled():
 	var ai_controlled_chars := get_ai_controlled_chars().duplicate()
 	for ch in ai_controlled_chars:
-		ch.die()
+		if is_instance_valid(ch):
+			ch.die()
