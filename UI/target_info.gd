@@ -24,6 +24,10 @@ func turn_updated(ch: Char):
 func set_character(ch: Char):
 	if ch == character:
 		return
+	if character != null:
+		character.visibility_changed.disconnect(find_different_char)
+		character.char_died.disconnect(find_different_char)
+		character.char_next_floor.disconnect(find_different_char)
 	super.set_character(ch)
 	character.visibility_changed.connect(find_different_char)
 	character.char_died.connect(find_different_char)

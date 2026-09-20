@@ -22,7 +22,8 @@ func build_floor():
 	if !region_descriptions[region_ind].has_next():
 		region_ind += 1
 	if region_ind >= len(region_descriptions):
-		print("win")
+		EventBus.reset_game_scene.emit()
+		get_tree().change_scene_to_file("res://death_screen/WinScreen.tscn")
 		return
 	var floor_builder := region_descriptions[region_ind].get_next_floor()
 	floor_builder.build_floor()

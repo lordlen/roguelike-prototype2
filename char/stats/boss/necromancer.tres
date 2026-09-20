@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=17 format=3 uid="uid://c4ehmnhrnu3i7"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=19 format=3 uid="uid://c4ehmnhrnu3i7"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_spinh"]
 [ext_resource type="Resource" uid="uid://d03fo1rnsygrg" path="res://cards/card_resources/enemy/body_double.tres" id="2_2pgky"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="6_icpep"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="7_2pgky"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="7_jclx4"]
+[ext_resource type="Resource" uid="uid://bbgbclnasjf2j" path="res://items/card_item/rare_card_reward.tres" id="9_16hwx"]
+[ext_resource type="Resource" uid="uid://btnw0qi2yom56" path="res://items/key/key.tres" id="10_0yxxf"]
 
 [sub_resource type="Resource" id="Resource_iahqy"]
 script = ExtResource("3_jclx4")
@@ -44,4 +46,5 @@ hunting = SubResource("Resource_iahqy")
 cards = Array[ExtResource("1_spinh")]([ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("2_iahqy"), ExtResource("3_avim8"), ExtResource("3_avim8"), ExtResource("3_avim8"), ExtResource("3_iahqy")])
 innate_cards = Array[ExtResource("1_spinh")]([ExtResource("2_2pgky")])
 final_cards = Array[ExtResource("1_spinh")]([ExtResource("3_cqw64")])
+items = Array[ExtResource("2_n4s5v")]([ExtResource("9_16hwx"), ExtResource("9_16hwx"), ExtResource("10_0yxxf")])
 metadata/_custom_type_script = "uid://btuk5gl5wcri7"

@@ -28,8 +28,6 @@ func _reset():
 	target_char = null
 	block_process = false
 	char_dict.clear()
-	get_tree().reload_current_scene()
-	get_tree().change_scene_to_file("res://death_screen/DeathScreen.tscn")
 
 func _add_actor(ch: Char):
 	if ch.user_controlled:
@@ -42,6 +40,7 @@ func _add_actor(ch: Char):
 func _remove_actor(ch: Char):
 	if ch.user_controlled:
 		EventBus.reset_game_scene.emit()
+		get_tree().change_scene_to_file("res://death_screen/DeathScreen.tscn")
 		#Globals.user_controlled.erase(ch)
 	else:
 		Globals.ai_controlled.erase(ch)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RegionDescription" load_steps=5 format=3 uid="uid://de1kps5q7scsb"]
+
+[ext_resource type="Script" uid="uid://djmsa127x546v" path="res://floor_generator/floor_builder.gd" id="1_6ttm3"]
+[ext_resource type="Resource" uid="uid://bjtjavkgkjgen" path="res://floor_generator/floor_builders/f1builder.tres" id="2_5gop1"]
+[ext_resource type="Script" uid="uid://bssxptdtqb6x4" path="res://floor_generator/region_description.gd" id="2_8voe6"]
+[ext_resource type="Resource" uid="uid://cfitjtx0diity" path="res://floor_generator/floor_builders/shop.tres" id="4_dw6mu"]
+
+[resource]
+script = ExtResource("2_8voe6")
+normal_floors = Array[ExtResource("1_6ttm3")]([ExtResource("2_5gop1")])
+shop_floors = Array[ExtResource("1_6ttm3")]([ExtResource("4_dw6mu")])
+shop_insertions = Array[int]([1])
+metadata/_custom_type_script = "uid://bssxptdtqb6x4"
