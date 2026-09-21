@@ -2022,19 +2022,19 @@ script = ExtResource("6_ick23")
 
 [node name="SwitchButton" type="Button" parent="UILayer/TargetInfo"]
 layout_mode = 1
-offset_left = 529.0
-offset_top = -45.0
-offset_right = 638.0
-offset_bottom = -14.0
+offset_left = 530.0
+offset_top = 33.0
+offset_right = 639.0
+offset_bottom = 64.0
 tooltip_text = "(A) Switch character info to another character."
 text = "switch target"
 
 [node name="AttackButton" type="Button" parent="UILayer/TargetInfo"]
 layout_mode = 1
 offset_left = 530.0
-offset_top = -7.0
+offset_top = 70.0
 offset_right = 639.0
-offset_bottom = 24.0
+offset_bottom = 101.0
 text = "attack target"
 
 [node name="StairsDialog" type="ConfirmationDialog" parent="UILayer"]
@@ -2317,9 +2317,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -13.5
-offset_bottom = 17.5
+offset_left = -222.0
+offset_top = 148.0
+offset_right = -147.0
+offset_bottom = 179.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "Examine"

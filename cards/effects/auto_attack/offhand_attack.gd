@@ -5,7 +5,7 @@ func get_identifier() -> String:
 	return "offhand_attack"
 
 func get_description() -> String:
-	return "Attack target with the defense."
+	return "Attack target with the off-hand."
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var offhand := actor.deck.offhand

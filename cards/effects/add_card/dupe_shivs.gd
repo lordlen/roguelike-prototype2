@@ -11,4 +11,4 @@ func get_identifier() -> String:
 	return "multi_shiv"
 
 func get_description() -> String:
-	return 'Increase the number of hits of all shivs by 1'
+	return 'Increase the hits of all "Shiv" cards in the deck by 1'

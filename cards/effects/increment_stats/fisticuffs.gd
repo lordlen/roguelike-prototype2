@@ -5,7 +5,7 @@ func get_identifier() -> String:
 	return "fisticuffs"
 	
 func get_description() -> String:
-	return "Temporarily increase defense of the offhand by the attack value of this card."
+	return "Temporarily increase defense of the off-hand by the attack value of this card."
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	if actor.deck.offhand:

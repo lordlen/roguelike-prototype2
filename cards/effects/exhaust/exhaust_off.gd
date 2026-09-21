@@ -7,7 +7,7 @@ func get_identifier() -> String:
 	return "exhaust_off"
 
 func get_description() -> String:
-	return "Exhaust the offhand."
+	return "Exhaust the off-hand."
 
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var t := actor if target == Target.SELF else ActorManager.get_actor_in_position(target_pos)
