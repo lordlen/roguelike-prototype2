@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c8vtyojdab8db"]
+[gd_scene load_steps=46 format=3 uid="uid://c8vtyojdab8db"]
 
 [ext_resource type="Script" uid="uid://bsuerixyexkar" path="res://main.gd" id="1_3shck"]
 [ext_resource type="Texture2D" uid="uid://7lqirocavhq1" path="res://resources/general.png" id="1_206su"]
@@ -21,15 +21,14 @@
 [ext_resource type="Script" uid="uid://ch1lnbcl5f630" path="res://UI/KeyUI.gd" id="11_ick23"]
 [ext_resource type="Script" uid="uid://ba8qij3w3lqqm" path="res://UI/event_dialog.gd" id="11_pgrna"]
 [ext_resource type="PackedScene" uid="uid://dxf37wpyk66y4" path="res://UI/options_button.tscn" id="12_pgrna"]
-[ext_resource type="Script" uid="uid://yb5tlb7u883" path="res://ui_button_panel.gd" id="13_nsrdk"]
-[ext_resource type="Texture2D" uid="uid://0171lijm1iqf" path="res://resources/ui_buttons.png" id="13_qofig"]
-[ext_resource type="Script" uid="uid://d0vje1rxysrni" path="res://UI/defend_value.gd" id="15_nsrdk"]
 [ext_resource type="PackedScene" uid="uid://6f5d45fu8cv0" path="res://UI/card_description_popup.tscn" id="16_mrt7q"]
 [ext_resource type="PackedScene" uid="uid://bys5excwfjlap" path="res://char_info_detailed.tscn" id="17_lhepi"]
 [ext_resource type="PackedScene" uid="uid://rsvs28kow4q6" path="res://UI/relic_bar.tscn" id="20_4spss"]
 [ext_resource type="PackedScene" uid="uid://bq32evy5ojloo" path="res://UI/item_description.tscn" id="20_lj33d"]
 [ext_resource type="PackedScene" uid="uid://cj18bf3mbxkfi" path="res://UI/aim_mode.tscn" id="21_4spss"]
+[ext_resource type="PackedScene" uid="uid://4pkayju0tbj4" path="res://UI/legacy_buttons.tscn" id="22_qsp4k"]
 [ext_resource type="Script" uid="uid://qfungtrchsho" path="res://examine_button.gd" id="30_nnxal"]
+[ext_resource type="PackedScene" uid="uid://duiv4tg461tg2" path="res://radial_actions.tscn" id="31_seu75"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_e1kr5"]
 tile_data = PackedInt32Array(131072, 2, 0, 65537, 2, 0, 131073, 2, 0, 196609, 2, 0, 262145, 2, 0, 2, 2, 0, 65538, 2, 0, 131074, 2, 0, 196610, 2, 0, 262146, 2, 0, 327682, 2, 0, 3, 2, 0, 65539, 2, 0, 131075, 2, 0, 196611, 2, 0, 262147, 2, 0, 327683, 2, 0, 4, 2, 0, 65540, 2, 0, 131076, 2, 0, 196612, 2, 0, 262148, 2, 0, 327684, 2, 0, 5, 2, 0, 65541, 2, 0, 131077, 2, 0, 196613, 2, 0, 262149, 2, 0, 327685, 2, 0, 6, 2, 0, 65542, 2, 0, 131078, 2, 0, 196614, 2, 0, 262150, 2, 0, 327686, 2, 0, 7, 2, 0, 65543, 2, 0, 131079, 2, 0, 196615, 2, 0, 262151, 2, 0, 327687, 2, 0, 8, 2, 0, 65544, 2, 0, 131080, 2, 0, 196616, 2, 0, 262152, 2, 0, 327688, 2, 0, 9, 2, 0, 65545, 2, 0, 131081, 2, 0, 196617, 2, 0, 262153, 2, 0, 327689, 2, 0, 65546, 2, 0, 131082, 2, 0, 196618, 2, 0, 262154, 2, 0)
@@ -1963,31 +1962,6 @@ sources/0 = SubResource("TileSetAtlasSource_hl62s")
 atlas = ExtResource("10_kfw2k")
 region = Rect2(160, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k6k1t"]
-atlas = ExtResource("13_qofig")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qofig"]
-load_path = "res://.godot/imported/ui_buttons.png-263072f684e6172056ee0368d565be31.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nsrdk"]
-atlas = SubResource("CompressedTexture2D_qofig")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mrt7q"]
-load_path = "res://.godot/imported/ui_buttons.png-263072f684e6172056ee0368d565be31.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lhepi"]
-atlas = SubResource("CompressedTexture2D_mrt7q")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nmsyl"]
-load_path = "res://.godot/imported/ui_buttons.png-263072f684e6172056ee0368d565be31.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_agy8s"]
-atlas = SubResource("CompressedTexture2D_nmsyl")
-region = Rect2(48, 0, 16, 16)
-
 [node name="Main" type="Node"]
 script = ExtResource("1_3shck")
 region_descriptions = Array[ExtResource("2_agy8s")]([ExtResource("3_lj33d"), ExtResource("3_4spss")])
@@ -2030,6 +2004,7 @@ tooltip_text = "(A) Switch character info to another character."
 text = "switch target"
 
 [node name="AttackButton" type="Button" parent="UILayer/TargetInfo"]
+visible = false
 layout_mode = 1
 offset_left = 530.0
 offset_top = 70.0
@@ -2192,82 +2167,14 @@ layout_mode = 2
 text = "Some description"
 autowrap_mode = 2
 
-[node name="Buttons" type="Panel" parent="UILayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -132.0
-offset_top = -131.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("13_nsrdk")
+[node name="RadialButtons" parent="UILayer" instance=ExtResource("31_seu75")]
+offset_left = 559.0
+offset_top = 276.0
+offset_right = 599.0
+offset_bottom = 316.0
 
-[node name="HBoxContainer" type="GridContainer" parent="UILayer/Buttons"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 3.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 2
-
-[node name="WaitButton" type="TextureButton" parent="UILayer/Buttons/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Wait (space)
-Pass your turn"
-texture_normal = SubResource("AtlasTexture_k6k1t")
-stretch_mode = 4
-
-[node name="SwapButton" type="TextureButton" parent="UILayer/Buttons/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Swap (z)
-Swap your primary and offhand."
-texture_normal = SubResource("AtlasTexture_nsrdk")
-stretch_mode = 4
-
-[node name="ReshuffleButton" type="TextureButton" parent="UILayer/Buttons/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Reshuffle (x)
-Put the discard pile into the draw pile then shuffle your draw pile."
-texture_normal = SubResource("AtlasTexture_lhepi")
-stretch_mode = 4
-
-[node name="DefendButton" type="TextureButton" parent="UILayer/Buttons/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Block (c)
-Use the off-hand to block, negating more damage than it normally does.
-The off-hand is discarded at the end of the turn when blocking successfully."
-texture_normal = SubResource("AtlasTexture_agy8s")
-stretch_mode = 4
-
-[node name="DefendValue" type="Label" parent="UILayer/Buttons/HBoxContainer/DefendButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -19.5
-offset_right = 17.5
-offset_bottom = 14.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-script = ExtResource("15_nsrdk")
+[node name="Buttons" parent="UILayer" instance=ExtResource("22_qsp4k")]
+visible = false
 
 [node name="CardRewardDialog" parent="UILayer" instance=ExtResource("5_xo2vs")]
 visible = false
@@ -2298,10 +2205,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -94.0
-offset_top = -33.0
-offset_right = 94.0
-offset_bottom = -12.0
+offset_left = -95.0
+offset_top = -22.0
+offset_right = 93.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -2317,9 +2224,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -222.0
+offset_left = -190.0
 offset_top = 148.0
-offset_right = -147.0
+offset_right = -115.0
 offset_bottom = 179.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -2329,8 +2236,4 @@ script = ExtResource("30_nnxal")
 [connection signal="button_up" from="UILayer/TargetInfo/SwitchButton" to="UILayer/TargetInfo" method="_on_switch_button_button_up"]
 [connection signal="button_up" from="UILayer/TargetInfo/AttackButton" to="UILayer/TargetInfo" method="_on_attack_button_button_up"]
 [connection signal="confirmed" from="UILayer/StairsDialog" to="." method="on_stairs_entered"]
-[connection signal="pressed" from="UILayer/Buttons/HBoxContainer/WaitButton" to="UILayer/Buttons" method="_on_wait_button_pressed"]
-[connection signal="pressed" from="UILayer/Buttons/HBoxContainer/SwapButton" to="UILayer/Buttons" method="_on_swap_button_pressed"]
-[connection signal="pressed" from="UILayer/Buttons/HBoxContainer/ReshuffleButton" to="UILayer/Buttons" method="_on_reshuffle_button_pressed"]
-[connection signal="pressed" from="UILayer/Buttons/HBoxContainer/DefendButton" to="UILayer/Buttons" method="_on_defend_button_pressed"]
 [connection signal="button_up" from="UILayer/Examine" to="UILayer/Examine" method="_on_button_up"]

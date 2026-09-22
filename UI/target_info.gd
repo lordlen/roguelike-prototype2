@@ -9,6 +9,7 @@ func _ready():
 	# stale the visible enemies list every time user input is requested
 	EventBus.user_input_requested.connect(turn_updated)
 	EventBus.character_hovered.connect(set_character)
+	EventBus.attack_button_pressed.connect(_on_attack_button_button_up)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("change_target"):

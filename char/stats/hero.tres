@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=16 format=3 uid="uid://c2c0p28gnvbfh"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=15 format=3 uid="uid://c2c0p28gnvbfh"]
 
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_0djxd"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="1_4jech"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://siwpm2by5u4s" path="res://cards/card_resources/enemy/strike.tres" id="2_7n2om"]
 [ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="2_a7gj7"]
 [ext_resource type="Resource" uid="uid://bjisge33m8gki" path="res://cards/card_resources/enemy/defend.tres" id="3_xlilp"]
-[ext_resource type="Resource" uid="uid://f434krghwv0s" path="res://cards/card_resources/hero/shadow_clone.tres" id="4_k0w62"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="5_7n2om"]
 [ext_resource type="Resource" uid="uid://dbsukj2jm0f5p" path="res://items/gold/gold.tres" id="6_1fprc"]
 [ext_resource type="Resource" uid="uid://dydc27x2kr71" path="res://items/relics/character_relics/special/bloodstone.tres" id="7_xlilp"]
@@ -39,6 +38,6 @@ vision_range = 10
 sleeping = SubResource("Resource_ejhup")
 wandering = SubResource("Resource_x8o02")
 hunting = SubResource("Resource_67pbj")
-cards = Array[ExtResource("1_67pbj")]([ExtResource("2_7n2om"), ExtResource("2_7n2om"), ExtResource("3_xlilp"), ExtResource("3_xlilp"), ExtResource("4_k0w62")])
+cards = Array[ExtResource("1_67pbj")]([ExtResource("2_7n2om"), ExtResource("2_7n2om"), ExtResource("3_xlilp"), ExtResource("3_xlilp")])
 items = Array[ExtResource("5_7n2om")]([ExtResource("6_1fprc"), ExtResource("7_xlilp"), ExtResource("8_k0w62")])
 metadata/_custom_type_script = "uid://btuk5gl5wcri7"

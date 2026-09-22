@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://duiv4tg461tg2"]
+
+[ext_resource type="Script" uid="uid://dc32xq2di1tmw" path="res://radial_actions.gd" id="1_6svk2"]
+[ext_resource type="Texture2D" uid="uid://0171lijm1iqf" path="res://resources/ui_buttons.png" id="1_eucbb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6svk2"]
+atlas = ExtResource("1_eucbb")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ich7f"]
+atlas = ExtResource("1_eucbb")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqn6y"]
+atlas = ExtResource("1_eucbb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihcuc"]
+atlas = ExtResource("1_eucbb")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qxc1"]
+atlas = ExtResource("1_eucbb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x20nc"]
+atlas = ExtResource("1_eucbb")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 68.0
+offset_right = 112.0
+offset_bottom = 108.0
+script = ExtResource("1_6svk2")
+
+[node name="ShowButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_6svk2")
+stretch_mode = 4
+
+[node name="Options" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Attack" type="TextureRect" parent="Options"]
+layout_mode = 0
+offset_top = -42.0
+offset_right = 40.0
+offset_bottom = -2.0
+texture = SubResource("AtlasTexture_ich7f")
+
+[node name="Swap" type="TextureRect" parent="Options"]
+layout_mode = 0
+offset_left = 42.0
+offset_right = 82.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_vqn6y")
+
+[node name="Defend" type="TextureRect" parent="Options"]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 40.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_ihcuc")
+
+[node name="Reshuffle" type="TextureRect" parent="Options"]
+layout_mode = 0
+offset_left = -42.0
+offset_right = -2.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = SubResource("AtlasTexture_2qxc1")
+
+[node name="Wait" type="TextureRect" parent="Options"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_x20nc")
+
+[connection signal="button_down" from="ShowButton" to="." method="_on_show_button_button_down"]
+[connection signal="button_up" from="ShowButton" to="." method="_on_show_button_button_up"]
+[connection signal="mouse_exited" from="Options" to="." method="_on_options_mouse_exited"]
+[connection signal="mouse_entered" from="Options/Attack" to="." method="_on_attack_mouse_entered"]
+[connection signal="mouse_entered" from="Options/Swap" to="." method="_on_swap_mouse_entered"]
+[connection signal="mouse_entered" from="Options/Defend" to="." method="_on_defend_mouse_entered"]
+[connection signal="mouse_entered" from="Options/Reshuffle" to="." method="_on_reshuffle_mouse_entered"]
+[connection signal="mouse_entered" from="Options/Wait" to="." method="_on_wait_mouse_entered"]

@@ -30,8 +30,8 @@ signal inventory_updated
 signal item_used
 signal new_item_added
 signal update_gold
-signal item_description_requested
-signal item_description_hidden
+signal item_description_requested(text: String)
+signal item_description_hidden()
 
 signal card_selector_requested
 signal cards_selected
@@ -46,5 +46,6 @@ signal wait_button_pressed
 signal swap_button_pressed
 signal reshuffle_button_pressed
 signal defend_button_pressed
+signal attack_button_pressed
 
 signal reset_game_scene
