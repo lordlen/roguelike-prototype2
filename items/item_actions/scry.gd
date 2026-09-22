@@ -2,7 +2,7 @@ class_name ScryAction
 extends ItemAction
 
 func get_description() -> String:
-	return "Look at the draw pile and select cards to discard."
+	return "Return all cards into the draw pile. Look at the draw pile and select cards to discard."
 
 func use(owner: Char, pos: Vector2i) -> bool:
 	if !super.use(owner, pos):

@@ -19,6 +19,8 @@ signal char_waited
 signal char_walked
 signal char_died
 
+@onready var target_indicator := $TargetIndicator
+
 enum Alignment {
 	GOOD,
 	EVIL

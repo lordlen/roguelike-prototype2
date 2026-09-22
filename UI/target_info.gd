@@ -29,10 +29,12 @@ func set_character(ch: Char):
 		character.visibility_changed.disconnect(find_different_char)
 		character.char_died.disconnect(find_different_char)
 		character.char_next_floor.disconnect(find_different_char)
+		character.target_indicator.hide()
 	super.set_character(ch)
 	character.visibility_changed.connect(find_different_char)
 	character.char_died.connect(find_different_char)
 	character.char_next_floor.connect(find_different_char)
+	character.target_indicator.show()
 	change_state_label(ch)
 
 func find_different_char():
