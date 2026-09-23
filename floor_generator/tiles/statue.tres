@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_ooa3d")
 terrain_id = 8
+top_id = 6
 grounded_cost = inf
 aquatic_cost = inf
 flying_cost = inf

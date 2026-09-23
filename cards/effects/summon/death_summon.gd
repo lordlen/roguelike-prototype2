@@ -8,7 +8,6 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	if actor.is_dead():
 		var new_char := ActorManager.spawn_character(char_resource)
 		new_char.move_to(actor.grid_position)
-		new_char.deck.discard_all()
 		var summon := Summon.new()
 		summon.char_resource = char_resource
 		summon.num_summons = num_summons - 1

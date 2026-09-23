@@ -188,6 +188,11 @@ func attack_animation(target_grid_pos: Vector2i):
 	offset_target = Vector2(target_grid_pos - grid_position) * Consts.TILE_SIZE
 
 func move_to(new_grid_pos: Vector2i, speed: float = INF):
+	if new_grid_pos.x > grid_position.x:
+		$Sprite2D.flip_h = true
+	elif new_grid_pos.x < grid_position.x:
+		$Sprite2D.flip_h = false
+	
 	if self.grid_position != new_grid_pos:
 		self.moved_this_turn = true
 
@@ -195,7 +200,8 @@ func move_to(new_grid_pos: Vector2i, speed: float = INF):
 
 	# move smoothly
 	self.speed = speed
-	self.new_pos = self.grid_position * Consts.TILE_SIZE
+	var offset := Vector2i(Consts.TILE_SIZE / 2, Consts.TILE_SIZE / 2)
+	self.new_pos = self.grid_position * Consts.TILE_SIZE + offset
 	if speed == INF:
 		self.position = self.new_pos
 	else:

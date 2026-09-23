@@ -81,7 +81,6 @@ _data = {
 
 [node name="Sprite2D" type="Sprite2D"]
 texture = ExtResource("1_wqvrv")
-centered = false
 script = ExtResource("2_oms8q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

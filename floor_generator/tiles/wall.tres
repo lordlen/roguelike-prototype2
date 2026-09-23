@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_gh21i")
 terrain_id = 1
+top_id = 1
 is_opaque = true
 grounded_cost = inf
 aquatic_cost = inf

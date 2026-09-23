@@ -156,7 +156,9 @@ func mouse_is_blocked() -> bool:
 
 func on_wait_pressed():
 	if Globals.listening_user_input:
-		end_turn()
+		var turn_passed := WaitAction.new(self.actor).execute()
+		if turn_passed:
+			end_turn()
 
 func on_swap_pressed():
 	if Globals.listening_user_input:

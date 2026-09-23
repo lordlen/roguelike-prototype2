@@ -81,13 +81,16 @@ static func push_aoe(from: Vector2i, user_alignment: Char.Alignment, radius: int
 			char.move_to(curr_pos)
 
 static func scry(actor: Char, num_cards: int):
+	print(len(actor.deck.draw_pile))
 	if actor.user_controlled:
 		var num_selections : int = min(len(actor.deck.draw_pile), num_cards)
 		if num_selections > 0:
+			print(len(actor.deck.draw_pile))
 			var card_options: Array[CardInstance] = actor.deck.draw_pile.slice(-num_cards, len(actor.deck.draw_pile))
 			card_options.reverse()
 			EventBus.card_selector_requested.emit(card_options, 0, "Select cards to discard.")
 			var indices : Array[int] = await EventBus.cards_selected
+			print(len(actor.deck.draw_pile))
 			# card options is reversed, so
 			var original_length := len(actor.deck.draw_pile)
 			for relative_ind in indices:
@@ -95,6 +98,7 @@ static func scry(actor: Char, num_cards: int):
 				var ind := original_length - 1 - relative_ind
 				var c : CardInstance = actor.deck.discard_at(ind)
 				await c.do_on_discard_effects(actor)
+	print("scry end")
 
 static func seek(actor: Char, num_cards: int):
 	if actor.user_controlled:

@@ -10,6 +10,8 @@ metadata/_custom_type_script = "uid://6gp4dbu3qr53"
 [resource]
 script = ExtResource("1_xw11g")
 terrain_id = 2
+top_id = 2
+bottom_id = 1
 is_opaque = true
 grounded_cost = 1.0
 aquatic_cost = 1.0

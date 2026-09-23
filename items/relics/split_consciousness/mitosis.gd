@@ -27,9 +27,7 @@ func on_took_damage(actor: Char):
 		ch.max_hp = actor.curr_hp
 		# remove / disable the relic
 		ch.inventory.clear_relics()
-		# force discard all to prevent attacking on summon
-		ch.deck.discard_all()
 	
 	# also discard all for the user
-	actor.deck.discard_all()
+	await actor.deck.discard_all()
 	return true

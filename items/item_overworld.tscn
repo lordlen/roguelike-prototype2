@@ -12,6 +12,8 @@ region = Rect2(64, 64, 16, 16)
 
 [node name="ItemOverworld" type="Area2D"]
 visible = false
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("2_gryw3")
 
 [node name="Cost" type="Label" parent="."]

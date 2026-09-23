@@ -87,7 +87,6 @@ _data = {
 
 [node name="Sprite2D" type="Sprite2D"]
 texture = SubResource("AtlasTexture_lnt1s")
-centered = false
 script = ExtResource("2_e57rb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

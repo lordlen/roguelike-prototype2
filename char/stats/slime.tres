@@ -8,8 +8,8 @@
 [ext_resource type="Resource" uid="uid://d5fpc5aeddee" path="res://items/relics/split_consciousness/mitosis.tres" id="5_he0i6"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="5_t75cn"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="6_mow42"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="7_ngj8o"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="8_bpf0g"]
+[ext_resource type="Texture2D" uid="uid://qxhdok4sustb" path="res://resources/characters/slime.png" id="9_he0i6"]
 
 [sub_resource type="Resource" id="Resource_4awkm"]
 script = ExtResource("4_he0i6")
@@ -20,8 +20,8 @@ script = ExtResource("6_mow42")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdvhs"]
-atlas = ExtResource("7_ngj8o")
-region = Rect2(112, 224, 16, 16)
+atlas = ExtResource("9_he0i6")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="Resource" id="Resource_rduy2"]
 script = ExtResource("8_bpf0g")
@@ -33,7 +33,6 @@ texture = SubResource("AtlasTexture_cdvhs")
 character_name = "Slime"
 alignment = 1
 traversal = 1
-color = Color(0, 1, 0, 1)
 min_hp = 14
 max_hp = 20
 sleeping = SubResource("Resource_hsusu")

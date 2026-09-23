@@ -1,7 +1,11 @@
 class_name TileResource
 extends Resource
 
+# terrain id should be what identifies terrain
 @export var terrain_id: Terrains
+
+@export var top_id: Tops
+@export var bottom_id: Bottoms
 @export var is_opaque: bool
 @export var grounded_cost: float
 @export var aquatic_cost: float
@@ -20,6 +24,23 @@ enum Terrains {
 	LOCKED_DOOR = 7,
 	STATUE = 8,
 	SANCTUARY = 9,
+}
+
+enum Tops {
+	NOTHING = 0,
+	WALL = 1,
+	GRASS = 2,
+	PEDESTAL = 3,
+	TRAMLED_GRASS = 4,
+	LOCKED_DOOR = 5,
+	STATUE = 6
+}
+
+enum Bottoms {
+	SOIL = 0,
+	GRASS = 1,
+	WATER = 2,
+	STAIRS = 3
 }
 
 # return the grounded cost by default

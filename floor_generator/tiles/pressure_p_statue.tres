@@ -11,6 +11,7 @@ metadata/_custom_type_script = "uid://cc3k21dwfobwr"
 [resource]
 script = ExtResource("1_l1e3y")
 terrain_id = 4
+top_id = 3
 grounded_cost = 8.0
 aquatic_cost = 8.0
 flying_cost = 8.0

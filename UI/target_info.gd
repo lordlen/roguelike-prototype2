@@ -12,7 +12,7 @@ func _ready():
 	EventBus.attack_button_pressed.connect(_on_attack_button_button_up)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("change_target"):
+	if visible and event.is_action_released("change_target"):
 		find_different_char()
 		EventBus.camera_move_requested.emit(character.grid_position)
 

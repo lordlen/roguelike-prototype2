@@ -184,7 +184,7 @@ func invert_piles():
 func discard_all():
 	discard_primary()
 	discard_offhand()
-	discard_draw_pile()
+	await discard_draw_pile()
 	EventBus.character_deck_updated.emit(deck_owner)
 
 func pop_at(ind) -> CardInstance:
@@ -231,6 +231,7 @@ func shuffle():
 		primary.on_draw(deck_owner)
 	
 	draw_pile = final_cards + tmp + innate_cards
+	EventBus.character_deck_updated.emit(deck_owner)
 
 func reshuffle(do_effects: bool = true):
 	shuffle()

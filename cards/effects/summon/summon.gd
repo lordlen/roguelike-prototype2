@@ -20,7 +20,6 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 		new_char.move_to(cell)
 		if follow_leader:
 			new_char.follow(actor)
-		new_char.deck.discard_all()
 	card_effect_finished.emit()
 
 func get_shortform(card: CardInstance) -> String:

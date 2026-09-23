@@ -7,8 +7,8 @@
 [ext_resource type="Resource" uid="uid://dgsuvok1hwhbc" path="res://cards/card_resources/enemy/gnaw.tres" id="3_lvt2a"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="4_a8qrl"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="4_ixnro"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="5_a8qrl"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="6_lvt2a"]
+[ext_resource type="Texture2D" uid="uid://m18h861x1oo" path="res://resources/characters/rat.png" id="8_lvt2a"]
 
 [sub_resource type="Resource" id="Resource_idk1w"]
 script = ExtResource("2_3qbnk")
@@ -18,9 +18,8 @@ metadata/_custom_type_script = "uid://bytwv002xet0b"
 script = ExtResource("4_ixnro")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ameka"]
-atlas = ExtResource("5_a8qrl")
-region = Rect2(128, 144, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_idk1w"]
+atlas = ExtResource("8_lvt2a")
 
 [sub_resource type="Resource" id="Resource_k13kk"]
 script = ExtResource("6_lvt2a")
@@ -28,7 +27,7 @@ metadata/_custom_type_script = "uid://cwayprpkdikls"
 
 [resource]
 script = ExtResource("2_egrc3")
-texture = SubResource("AtlasTexture_ameka")
+texture = SubResource("AtlasTexture_idk1w")
 character_name = "Giant Rat"
 alignment = 1
 color = Color(0.5254902, 0.5019608, 0.5529412, 1)

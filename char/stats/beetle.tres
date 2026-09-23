@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://bj3mw20xk5w7i"]
+
+[ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_ospc3"]
+[ext_resource type="Resource" uid="uid://do8cqnnel1kmt" path="res://cards/card_resources/enemy/pinch.tres" id="2_t8bdv"]
+[ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="3_yx8ux"]
+[ext_resource type="Resource" uid="uid://kc13nbe3sn3l" path="res://cards/card_resources/enemy/thick_shell.tres" id="4_kqx2q"]
+[ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="5_0nmcq"]
+[ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="6_yj520"]
+[ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="7_xi2ss"]
+[ext_resource type="Texture2D" uid="uid://cwmwl3bameedf" path="res://resources/characters/beetle.png" id="8_7es1i"]
+[ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="9_mpe5e"]
+
+[sub_resource type="Resource" id="Resource_21apl"]
+script = ExtResource("3_yx8ux")
+metadata/_custom_type_script = "uid://bytwv002xet0b"
+
+[sub_resource type="Resource" id="Resource_yc7kr"]
+script = ExtResource("7_xi2ss")
+metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7lag"]
+atlas = ExtResource("8_7es1i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_rooet"]
+script = ExtResource("9_mpe5e")
+metadata/_custom_type_script = "uid://cwayprpkdikls"
+
+[resource]
+script = ExtResource("6_yj520")
+texture = SubResource("AtlasTexture_d7lag")
+character_name = "Crab"
+alignment = 1
+traversal = 1
+min_hp = 5
+max_hp = 7
+sleeping = SubResource("Resource_yc7kr")
+wandering = SubResource("Resource_rooet")
+hunting = SubResource("Resource_21apl")
+cards = Array[ExtResource("1_ospc3")]([ExtResource("2_t8bdv"), ExtResource("2_t8bdv"), ExtResource("2_t8bdv")])
+innate_cards = Array[ExtResource("1_ospc3")]([ExtResource("4_kqx2q")])
+metadata/_custom_type_script = "uid://btuk5gl5wcri7"

@@ -14,7 +14,7 @@ func use(owner: Char, pos: Vector2i) -> bool:
 
 	for target_char in target_chars:
 		# first, shuffle the deck including hand
-		target_char.deck.discard_all()
+		await target_char.deck.discard_all()
 		target_char.deck.shuffle()
 		await CardHelper.scry(target_char, 100)
 		target_char.deck.draw_empty()

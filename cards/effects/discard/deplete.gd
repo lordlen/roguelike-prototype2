@@ -12,7 +12,7 @@ func get_description() -> String:
 func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var t := actor if target == Target.SELF else ActorManager.get_actor_in_position(target_pos)
 	if is_instance_valid(t):
-		t.deck.discard_draw_pile()
+		await t.deck.discard_draw_pile()
 		var break_action := Break.new()
 		break_action.target = target
 		await break_action.do(actor, target_pos, card)

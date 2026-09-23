@@ -6,8 +6,8 @@
 [ext_resource type="Resource" uid="uid://beg070ojhv37" path="res://cards/card_resources/enemy/club_smash.tres" id="2_vva64"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_4wwrh"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="5_6ys25"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="6_vva64"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="7_6ys25"]
+[ext_resource type="Texture2D" uid="uid://bffmca4c70vu6" path="res://resources/characters/ogre.png" id="7_vva64"]
 
 [sub_resource type="Resource" id="Resource_v2cml"]
 script = ExtResource("2_hry2h")
@@ -18,8 +18,8 @@ script = ExtResource("5_6ys25")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wxp11"]
-atlas = ExtResource("6_vva64")
-region = Rect2(0, 64, 16, 16)
+atlas = ExtResource("7_vva64")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="Resource" id="Resource_vva64"]
 script = ExtResource("7_6ys25")
@@ -30,7 +30,6 @@ script = ExtResource("3_4wwrh")
 texture = SubResource("AtlasTexture_wxp11")
 character_name = "Ogre"
 alignment = 1
-color = Color(0, 0.37254903, 0, 1)
 min_hp = 20
 max_hp = 30
 sleeping = SubResource("Resource_3ji8p")

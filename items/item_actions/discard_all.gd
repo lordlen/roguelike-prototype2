@@ -15,6 +15,6 @@ func use(owner: Char, pos: Vector2i) -> bool:
 	for target_char in target_chars:
 		# only damage enemies
 		if target_char.alignment != owner.alignment:
-			target_char.deck.discard_all()
+			await target_char.deck.discard_all()
 			EventBus.character_deck_updated.emit(target_char)
 	return true

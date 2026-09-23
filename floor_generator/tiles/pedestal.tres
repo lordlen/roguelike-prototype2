@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("2_yxpco")
 terrain_id = 4
+top_id = 3
 grounded_cost = 8.0
 aquatic_cost = 8.0
 flying_cost = 8.0
