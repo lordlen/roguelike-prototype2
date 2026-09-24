@@ -11,8 +11,8 @@
 [ext_resource type="Resource" uid="uid://btnw0qi2yom56" path="res://items/key/key.tres" id="8_71wn3"]
 [ext_resource type="Resource" uid="uid://bbgbclnasjf2j" path="res://items/card_item/rare_card_reward.tres" id="9_m2nm8"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="9_vpxj7"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="10_fe8h7"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="11_61vl0"]
+[ext_resource type="Texture2D" uid="uid://b3t4ty8a0hmfl" path="res://resources/characters/slime_boss.png" id="12_m2nm8"]
 
 [sub_resource type="Resource" id="Resource_fpg4n"]
 script = ExtResource("5_idvpt")
@@ -22,9 +22,8 @@ metadata/_custom_type_script = "uid://dysi8wi87fjq5"
 script = ExtResource("9_vpxj7")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1sqec"]
-atlas = ExtResource("10_fe8h7")
-region = Rect2(128, 224, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_idvpt"]
+atlas = ExtResource("12_m2nm8")
 
 [sub_resource type="Resource" id="Resource_71wn3"]
 script = ExtResource("11_61vl0")
@@ -32,7 +31,7 @@ metadata/_custom_type_script = "uid://cwayprpkdikls"
 
 [resource]
 script = ExtResource("3_jt30y")
-texture = SubResource("AtlasTexture_1sqec")
+texture = SubResource("AtlasTexture_idvpt")
 character_name = "Fountainhead"
 alignment = 1
 traversal = 1

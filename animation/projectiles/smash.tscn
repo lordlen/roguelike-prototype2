@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdhjlqueopbk2"]
+
+[ext_resource type="Texture2D" uid="uid://dbc6acr7bsmka" path="res://animation/projectiles/resources/smash.png" id="1_e8ga8"]
+
+[sub_resource type="Animation" id="Animation_p3c0o"]
+resource_name = "play"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ayeml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eaicp"]
+_data = {
+&"RESET": SubResource("Animation_ayeml"),
+&"play": SubResource("Animation_p3c0o")
+}
+
+[node name="Smash" type="Sprite2D"]
+texture = ExtResource("1_e8ga8")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eaicp")
+}
+speed_scale = 5.0

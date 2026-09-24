@@ -200,8 +200,7 @@ func move_to(new_grid_pos: Vector2i, speed: float = INF):
 
 	# move smoothly
 	self.speed = speed
-	var offset := Vector2i(Consts.TILE_SIZE / 2, Consts.TILE_SIZE / 2)
-	self.new_pos = self.grid_position * Consts.TILE_SIZE + offset
+	self.new_pos = World.grid_to_world(grid_position)
 	if speed == INF:
 		self.position = self.new_pos
 	else:

@@ -16,6 +16,7 @@ region = Rect2(0, 0, 16, 16)
 custom_minimum_size = Vector2(54, 63)
 offset_right = 54.0
 offset_bottom = 63.0
+pivot_offset = Vector2(27, 31.5)
 tooltip_text = "Right click to see more info"
 texture_normal = SubResource("AtlasTexture_m0cj8")
 stretch_mode = 4

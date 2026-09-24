@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyokn4dlvicre"]
+
+[ext_resource type="Texture2D" uid="uid://dnsfqo3x1yqcg" path="res://animation/projectiles/resources/slash.png" id="1_tll6j"]
+[ext_resource type="Script" uid="uid://dtxvppf7yvaf5" path="res://animation/projectiles/projectile.gd" id="2_p55of"]
+
+[sub_resource type="Animation" id="Animation_p55of"]
+resource_name = "play"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_02h5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dlhq6"]
+_data = {
+&"RESET": SubResource("Animation_02h5y"),
+&"play": SubResource("Animation_p55of")
+}
+
+[node name="Slash" type="Sprite2D"]
+texture = ExtResource("1_tll6j")
+hframes = 4
+region_rect = Rect2(0, 0, 32, 32)
+script = ExtResource("2_p55of")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dlhq6")
+}
+speed_scale = 5.0

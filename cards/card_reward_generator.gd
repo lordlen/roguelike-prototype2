@@ -27,12 +27,6 @@ func instantiate():
 				grouped_cards[2].push_back(c)
 			_:
 				pass
-	#print(len(grouped_cards[0]))
-	#print(len(grouped_cards[1]))
-	#print(len(grouped_cards[2]))
-	#
-	#for card in grouped_cards[0]:
-		#print(card.name)
 
 func generate_rarity() -> CardResource.Rarity:
 	var weights := [common_weight, uncommon_weight, rare_weight]
