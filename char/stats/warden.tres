@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://tsnkwhy7vxpq" path="res://cards/card_resources/enemy/ethereal_chains.tres" id="5_k5hyb"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="8_lvl2x"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="9_8jx0d"]
-[ext_resource type="Texture2D" uid="uid://c6aage5jf57kq" path="res://resources/characters/warden.png" id="9_v3g7c"]
+[ext_resource type="Texture2D" uid="uid://b8k3pxcaa0mk6" path="res://resources/characters/warden.png" id="9_v3g7c"]
 
 [sub_resource type="Resource" id="Resource_qax4k"]
 script = ExtResource("4_272h6")
