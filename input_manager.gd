@@ -53,9 +53,9 @@ func cancel_aim_mode():
 func camera_handler(event: InputEvent):
 	# camera functionality
 	if event.is_action_pressed("zoom_in"):
-		zoom = zoom + Vector2(1,1)
+		zoom = zoom * Vector2(1.5,1.5)
 	elif event.is_action_pressed("zoom_out"):
-		zoom = zoom - Vector2(1,1)
+		zoom = zoom * Vector2(0.5,0.5)
 	elif event is InputEventMagnifyGesture:
 		if !is_gesturing:
 			is_gesturing = true

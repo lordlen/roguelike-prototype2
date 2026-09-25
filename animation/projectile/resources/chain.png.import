@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbc6acr7bsmka"
-path="res://.godot/imported/smash.png-6cf08bfec9118faa9ca3bcd1cd10468c.ctex"
+uid="uid://dodft6m2xo5f3"
+path="res://.godot/imported/chain.png-7bfa2371a45a70714db0d098f4392ade.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://animation/projectiles/resources/smash.png"
-dest_files=["res://.godot/imported/smash.png-6cf08bfec9118faa9ca3bcd1cd10468c.ctex"]
+source_file="res://animation/projectile/resources/chain.png"
+dest_files=["res://.godot/imported/chain.png-7bfa2371a45a70714db0d098f4392ade.ctex"]
 
 [params]
 

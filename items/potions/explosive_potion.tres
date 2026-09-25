@@ -1,9 +1,24 @@
-[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://c1w5ivm41maa2"]
+[gd_resource type="Resource" script_class="Item" load_steps=13 format=3 uid="uid://c1w5ivm41maa2"]
 
 [ext_resource type="Script" uid="uid://c0kydti45bp0m" path="res://items/item_action.gd" id="1_1ycta"]
 [ext_resource type="Script" uid="uid://dk8e13cpebadb" path="res://items/item_actions/damage.gd" id="2_i1onv"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_k7n3h"]
+[ext_resource type="PackedScene" uid="uid://dkseldksa80qg" path="res://animation/impact/smash.tscn" id="2_lv1bm"]
+[ext_resource type="PackedScene" uid="uid://dmn47ov2pg30t" path="res://animation/projectile/generic_projectile.tscn" id="3_3tc40"]
 [ext_resource type="Texture2D" uid="uid://q6ylj40t1uk4" path="res://resources/items.png" id="4_i1onv"]
+[ext_resource type="Script" uid="uid://b8ydj7oulh1j6" path="res://animation/action_animation.gd" id="5_rtida"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly2rx"]
+atlas = ExtResource("4_i1onv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_tm40q"]
+script = ExtResource("5_rtida")
+impact_animation = ExtResource("2_lv1bm")
+projectile_animation = ExtResource("3_3tc40")
+projectile_texture_override = SubResource("AtlasTexture_ly2rx")
+travel_speed = 300.0
+metadata/_custom_type_script = "uid://b8ydj7oulh1j6"
 
 [sub_resource type="Resource" id="Resource_dwrx8"]
 script = ExtResource("2_i1onv")
@@ -13,6 +28,7 @@ affects = 1
 action_name = "Throw"
 effect_radius = 2
 num_uses = 1
+animation = SubResource("Resource_tm40q")
 metadata/_custom_type_script = "uid://dk8e13cpebadb"
 
 [sub_resource type="Resource" id="Resource_1ycta"]

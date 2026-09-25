@@ -1,13 +1,30 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dpqsqhsgvgoxy"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=13 format=3 uid="uid://dpqsqhsgvgoxy"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_k4801"]
-[ext_resource type="Script" uid="uid://u2cmlepjq7ad" path="res://cards/effects/do_damage/water_ball.gd" id="2_3m3nb"]
+[ext_resource type="Script" uid="uid://f2folmyeb8n4" path="res://cards/effects/increment_stats/water_ball.gd" id="2_11n0f"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_egd4l"]
 [ext_resource type="Texture2D" uid="uid://cmi3wax21mhw5" path="res://resources/card_thumbnails.png" id="3_egd4l"]
+[ext_resource type="PackedScene" uid="uid://dkseldksa80qg" path="res://animation/impact/smash.tscn" id="3_lde8n"]
+[ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="3_nv5vg"]
+[ext_resource type="PackedScene" uid="uid://cj0jjbhsa5n8s" path="res://animation/projectile/magic_bolt.tscn" id="4_2jeak"]
+[ext_resource type="Script" uid="uid://b8ydj7oulh1j6" path="res://animation/action_animation.gd" id="5_axbal"]
 
-[sub_resource type="Resource" id="Resource_8xe4x"]
-script = ExtResource("2_3m3nb")
-metadata/_custom_type_script = "uid://u2cmlepjq7ad"
+[sub_resource type="Resource" id="Resource_c44th"]
+script = ExtResource("2_11n0f")
+metadata/_custom_type_script = "uid://f2folmyeb8n4"
+
+[sub_resource type="Resource" id="Resource_ffg3j"]
+script = ExtResource("5_axbal")
+impact_animation = ExtResource("3_lde8n")
+projectile_animation = ExtResource("4_2jeak")
+projectile_color = Color(0, 0, 1, 1)
+travel_speed = 300.0
+metadata/_custom_type_script = "uid://b8ydj7oulh1j6"
+
+[sub_resource type="Resource" id="Resource_lde8n"]
+script = ExtResource("3_nv5vg")
+animation = SubResource("Resource_ffg3j")
+metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m3nb"]
 atlas = ExtResource("3_egd4l")
@@ -19,5 +36,5 @@ texture = SubResource("AtlasTexture_3m3nb")
 name = "Water Ball"
 attack = 8
 range = 1
-attack_effects = Array[ExtResource("1_k4801")]([SubResource("Resource_8xe4x")])
+attack_effects = Array[ExtResource("1_k4801")]([SubResource("Resource_c44th"), SubResource("Resource_lde8n")])
 metadata/_custom_type_script = "uid://crie0xoknuknq"

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bq8sie05cc1ko"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://bq8sie05cc1ko"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_8xtvw"]
+[ext_resource type="Resource" uid="uid://chpy6338rylcc" path="res://animation/action_animations/melee_smash.tres" id="2_5ptyj"]
 [ext_resource type="Script" uid="uid://bceg83txlhfdl" path="res://cards/effects/bonus_defense/endure.gd" id="2_p5nn3"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_urttn"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_wi8my"]
 
 [sub_resource type="Resource" id="Resource_5ptyj"]
 script = ExtResource("2_wi8my")
+animation = ExtResource("2_5ptyj")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_wi8my"]

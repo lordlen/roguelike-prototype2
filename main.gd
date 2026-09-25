@@ -3,7 +3,6 @@ extends Node
 @export var region_descriptions : Array[RegionDescription]
 
 @onready var terrain := $Terrain
-@onready var terrain_bottom := $TerrainBottom
 @onready var black_fog := $Terrain/BlackFog
 @onready var gray_fog := $Terrain/GrayFog
 @onready var actor_list := $ActorList

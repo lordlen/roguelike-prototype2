@@ -8,12 +8,9 @@ func get_description() -> String:
 	return "Increase the defense of all cards for this floor by %d%s." % [value, get_radius_desc()]
 
 func use(owner: Char, pos: Vector2i) -> bool:
-	if !super.use(owner, pos):
-		return false
-
 	var target_chars := _get_target_chars(owner, pos)
-	if target_chars.is_empty():
-		return false
+	
+	await do_animation(owner, pos)
 
 	for target_char in target_chars:
 		for c in target_char.deck.draw_pile:

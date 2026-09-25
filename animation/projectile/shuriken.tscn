@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cav8w1t5ab4yv"]
+
+[ext_resource type="Texture2D" uid="uid://ceeeeao1il3lr" path="res://animation/projectile/resources/shuriken.png" id="1_c7ddu"]
+[ext_resource type="Script" uid="uid://bi465ljl31b8a" path="res://animation/projectile/projectile.gd" id="2_6dko7"]
+
+[node name="Bolt" type="Sprite2D"]
+texture = ExtResource("1_c7ddu")
+script = ExtResource("2_6dko7")
+rotation_speed = 100
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+lifetime = 0.25
+emission_shape = 1
+emission_sphere_radius = 5.66
+gravity = Vector2(0, -30)

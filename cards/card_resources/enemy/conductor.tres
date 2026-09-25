@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bot55268a8am0"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://bot55268a8am0"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_6bndy"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_2mm2s"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_yoonr"]
 [ext_resource type="Script" uid="uid://rc3l2mcj6bck" path="res://cards/effects/increment_stats/flank.gd" id="3_jcwrv"]
+[ext_resource type="Resource" uid="uid://dn0ke1r52pjje" path="res://animation/action_animations/melee_bind.tres" id="3_vlau1"]
 
 [sub_resource type="Resource" id="Resource_opxyq"]
 script = ExtResource("3_jcwrv")
@@ -12,6 +13,7 @@ metadata/_custom_type_script = "uid://rc3l2mcj6bck"
 
 [sub_resource type="Resource" id="Resource_vlau1"]
 script = ExtResource("2_yoonr")
+animation = ExtResource("3_vlau1")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [resource]

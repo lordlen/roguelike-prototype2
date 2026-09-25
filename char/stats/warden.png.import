@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnsfqo3x1yqcg"
-path="res://.godot/imported/slash.png-44ba4a42327643ad22b6c169c9cc8223.ctex"
+uid="uid://b8k3pxcaa0mk6"
+path="res://.godot/imported/warden.png-9ba742d23cf0280a231ade11c4415552.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://animation/projectiles/resources/slash.png"
-dest_files=["res://.godot/imported/slash.png-44ba4a42327643ad22b6c169c9cc8223.ctex"]
+source_file="res://char/stats/warden.png"
+dest_files=["res://.godot/imported/warden.png-9ba742d23cf0280a231ade11c4415552.ctex"]
 
 [params]
 

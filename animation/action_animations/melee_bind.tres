@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionAnimation" load_steps=3 format=3 uid="uid://dn0ke1r52pjje"]
+
+[ext_resource type="PackedScene" uid="uid://dq0xh08d5fs36" path="res://animation/impact/bind.tscn" id="1_d0m7n"]
+[ext_resource type="Script" uid="uid://b8ydj7oulh1j6" path="res://animation/action_animation.gd" id="2_ukidw"]
+
+[resource]
+script = ExtResource("2_ukidw")
+impact_animation = ExtResource("1_d0m7n")
+does_contact = true
+metadata/_custom_type_script = "uid://b8ydj7oulh1j6"

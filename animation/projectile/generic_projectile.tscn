@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmn47ov2pg30t"]
+
+[ext_resource type="Texture2D" uid="uid://0171lijm1iqf" path="res://resources/ui_buttons.png" id="1_8kg5e"]
+[ext_resource type="Script" uid="uid://bi465ljl31b8a" path="res://animation/projectile/projectile.gd" id="2_3iar1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kod4"]
+atlas = ExtResource("1_8kg5e")
+region = Rect2(64, 0, 16, 16)
+
+[node name="Bolt" type="Sprite2D"]
+texture = SubResource("AtlasTexture_8kod4")
+script = ExtResource("2_3iar1")
+rotation_speed = 100
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+lifetime = 0.25
+emission_shape = 1
+emission_sphere_radius = 5.66
+gravity = Vector2(0, -30)

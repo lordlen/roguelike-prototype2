@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy5v6f1xct5ve"]
+
+[ext_resource type="Texture2D" uid="uid://dodft6m2xo5f3" path="res://animation/projectile/resources/chain.png" id="1_l6bkq"]
+[ext_resource type="Script" uid="uid://bi465ljl31b8a" path="res://animation/projectile/projectile.gd" id="2_iq22o"]
+
+[node name="Bolt" type="Sprite2D"]
+texture = ExtResource("1_l6bkq")
+script = ExtResource("2_iq22o")
+rotation_speed = 100
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 200
+texture = ExtResource("1_l6bkq")
+lifetime = 10.0
+gravity = Vector2(0, 0)

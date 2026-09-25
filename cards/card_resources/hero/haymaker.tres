@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://bqbd7h3blkn1"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=10 format=3 uid="uid://bqbd7h3blkn1"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_j721j"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_1rqtk"]
 [ext_resource type="Script" uid="uid://bbynha6a1j85" path="res://cards/effects/increment_stats/ram.gd" id="2_plhfa"]
 [ext_resource type="Script" uid="uid://dmjsrjjubgf5c" path="res://cards/effects/discard/break.gd" id="3_plhfa"]
+[ext_resource type="Resource" uid="uid://chpy6338rylcc" path="res://animation/action_animations/melee_smash.tres" id="3_yotu4"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="4_yotu4"]
 
 [sub_resource type="Resource" id="Resource_yotu4"]
@@ -12,6 +13,7 @@ metadata/_custom_type_script = "uid://bbynha6a1j85"
 
 [sub_resource type="Resource" id="Resource_ws07w"]
 script = ExtResource("2_1rqtk")
+animation = ExtResource("3_yotu4")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_a0bou"]

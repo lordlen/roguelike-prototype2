@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpawnGroup" load_steps=4 format=3 uid="uid://c1tf5pab7q3oo"]
 
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="1_j0vra"]
-[ext_resource type="Resource" uid="uid://c5rp6xtyo671y" path="res://char/stats/ghost.tres" id="2_d214v"]
+[ext_resource type="Resource" uid="uid://c5rp6xtyo671y" path="res://char/stats/unused/ghost.tres" id="2_d214v"]
 [ext_resource type="Script" uid="uid://cgbukm4afxlvj" path="res://floor_generator/floor_description/spawn_group.gd" id="3_xctr2"]
 
 [resource]

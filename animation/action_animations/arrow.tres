@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ActionAnimation" load_steps=4 format=3 uid="uid://boerb7x82dqvk"]
+
+[ext_resource type="PackedScene" uid="uid://d4lqjgkgu67j0" path="res://animation/impact/stab.tscn" id="1_6dpq6"]
+[ext_resource type="Script" uid="uid://b8ydj7oulh1j6" path="res://animation/action_animation.gd" id="1_wcbq6"]
+[ext_resource type="PackedScene" uid="uid://l270t1t5si0t" path="res://animation/projectile/arrow.tscn" id="2_wwvvj"]
+
+[resource]
+script = ExtResource("1_wcbq6")
+impact_animation = ExtResource("1_6dpq6")
+projectile_animation = ExtResource("2_wwvvj")
+travel_speed = 400.0
+metadata/_custom_type_script = "uid://b8ydj7oulh1j6"

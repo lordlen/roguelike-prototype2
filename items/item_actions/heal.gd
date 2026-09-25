@@ -8,12 +8,9 @@ func get_description() -> String:
 	return "Heal %.0f%% of max hp%s." % [heal_fraction * 100, get_radius_desc()]
 
 func use(owner: Char, pos: Vector2i) -> bool:
-	if !super.use(owner, pos):
-		return false
-	
 	var target_chars := _get_target_chars(owner, pos)
-	if target_chars.is_empty():
-		return false
+	
+	await do_animation(owner, pos)
 	
 	for target_char in target_chars:
 		var max_hp = target_char.max_hp

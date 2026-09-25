@@ -5,13 +5,10 @@ func get_description() -> String:
 	return "Switch locations with the target."
 
 func use(owner: Char, pos: Vector2i) -> bool:
-	if !super.use(owner, pos):
-		return false
-	
 	var target_chars := _get_target_chars(owner, pos)
-	if target_chars.is_empty():
-		return false
 
+	await do_animation(owner, pos)
+	
 	for target_char in target_chars:
 		var tmp := owner.grid_position
 		owner.move_to(pos)

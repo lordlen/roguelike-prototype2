@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpoag80knc1ub"]
+
+[ext_resource type="Texture2D" uid="uid://2vh1n0iqf5vu" path="res://animation/projectile/resources/kunai.png" id="1_h4egi"]
+[ext_resource type="Script" uid="uid://bi465ljl31b8a" path="res://animation/projectile/projectile.gd" id="2_80cwc"]
+
+[node name="Bolt" type="Sprite2D"]
+texture = ExtResource("1_h4egi")
+script = ExtResource("2_80cwc")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+lifetime = 0.25
+emission_shape = 1
+emission_sphere_radius = 5.66
+gravity = Vector2(0, -30)

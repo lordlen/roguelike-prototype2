@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=15 format=3 uid="uid://cskaj6d52fsgm"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://cskaj6d52fsgm"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_hr3xr"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_hs3ya"]
@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://tsnkwhy7vxpq" path="res://cards/card_resources/enemy/ethereal_chains.tres" id="5_k5hyb"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="8_lvl2x"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="9_8jx0d"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="9_v3g7c"]
+[ext_resource type="Texture2D" uid="uid://c6aage5jf57kq" path="res://resources/characters/warden.png" id="9_v3g7c"]
 
 [sub_resource type="Resource" id="Resource_qax4k"]
 script = ExtResource("4_272h6")
@@ -19,20 +19,15 @@ metadata/_custom_type_script = "uid://bytwv002xet0b"
 script = ExtResource("8_lvl2x")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_272h6"]
-atlas = ExtResource("9_v3g7c")
-region = Rect2(16, 112, 16, 16)
-
 [sub_resource type="Resource" id="Resource_6gjyg"]
 script = ExtResource("9_8jx0d")
 metadata/_custom_type_script = "uid://cwayprpkdikls"
 
 [resource]
 script = ExtResource("3_pdgbv")
-texture = SubResource("AtlasTexture_272h6")
+texture = ExtResource("9_v3g7c")
 character_name = "Warden"
 alignment = 1
-color = Color(0, 0.5638163, 0, 1)
 min_hp = 25
 max_hp = 30
 sleeping = SubResource("Resource_2bdpj")

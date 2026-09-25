@@ -3,6 +3,7 @@ extends CardEffect
 
 @export var bonus_damage: int
 @export var is_aoe: bool = false
+@export var animation : ActionAnimation
 
 func get_identifier() -> String:
 	return "damage" if !is_aoe else "damage_AOE"
@@ -23,7 +24,10 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 		var target_char := ActorManager.get_actor_in_position(target_pos)
 		var num_hits := card.num_hits
 		var attack_val := card.attack + bonus_damage
-		await CardHelper.deal_damage(attack_val, num_hits, actor, target_char)
+		if animation:
+			await CardHelper.deal_damage_with_animation(attack_val, num_hits, actor, target_char, animation)
+		else:
+			await CardHelper.deal_damage(attack_val, num_hits, actor, target_char)
 	card_effect_finished.emit()
 
 func get_shortform(card: CardInstance) -> String:

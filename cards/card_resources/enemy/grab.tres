@@ -1,12 +1,19 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://bq1eu3780244u"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=9 format=3 uid="uid://bq1eu3780244u"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_aereg"]
+[ext_resource type="Script" uid="uid://b8ydj7oulh1j6" path="res://animation/action_animation.gd" id="2_eqnab"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_ossxn"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_v5vba"]
 [ext_resource type="Script" uid="uid://w6n3wvsyybxr" path="res://cards/effects/discard/sap.gd" id="3_v5vba"]
 
+[sub_resource type="Resource" id="Resource_n8fdn"]
+script = ExtResource("2_eqnab")
+does_contact = true
+metadata/_custom_type_script = "uid://b8ydj7oulh1j6"
+
 [sub_resource type="Resource" id="Resource_7egbr"]
 script = ExtResource("2_v5vba")
+animation = SubResource("Resource_n8fdn")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_rq4nl"]

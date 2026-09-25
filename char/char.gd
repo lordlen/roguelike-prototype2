@@ -20,6 +20,7 @@ signal char_walked
 signal char_died
 
 @onready var target_indicator := $TargetIndicator
+@onready var sprite2d : Sprite2D = $Sprite2D
 
 enum Alignment {
 	GOOD,
@@ -74,7 +75,7 @@ var target_flow_map: DijkstraMap
 var moved_last_turn: bool
 var moved_this_turn: bool
 
-var sprite: Sprite2D
+@onready var sprite : Sprite2D = $Sprite2D
 var speed := 100
 var new_pos : Vector2
 var is_moving: bool

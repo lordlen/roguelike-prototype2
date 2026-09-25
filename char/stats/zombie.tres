@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://dwuhwtyowgj52"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=13 format=3 uid="uid://dwuhwtyowgj52"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_2owdy"]
 [ext_resource type="Resource" uid="uid://bm42kayuvcaf6" path="res://cards/card_resources/enemy/inhuman_strength.tres" id="2_4bvic"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="4_yifjx"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="7_185m2"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="8_0hs8q"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="9_yifjx"]
+[ext_resource type="Texture2D" uid="uid://2nguylbmv8p1" path="res://resources/characters/ghoul.png" id="8_4bvic"]
 
 [sub_resource type="Resource" id="Resource_4bvic"]
 script = ExtResource("4_yifjx")
@@ -18,20 +18,16 @@ metadata/_custom_type_script = "uid://bytwv002xet0b"
 script = ExtResource("7_185m2")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_185m2"]
-atlas = ExtResource("9_yifjx")
-region = Rect2(16, 96, 16, 16)
-
 [sub_resource type="Resource" id="Resource_0hs8q"]
 script = ExtResource("8_0hs8q")
 metadata/_custom_type_script = "uid://cwayprpkdikls"
 
 [resource]
 script = ExtResource("3_vgy5p")
-texture = SubResource("AtlasTexture_185m2")
+texture = ExtResource("8_4bvic")
 character_name = "Zombie"
 alignment = 1
-color = Color(0, 0.65882355, 0, 1)
+color = Color(0.45490196, 0.54901963, 0.77254903, 1)
 min_hp = 9
 max_hp = 12
 vision_range = 99

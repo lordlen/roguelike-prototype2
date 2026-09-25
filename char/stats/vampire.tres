@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=15 format=3 uid="uid://b883c6tuexqjp"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://b883c6tuexqjp"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_pw7t5"]
 [ext_resource type="Resource" uid="uid://dnh488icy1kuv" path="res://cards/card_resources/enemy/mind_control.tres" id="2_82ks0"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_gf8og"]
 [ext_resource type="Resource" uid="uid://c8ygn5t3qrtii" path="res://cards/card_resources/enemy/hemokinesis.tres" id="3_jax8q"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_wapu8"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="4_gf8og"]
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="5_7yjvu"]
 [ext_resource type="Resource" uid="uid://dq5bckyms8s83" path="res://cards/card_resources/enemy/call_familiars.tres" id="6_yjucb"]
+[ext_resource type="Texture2D" uid="uid://b0718b6vh6sxp" path="res://resources/characters/vampire.png" id="9_jax8q"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="9_msjh4"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="11_segq6"]
 
@@ -19,20 +19,15 @@ metadata/_custom_type_script = "uid://bytwv002xet0b"
 script = ExtResource("9_msjh4")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wapu8"]
-atlas = ExtResource("4_gf8og")
-region = Rect2(0, 112, 16, 16)
-
 [sub_resource type="Resource" id="Resource_q5lnd"]
 script = ExtResource("11_segq6")
 metadata/_custom_type_script = "uid://cwayprpkdikls"
 
 [resource]
 script = ExtResource("3_wapu8")
-texture = SubResource("AtlasTexture_wapu8")
+texture = ExtResource("9_jax8q")
 character_name = "Vampire"
 alignment = 1
-color = Color(0.34407577, 0.34407574, 0.34407574, 1)
 min_hp = 30
 max_hp = 35
 sleeping = SubResource("Resource_ckrpy")

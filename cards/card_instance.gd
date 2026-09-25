@@ -157,56 +157,65 @@ func get_description() -> String:
 		result += ".\n"
 	
 	for e in self.attack_effects:
-		result += e.get_shortform(self)
-		result += '\n'
+		if e.get_identifier():
+			result += e.get_shortform(self)
+			result += '\n'
 	
 	if len(defense_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Block: \n", "Trigger effects when blocking")
 		for e in defense_effects:
-			result += '\t' + e.get_shortform(self)
-			result += '\n'
+			if e.get_identifier():
+				result += '\t' + e.get_shortform(self)
+				result += '\n'
 
 	if len(on_hit_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Hit: \n", "Trigger effects when hit while this card is in the defense.")
 		for e in on_hit_effects:
-			result += '\t' + e.get_shortform(self)
-			result += '\n'
+			if e.get_identifier():
+				result += '\t' + e.get_shortform(self)
+				result += '\n'
 
 	if len(on_took_damage_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Take Damage: \n", "Trigger effects when taking damage from anywhere.")
 		for e in on_took_damage_effects:
-			result += '\t' + e.get_shortform(self)
-			result += '\n'
+			if e.get_identifier():
+				result += '\t' + e.get_shortform(self)
+				result += '\n'
 
 	if len(on_move_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Move: \n", "Trigger effects when you moved with a card effect from anywhere.")
 		for e in on_move_effects:
-			result += '\t' + e.get_shortform(self)
-			result += '\n'
+			if e.get_identifier():
+				result += '\t' + e.get_shortform(self)
+				result += '\n'
 	
 	if len(on_discard_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Discard: \n", "Trigger effects when you discard this card with another effect.")
 		for e in on_discard_effects:
-			result += '\t' + e.get_shortform(self)
-			result += '\n'
+			if e.get_identifier():
+				result += '\t' + e.get_shortform(self)
+				result += '\n'
 	
 	if len(on_draw_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Draw: \n", "Trigger effects when you draw this card.")
 		for e in on_draw_effects:
-			result += '\t' + e.get_shortform(self)
-			result += '\n'
+			if e.get_identifier():
+				result += '\t' + e.get_shortform(self)
+				result += '\n'
 	
 	if len(on_use_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Use: \n", "Trigger effects when you use this card.")
 		for e in on_use_effects:
-			result += '\t' + e.get_shortform(self)
-			result += '\n'
+			if e.get_identifier():
+				result += '\t' + e.get_shortform(self)
+				result += '\n'
 	
 	if len(on_any_attack_effects) > 0:
 		result += CardDescriptionHelper.text_with_tooltip("On Any Attack: \n", "Trigger effects when you attack with any card.")
 		for e in on_any_attack_effects:
-			result += '\t' + e.get_shortform(self)
-			result += '\n'
+			if e.get_identifier():
+				result += '\t' + e.get_shortform(self)
+				result += '\n'
 
 	return result
 

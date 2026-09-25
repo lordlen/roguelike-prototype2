@@ -15,7 +15,7 @@ func _init(actor: Char, item: Item, item_action: ItemAction, pos: Vector2i):
 func execute() -> bool:
 	EventBus.aim_mode_canceled.emit()
 	# get the path
-	if Pathfinder.chebychev_dist(actor.grid_position, pos) <= item_action.effect_range:
+	if item_action.is_valid_position(actor, pos):
 		var pf :=  Pathfinder.new()
 		# flying so ignore any kind of terrain except walls
 		var path := pf.get_straight_path(actor.grid_position, pos, Char.Traversal.FLYING)

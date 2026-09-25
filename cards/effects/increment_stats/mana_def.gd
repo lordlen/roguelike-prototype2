@@ -12,7 +12,7 @@ func do(actor: Char, target_pos: Vector2i, card: CardInstance) -> void:
 	var def_value := 0
 	if cast_spell:
 		def_value = cast_spell.defense
-	var def_up := DefUp.new()
-	def_up.value = def_value
+	var def_up := TmpDefUp.new()
+	def_up.def_value = def_value
 	def_up.do(actor, target_pos, card)
 	card_effect_finished.emit()

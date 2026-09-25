@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://btuext3getrag"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://btuext3getrag"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_kqdso"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_3260r"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_e7bdq"]
+[ext_resource type="Resource" uid="uid://b1uv1u6pyowd0" path="res://animation/action_animations/magic.tres" id="2_e7g1e"]
 [ext_resource type="Script" uid="uid://befkr8rvi0mwo" path="res://cards/effects/discard/discard.gd" id="3_3260r"]
 
 [sub_resource type="Resource" id="Resource_e7g1e"]
 script = ExtResource("2_3260r")
+animation = ExtResource("2_e7g1e")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [sub_resource type="Resource" id="Resource_dvlhf"]

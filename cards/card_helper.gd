@@ -31,6 +31,13 @@ static func deal_damage(attack_val: int, num_hits, actor: Char, target_char: Cha
 		await target_char.take_hit(actor, attack_val)
 		await actor.char_finished_attacking
 
+static func deal_damage_with_animation(attack_val: int, num_hits, actor: Char, target_char: Char, animation: ActionAnimation):
+	for _i in num_hits:
+		if !is_instance_valid(target_char) or target_char.is_dead():
+			break
+		await animation.execute(actor, target_char.grid_position)
+		await target_char.take_hit(actor, attack_val)
+
 static func deal_aoe_damage(attack_val: int, num_hits: int, attacker: Char, target_pos: Vector2i, atk_range: int, friendly_fire := false):
 	for x in range(target_pos.x - atk_range, target_pos.x + atk_range + 1):
 		for y in range(target_pos.y - atk_range, target_pos.y + atk_range + 1):

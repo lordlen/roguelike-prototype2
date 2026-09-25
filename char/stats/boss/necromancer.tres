@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=19 format=3 uid="uid://c4ehmnhrnu3i7"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=18 format=3 uid="uid://c4ehmnhrnu3i7"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_spinh"]
 [ext_resource type="Resource" uid="uid://d03fo1rnsygrg" path="res://cards/card_resources/enemy/body_double.tres" id="2_2pgky"]
@@ -11,9 +11,9 @@
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_ktqum"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="6_icpep"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="7_2pgky"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="7_jclx4"]
 [ext_resource type="Resource" uid="uid://bbgbclnasjf2j" path="res://items/card_item/rare_card_reward.tres" id="9_16hwx"]
 [ext_resource type="Resource" uid="uid://btnw0qi2yom56" path="res://items/key/key.tres" id="10_0yxxf"]
+[ext_resource type="Texture2D" uid="uid://cs3s3qukryyv4" path="res://resources/characters/necromancer.png" id="13_16hwx"]
 
 [sub_resource type="Resource" id="Resource_iahqy"]
 script = ExtResource("3_jclx4")
@@ -23,17 +23,13 @@ metadata/_custom_type_script = "uid://bytwv002xet0b"
 script = ExtResource("6_icpep")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_icpep"]
-atlas = ExtResource("7_jclx4")
-region = Rect2(80, 112, 16, 16)
-
 [sub_resource type="Resource" id="Resource_avim8"]
 script = ExtResource("7_2pgky")
 metadata/_custom_type_script = "uid://cwayprpkdikls"
 
 [resource]
 script = ExtResource("3_ktqum")
-texture = SubResource("AtlasTexture_icpep")
+texture = ExtResource("13_16hwx")
 character_name = "Necromancer"
 alignment = 1
 min_hp = 75

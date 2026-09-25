@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dk061xxpidxlv"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://dk061xxpidxlv"]
 
 [ext_resource type="Script" uid="uid://8j480ywki30u" path="res://cards/card_effect.gd" id="1_7olc8"]
 [ext_resource type="Script" uid="uid://bht5j60htrmv2" path="res://cards/effects/do_damage/damage.gd" id="2_2wn2g"]
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="2_qtr3p"]
+[ext_resource type="Resource" uid="uid://do0sbbjya48y7" path="res://animation/action_animations/melee_slash.tres" id="3_2wn2g"]
 [ext_resource type="Script" uid="uid://dly02v1jvmmys" path="res://cards/effects/modify_terrain/cultivate.gd" id="3_660wy"]
 
 [sub_resource type="Resource" id="Resource_2wn2g"]
@@ -12,6 +13,7 @@ metadata/_custom_type_script = "uid://dly02v1jvmmys"
 
 [sub_resource type="Resource" id="Resource_orvvk"]
 script = ExtResource("2_2wn2g")
+animation = ExtResource("3_2wn2g")
 metadata/_custom_type_script = "uid://bht5j60htrmv2"
 
 [resource]

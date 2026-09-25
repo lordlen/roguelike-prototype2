@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CardVFX" load_steps=3 format=3 uid="uid://bnkntk2m3d05s"]
+
+[ext_resource type="Resource" uid="uid://c2ed5adbq6xh2" path="res://animation/action_animations/chains.tres" id="1_5ooio"]
+[ext_resource type="Script" uid="uid://dafxa6tii4g8s" path="res://cards/vfx/card_vfx.gd" id="1_h0th6"]
+
+[resource]
+script = ExtResource("1_h0th6")
+animation = ExtResource("1_5ooio")
+metadata/_custom_type_script = "uid://dafxa6tii4g8s"

@@ -20,8 +20,10 @@ enum Affects {
 @export var uses_turn: bool = false
 @export var num_uses: int = 100
 
+@export var animation: ActionAnimation
+
 func use(owner: Char, pos: Vector2i) -> bool:
-	return Pathfinder.chebychev_dist(owner.grid_position, pos) <= effect_range
+	return true
 
 func _does_affect(owner: Char, ch: Char) -> bool:
 	if affects == Affects.SELF:
@@ -30,6 +32,13 @@ func _does_affect(owner: Char, ch: Char) -> bool:
 		return owner.alignment != ch.alignment
 	else:
 		return true
+
+func affect_char():
+	pass
+
+func do_animation(owner: Char, pos: Vector2i):
+	if animation:
+		await animation.execute(owner, pos)
 
 func get_description() -> String:
 	return ""
@@ -41,6 +50,9 @@ func get_radius_desc() -> String:
 
 func is_usable(owner: Char):
 	return true
+
+func is_valid_position(owner, target_position: Vector2i) -> bool:
+	return Pathfinder.chebychev_dist(owner.grid_position, target_position) <= effect_range
 
 func _get_target_chars(owner: Char, pos: Vector2i) -> Array[Char]:
 	var positions : Array[Vector2i] = []

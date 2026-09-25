@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=15 format=3 uid="uid://bm4uv1ff5vey1"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=14 format=3 uid="uid://bm4uv1ff5vey1"]
 
 [ext_resource type="Script" uid="uid://crie0xoknuknq" path="res://cards/card_resource.gd" id="1_dafjs"]
 [ext_resource type="Script" uid="uid://ca2r30i5gni7m" path="res://items/item.gd" id="2_rvk4k"]
 [ext_resource type="Resource" uid="uid://cmpnxvgbs7n4" path="res://cards/card_resources/enemy/claw.tres" id="2_t8rpr"]
 [ext_resource type="Script" uid="uid://btuk5gl5wcri7" path="res://char/character_stats.gd" id="3_8f7as"]
 [ext_resource type="Resource" uid="uid://dy54lwrw7c6bw" path="res://cards/card_resources/enemy/critical_claw.tres" id="3_c2312"]
-[ext_resource type="Texture2D" uid="uid://db37n7rcfhpdi" path="res://resources/creatures_transparent.png" id="4_rvk4k"]
 [ext_resource type="Script" uid="uid://bytwv002xet0b" path="res://char/ai_states/hunting.gd" id="4_ulou0"]
 [ext_resource type="Resource" uid="uid://dusjykpiy21fl" path="res://cards/card_resources/enemy/pounce.tres" id="5_iv4h8"]
+[ext_resource type="Texture2D" uid="uid://bd2k6y6w5w24g" path="res://resources/characters/wolf.png" id="9_6fsm1"]
 [ext_resource type="Script" uid="uid://dk8px1ijxtxk1" path="res://char/ai_states/sleeping.gd" id="9_bjpju"]
 [ext_resource type="Script" uid="uid://cwayprpkdikls" path="res://char/ai_states/wandering.gd" id="11_0nix7"]
 
@@ -19,17 +19,13 @@ metadata/_custom_type_script = "uid://bytwv002xet0b"
 script = ExtResource("9_bjpju")
 metadata/_custom_type_script = "uid://dk8px1ijxtxk1"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8f7as"]
-atlas = ExtResource("4_rvk4k")
-region = Rect2(16, 144, 16, 16)
-
 [sub_resource type="Resource" id="Resource_3qqoo"]
 script = ExtResource("11_0nix7")
 metadata/_custom_type_script = "uid://cwayprpkdikls"
 
 [resource]
 script = ExtResource("3_8f7as")
-texture = SubResource("AtlasTexture_8f7as")
+texture = ExtResource("9_6fsm1")
 character_name = "Spirit Wolf"
 alignment = 1
 is_cautious = true
